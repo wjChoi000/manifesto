@@ -1,10 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true"
+    android:background="#fff">
+
+    <!-- the number of people-->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="manifesto"
-        />
-</LinearLayout>
+        android:orientation="horizontal"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginBottom="1dp"
+        android:background="#FFF"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:id="@+id/manifestoParty">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <Button
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                style="@style/manifestoPartyImage"
+                android:background="@android:color/holo_blue_dark"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/manifestoPartyText"
+                android:text="민주당 21명"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                style="@style/manifestoPartyImage"
+                android:background="@android:color/holo_red_dark"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/manifestoPartyText"
+                android:text="한국당 5명"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                style="@style/manifestoPartyImage"
+                android:background="@android:color/darker_gray"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/manifestoPartyText"
+                android:text="무소속 1명"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorBackgroundGray"
+        android:layout_alignBottom="@id/manifestoParty"
+        android:id="@+id/manifestoPartyB"
+        android:orientation="horizontal" />
+    <!---->
+    <LinearLayout
+        android:id="@+id/manifestoContents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:layout_marginTop="1dp"
+        android:layout_alignParentBottom="true"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:text="@string/manifesto_content"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:textAlignment="center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorBackgroundGray"
+        android:layout_alignTop="@id/manifestoContents"
+        android:id="@+id/manifestoContentsT"
+        android:orientation="horizontal" />
+
+    <!-- map-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:layout_below="@id/manifestoPartyB"
+        android:layout_above="@id/manifestoContentsT"
+        android:gravity="center_vertical|center_horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/manifesto_mayor"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/manifestoBtnOfficial"
+                android:onClick="onClickOfficial"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/manifesto_education"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"/>
+
+            <ImageView
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:src="@drawable/manifesto_map"/>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

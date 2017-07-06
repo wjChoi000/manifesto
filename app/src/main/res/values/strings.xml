@@ -5,4 +5,8 @@
     <string name="tab_title_two">시민의원</string>
     <string name="tab_title_three">상식</string>
 
+
+    <string name="manifesto_content">클릭해서 공약이행률 보기</string>
+    <string name="manifesto_mayor">서울시장</string>
+    <string name="manifesto_education">교육청장</string>
 </resources>
