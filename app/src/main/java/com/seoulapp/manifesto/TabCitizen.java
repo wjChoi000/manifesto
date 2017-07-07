@@ -15,5 +15,6 @@ public class TabCitizen extends Fragment {
         View rootView = inflater.inflate(R.layout.tab_citizen, container, false);
 
         return rootView;
+
     }
 }

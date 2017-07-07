@@ -10,4 +10,6 @@
 
     <dimen name="picture_small">24dp</dimen>
     <dimen name="margin_default">10dp</dimen>
+
+    <dimen name="gab">1dp</dimen>
 </resources>

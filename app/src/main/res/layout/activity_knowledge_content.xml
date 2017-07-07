@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.seoulapp.manifesto.KnowledgeContentActivity"
+    android:background="@color/colorBackgroundGray"
+    android:orientation="vertical">
+
+    <!--Title-->
+    <TextView
+        android:id="@+id/k_content_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/gab"
+        />
+    <!--content-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/k_content_contents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:layout_marginBottom="@dimen/gab"/>
+
+    <!--good and bad-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/gab">
+
+        <ImageView
+            android:layout_width="@dimen/picture_small"
+            android:layout_height="@dimen/picture_small"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:src="@drawable/knowledge_good" />
+
+        <TextView
+            android:id="@+id/k_content_goodNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:text="150" />
+
+        <ImageView
+            android:layout_width="@dimen/picture_small"
+            android:layout_height="@dimen/picture_small"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:src="@drawable/knowledge_comment" />
+
+        <TextView
+            android:id="@+id/k_content_commentNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_default"
+            android:text="240" />
+    </LinearLayout>
+
+    <!--comments-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+</LinearLayout>
