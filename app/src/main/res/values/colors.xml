@@ -8,5 +8,14 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGray">#747474</color>
 
+    <color name="textGray">#d0d0d0</color>
     <color name="colorBackgroundGray">#b6b6b6</color>
+    <color name="colorBlack">#000</color>
+
+
+    <color name="promise_care">#00B050</color>
+    <color name="promise_culture">#FFC000</color>
+    <color name="promise_edu">#0070C0</color>
+    <color name="promise_eco">#FF00</color>
+    <color name="promise_city">#00FFFF</color>
 </resources>

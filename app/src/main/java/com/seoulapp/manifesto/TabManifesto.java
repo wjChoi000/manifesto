@@ -1,6 +1,7 @@
 package com.seoulapp.manifesto;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
@@ -32,12 +33,9 @@ public class TabManifesto extends Fragment {
         return rootView;
     }
 
-
-
-
     public void onClickOfficial(View view){
-
+        Intent intent = new Intent(getActivity(), ManifestoRateActivity.class);
+        startActivity(intent);
     }
-
 
 }
