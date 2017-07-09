@@ -30,6 +30,7 @@
 
     <string name="k_save">댓글쓰기</string>
 
+    <string name="rate_total_title">전제 공약 이행률</string>
     <string name="promise_care">복지</string>
     <string name="promise_culture">문화</string>
     <string name="promise_edu">교육</string>

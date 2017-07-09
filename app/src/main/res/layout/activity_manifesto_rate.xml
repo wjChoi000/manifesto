@@ -203,9 +203,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:text="@string/rate_total_title"
+                    />
                     android:text="@string/reta_table_title"/>
 
 
