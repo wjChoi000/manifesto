@@ -3,14 +3,18 @@ package com.seoulapp.manifesto;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 public class ManifestoRateActivity extends AppCompatActivity {
@@ -118,8 +122,62 @@ public class ManifestoRateActivity extends AppCompatActivity {
         textAge.setText("62세");
         textEdu.setText("단국대학교");
 
+        rate();
         promise();
         profile();
+    }
+
+
+    private void rate(){
+        TableLayout table = (TableLayout) findViewById(R.id.rate_table);
+
+        int[] a = {10,20,30,40,50};
+        addNewTableRow(table,"전체",a);
+        addNewTableRow(table,"문화",a);
+        addNewTableRow(table,"정치",a);
+        addNewTableRow(table,"경제",a);
+        addNewTableRow(table,"외교",a);
+        addNewTableRow(table,"교육",a);
+        Log.i("rate","table complete");
+    }
+
+    private void addNewTableRow(TableLayout parent, String s, int[] a){
+
+        TableRow row = new TableRow(this);
+        row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
+
+        //1dp
+        float d = this.getResources().getDisplayMetrics().density;
+        int margin = (int)(d);
+        //params
+        TableRow.LayoutParams params = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT,1.0f);
+        params.setMargins(margin,0,0,margin);
+
+        //row
+        TextView text = new TextView(this);
+        text.setText(s);
+
+        for(int i: a){
+            text.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+            text.setLayoutParams(params);
+            text.setBackgroundResource(R.color.colorWhite);
+            text.setTextColor(getResources().getColor(R.color.colorBlack));
+
+            row.addView(text);
+
+            text = new TextView(this);
+            text.setText(i+"");
+        }
+
+        params.setMargins(margin,0,margin,margin);
+        text.setLayoutParams(params);
+        text.setTextColor(getResources().getColor(R.color.colorBlack));
+        text.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        text.setBackgroundResource(R.color.colorWhite);
+        row.addView(text);
+
+        parent.addView(row, new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
+;
     }
 
     private void promise(){
@@ -237,4 +295,15 @@ public class ManifestoRateActivity extends AppCompatActivity {
         text.setPadding(80,0,0,0);
         parent.addView(text);
     }
+
+    //back button
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    };
+
 }

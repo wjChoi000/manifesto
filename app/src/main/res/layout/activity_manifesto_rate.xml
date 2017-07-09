@@ -203,9 +203,83 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-                    android:layout_width="wrap_content"
+
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="rate"/>
+                    android:text="@string/reta_table_title"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gab"
+                    android:background="@color/colorBackgroundGray">
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/reta_table_title"/>
+
+                <TableLayout
+                    android:id="@+id/rate_table"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@color/fbutton_color_orange">
+
+
+                    <TableRow
+                        android:id="@+id/title_11">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/rate_table_title_zero"
+                            style="@style/rate_table_title"
+                            />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+
+                            android:text="@string/rate_table_title_one"
+                            style="@style/rate_table_title"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/rate_table_title_two"
+                            style="@style/rate_table_title"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/rate_table_title_three"
+                            style="@style/rate_table_title"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/rate_table_title_fore"
+                            style="@style/rate_table_title"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/rate_table_title_five"
+                            style="@style/rate_table_title"
+                            android:layout_marginRight="@dimen/gab"
+                            />
+                    </TableRow>
+
+                </TableLayout>
 
             </LinearLayout>
 

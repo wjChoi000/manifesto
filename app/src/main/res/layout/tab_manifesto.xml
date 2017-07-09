@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
@@ -112,20 +113,54 @@
             android:layout_width="350dp"
             android:layout_height="350dp"
             >
-            <Button
+
+            <info.hoang8f.widget.FButton
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="@string/manifesto_mayor"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/manifestoBtnOfficial"
+
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:textSize="20dp"
+
+                fbutton:buttonColor="@color/fbutton_color_peter_river"
+                fbutton:shadowEnabled="false"
+                fbutton:cornerRadius="5dp"
+
+            />
+            <info.hoang8f.widget.FButton
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="@string/manifesto_education"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold"
+                android:textSize="20dp"
+
+                fbutton:buttonColor="@android:color/darker_gray"
+                fbutton:shadowEnabled="false"
+                fbutton:cornerRadius="5dp"
+
+                />
+            <!--<Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/manifesto_mayor"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:id="@+id/manifestoBtnOfficial"
-                />
-            <Button
+                />-->
+            <!--<Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/manifesto_education"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"/>-->
 
             <ImageView
                 android:layout_width="350dp"
