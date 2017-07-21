@@ -44,4 +44,32 @@
     <string name="rate_table_title_three">일부추진</string>
     <string name="rate_table_title_fore">계속추진</string>
     <string name="rate_table_title_five">검토중</string>
+
+    <string name="citizen_total_title">BEST</string>
+    <string name="citizen_sub_title">LIST</string>
+    <string name="citizen_list_title_welfare">복지</string>
+    <string name="citizen_list_title_women">여성·가족</string>
+    <string name="citizen_list_title_economy">경제·일자리</string>
+    <string name="citizen_list_title_house">주택·도시계획</string>
+    <string name="citizen_list_title_safety">안전</string>
+    <string name="citizen_list_title_environment">환경</string>
+    <string name="citizen_list_title_culture">문화·관광</string>
+    <string name="citizen_list_title_health">건강</string>
+    <string name="citizen_list_title_traffic">교통</string>
+    <string name="citizen_list_title_building">건설</string>
+    <string name="citizen_list_title_tax">세금·재정</string>
+    <string name="citizen_list_title_administration">행정</string>
+
+    <string name="citizen_best_title_welfare">[복지]</string>
+    <string name="citizen_best_title_women">[여성]</string>
+    <string name="citizen_best_title_economy">[경제]</string>
+    <string name="citizen_best_title_house">[주택]</string>
+    <string name="citizen_best_title_safety">[안전]</string>
+    <string name="citizen_best_title_environment">[환경]</string>
+    <string name="citizen_best_title_culture">[문화]</string>
+    <string name="citizen_best_title_health">[건강]</string>
+    <string name="citizen_best_title_traffic">[교통]</string>
+    <string name="citizen_best_title_building">[건설]</string>
+    <string name="citizen_best_title_tax">[세금]</string>
+    <string name="citizen_best_title_administration">[행정]</string>
 </resources>
