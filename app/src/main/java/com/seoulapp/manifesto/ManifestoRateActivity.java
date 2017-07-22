@@ -12,10 +12,13 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import info.hoang8f.android.segmented.SegmentedGroup;
 
 public class ManifestoRateActivity extends AppCompatActivity {
 
@@ -128,8 +131,38 @@ public class ManifestoRateActivity extends AppCompatActivity {
     }
 
 
+    private LinearLayout promiseOne;
+    private TableLayout promiseTwo;
     private void rate(){
-        TableLayout table = (TableLayout) findViewById(R.id.rate_table);
+
+        RadioButton segment1 = (RadioButton) findViewById(R.id.rate_gr_1);
+        RadioButton segment2 = (RadioButton) findViewById(R.id.rate_gr_2);
+
+        promiseOne = (LinearLayout) findViewById(R.id.rate_graph_layout);
+        promiseTwo = (TableLayout) findViewById(R.id.rate_table_layout);
+
+        segment1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                promiseOne.setVisibility(View.VISIBLE);
+                promiseTwo.setVisibility(View.GONE);
+            }
+        });
+
+        segment2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                promiseOne.setVisibility(View.GONE);
+                promiseTwo.setVisibility(View.VISIBLE);
+            }
+        });
+
+        segment1.performClick();
+        makeTable();
+    }
+
+    private void makeTable(){
+        TableLayout table = (TableLayout) findViewById(R.id.rate_table_layout);
 
         int[] a = {10,20,30,40,50};
         addNewTableRow(table,"전체",a);
@@ -139,7 +172,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
         addNewTableRow(table,"외교",a);
         addNewTableRow(table,"교육",a);
         Log.i("rate","table complete");
+
     }
+
 
     private void addNewTableRow(TableLayout parent, String s, int[] a){
 
@@ -190,12 +225,13 @@ public class ManifestoRateActivity extends AppCompatActivity {
     }
     private void addPromise(LinearLayout parent,String s1, int i){
         LinearLayout linear = new LinearLayout(this);
+
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT,0.0F);
         params.setMargins(0,0,0,2);
         linear.setGravity(Gravity.CENTER_VERTICAL);
-
         linear.setOrientation(LinearLayout.HORIZONTAL);
+
         linear.setLayoutParams(params);
         linear.setBackgroundResource(R.color.colorWhite);
 

@@ -72,4 +72,7 @@
     <string name="citizen_best_title_building">[건설]</string>
     <string name="citizen_best_title_tax">[세금]</string>
     <string name="citizen_best_title_administration">[행정]</string>
+
+    <string name="graph">그래프</string>
+    <string name="table">표</string>
 </resources>

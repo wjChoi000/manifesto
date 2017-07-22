@@ -202,90 +202,125 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:textColor="#000"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:text="@string/rate_total_title"
-                    />
-                    android:text="@string/reta_table_title"/>
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/gab"
-                    android:background="@color/colorBackgroundGray">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:textColor="#000"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:text="@string/rate_total_title"
+                        />
+
+                    <info.hoang8f.android.segmented.SegmentedGroup
+                        xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/rate_segment_gr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="horizontal"
+                        segmentedgroup:sc_border_width="2dp"
+                        segmentedgroup:sc_corner_radius="10dp">
+
+                        <RadioButton
+                            android:id="@+id/rate_gr_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/graph"
+                            style="@style/RadioButton" />
+
+                        <RadioButton
+                            android:id="@+id/rate_gr_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/table"
+                            style="@style/RadioButton" />
+                    </info.hoang8f.android.segmented.SegmentedGroup>
                 </LinearLayout>
-                <TextView
+
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/reta_table_title"/>
-
-                <TableLayout
-                    android:id="@+id/rate_table"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:background="@color/fbutton_color_orange">
+                    android:layout_height="wrap_content">
+                    <!--graph-->
+                    <LinearLayout
+                        android:id="@+id/rate_graph_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
 
-                    <TableRow
-                        android:id="@+id/title_11">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/rate_table_title_zero"
-                            style="@style/rate_table_title"
-                            />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                    </LinearLayout>
+                    <!--table-->
+                    <TableLayout
+                        android:id="@+id/rate_table_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:background="@color/fbutton_color_orange">
 
-                            android:text="@string/rate_table_title_one"
-                            style="@style/rate_table_title"
-                            />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/rate_table_title_two"
-                            style="@style/rate_table_title"
-                            />
+                        <TableRow
+                            android:id="@+id/title_11">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/rate_table_title_zero"
+                                style="@style/rate_table_title"
+                                />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/rate_table_title_three"
-                            style="@style/rate_table_title"
-                            />
+                                android:text="@string/rate_table_title_one"
+                                style="@style/rate_table_title"
+                                />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/rate_table_title_fore"
-                            style="@style/rate_table_title"
-                            />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/rate_table_title_two"
+                                style="@style/rate_table_title"
+                                />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/rate_table_title_five"
-                            style="@style/rate_table_title"
-                            android:layout_marginRight="@dimen/gab"
-                            />
-                    </TableRow>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/rate_table_title_three"
+                                style="@style/rate_table_title"
+                                />
 
-                </TableLayout>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/rate_table_title_fore"
+                                style="@style/rate_table_title"
+                                />
 
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/rate_table_title_five"
+                                style="@style/rate_table_title"
+                                android:layout_marginRight="@dimen/gab"
+                                />
+                        </TableRow>
+
+                    </TableLayout>
+
+
+                </FrameLayout>
             </LinearLayout>
 
             <!--two-->
