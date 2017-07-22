@@ -24,6 +24,8 @@
 
         <activity android:name=".ManifestoRateActivity">
         </activity>
+        <activity android:name=".CategorylistActivity">
+        </activity>
     </application>
 
 </manifest>
