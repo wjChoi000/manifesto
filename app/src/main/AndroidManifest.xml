@@ -19,9 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".KnowledgeContentActivity"></activity>
-        <activity android:name=".ManifestoRateActivity"></activity>
-        <activity android:name=".ManifestoPromissListActivity"></activity>
+        <activity android:name=".KnowledgeContentActivity" >
+        </activity>
+
+        <activity android:name=".ManifestoRateActivity">
+        </activity>
+        <activity android:name=".CategorylistActivity">
+        </activity>
     </application>
 
 </manifest>
