@@ -86,7 +86,6 @@
     </style>
 
     <style name="m_map_smallTitle">
-        <item name="android:layout_centerInParent">true</item>
         <item name="android:textColor">#000</item>
         <item name="android:textSize">24dp</item>
         <item name="android:paddingBottom">10dp</item>
@@ -95,7 +94,6 @@
 
     <style name="m_map_stick">
         <item name="android:background">@color/colorMain</item>
-        <item name="android:layout_alignParentBottom">true</item>
     </style>
 
     <style name="m_profile_title">

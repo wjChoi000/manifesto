@@ -1,24 +1,33 @@
 package com.seoulapp.manifesto;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import info.hoang8f.android.segmented.SegmentedGroup;
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.MPPointF;
+
+import java.util.ArrayList;
+
 
 public class ManifestoRateActivity extends AppCompatActivity {
 
@@ -28,10 +37,18 @@ public class ManifestoRateActivity extends AppCompatActivity {
     private TextView twoS;
     private TextView threeT;
     private TextView threeS;
-    private LinearLayout oneF;
-    private LinearLayout twoF;
-    private LinearLayout threeF;
+    private TextView fourT;
+    private TextView fourS;
 
+    private LinearLayout frameOne;
+    private LinearLayout frameTwo;
+    private LinearLayout frameThree;
+    private LinearLayout frameFour;
+
+    private LinearLayout btnOne;
+    private LinearLayout btnTwo;
+    private LinearLayout btnThree;
+    private LinearLayout btnFour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,87 +67,105 @@ public class ManifestoRateActivity extends AppCompatActivity {
         twoS = (TextView)findViewById(R.id.m_map_small_s_two);
         threeT = (TextView)findViewById(R.id.m_map_small_t_three);
         threeS = (TextView)findViewById(R.id.m_map_small_s_three);
+        fourT =  (TextView) findViewById(R.id.m_map_small_t_four);
+        fourS = (TextView) findViewById(R.id.m_map_small_s_four);
 
-        RelativeLayout smallOne = (RelativeLayout)findViewById(R.id.m_map_small_one);
-        RelativeLayout smallTwo = (RelativeLayout)findViewById(R.id.m_map_small_two);
-        RelativeLayout smallThree = (RelativeLayout)findViewById(R.id.m_map_small_three);
+        frameOne = (LinearLayout)findViewById(R.id.rate_frame_one);
+        frameTwo = (LinearLayout)findViewById(R.id.rate_frame_two);
+        frameThree = (LinearLayout)findViewById(R.id.rate_frame_three);
+        frameFour = (LinearLayout) findViewById(R.id.rate_frame_four);
 
-        oneF = (LinearLayout) findViewById(R.id.m_map_small_frame_one);
-        twoF = (LinearLayout) findViewById(R.id.m_map_small_frame_two);
-        threeF = (LinearLayout) findViewById(R.id.m_map_small_frame_three);
+        btnOne =(LinearLayout) findViewById(R.id.rate_btn_one);
+        btnTwo =(LinearLayout) findViewById(R.id.rate_btn_two);
+        btnThree =(LinearLayout) findViewById(R.id.rate_btn_three);
+        btnFour =(LinearLayout) findViewById(R.id.rate_btn_four);
+        //fragmen
 
-        smallOne.setOnClickListener(new View.OnClickListener() {
+        btnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                oneT.setTextColor(getResources().getColor(R.color.colorMain));
-                twoT.setTextColor(getResources().getColor(R.color.colorBlack));
-                threeT.setTextColor(getResources().getColor(R.color.colorBlack));
-
-                oneS.setVisibility(View.VISIBLE);
-                twoS.setVisibility(View.INVISIBLE);
-                threeS.setVisibility(View.INVISIBLE);
-                oneF.setVisibility(View.VISIBLE);
-                twoF
-                .setVisibility(View.GONE);
-                threeF.setVisibility(View.GONE);
+                replaceButton(1);
             }
         });
-
-        smallTwo.setOnClickListener(new View.OnClickListener(){
+        btnTwo.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                oneT.setTextColor(getResources().getColor(R.color.colorBlack));
-                twoT.setTextColor(getResources().getColor(R.color.colorMain));
-                threeT.setTextColor(getResources().getColor(R.color.colorBlack));
-
-                oneS.setVisibility(View.INVISIBLE);
-                twoS.setVisibility(View.VISIBLE);
-                threeS.setVisibility(View.INVISIBLE);
-
-                oneF.setVisibility(View.INVISIBLE);
-                twoF.setVisibility(View.VISIBLE);
-                threeF.setVisibility(View.INVISIBLE);
+                replaceButton(2);
+            }
+        });
+        btnThree.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                replaceButton(3);
+            }
+        });
+        btnFour.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                replaceButton(4);
 
             }
         });
-
-        smallThree.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                oneT.setTextColor(getResources().getColor(R.color.colorBlack));
-                twoT.setTextColor(getResources().getColor(R.color.colorBlack));
-                threeT.setTextColor(getResources().getColor(R.color.colorMain));
-
-                oneS.setVisibility(View.INVISIBLE);
-                twoS.setVisibility(View.INVISIBLE);
-                threeS.setVisibility(View.VISIBLE);
-
-                oneF.setVisibility(View.GONE);
-                twoF.setVisibility(View.GONE);
-                threeF.setVisibility(View.VISIBLE);
-
-            }
-        });
-
-        //text
-        TextView textName = (TextView)  findViewById(R.id.m_name);
-        TextView textDay = (TextView) findViewById(R.id.m_day);
-        TextView textBorn = (TextView) findViewById(R.id.m_born);
-        TextView textAge = (TextView) findViewById(R.id.m_age);
-        TextView textEdu = (TextView) findViewById(R.id.m_education);
-
-        textName.setText("박원순");
-        textDay.setText("1996.3.26");
-        textBorn.setText("경상남도 창녕");
-        textAge.setText("62세");
-        textEdu.setText("단국대학교");
 
         rate();
         promise();
         profile();
+
+    }
+        /*
+        //text
+
+        */
+
+
+    private void replaceButton(int fragmentId){
+        oneT.setTextColor(getResources().getColor(R.color.colorBlack));
+        twoT.setTextColor(getResources().getColor(R.color.colorBlack));
+        threeT.setTextColor(getResources().getColor(R.color.colorBlack));
+        fourT.setTextColor(getResources().getColor(R.color.colorBlack));
+
+        oneS.setVisibility(View.INVISIBLE);
+        twoS.setVisibility(View.INVISIBLE);
+        threeS.setVisibility(View.INVISIBLE);
+        fourS.setVisibility(View.INVISIBLE);
+
+        frameOne.setVisibility(View.GONE);
+        frameTwo.setVisibility(View.GONE);
+        frameThree.setVisibility(View.GONE);
+        frameFour.setVisibility(View.GONE);
+
+        switch (fragmentId){
+            case 1:
+                oneT.setTextColor(getResources().getColor(R.color.colorMain));
+                oneS.setVisibility(View.VISIBLE);
+                frameOne.setVisibility(View.VISIBLE);
+
+//                replaceFragment(1);
+                break;
+            case 2:
+                twoT.setTextColor(getResources().getColor(R.color.colorMain));
+                twoS.setVisibility(View.VISIBLE);
+                frameTwo.setVisibility(View.VISIBLE);
+//                replaceFragment(2);
+                break;
+            case 3:
+                threeT.setTextColor(getResources().getColor(R.color.colorMain));
+                threeS.setVisibility(View.VISIBLE);
+                frameThree.setVisibility(View.VISIBLE);
+//                replaceFragment(3);
+                break;
+            case 4:
+                fourT.setTextColor(getResources().getColor(R.color.colorMain));
+                fourS.setVisibility(View.VISIBLE);
+                frameFour.setVisibility(View.VISIBLE);
+//                replaceFragment(4);
+                break;
+        }
     }
 
-
+    /*
+    make rate
+     */
     private LinearLayout promiseOne;
     private TableLayout promiseTwo;
     private void rate(){
@@ -159,8 +194,91 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         segment1.performClick();
         makeTable();
+        makeChart();
     }
+    //make chart
+    private PieChart mChart;
+    private TextView tvX, tvY;
+    private void makeChart(){
 
+        mChart = (PieChart) findViewById(R.id.chart1);
+        mChart.setUsePercentValues(true);
+        mChart.getDescription().setEnabled(false);
+        mChart.setExtraOffsets(5, 10, 5, 5);
+
+        mChart.setDragDecelerationFrictionCoef(0.95f);
+
+        mChart.setDrawHoleEnabled(true);
+        mChart.setHoleColor(getResources().getColor(R.color.colorWhite));
+        mChart.setCenterText("공약이행률\n88%");
+        mChart.setCenterTextSize(20f);
+
+        mChart.setTransparentCircleColor(getResources().getColor(R.color.colorWhite));
+        mChart.setTransparentCircleAlpha(110);
+
+        mChart.setHoleRadius(58f);
+        mChart.setTransparentCircleRadius(61f);
+
+        // enable rotation of the chart by touch
+        mChart.setRotationEnabled(false);
+        mChart.setHighlightPerTapEnabled(true);
+
+        setData(5);
+
+        mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
+
+        mChart.getLegend().setEnabled(false);
+        mChart.setEntryLabelTextSize(0f);
+
+    }
+    private String[] rateList = {"사업완료","계속추진","정상추진","일부추진","검토중"};
+    private float[] rateRatio ={37,50,10,2,1};
+    private void setData(int count) {
+
+        ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
+
+        // NOTE: The order of the entries when being added to the entries array determines their position around the center of
+        // the chart.
+        for (int i = 0; i < count ; i++) {
+            entries.add(new PieEntry(rateRatio[i],
+                    rateList[i]));
+        }
+
+        PieDataSet dataSet = new PieDataSet(entries, " ");
+
+        dataSet.setDrawIcons(false);
+
+        dataSet.setSliceSpace(3f);
+        dataSet.setIconsOffset(new MPPointF(0, 40));
+        dataSet.setSelectionShift(5f);
+
+        // add a lot of colors
+
+        ArrayList<Integer> colors = new ArrayList<Integer>();
+
+        colors.add(getResources().getColor(R.color.rate_title_one));
+        colors.add(getResources().getColor(R.color.rate_title_two));
+        colors.add(getResources().getColor(R.color.rate_title_three));
+        colors.add(getResources().getColor(R.color.rate_title_four));
+        colors.add(getResources().getColor(R.color.rate_title_five));
+
+        dataSet.setColors(colors);
+        //dataSet.setSelectionShift(0f);
+
+        PieData data = new PieData(dataSet);
+
+        data.setValueFormatter(new PercentFormatter());
+        data.setValueTextSize(20f);
+        data.setValueTextColor(getResources().getColor(R.color.colorWhite));
+        //data.setValueTypeface(mTfLight);
+        mChart.setData(data);
+
+        // undo all highlights
+        mChart.highlightValues(null);
+
+        mChart.invalidate();
+    }
+    //make table
     private void makeTable(){
         TableLayout table = (TableLayout) findViewById(R.id.rate_table_layout);
 
@@ -174,8 +292,6 @@ public class ManifestoRateActivity extends AppCompatActivity {
         Log.i("rate","table complete");
 
     }
-
-
     private void addNewTableRow(TableLayout parent, String s, int[] a){
 
         TableRow row = new TableRow(this);
@@ -215,6 +331,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
 ;
     }
 
+    /*
+    make promise
+     */
     private void promise(){
         LinearLayout promiseList = (LinearLayout) findViewById(R.id.m_promise_list);
         addPromise(promiseList,"안전 특별시 서울",1);
@@ -282,7 +401,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         linear.addView(promiseText);
 
         final int width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics());
-        final int height = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics());
+        final int height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, getResources().getDisplayMetrics());
 
         ImageView promiseImg = new ImageView(this);
         promiseImg.setLayoutParams(new LinearLayout.LayoutParams(width,height));
@@ -302,6 +421,19 @@ public class ManifestoRateActivity extends AppCompatActivity {
     }
 
     private void profile(){
+
+        TextView textName = (TextView)  findViewById(R.id.rate_profile_name);
+        TextView textDay = (TextView) findViewById(R.id.rate_profile_day);
+        TextView textBorn = (TextView) findViewById(R.id.rate_profile_born);
+        TextView textAge = (TextView) findViewById(R.id.rate_profile_age);
+        TextView textEdu = (TextView) findViewById(R.id.rate_profile_education);
+
+        textName.setText("박원순");
+        textDay.setText("1996.3.26");
+        textBorn.setText("경상남도 창녕");
+        textAge.setText("62세");
+        textEdu.setText("단국대학교");
+
         LinearLayout aware = (LinearLayout) findViewById(R.id.m_profile_aware);
         LinearLayout career = (LinearLayout) findViewById(R.id.m_profile_career);
         LinearLayout crime = (LinearLayout) findViewById(R.id.m_profile_crime);
