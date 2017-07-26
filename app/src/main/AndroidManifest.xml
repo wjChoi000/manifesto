@@ -28,7 +28,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ManifestoRateActivity"/>        //임시
         </activity>
-
+//commit
         <activity
             android:name=".CitizenHelpActivity"
             android:label="도와줘요">
