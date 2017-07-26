@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
@@ -8,473 +7,934 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        //핫이슈 이미지
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="200dp"
+            android:layout_marginBottom="10dp">
+
             <ImageView
-                android:layout_width="17dp"
-                android:layout_height="17dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="3dp"
-                android:src="@drawable/citizen_best"/>
-            <TextView
-                android:id="@+id/citizen_title_best"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="11dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="3dp"
-                android:textSize="18dp"
-                android:text="@string/citizen_total_title"/>
-
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/citizen_hotissue" />
         </LinearLayout>
+        //들어줘요
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/citizen_num1"
+            android:layout_height="wrap_content">
+            //들어줘요 제목
+            <LinearLayout
+                android:layout_marginLeft="13dp"
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="15dp"
-                android:textSize="14dp"
-                android:textColor="@color/fbutton_color_orange"
-                android:text="@string/citizen_best_title_welfare"/>
-            <TextView
-                android:id="@+id/citizen_num1_title"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/listen_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/citizen_listen"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            //더보기
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginRight="13dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:textSize="14dp"
-                android:text="복지여 일어나라"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <View
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGray"/>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/listen_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/citizen_add"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorGray"/>
+                <ImageView
+                    android:src="@drawable/move_black"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+            </LinearLayout>
         </LinearLayout>
 
+        //들려줘요 내용1
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/citizen_num2"
+            android:layout_height="wrap_content">
+            //사진
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="5dp"
-                android:textSize="14dp"
-                android:textColor="@color/fbutton_color_orange"
-                android:text="@string/citizen_best_title_women"/>
-            <TextView
-                android:id="@+id/citizen_num2_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:textSize="14dp"
-                android:text="여성,가족이여 일어나라"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <View
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/citizen_listen_park"/>
+
+            </LinearLayout>
+            //게시글
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGray"/>
+                android:layout_height="wrap_content">
+                //제목
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
+
+                </LinearLayout>
+                //찬,반,의견
+                <LinearLayout
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    //찬
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/agreement_black"
+                            android:layout_margin="1dp"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:text="456 찬성"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    //반
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/opposition_black"
+                            android:layout_margin="1dp"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:text="299 반대"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    //의견
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/comment_black"
+                            android:layout_width="10dp"
+                            android:layout_margin="1dp"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:text="362 의견"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
         </LinearLayout>
 
+        //들려줘요 내용2
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/citizen_num3"
+            android:layout_height="wrap_content">
+            //사진
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="5dp"
-                android:textSize="14dp"
-                android:textColor="@color/fbutton_color_orange"
-                android:text="@string/citizen_best_title_economy"/>
-            <TextView
-                android:id="@+id/citizen_num3_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:textSize="14dp"
-                android:text="경제,일자리여 일어나라"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <View
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/citizen_listen_park"/>
+
+            </LinearLayout>
+            //게시글
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGray"/>
+                android:layout_height="wrap_content">
+                //제목
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
+
+                </LinearLayout>
+                //찬,반,의견
+                <LinearLayout
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    //찬
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/agreement_black"
+                            android:layout_margin="1dp"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:text="456 찬성"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    //반
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/opposition_black"
+                            android:layout_margin="1dp"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:text="299 반대"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    //의견
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/comment_black"
+                            android:layout_width="10dp"
+                            android:layout_margin="1dp"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:text="362 의견"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
         </LinearLayout>
 
+        //들려줘요 내용3
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/citizen_num4"
+            android:layout_height="wrap_content">
+            //사진
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="5dp"
-                android:textSize="14dp"
-                android:textColor="@color/fbutton_color_orange"
-                android:text="@string/citizen_best_title_safety"/>
-            <TextView
-                android:id="@+id/citizen_num4_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:textSize="14dp"
-                android:text="안전이여 일어나라"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <View
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGray"/>
-        </LinearLayout>
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/citizen_listen_park"/>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/citizen_num5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="5dp"
-                android:textSize="14dp"
-                android:textColor="@color/fbutton_color_orange"
-                android:text="@string/citizen_best_title_building"/>
-            <TextView
-                android:id="@+id/citizen_num5_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:textSize="14dp"
-                android:text="주택, 도시 계획이여 일어나라"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <View
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"
+            </LinearLayout>
+            //게시글
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorGray"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <View
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="1dp"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/colorGray"/>
-        </LinearLayout>
+                android:layout_height="wrap_content">
+                //제목
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
 
+                </LinearLayout>
+                //찬,반,의견
+                <LinearLayout
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    //찬
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/agreement_black"
+                            android:layout_margin="1dp"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:text="456 찬성"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    //반
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/opposition_black"
+                            android:layout_margin="1dp"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:text="299 반대"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    //의견
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/comment_black"
+                            android:layout_width="10dp"
+                            android:layout_margin="1dp"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:text="362 의견"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        //줄긋기
         <LinearLayout
-            android:layout_marginTop="5dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
             android:layout_marginBottom="10dp"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+
+
+        //도와줘요
+        <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_width="17dp"
-                android:layout_height="17dp"
-                android:layout_marginLeft="15dp"
+            android:layout_height="wrap_content">
+            //도와줘요 제목
+            <LinearLayout
+                android:layout_marginLeft="13dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/help_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/citizen_help"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            //더보기
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginRight="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/help_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/citizen_add"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorGray"/>
+                <ImageView
+                    android:src="@drawable/move_black"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        //도와줘요 내용1
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            //사진
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/citizen_help_trash"/>
+
+            </LinearLayout>
+            //게시글
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                //제목
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="쓰레기통 설치를 어떻게 해야 효율적일까요?"/>
+
+                </LinearLayout>
+                //의견
+                <LinearLayout
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    //의견
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/comment_black"
+                            android:layout_width="10dp"
+                            android:layout_margin="1dp"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:text="362 의견"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+
+        //도와줘여 내용2
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            //사진
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/citizen_help_trash"/>
+
+            </LinearLayout>
+            //게시글
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                //제목
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="쓰레기통 설치를 어떻게 해야 효율적일까요?"/>
+
+                </LinearLayout>
+                //찬,반,의견
+                <LinearLayout
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    //의견
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/comment_black"
+                            android:layout_width="10dp"
+                            android:layout_margin="1dp"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:text="362 의견"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+
+        //도와줘요 내용3
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            //사진
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/citizen_help_trash"/>
+
+            </LinearLayout>
+            //게시글
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                //제목
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="쓰레기통 설치를 어떻게 해야 효율적일까요?"/>
+
+                </LinearLayout>
+                //의견
+                <LinearLayout
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    //의견
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/comment_black"
+                            android:layout_width="10dp"
+                            android:layout_margin="1dp"
+                            android:layout_height="10dp" />
+                        <TextView
+                            android:text="362 의견"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+
+
+        //필요해요
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            //필요해요 제목
+            <LinearLayout
+                android:layout_marginLeft="13dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/need_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/citizen_need"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            //더보기
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginRight="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/need_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/citizen_add"
+                    android:textSize="15dp"
+                    android:textColor="@color/colorGray"/>
+                <ImageView
+                    android:src="@drawable/move_black"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        //필요해요 내용1
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            //카테고리
+            <LinearLayout
+                android:layout_marginLeft="13dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginRight="3dp"
-                android:src="@drawable/citizen_list"/>
-            <TextView
-                android:id="@+id/citizen_title_list"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="6dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="[복지]"
+                    android:textColor="@color/need_category"/>
+
+            </LinearLayout>
+            //게시글
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                //제목
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="어떤 복지가 필요합니다."/>
+
+                </LinearLayout>
+                //구
+                <LinearLayout
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    //구
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:text="중랑구"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+
+        //필요해요 내용2
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            //카테고리
+            <LinearLayout
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginRight="3dp"
-                android:textSize="18dp"
-                android:text="@string/citizen_sub_title"/>
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="[경제]"
+                    android:textColor="@color/need_category"/>
+
+            </LinearLayout>
+            //게시글
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                //제목
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="어떠한 경제 요소가 있어야 할 것 같습니다."/>
+
+                </LinearLayout>
+                //구
+                <LinearLayout
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="15dp"
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    //구
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="성북구"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
         </LinearLayout>
 
+        //필요해요 내용3
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            //교통
+            android:layout_height="wrap_content">
+            //카테고리
             <LinearLayout
-                android:layout_marginLeft="20dp"
-                android:layout_marginBottom="6dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-                <info.hoang8f.widget.FButton
-                    android:id="@+id/citizen_welfare"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:text="교통"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:textSize="15dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="[환경]"
+                    android:textColor="@color/need_category"/>
+
+            </LinearLayout>
+            //게시글
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                //제목
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/colorBlack"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="이것이 있어야 환경이 살 수 있습니다."/>
+
+                </LinearLayout>
+                //구
+                <LinearLayout
+                    android:layout_marginBottom="15dp"
                     android:layout_marginLeft="15dp"
 
-                    fbutton:buttonColor="@color/fbutton_color_belize_hole"
-                    fbutton:shadowEnabled="false"
-                    fbutton:cornerRadius="5dp"
-                    />
-            </LinearLayout>
-            <LinearLayout
-
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-                //주택
-                <info.hoang8f.widget.FButton
-                    android:layout_marginBottom="6dp"
-                    android:layout_width="100dp"
-                    android:layout_height="47dp"
-                    android:text="주택"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="6dp"
-
-                    fbutton:buttonColor="@color/fbutton_color_pomegranate"
-                    fbutton:shadowEnabled="false"
-                    fbutton:cornerRadius="5dp"
-                    />
-                //환경
-                <info.hoang8f.widget.FButton
-                    android:layout_width="100dp"
-                    android:layout_height="47dp"
-                    android:text="환경"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="6dp"
-
-                    fbutton:buttonColor="@color/fbutton_color_nephritis"
-                    fbutton:shadowEnabled="false"
-                    fbutton:cornerRadius="5dp"
-                    />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginBottom="3dp"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-                <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    //안전
-                    <info.hoang8f.widget.FButton
-                        android:layout_width="47dp"
-                        android:layout_height="47dp"
-                        android:text="안전"
-                        android:textColor="@color/colorWhite"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:layout_marginLeft="6dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    //구
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                        fbutton:buttonColor="@color/fbutton_color_alizarin"
-                        fbutton:shadowEnabled="false"
-                        fbutton:cornerRadius="5dp"
-                        />
-                    //문화
-                    <info.hoang8f.widget.FButton
-                        android:layout_width="47dp"
-                        android:layout_height="47dp"
-                        android:text="문화"
-                        android:textColor="@color/colorWhite"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:layout_marginLeft="6dp"
+                        <TextView
+                            android:text="종로구"
+                            android:textSize="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                        fbutton:buttonColor="@color/fbutton_color_amethyst"
-                        fbutton:shadowEnabled="false"
-                        fbutton:cornerRadius="5dp"
-                        />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="6dp"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    //건강
-                    <info.hoang8f.widget.FButton
-                        android:layout_width="47dp"
-                        android:layout_height="47dp"
-                        android:text="건강"
-                        android:textColor="@color/colorWhite"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:layout_marginLeft="6dp"
-
-                        fbutton:buttonColor="@color/fbutton_color_green_sea"
-                        fbutton:shadowEnabled="false"
-                        fbutton:cornerRadius="5dp"
-                        />
-
-                    //건설
-                    <info.hoang8f.widget.FButton
-                        android:layout_width="47dp"
-                        android:layout_height="47dp"
-                        android:text="건설"
-                        android:textColor="@color/colorWhite"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:layout_marginLeft="6dp"
-
-                        fbutton:buttonColor="@color/fbutton_color_concrete"
-                        fbutton:shadowEnabled="false"
-                        fbutton:cornerRadius="5dp"
-                        />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginBottom="3dp"
-            android:layout_marginLeft="20dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-                //복지
-                <info.hoang8f.widget.FButton
-                    android:layout_width="100dp"
-                    android:layout_height="47dp"
-                    android:text="복지"
-                    android:textColor="@color/colorWhite"
-                    android:textStyle="bold"
-                    android:textSize="15dp"
-                    android:layout_marginLeft="15dp"
-
-                    fbutton:buttonColor="#ffe511"
-                    fbutton:shadowEnabled="false"
-                    fbutton:cornerRadius="5dp"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginBottom="3dp"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    //여성
-                    <info.hoang8f.widget.FButton
-                        android:layout_width="47dp"
-                        android:layout_height="47dp"
-                        android:text="여성"
-                        android:textColor="@color/colorWhite"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:layout_marginLeft="6dp"
-
-                        fbutton:buttonColor="#ff7ee2"
-                        fbutton:shadowEnabled="false"
-                        fbutton:cornerRadius="5dp"
-                        />
-                    //경제
-                    <info.hoang8f.widget.FButton
-                        android:layout_width="47dp"
-                        android:layout_height="47dp"
-                        android:text="경제"
-                        android:textColor="@color/colorWhite"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:layout_marginLeft="6dp"
-
-                        fbutton:buttonColor="@color/fbutton_color_peter_river"
-                        fbutton:shadowEnabled="false"
-                        fbutton:cornerRadius="5dp"
-                        />
-
-                    //세금재정
-                    <info.hoang8f.widget.FButton
-                        android:layout_width="47dp"
-                        android:layout_height="47dp"
-                        android:text="세금"
-                        android:textColor="@color/colorWhite"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:layout_marginLeft="6dp"
-
-                        fbutton:buttonColor="@color/fbutton_color_sun_flower"
-                        fbutton:shadowEnabled="false"
-                        fbutton:cornerRadius="5dp"
-                        />
-                    //행정
-                    <info.hoang8f.widget.FButton
-                        android:layout_width="47dp"
-                        android:layout_height="47dp"
-                        android:text="행정"
-                        android:textColor="@color/colorWhite"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:layout_marginLeft="6dp"
-
-                        fbutton:buttonColor="@color/fbutton_color_orange"
-                        fbutton:shadowEnabled="false"
-                        fbutton:cornerRadius="5dp"
-                        />
-
-                </LinearLayout>
-            </LinearLayout>
-
-
         </LinearLayout>
 
 

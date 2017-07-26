@@ -69,9 +69,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 oneS.setVisibility(View.VISIBLE);
                 twoS.setVisibility(View.INVISIBLE);
                 threeS.setVisibility(View.INVISIBLE);
-
                 oneF.setVisibility(View.VISIBLE);
-                twoF.setVisibility(View.GONE);
+                twoF
+                .setVisibility(View.GONE);
                 threeF.setVisibility(View.GONE);
             }
         });

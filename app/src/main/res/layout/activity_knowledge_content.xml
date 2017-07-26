@@ -66,7 +66,7 @@
                 android:layout_width="@dimen/picture_small"
                 android:layout_height="@dimen/picture_small"
                 android:layout_marginLeft="@dimen/margin_default"
-                android:src="@drawable/knowledge_comment" />
+                android:src="@drawable/comment_black" />
 
             <TextView
                 android:id="@+id/k_content_commentNum"

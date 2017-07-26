@@ -19,13 +19,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".KnowledgeContentActivity" >
+        <activity android:name=".KnowledgeContentActivity" />
+        <activity android:name=".ManifestoRateActivity" />
+        <activity
+            android:name=".CitizenListenActivity"
+            android:label="들려줘요">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ManifestoRateActivity"/>        //임시
         </activity>
 
-        <activity android:name=".ManifestoRateActivity">
+        <activity
+            android:name=".CitizenHelpActivity"
+            android:label="도와줘요">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ManifestoRateActivity"/>        //임시
         </activity>
-        <activity android:name=".CategorylistActivity">
+        <activity
+            android:name=".CitizenNeedActivity"
+            android:label="필요해요">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ManifestoRateActivity"/>        //임시
         </activity>
+
     </application>
 
 </manifest>
