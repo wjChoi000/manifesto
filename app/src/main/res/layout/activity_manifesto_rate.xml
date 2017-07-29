@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -385,15 +386,165 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/m_promise_title"
+                android:text="공약 자세히 보기"
                 android:padding="10dp"
                 android:textColor="#000"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TableRow>
+                    <info.hoang8f.widget.FButton
+                        android:id="@+id/rate_list_welfare"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="복지"
+                        android:layout_margin="10dp"
+                        style="@style/text_style"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        fbutton:buttonColor="@color/welfare"
+                        fbutton:shadowEnabled="true"
+                        fbutton:cornerRadius="3dp"
+                        android:drawableTop="@drawable/welfare"
+                        />
+                    <info.hoang8f.widget.FButton
+                        android:id="@+id/rate_list_culture"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="문화"
+                        android:layout_margin="10dp"
+                        style="@style/text_style"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        fbutton:buttonColor="@color/culture"
+                        fbutton:shadowEnabled="true"
+                        fbutton:cornerRadius="3dp"
+                        android:drawableTop="@drawable/culture"
+                        />
+                    <info.hoang8f.widget.FButton
+                        android:id="@+id/rate_list_economy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="경제"
+                        android:layout_margin="10dp"
+                        style="@style/text_style"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        fbutton:buttonColor="@color/economy"
+                        fbutton:shadowEnabled="true"
+                        fbutton:cornerRadius="3dp"
+                        android:drawableTop="@drawable/economy"
+                        />
+                </TableRow>
+                <TableRow>
+                    <info.hoang8f.widget.FButton
+                        android:id="@+id/rate_list_environment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="환경"
+                        android:layout_margin="10dp"
+                        style="@style/text_style"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        fbutton:buttonColor="@color/environment"
+                        fbutton:shadowEnabled="true"
+                        fbutton:cornerRadius="3dp"
+                        android:drawableTop="@drawable/environment"
+                        />
+                    <info.hoang8f.widget.FButton
+                        android:id="@+id/rate_list_administation"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="행정"
+                        android:layout_margin="10dp"
+                        style="@style/text_style"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        fbutton:buttonColor="@color/administation"
+                        fbutton:shadowEnabled="true"
+                        fbutton:cornerRadius="3dp"
+                        android:drawableTop="@drawable/administation"
+                        />
+                    <info.hoang8f.widget.FButton
+                        android:id="@+id/rate_list_city"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="도시·안전"
+                        android:layout_margin="10dp"
+                        style="@style/text_style"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        fbutton:buttonColor="@color/cityAndSafty"
+                        fbutton:shadowEnabled="true"
+                        fbutton:cornerRadius="3dp"
+                        android:drawableTop="@drawable/city"
+                        />
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gab"
+                android:background="@color/colorBackgroundGray"></LinearLayout>
+            <!--공약 비율 차트-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="지역구 공약 비율"
+                    android:padding="10dp"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    />
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/rate_list_chart"
+                    android:layout_width="370dp"
+                    android:layout_height="370dp"
+                    android:layout_centerInParent="true"
+                    />
+            </RelativeLayout>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--&gt;-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="지역구 공약 비율"-->
+                    <!--android:padding="10dp"-->
+                    <!--android:textColor="#000"-->
+                    <!--android:textSize="18dp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--/>-->
+                <!--<com.github.mikephil.charting.charts.PieChart-->
+                    <!--android:id="@+id/rate_list_chart"-->
+                    <!--android:layout_width="370dp"-->
+                    <!--android:layout_height="370dp"-->
+
+                    <!--/>-->
+
+            <!--</LinearLayout>-->
             <LinearLayout
                 android:id="@+id/m_promise_list"
                 android:orientation="vertical"

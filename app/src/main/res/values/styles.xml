@@ -134,6 +134,7 @@
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:layout_gravity">center_horizontal|center_vertical</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="detail_numberof">
