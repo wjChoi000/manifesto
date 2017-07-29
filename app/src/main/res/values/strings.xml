@@ -44,7 +44,7 @@
     <string name="rate_table_title_two">정상추진</string>
     <string name="rate_table_title_three">일부추진</string>
     <string name="rate_table_title_four">계속추진</string>
-    <string name="rate_table_title_five">검토중</string>
+    <string name="rate_table_title_five">검토 중</string>
 
 
     <string name="rate_table_title_one_des">공약 이행이 완료되어 종료된 사업</string>
@@ -121,6 +121,7 @@
     <string name="graph">그래프</string>
     <string name="table">표</string>
     <string name="title_activity_citizen_listen">CitizenListenActivity</string>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -210,5 +211,6 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+
     <string name="action_settings">Settings</string>
 </resources>

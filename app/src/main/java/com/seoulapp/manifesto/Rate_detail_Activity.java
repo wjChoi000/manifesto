@@ -1,6 +1,8 @@
 package com.seoulapp.manifesto;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,15 +14,40 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class Rate_detail_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_detail_);
+    //back button
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
 
-        //cardviewFunc();
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
+        String city = intent.getStringExtra("city");
 
+        TextView guTxt = (TextView)findViewById(R.id.rate_detail_gu);
+        guTxt.setText(city);
+        TextView categoryTxt = (TextView) findViewById(R.id.detail_category);
+        categoryTxt.setText(name);
+        CardView categoryCard = (CardView) findViewById(R.id.detail_category_card);
+        if(name.compareTo("복지")==0)
+            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.welfare));
+        else if(name.compareTo("문화")==0)
+            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.culture));
+        else if(name.compareTo("경제")==0)
+            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.economy));
+        else if(name.compareTo("환경")==0)
+            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.environment));
+        else if(name.compareTo("행정")==0)
+            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.administation));
+        else if(name.compareTo("도시·안전")==0)
+            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.cityAndSafty));
         list();
     }
 
@@ -58,40 +85,44 @@ public class Rate_detail_Activity extends AppCompatActivity {
 
 
         CardView promiseBtn = new CardView(this);
+        promiseBtn.setRadius(36.0f);
+        //promiseBtn.setCardElevation(10.0f);
+
+
         int threedp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics());
-        promiseBtn.setPadding(threedp,threedp,threedp,threedp);
         CardView.LayoutParams paramsBtn = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
-        //paramsBtn.setMargins(10, 10, 50, 10);
         promiseBtn.setLayoutParams(paramsBtn);
-        promiseBtn.setRadius(threedp);
-        promiseBtn.setCardElevation(fiveDp);
+
         TextView txt = new TextView(this);
-        txt.setLayoutParams(new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT));
+        CardView.LayoutParams txtParam = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
+        txtParam.setMargins(fiveDp*2,fiveDp,fiveDp*2,fiveDp);
+        txt.setLayoutParams(txtParam);
+        txt.setTypeface(null, Typeface.BOLD);
         switch (i) {
             //사업완료
             case 1:
-                promiseBtn.setBackgroundResource(R.color.rate_title_one);
+                promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_one));
                 txt.setText(R.string.rate_table_title_one);
                 break;
             //정상추진
             case 2:
-                promiseBtn.setBackgroundResource(R.color.rate_title_two);
+                promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_two));
                 txt.setText(R.string.rate_table_title_two);
                 break;
 
             //일부추진
             case 3:
-                promiseBtn.setBackgroundResource(R.color.rate_title_three);
+                promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_three));
                 txt.setText(R.string.rate_table_title_three);
                 break;
             //계속추진
             case 4:
-                promiseBtn.setBackgroundResource(R.color.rate_title_four);
+                promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_four));
                 txt.setText(R.string.rate_table_title_four);
                 break;
             //검토중
             case 5:
-                promiseBtn.setBackgroundResource(R.color.rate_title_five);
+                promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_five));
                 txt.setText(R.string.rate_table_title_five);
                 break;
             default:
@@ -110,5 +141,15 @@ public class Rate_detail_Activity extends AppCompatActivity {
         parent.addView(emptyGray);
 
     }
+
+    //back button
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    };
 }
 

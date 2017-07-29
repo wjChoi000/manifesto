@@ -35,6 +35,7 @@ public class TabManifesto extends Fragment {
 
     public void onClickOfficial(View view){
         Intent intent = new Intent(getActivity(), ManifestoRateActivity.class);
+        intent.putExtra("city","서울특별시");
         startActivity(intent);
     }
 

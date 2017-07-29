@@ -10,6 +10,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -51,7 +52,8 @@ public class ManifestoRateActivity extends AppCompatActivity {
     private LinearLayout btnTwo;
     private LinearLayout btnThree;
     private LinearLayout btnFour;
-
+    private Intent thisintent;
+    private String city;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +63,10 @@ public class ManifestoRateActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+
+        //intent
+        thisintent = getIntent();
+        city = thisintent.getStringExtra("city");
 
         //small titile
         oneT = (TextView)findViewById(R.id.m_map_small_t_one);
@@ -86,12 +92,14 @@ public class ManifestoRateActivity extends AppCompatActivity {
         btnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                makeChart();
                 replaceButton(1);
             }
         });
         btnTwo.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                makePromiseChart();
                 replaceButton(2);
             }
         });
@@ -108,6 +116,8 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
             }
         });
+
+        btnOne.performClick();
 
         rate();
         promise();
@@ -197,13 +207,14 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         segment1.performClick();
         makeTable();
-        makeChart();
+
     }
     //make chart
     private PieChart mChart;
-    private TextView tvX, tvY;
-    private void makeChart(){
+    private String[] rateList = {"사업완료","계속추진","정상추진","일부추진","검토중"};
+    private float[] rateRatio ={37,50,10,2,1};
 
+    private void makeChart(){
         mChart = (PieChart) findViewById(R.id.chart1);
         mChart.setUsePercentValues(true);
         mChart.getDescription().setEnabled(false);
@@ -226,7 +237,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         mChart.setRotationEnabled(false);
         mChart.setHighlightPerTapEnabled(true);
 
-        setData(5);
+        setData(mChart,5,rateList,rateRatio,1);
 
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
 
@@ -234,17 +245,14 @@ public class ManifestoRateActivity extends AppCompatActivity {
         mChart.setEntryLabelTextSize(0f);
 
     }
-    private String[] rateList = {"사업완료","계속추진","정상추진","일부추진","검토중"};
-    private float[] rateRatio ={37,50,10,2,1};
-    private void setData(int count) {
+    private void setData(PieChart chart,int count,String[] s, float[] f, int mode) {
 
         ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
         for (int i = 0; i < count ; i++) {
-            entries.add(new PieEntry(rateRatio[i],
-                    rateList[i]));
+            entries.add(new PieEntry(f[i], s[i]));
         }
 
         PieDataSet dataSet = new PieDataSet(entries, " ");
@@ -259,12 +267,21 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         ArrayList<Integer> colors = new ArrayList<Integer>();
 
-        colors.add(getResources().getColor(R.color.rate_title_one));
-        colors.add(getResources().getColor(R.color.rate_title_two));
-        colors.add(getResources().getColor(R.color.rate_title_three));
-        colors.add(getResources().getColor(R.color.rate_title_four));
-        colors.add(getResources().getColor(R.color.rate_title_five));
-
+        if(mode ==1) {
+            colors.add(getResources().getColor(R.color.rate_title_one));
+            colors.add(getResources().getColor(R.color.rate_title_two));
+            colors.add(getResources().getColor(R.color.rate_title_three));
+            colors.add(getResources().getColor(R.color.rate_title_four));
+            colors.add(getResources().getColor(R.color.rate_title_five));
+        }else{
+            String[] list = {"복지","문화","경제","환경","행정","도시안전"};
+            colors.add(getResources().getColor(R.color.welfare));
+            colors.add(getResources().getColor(R.color.culture));
+            colors.add(getResources().getColor(R.color.economy));
+            colors.add(getResources().getColor(R.color.environment));
+            colors.add(getResources().getColor(R.color.administation));
+            colors.add(getResources().getColor(R.color.cityAndSafty));
+        }
         dataSet.setColors(colors);
         //dataSet.setSelectionShift(0f);
 
@@ -274,12 +291,12 @@ public class ManifestoRateActivity extends AppCompatActivity {
         data.setValueTextSize(20f);
         data.setValueTextColor(getResources().getColor(R.color.colorWhite));
         //data.setValueTypeface(mTfLight);
-        mChart.setData(data);
+        chart.setData(data);
 
         // undo all highlights
-        mChart.highlightValues(null);
+        chart.highlightValues(null);
 
-        mChart.invalidate();
+        chart.invalidate();
     }
     //make table
     private void makeTable(){
@@ -337,13 +354,110 @@ public class ManifestoRateActivity extends AppCompatActivity {
     /*
     make promise
      */
+    private PieChart listChart;
+    private TextView tvX, tvY;
+
     private void promise(){
         LinearLayout promiseList = (LinearLayout) findViewById(R.id.m_promise_list);
-        addPromise(promiseList,"안전 특별시 서울",1);
-        addPromise(promiseList,"어린이 안전도시 서울",2);
-        addPromise(promiseList,"집 걱정 없는 서울",3);
-        addPromise(promiseList,"힘내세요 베이비부머!",4);
-        addPromise(promiseList,"여성들의 내일",5);
+        Button welfare = (Button) findViewById(R.id.rate_list_welfare);
+        Button culture = (Button) findViewById(R.id.rate_list_culture);
+        Button economy = (Button) findViewById(R.id.rate_list_economy);
+        Button envirpment = (Button) findViewById(R.id.rate_list_environment);
+        Button administrain = (Button)findViewById(R.id.rate_list_administation);
+        Button citybtn = (Button)findViewById(R.id.rate_list_city);
+
+        welfare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
+                intent.putExtra("name","복지");
+                intent.putExtra("city", city);
+                startActivity(intent);
+            }
+        });
+        culture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
+                intent.putExtra("name","문화");
+                intent.putExtra("city", city);
+                startActivity(intent);
+            }
+        });
+        economy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
+                intent.putExtra("name","경제");
+                intent.putExtra("city", city);
+                startActivity(intent);
+            }
+        });
+        envirpment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
+                intent.putExtra("name","환경");
+                intent.putExtra("city", city);
+                startActivity(intent);
+            }
+        });
+        administrain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
+                intent.putExtra("name","행정");
+                intent.putExtra("city", city);
+                startActivity(intent);
+            }
+        });
+        citybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
+                intent.putExtra("name","도시·안전");
+                intent.putExtra("city", city);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void makePromiseChart(){
+        listChart= (PieChart) findViewById(R.id.rate_list_chart);
+
+        listChart.setUsePercentValues(true);
+        listChart.getDescription().setEnabled(false);
+        listChart.setExtraOffsets(5, 10, 5, 5);
+
+        listChart.setDragDecelerationFrictionCoef(0.95f);
+
+        listChart.setDrawHoleEnabled(true);
+        listChart.setHoleColor(getResources().getColor(R.color.colorWhite));
+        listChart.setCenterText("공약 비율");
+        listChart.setCenterTextSize(20f);
+
+        listChart.setTransparentCircleColor(getResources().getColor(R.color.colorWhite));
+        listChart.setTransparentCircleAlpha(110);
+
+        listChart.setHoleRadius(58f);
+        listChart.setTransparentCircleRadius(61f);
+
+        // enable rotation of the chart by touch
+        listChart.setRotationEnabled(false);
+        listChart.setHighlightPerTapEnabled(true);
+
+        float[] rate = {33.0f, 35.0f, 10.0f, 20.0f, 8.0f, 12.0f};
+        String[] list = {"복지","문화","경제","환경","행정","도시안전"};
+        setData(listChart,6,list,rate,2);
+
+        listChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
+
+        listChart.getLegend().setEnabled(false);
+        listChart.setEntryLabelTextSize(0f);
+
+        listChart.setEntryLabelColor(getResources().getColor(R.color.colorWhite));
+
+        listChart.setEntryLabelTextSize(20f);
     }
     private void addPromise(LinearLayout parent,String s1, int i){
         LinearLayout linear = new LinearLayout(this);
