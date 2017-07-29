@@ -340,6 +340,6 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    };
+    }
 
 }

@@ -70,7 +70,7 @@
                     android:layout_width="@dimen/picture_small"
                     android:layout_height="@dimen/picture_small"
                     android:layout_marginLeft="@dimen/margin_default"
-                    android:src="@drawable/knowledge_good" />
+                    android:src="@drawable/good" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -150,7 +150,7 @@
                     android:layout_width="@dimen/picture_small"
                     android:layout_height="@dimen/picture_small"
                     android:layout_marginLeft="@dimen/margin_default"
-                    android:src="@drawable/knowledge_good" />
+                    android:src="@drawable/good" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -230,7 +230,7 @@
                     android:layout_width="@dimen/picture_small"
                     android:layout_height="@dimen/picture_small"
                     android:layout_marginLeft="@dimen/margin_default"
-                    android:src="@drawable/knowledge_good" />
+                    android:src="@drawable/good" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -310,7 +310,7 @@
                     android:layout_width="@dimen/picture_small"
                     android:layout_height="@dimen/picture_small"
                     android:layout_marginLeft="@dimen/margin_default"
-                    android:src="@drawable/knowledge_good" />
+                    android:src="@drawable/good" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -390,7 +390,7 @@
                     android:layout_width="@dimen/picture_small"
                     android:layout_height="@dimen/picture_small"
                     android:layout_marginLeft="@dimen/margin_default"
-                    android:src="@drawable/knowledge_good" />
+                    android:src="@drawable/good" />
 
                 <TextView
                     android:layout_width="wrap_content"

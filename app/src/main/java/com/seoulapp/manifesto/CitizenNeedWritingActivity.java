@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,21 +13,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CitizenNeedActivity extends AppCompatActivity {
+public class CitizenNeedWritingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_citizen_need);
-
-
-        //spinner_category
-        Spinner cateSpinner = (Spinner)findViewById(R.id.spinner_category);
-        ArrayAdapter<CharSequence> cateAdapter = ArrayAdapter.createFromResource(
-                this,R.array.category_array, android.R.layout.simple_spinner_item);
-        cateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        cateSpinner.setAdapter(cateAdapter);
-        cateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        setContentView(R.layout.activity_citizen_need_writing);
+        
+        
+        //Writing_spinner_category
+        Spinner WcateSpinner = (Spinner)findViewById(R.id.writing_category_spinner);
+        ArrayAdapter<CharSequence> WcateAdapter = ArrayAdapter.createFromResource(
+                this,R.array.writing_category_array, android.R.layout.simple_spinner_item);
+        WcateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        WcateSpinner.setAdapter(WcateAdapter);
+        WcateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
@@ -40,13 +39,13 @@ public class CitizenNeedActivity extends AppCompatActivity {
             }
         });
 
-        //spinner_sort
-        Spinner spinner_sort = (Spinner)findViewById(R.id.spinner_sort);
-        ArrayAdapter<CharSequence> adapter_sort = ArrayAdapter.createFromResource(
-                this,R.array.sort_array, android.R.layout.simple_spinner_item);
-        adapter_sort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_sort.setAdapter(adapter_sort);
-        spinner_sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        //Writing_spinner_Gu
+        Spinner WGuSpinner = (Spinner)findViewById(R.id.writing_Gu_spinner);
+        ArrayAdapter<CharSequence> WGuAdapter = ArrayAdapter.createFromResource(
+                this,R.array.writing_Gu_array, android.R.layout.simple_spinner_item);
+        WGuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        WGuSpinner.setAdapter(WGuAdapter);
+        WGuSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
@@ -66,7 +65,7 @@ public class CitizenNeedActivity extends AppCompatActivity {
                 Gravity.CENTER);
 
         TextView Title = (TextView) view.findViewById(R.id.actionbar_title);
-        Title.setText("필요해요");
+        Title.setText("글 쓰기");
 
         getSupportActionBar().setCustomView(view,params);
         getSupportActionBar().setDisplayShowCustomEnabled(true); //show custom title
@@ -83,19 +82,23 @@ public class CitizenNeedActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
-            case R.id.action_writing:
-                Intent intent = new Intent(this,CitizenNeedWritingActivity.class);
+            case R.id.action_complete:
+                Toast.makeText(this, "새 글 등록 완료", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this,CitizenNeedActivity.class);
                 startActivity(intent);
                 return true;
-//            case R.id.action_search:
         }
         return super.onOptionsItemSelected(item);
     }
     //메뉴 리소스를 팽창한다. 액션바에 항목들을 추가한다.
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_citizen_need,menu);
+        getMenuInflater().inflate(R.menu.menu_complete,menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void onClick(View target){
+        Toast.makeText(getApplicationContext(), "사진을 가져옵니다.", Toast.LENGTH_SHORT).show();
     }
 
 }

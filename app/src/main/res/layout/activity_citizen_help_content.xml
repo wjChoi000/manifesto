@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        //핫이슈 이미지
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/Listen_content_num1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/citizen_help_trash" />
+        </LinearLayout>
+        //제목
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp">
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:layout_margin="10dp"
+                android:textSize="17dp"
+                android:text="쓰레기통 설치를 어떻게 해야 효율적일까요?"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        //줄긋기
+        <LinearLayout
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+        //댓글 id 시간(1)
+        <LinearLayout
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            //ID
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="3dp"
+                android:textSize="17dp"
+                android:textColor="@color/colorBlack"
+                android:text="Wonsoonpark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            //시간
+            <TextView
+                android:id="@+id/dateNow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_marginRight="15dp"
+                android:gravity="right" />
+        </LinearLayout>
+        //내용
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="저도 똑같은 경험을 하였습니다. 해도 너무하네요!!"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+        //댓글 id 시간(2)
+        <LinearLayout
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            //ID
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="3dp"
+                android:textSize="17dp"
+                android:textColor="@color/colorBlack"
+                android:text="Bogyupark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            //시간
+            <TextView
+                android:id="@+id/dateNow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_marginRight="15dp"
+                android:gravity="right" />
+        </LinearLayout>
+        //내용
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="서울시에서 보상을 해줘야하는 거 아닙니까??"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+
+        //댓글 id 시간(3)
+        <LinearLayout
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            //ID
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="3dp"
+                android:textSize="17dp"
+                android:textColor="@color/colorBlack"
+                android:text="Wonsoonpark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            //시간
+            <TextView
+                android:id="@+id/dateNow3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_marginRight="15dp"
+                android:gravity="right" />
+        </LinearLayout>
+        //내용
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="저도 똑같은 경험을 하였습니다. 해도 너무하네요!!"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+        //댓글 id 시간(4)
+        <LinearLayout
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            //ID
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="3dp"
+                android:textSize="17dp"
+                android:textColor="@color/colorBlack"
+                android:text="Bogyupark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            //시간
+            <TextView
+                android:id="@+id/dateNow4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_marginRight="15dp"
+                android:gravity="right" />
+        </LinearLayout>
+        //내용
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="서울시에서 보상을 해줘야하는 거 아닙니까??"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+
+        //댓글
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/help_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:hint="의견을 남겨보세요."
+                    android:background="@null"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp" />
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:background="@color/colorMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/help_transmit"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:text="전송"
+                    android:textStyle="bold"
+                    fbutton:buttonColor="@color/colorMain"
+                    android:textColor="@color/colorWhite"
+                    android:layout_marginRight="10dp"
+
+                    fbutton:shadowEnabled="false"
+                    fbutton:cornerRadius="5dp"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

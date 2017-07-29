@@ -69,12 +69,16 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView
+                <ImageButton
+                    android:id="@+id/Listen_list_image_num1"
+                    android:padding="0sp"
+                    android:scaleType="centerCrop"
+                    android:onClick="onClick"
                     android:layout_marginLeft="13dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/citizen_listen_park"/>
 
             </LinearLayout>
@@ -91,6 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/Listen_list_title_num1"
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -180,12 +185,15 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView
+                <ImageButton
+                    android:padding="0sp"
+                    android:scaleType="centerCrop"
+                    android:onClick="onClick"
                     android:layout_marginLeft="13dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/citizen_listen_park"/>
 
             </LinearLayout>
@@ -291,12 +299,15 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView
+                <ImageButton
+                    android:padding="0sp"
+                    android:scaleType="centerCrop"
+                    android:onClick="onClick"
                     android:layout_marginLeft="13dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/citizen_listen_park"/>
 
             </LinearLayout>
@@ -443,13 +454,18 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView
+                <ImageButton
+                    android:id="@+id/Help_list_image_num1"
+                    android:padding="0sp"
+                    android:scaleType="centerCrop"
+                    android:onClick="onClick"
                     android:layout_marginLeft="13dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/citizen_help_trash"/>
+
 
             </LinearLayout>
             //게시글
@@ -465,6 +481,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/Help_list_title_num1"
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -522,12 +539,15 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView
+                <ImageButton
+                    android:padding="0sp"
+                    android:scaleType="centerCrop"
+                    android:onClick="onClick"
                     android:layout_marginLeft="13dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/citizen_help_trash"/>
 
             </LinearLayout>
@@ -601,12 +621,15 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView
+                <ImageButton
+                    android:padding="0sp"
+                    android:scaleType="centerCrop"
+                    android:onClick="onClick"
                     android:layout_marginLeft="13dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/citizen_help_trash"/>
 
             </LinearLayout>
@@ -725,6 +748,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
+                    android:id="@+id/Need_list_cate_num1"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
@@ -746,6 +770,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/Need_list_title_num1"
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

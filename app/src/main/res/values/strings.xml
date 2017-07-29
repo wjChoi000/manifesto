@@ -50,6 +50,66 @@
     <string name="citizen_need">필요해요</string>
     <string name="citizen_add">더보기</string>
 
+
+    <string-array name="category_array">
+        <item>전체</item>
+        <item>경제</item>
+        <item>교육</item>
+        <item>문화</item>
+        <item>복지</item>
+        <item>행정</item>
+        <item>환경</item>
+        <item>기타</item>
+    </string-array>
+
+    <string-array name="writing_category_array">
+        <item>분류를 선택해 주세요.</item>
+        <item>경제</item>
+        <item>교육</item>
+        <item>문화</item>
+        <item>복지</item>
+        <item>행정</item>
+        <item>환경</item>
+        <item>기타</item>
+    </string-array>
+
+    <string-array name="writing_Gu_array">
+        <item>구를 선택해 주세요.</item>
+        <item>강남구</item>
+        <item>강동구</item>
+        <item>강북구</item>
+        <item>강서구</item>
+        <item>관악구</item>
+        <item>광진구</item>
+        <item>구로구</item>
+        <item>금천구</item>
+        <item>노원구</item>
+        <item>도봉구</item>
+        <item>동대문구</item>
+        <item>동작구</item>
+        <item>마포구</item>
+        <item>서대문구</item>
+        <item>서초구</item>
+        <item>성동구</item>
+        <item>성북구</item>
+        <item>송파구</item>
+        <item>양천구</item>
+        <item>영등포구</item>
+        <item>용산구</item>
+        <item>은평구</item>
+        <item>종로구</item>
+        <item>중구</item>
+        <item>중랑구</item>
+    </string-array>
+
+    <string-array name="sort_array">
+        <item>최신순</item>
+        <item>인기순</item>
+    </string-array>
+
+    <string name="writing">글 쓰기</string>
+    <string name="writing_content">글 상세</string>
+
     <string name="graph">그래프</string>
     <string name="table">표</string>
     <string name="title_activity_citizen_listen">CitizenListenActivity</string>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+        //분류
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:text="분류"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp">
+
+            <Spinner
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/writing_category_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+        </LinearLayout>
+
+        //구선택
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:text="구 선택"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp">
+
+            <Spinner
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/writing_Gu_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+        </LinearLayout>
+
+        //제목
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:text="제목"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp">
+            <EditText
+                android:hint="제목을 입력해 주세요(25자 내외)"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <TextView
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="25dp"
+                android:background="@color/colorMain"
+                android:layout_width="match_parent"
+                android:layout_height="2dp" />
+
+        </LinearLayout>
+
+        //내용
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:text="내용"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp">
+            <EditText
+                android:gravity="top|start"
+                android:hint="내용을 입력해 주세요"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="250dp" />
+
+        </LinearLayout>
+        //사진 넣기
+        <LinearLayout
+            android:background="@color/colorBackgroundGray"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@color/colorBlack"
+                android:text="사진 0장"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            // android:scaleType="centerCrop"
+            <ImageButton
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:onClick="onClick"
+                android:id="@+id/photo_addBtn"
+                android:src="@drawable/photo_add"
+                android:layout_width="80dp"
+                android:layout_height="80dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+

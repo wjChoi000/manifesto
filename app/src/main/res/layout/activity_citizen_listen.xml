@@ -1,9 +1,1179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.seoulapp.manifesto.CitizenListenActivity">
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/citizen_listen_background">
+       //당신이 들려줘요
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="당신이"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="30dp"
+                />
 
-</android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="들려줘요"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:textSize="30dp"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+        //목록들
+        <FrameLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorWhite">
+
+                //들려줘요 내용1
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    //사진
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/citizen_listen_park"/>
+
+                    </LinearLayout>
+                    //게시글
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        //제목
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textColor="@color/colorBlack"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
+
+                        </LinearLayout>
+                        //찬,반,의견
+                        <LinearLayout
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            //찬
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/agreement_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="456 찬성"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //반
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/opposition_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="299 반대"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //의견
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/comment_black"
+                                    android:layout_width="10dp"
+                                    android:layout_margin="1dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="362 의견"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                //줄긋기
+                <LinearLayout
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@color/colorBackgroundGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gab">
+                </LinearLayout>
+                //들려줘요 내용1
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    //사진
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/citizen_listen_park"/>
+
+                    </LinearLayout>
+                    //게시글
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        //제목
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textColor="@color/colorBlack"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
+
+                        </LinearLayout>
+                        //찬,반,의견
+                        <LinearLayout
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            //찬
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/agreement_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="456 찬성"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //반
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/opposition_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="299 반대"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //의견
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/comment_black"
+                                    android:layout_width="10dp"
+                                    android:layout_margin="1dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="362 의견"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                //줄긋기
+                <LinearLayout
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@color/colorBackgroundGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gab">
+                </LinearLayout>
+                //들려줘요 내용1
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    //사진
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/citizen_listen_park"/>
+
+                    </LinearLayout>
+                    //게시글
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        //제목
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textColor="@color/colorBlack"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
+
+                        </LinearLayout>
+                        //찬,반,의견
+                        <LinearLayout
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            //찬
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/agreement_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="456 찬성"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //반
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/opposition_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="299 반대"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //의견
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/comment_black"
+                                    android:layout_width="10dp"
+                                    android:layout_margin="1dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="362 의견"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                //줄긋기
+                <LinearLayout
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@color/colorBackgroundGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gab">
+                </LinearLayout>
+                //들려줘요 내용1
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    //사진
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/citizen_listen_park"/>
+
+                    </LinearLayout>
+                    //게시글
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        //제목
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textColor="@color/colorBlack"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
+
+                        </LinearLayout>
+                        //찬,반,의견
+                        <LinearLayout
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            //찬
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/agreement_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="456 찬성"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //반
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/opposition_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="299 반대"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //의견
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/comment_black"
+                                    android:layout_width="10dp"
+                                    android:layout_margin="1dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="362 의견"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                //줄긋기
+                <LinearLayout
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@color/colorBackgroundGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gab">
+                </LinearLayout>
+                //들려줘요 내용1
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    //사진
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/citizen_listen_park"/>
+
+                    </LinearLayout>
+                    //게시글
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        //제목
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textColor="@color/colorBlack"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
+
+                        </LinearLayout>
+                        //찬,반,의견
+                        <LinearLayout
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            //찬
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/agreement_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="456 찬성"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //반
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/opposition_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="299 반대"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //의견
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/comment_black"
+                                    android:layout_width="10dp"
+                                    android:layout_margin="1dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="362 의견"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                //줄긋기
+                <LinearLayout
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@color/colorBackgroundGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gab">
+                </LinearLayout>
+                //들려줘요 내용1
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    //사진
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/citizen_listen_park"/>
+
+                    </LinearLayout>
+                    //게시글
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        //제목
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textColor="@color/colorBlack"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
+
+                        </LinearLayout>
+                        //찬,반,의견
+                        <LinearLayout
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            //찬
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/agreement_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="456 찬성"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //반
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/opposition_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="299 반대"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //의견
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/comment_black"
+                                    android:layout_width="10dp"
+                                    android:layout_margin="1dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="362 의견"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                //줄긋기
+                <LinearLayout
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@color/colorBackgroundGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gab">
+                </LinearLayout>
+                //들려줘요 내용1
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    //사진
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/citizen_listen_park"/>
+
+                    </LinearLayout>
+                    //게시글
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        //제목
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textColor="@color/colorBlack"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
+
+                        </LinearLayout>
+                        //찬,반,의견
+                        <LinearLayout
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            //찬
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/agreement_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="456 찬성"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //반
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/opposition_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="299 반대"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //의견
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/comment_black"
+                                    android:layout_width="10dp"
+                                    android:layout_margin="1dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="362 의견"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                //줄긋기
+                <LinearLayout
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@color/colorBackgroundGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gab">
+                </LinearLayout>
+                //들려줘요 내용1
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    //사진
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/citizen_listen_park"/>
+
+                    </LinearLayout>
+                    //게시글
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        //제목
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textColor="@color/colorBlack"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
+
+                        </LinearLayout>
+                        //찬,반,의견
+                        <LinearLayout
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            //찬
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/agreement_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="456 찬성"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //반
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/opposition_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="299 반대"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //의견
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/comment_black"
+                                    android:layout_width="10dp"
+                                    android:layout_margin="1dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="362 의견"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                //줄긋기
+                <LinearLayout
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@color/colorBackgroundGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gab">
+                </LinearLayout>
+                //들려줘요 내용1
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    //사진
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/citizen_listen_park"/>
+
+                    </LinearLayout>
+                    //게시글
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        //제목
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textColor="@color/colorBlack"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
+
+                        </LinearLayout>
+                        //찬,반,의견
+                        <LinearLayout
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            //찬
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/agreement_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="456 찬성"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //반
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/opposition_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="299 반대"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //의견
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/comment_black"
+                                    android:layout_width="10dp"
+                                    android:layout_margin="1dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="362 의견"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                //줄긋기
+                <LinearLayout
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@color/colorBackgroundGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gab">
+                </LinearLayout>
+                //들려줘요 내용1
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    //사진
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/citizen_listen_park"/>
+
+                    </LinearLayout>
+                    //게시글
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        //제목
+                        <LinearLayout
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textColor="@color/colorBlack"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" '서울시네마파크'건립에 대한 당신의 생각은? "/>
+
+                        </LinearLayout>
+                        //찬,반,의견
+                        <LinearLayout
+                            android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="15dp"
+
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            //찬
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/agreement_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="456 찬성"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //반
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/opposition_black"
+                                    android:layout_margin="1dp"
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="299 반대"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            //의견
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/comment_black"
+                                    android:layout_width="10dp"
+                                    android:layout_margin="1dp"
+                                    android:layout_height="10dp" />
+                                <TextView
+                                    android:text="362 의견"
+                                    android:textSize="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                //줄긋기
+                <LinearLayout
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@color/colorBackgroundGray"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gab">
+                </LinearLayout>
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+</ScrollView>
