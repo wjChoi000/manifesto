@@ -35,6 +35,13 @@
     <color name="promise_eco">#FF00</color>
     <color name="promise_city">#00FFFF</color>
 
+    <color name="agreement">#0000FF</color>
+    <color name="opposition">#FF0000</color>
+
+    <color name="numhighlight">	#FF0000</color>
+
+
+    <!-- -->
     <color name="fbutton_color_turquoise">#1abc9c</color>
     <color name="fbutton_color_green_sea">#16a085</color>
     <color name="fbutton_color_emerald">#2ecc71</color>

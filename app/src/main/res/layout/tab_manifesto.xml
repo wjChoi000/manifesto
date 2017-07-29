@@ -21,21 +21,21 @@
         android:layout_alignParentTop="true"
         android:id="@+id/manifestoParty">
         <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <Button
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            style="@style/manifestoPartyImage"
-            android:background="@android:color/holo_blue_dark"/>
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/manifestoPartyText"
-            android:text="민주당 21명"/>
-    </LinearLayout>
+            android:orientation="horizontal"
+            >
+            <Button
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                style="@style/manifestoPartyImage"
+                android:background="@android:color/holo_blue_dark"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/manifestoPartyText"
+                android:text="민주당 21명"/>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
