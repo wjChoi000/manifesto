@@ -44,7 +44,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ManifestoRateActivity"/>        //임시
         </activity>
-
+        <activity android:name=".Rate_detail_Activity"></activity>
     </application>
 
 </manifest>

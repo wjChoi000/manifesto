@@ -1,5 +1,6 @@
 package com.seoulapp.manifesto;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -27,6 +28,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.MPPointF;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class ManifestoRateActivity extends AppCompatActivity {
@@ -109,6 +111,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         rate();
         promise();
+        news();
         profile();
 
     }
@@ -412,7 +415,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
         linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //go intent
+
+                Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
+                startActivity(intent);
 
             }
         });
@@ -420,6 +425,98 @@ public class ManifestoRateActivity extends AppCompatActivity {
         parent.addView(linear);
     }
 
+    /*
+    Three
+     */
+    private void news(){
+        LinearLayout newsLayout = (LinearLayout) findViewById(R.id.rate_news);
+
+        String title="서울시 중국등 동북아 도시와 미세먼지 대응 나선다.";
+
+        newList = new ArrayList<>();
+
+        for(int i =0 ; i<10; i++){
+            newList.add(new News("아시아 투데이",title,"2017-05-26"));
+        }
+        addNewsList(newsLayout,newList);
+    }
+    ArrayList<News> newList;
+    class News{
+        News(String cop, String title, String date){
+            this.title = title;
+            this.cop = cop;
+            this.date = date;
+        }
+        String title;
+        String cop;
+        String date;
+    }
+    private void addNewsList(LinearLayout parent,ArrayList<News> arrayList){
+        for (News a: arrayList){
+            addNews(parent,a.cop, a.date, a.title," ");
+        }
+    }
+    private void addNews(LinearLayout parent, String cop, String date,String title, String url){
+        LinearLayout row = new LinearLayout(this);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,0.0F);
+        int tenDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
+
+        params.setMargins(tenDp,tenDp/2,tenDp,tenDp/2);
+        //linear.setGravity(Gravity.CENTER_VERTICAL);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+
+        LinearLayout textLayout = new LinearLayout(this);
+
+        LinearLayout.LayoutParams paramsT = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,0.0F);
+
+        //linear.setGravity(Gravity.CENTER_VERTICAL);
+        row.setOrientation(LinearLayout.VERTICAL);
+        row.setLayoutParams(params);
+
+        TextView textView1 = new TextView(this);
+        textView1.setText(cop);
+        textView1.setTextColor(getResources().getColor(R.color.colorBlack));
+
+        TextView textView2 = new TextView(this);
+        textView2.setText(date);
+        textView2.setTextColor(getResources().getColor(R.color.colorBlack));
+
+        LinearLayout.LayoutParams paramsT1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT,1.0f);
+
+        textView1.setLayoutParams(paramsT1);
+        textView2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        textLayout.addView(textView1);
+        textLayout.addView(textView2);
+
+        LinearLayout empty = new LinearLayout(this);
+        empty.setBackgroundResource(R.color.fbutton_color_green_sea);
+        empty.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, tenDp/2));
+
+        TextView textViewTitle = new TextView(this);
+        textViewTitle.setText(title);
+        textViewTitle.setLayoutParams(paramsT1);
+        textViewTitle.setTextColor(getResources().getColor(R.color.colorBlack));
+
+        row.addView(textLayout);
+        row.addView(empty);
+        row.addView(textViewTitle);
+
+        int oneDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics());
+
+        LinearLayout emptyGray = new LinearLayout(this);
+        emptyGray.setBackgroundResource(R.color.colorBackgroundGray);
+        emptyGray.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, oneDp));
+
+        parent.addView(row);
+        parent.addView(emptyGray);
+
+    }
+    /*
+    four view
+     */
     private void profile(){
 
         TextView textName = (TextView)  findViewById(R.id.rate_profile_name);

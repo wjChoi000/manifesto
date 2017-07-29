@@ -36,6 +36,7 @@
     <string name="promise_edu">교육</string>
     <string name="promise_eco">경제</string>
     <string name="promise_city">도시</string>
+    <string name="promise_admin">행정</string>
 
     <string name="reta_table_title">분류별 공약 이행률</string>
     <string name="rate_table_title_zero">분류</string>
