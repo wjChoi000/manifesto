@@ -1,405 +1,680 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.seoulapp.manifesto.ManifestoRateActivity"
-    android:background="@color/colorWhite">
-
-    <LinearLayout
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <!--mayor-->
-        <TextView
+        >
+        <!--one-->
+        <LinearLayout
+            android:id="@+id/rate_frame_one"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="서울시청"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            style="@style/m_map_title"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp">
+            <!--title % select table-->
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/m_name"
-                    style="@style/m_map_text"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/m_map_text"
-                    android:text="@string/m_day"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/m_map_text"
-                    android:text="@string/m_born"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/m_map_text"
-                    android:text="@string/m_age"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/m_map_text"
-                    android:text="@string/m_education"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingLeft="15dp">
-                <TextView
-                    android:id="@+id/m_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/m_map_text"/>
-                <TextView
-                    android:id="@+id/m_day"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/m_map_text"/>
-                <TextView
-                    android:id="@+id/m_born"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/m_map_text"/>
-                <TextView
-                    android:id="@+id/m_age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/m_map_text"/>
-                <TextView
-                    android:id="@+id/m_education"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/m_map_text"/>
-
-            </LinearLayout>
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="120dp"
-                android:src="@drawable/manifesto_major"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/gab"
-            android:background="@color/colorBackgroundGray">
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:id="@+id/m_map_small_one"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                >
-
-                <TextView
-                    android:id="@+id/m_map_small_t_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/m_map_smallTitle"
-                    android:text="@string/m_map_small_title_one"
-                    android:textColor="@color/colorMain"
-                    />
-                <TextView
-                    android:id="@+id/m_map_small_s_one"
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp"
-                    style="@style/m_map_stick"
-                    />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="@dimen/gab"
-                android:layout_height="match_parent"
-                android:background="@color/colorBackgroundGray">
-            </LinearLayout>
-
-            <RelativeLayout
-                android:id="@+id/m_map_small_two"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                >
-                <TextView
-                    android:id="@+id/m_map_small_t_two"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/m_map_smallTitle"
-                    android:text="@string/m_map_small_title_two"
-                    />
-                <TextView
-                    android:id="@+id/m_map_small_s_two"
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp"
-                    style="@style/m_map_stick"
-                    android:visibility="invisible"
-                    />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="@dimen/gab"
-                android:layout_height="match_parent"
-                android:background="@color/colorBackgroundGray">
-            </LinearLayout>
-
-            <RelativeLayout
-                android:id="@+id/m_map_small_three"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#FFF"
-                >
-                <TextView
-                    android:id="@+id/m_map_small_t_three"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/m_map_smallTitle"
-                    android:text="@string/m_map_small_title_three"
-                    />
-                <TextView
-                    android:id="@+id/m_map_small_s_three"
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp"
-                    style="@style/m_map_stick"
-                    android:visibility="invisible"
-                    />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/gab"
-            android:background="@color/colorBackgroundGray">
-        </LinearLayout>
-
-        <!--content-->
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <!--one-->
-            <LinearLayout
-                android:id="@+id/m_map_small_frame_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="10dp"
-                        android:textColor="#000"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:text="@string/rate_total_title"
-                        />
-
-                    <info.hoang8f.android.segmented.SegmentedGroup
-                        xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/rate_segment_gr"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal"
-                        segmentedgroup:sc_border_width="2dp"
-                        segmentedgroup:sc_corner_radius="10dp">
-
-                        <RadioButton
-                            android:id="@+id/rate_gr_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/graph"
-                            style="@style/RadioButton" />
-
-                        <RadioButton
-                            android:id="@+id/rate_gr_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/table"
-                            style="@style/RadioButton" />
-                    </info.hoang8f.android.segmented.SegmentedGroup>
-                </LinearLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <!--graph-->
-                    <LinearLayout
-                        android:id="@+id/rate_graph_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-
-                    </LinearLayout>
-                    <!--table-->
-                    <TableLayout
-                        android:id="@+id/rate_table_layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:background="@color/fbutton_color_orange">
-
-
-                        <TableRow
-                            android:id="@+id/title_11">
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/rate_table_title_zero"
-                                style="@style/rate_table_title"
-                                />
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-
-                                android:text="@string/rate_table_title_one"
-                                style="@style/rate_table_title"
-                                />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/rate_table_title_two"
-                                style="@style/rate_table_title"
-                                />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/rate_table_title_three"
-                                style="@style/rate_table_title"
-                                />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/rate_table_title_fore"
-                                style="@style/rate_table_title"
-                                />
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/rate_table_title_five"
-                                style="@style/rate_table_title"
-                                android:layout_marginRight="@dimen/gab"
-                                />
-                        </TableRow>
-
-                    </TableLayout>
-
-
-                </FrameLayout>
-            </LinearLayout>
-
-            <!--two-->
-            <LinearLayout
-                android:id="@+id/m_map_small_frame_two"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:orientation="vertical">
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/m_promise_title"
+                    android:layout_weight="1"
                     android:padding="10dp"
                     android:textColor="#000"
                     android:textSize="18dp"
                     android:textStyle="bold"
+                    android:text="@string/rate_total_title"
                     />
+
+                <info.hoang8f.android.segmented.SegmentedGroup
+                    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/rate_segment_gr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal"
+                    segmentedgroup:sc_border_width="2dp"
+                    segmentedgroup:sc_corner_radius="10dp">
+
+                    <RadioButton
+                        android:id="@+id/rate_gr_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/graph"
+                        style="@style/RadioButton" />
+
+                    <RadioButton
+                        android:id="@+id/rate_gr_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/table"
+                        style="@style/RadioButton" />
+                </info.hoang8f.android.segmented.SegmentedGroup>
+            </LinearLayout>
+            <!--frame-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--graph-->
                 <LinearLayout
-                    android:id="@+id/m_promise_list"
-                    android:orientation="vertical"
+                    android:id="@+id/rate_graph_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/colorBackgroundGray">
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+                    <!--legend-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_horizontal">
+                        <!--one-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="10dp"
+                                >
+                                <Button
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    style="@style/manifestoPartyImage"
+                                    android:background="@color/rate_title_one"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/manifestoPartyText"
+                                    android:text="@string/rate_table_title_one"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <Button
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    style="@style/manifestoPartyImage"
+                                    android:background="@color/rate_title_four"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/manifestoPartyText"
+                                    android:text="@string/rate_table_title_four"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!--tow-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_marginBottom="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <Button
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    style="@style/manifestoPartyImage"
+                                    android:background="@color/rate_title_two"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/manifestoPartyText"
+                                    android:text="@string/rate_table_title_two"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <Button
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    style="@style/manifestoPartyImage"
+                                    android:background="@color/rate_title_five"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/manifestoPartyText"
+                                    android:text="@string/rate_table_title_five"/>
+                            </LinearLayout>
 
+                        </LinearLayout>
+                        <!--three-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <Button
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                style="@style/manifestoPartyImage"
+                                android:background="@color/rate_title_three"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/manifestoPartyText"
+                                android:text="@string/rate_table_title_three"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!--chart-->
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/chart1"
+                        android:layout_width="370dp"
+                        android:layout_height="400dp"
+                        />
+                    <!--description-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp">
+                        <!--one-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="left"
+                            >
+                            <Button
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                style="@style/manifestoPartyImage"
+                                android:background="@color/rate_title_one"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/manifestoPartyText"
+                                android:text="@string/rate_table_title_one"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/rate_table_title_one_des"/>
+                        </LinearLayout>
+                        <!--two-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="left"
+                            >
+                            <Button
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                style="@style/manifestoPartyImage"
+                                android:background="@color/rate_title_two"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/manifestoPartyText"
+                                android:text="@string/rate_table_title_two"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/rate_table_title_two_des"/>
+                        </LinearLayout>
+                        <!--three-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="left"
+                            >
+                            <Button
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                style="@style/manifestoPartyImage"
+                                android:background="@color/rate_title_three"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/manifestoPartyText"
+                                android:text="@string/rate_table_title_three"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/rate_table_title_three_des"/>
+                        </LinearLayout>
+                        <!--four-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="left"
+                            >
+                            <Button
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                style="@style/manifestoPartyImage"
+                                android:background="@color/rate_title_four"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/manifestoPartyText"
+                                android:text="@string/rate_table_title_four"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/rate_table_title_four_des"/>
+                        </LinearLayout>
+                        <!--five-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="left"
+                            >
+                            <Button
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                style="@style/manifestoPartyImage"
+                                android:background="@color/rate_title_five"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/manifestoPartyText"
+                                android:text="@string/rate_table_title_five"/>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/rate_table_title_five_des"/>
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
 
-            <!--three-->
+                <!--table-->
+                <TableLayout
+                    android:id="@+id/rate_table_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@color/fbutton_color_orange">
+
+
+                    <TableRow
+                        android:id="@+id/title_11">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/rate_table_title_zero"
+                            style="@style/rate_table_title"
+                            />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+
+                            android:text="@string/rate_table_title_one"
+                            style="@style/rate_table_title"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/rate_table_title_two"
+                            style="@style/rate_table_title"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/rate_table_title_three"
+                            style="@style/rate_table_title"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/rate_table_title_four"
+                            style="@style/rate_table_title"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/rate_table_title_five"
+                            style="@style/rate_table_title"
+                            android:layout_marginRight="@dimen/gab"
+                            />
+                    </TableRow>
+
+                </TableLayout>
+
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <!--two-->
+        <LinearLayout
+            android:id="@+id/rate_frame_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m_promise_title"
+                android:padding="10dp"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                />
             <LinearLayout
-                android:id="@+id/m_map_small_frame_three"
+                android:id="@+id/m_promise_list"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/colorBackgroundGray">
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--three-->
+        <LinearLayout
+            android:id="@+id/rate_frame_three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:id="@+id/rate_news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10dp">
+                >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/m_profile_aware"
-                    style="@style/m_profile_title"/>
-
-                <LinearLayout
-                    android:id="@+id/m_profile_aware"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/m_profile_career"
-                    style="@style/m_profile_title"/>
-                <LinearLayout
-                    android:id="@+id/m_profile_career"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/m_profile_crime"
-                    style="@style/m_profile_title"/>
-
-                <LinearLayout
-                    android:id="@+id/m_profile_crime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                </LinearLayout>
             </LinearLayout>
 
-        </FrameLayout>
+        </LinearLayout>
+
+        <!--tour-->
+        <LinearLayout
+            android:id="@+id/rate_frame_four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <!--profile-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/m_name"
+                            style="@style/m_profile_title"/>
+                        <TextView
+                            android:id="@+id/rate_profile_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/m_profile_title"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/m_day"
+                            style="@style/m_profile_title"/>
+                        <TextView
+                            android:id="@+id/rate_profile_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/m_profile_title"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/m_age"
+                            style="@style/m_profile_title"/>
+                        <TextView
+                            android:id="@+id/rate_profile_age"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/m_profile_title"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/m_born"
+                            style="@style/m_profile_title"/>
+                        <TextView
+                            android:id="@+id/rate_profile_born"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/m_profile_title"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/m_education"
+                            style="@style/m_profile_title"/>
+                        <TextView
+                            android:id="@+id/rate_profile_education"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/m_profile_title"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:src="@drawable/manifesto_major"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m_profile_aware"
+                style="@style/m_profile_title"/>
+
+            <LinearLayout
+                android:id="@+id/m_profile_aware"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m_profile_career"
+                style="@style/m_profile_title"/>
+            <LinearLayout
+                android:id="@+id/m_profile_career"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m_profile_crime"
+                style="@style/m_profile_title"/>
+
+            <LinearLayout
+                android:id="@+id/m_profile_crime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+    </ScrollView>
+
+    <!--Bouttom select button-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/gab"
+        android:background="@color/colorBackgroundGray"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:id="@+id/rate_btn_one"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/m_map_small_t_one"
+                style="@style/m_map_smallTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m_map_small_title_one"
+                android:textColor="@color/colorMain" />
+
+            <TextView
+                android:id="@+id/m_map_small_s_one"
+                style="@style/m_map_stick"
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rate_btn_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/m_map_small_t_two"
+                style="@style/m_map_smallTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m_map_small_title_two" />
+
+            <TextView
+                android:id="@+id/m_map_small_s_two"
+                style="@style/m_map_stick"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rate_btn_three"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#FFF"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/m_map_small_t_three"
+                style="@style/m_map_smallTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m_map_small_title_three" />
+
+            <TextView
+                android:id="@+id/m_map_small_s_three"
+                style="@style/m_map_stick"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rate_btn_four"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#FFF"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/m_map_small_t_four"
+                style="@style/m_map_smallTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/m_map_small_title_four" />
+
+            <TextView
+                android:id="@+id/m_map_small_s_four"
+                style="@style/m_map_stick"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:visibility="invisible" />
+        </LinearLayout>
+
     </LinearLayout>
-</ScrollView>
+
+</LinearLayout>

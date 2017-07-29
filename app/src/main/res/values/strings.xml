@@ -17,10 +17,10 @@
     <string name="m_age">나이</string>
     <string name="m_education">학력</string>
 
-    <string name="m_map_small_title_one">공약이행률</string>
+    <string name="m_map_small_title_one">이행률</string>
     <string name="m_map_small_title_two">이행현황</string>
-    <string name="m_map_small_title_three">프로필</string>
-
+    <string name="m_map_small_title_three">새소식</string>
+    <string name="m_map_small_title_four">프로필</string>
 
     <string name="m_profile_aware">수상</string>
     <string name="m_profile_career">경력</string>
@@ -36,14 +36,22 @@
     <string name="promise_edu">교육</string>
     <string name="promise_eco">경제</string>
     <string name="promise_city">도시</string>
+    <string name="promise_admin">행정</string>
 
     <string name="reta_table_title">분류별 공약 이행률</string>
     <string name="rate_table_title_zero">분류</string>
     <string name="rate_table_title_one">사업완료</string>
     <string name="rate_table_title_two">정상추진</string>
     <string name="rate_table_title_three">일부추진</string>
-    <string name="rate_table_title_fore">계속추진</string>
+    <string name="rate_table_title_four">계속추진</string>
     <string name="rate_table_title_five">검토중</string>
+
+
+    <string name="rate_table_title_one_des">공약 이행이 완료되어 종료된 사업</string>
+    <string name="rate_table_title_two_des">공약 내용 이행 완료 후 추가적인 목표를 세워 추진중인 사업</string>
+    <string name="rate_table_title_three_des">내용이 정상적으로 추진 중이고, 임기 종료 시점까지 완료가 예상되는 사업</string>
+    <string name="rate_table_title_four_des">추진하고 있으나, 예상 목표를 달성하지 못하고 부진한 사업</string>
+    <string name="rate_table_title_five_des">추진 되지 못하는 사업</string>
 
     <string name="citizen_listen">들려줘요</string>
     <string name="citizen_help">도와줘요</string>

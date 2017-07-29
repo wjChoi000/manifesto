@@ -21,13 +21,29 @@
         </activity>
         <activity android:name=".KnowledgeContentActivity" />
         <activity android:name=".ManifestoRateActivity" />
-        <activity android:name=".CitizenListenActivity" />
-        <activity android:name=".CitizenHelpActivity" />
-        <activity android:name=".CitizenNeedActivity" />
-        <activity android:name=".CitizenNeedWritingActivity" />
-        <activity android:name=".CitizenListenContentActivity" />
-        <activity android:name=".CitizenHelpContentActivity" />
-        <activity android:name=".CitizenNeedContentActivity"></activity>
+        <activity
+            android:name=".CitizenListenActivity"
+            android:label="들려줘요">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ManifestoRateActivity"/>        //임시
+        </activity>
+//commit
+        <activity
+            android:name=".CitizenHelpActivity"
+            android:label="도와줘요">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ManifestoRateActivity"/>        //임시
+        </activity>
+        <activity
+            android:name=".CitizenNeedActivity"
+            android:label="필요해요">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ManifestoRateActivity"/>        //임시
+        </activity>
+
     </application>
 
 </manifest>
