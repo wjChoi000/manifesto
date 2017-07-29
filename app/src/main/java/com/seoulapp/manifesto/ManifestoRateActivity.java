@@ -1,6 +1,7 @@
 package com.seoulapp.manifesto;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -8,8 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,17 +22,24 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.MPPointF;
-
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class ManifestoRateActivity extends AppCompatActivity {
@@ -92,7 +102,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         btnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                makeChart();
+                makeHChart();
                 replaceButton(1);
             }
         });
@@ -125,11 +135,6 @@ public class ManifestoRateActivity extends AppCompatActivity {
         profile();
 
     }
-        /*
-        //text
-
-        */
-
 
     private void replaceButton(int fragmentId){
         oneT.setTextColor(getResources().getColor(R.color.colorBlack));
@@ -182,38 +187,166 @@ public class ManifestoRateActivity extends AppCompatActivity {
     private LinearLayout promiseOne;
     private TableLayout promiseTwo;
     private void rate(){
-
-        RadioButton segment1 = (RadioButton) findViewById(R.id.rate_gr_1);
-        RadioButton segment2 = (RadioButton) findViewById(R.id.rate_gr_2);
+        //RadioButton segment1 = (RadioButton) findViewById(R.id.rate_gr_1);
+        //RadioButton segment2 = (RadioButton) findViewById(R.id.rate_gr_2);
 
         promiseOne = (LinearLayout) findViewById(R.id.rate_graph_layout);
         promiseTwo = (TableLayout) findViewById(R.id.rate_table_layout);
 
-        segment1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                promiseOne.setVisibility(View.VISIBLE);
-                promiseTwo.setVisibility(View.GONE);
-            }
-        });
-
-        segment2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                promiseOne.setVisibility(View.GONE);
-                promiseTwo.setVisibility(View.VISIBLE);
-            }
-        });
-
-        segment1.performClick();
-        makeTable();
+//        segment1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                promiseOne.setVisibility(View.VISIBLE);
+//                promiseTwo.setVisibility(View.GONE);
+//            }
+//        });
+//
+//        segment2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                promiseOne.setVisibility(View.GONE);
+//                promiseTwo.setVisibility(View.VISIBLE);
+//            }
+//        });
+//
+//        segment1.performClick();
+        //makeTable();
 
     }
+    //make barchrt : rate_Barchart
+    protected HorizontalBarChart hChart;
+    private void makeHChart(){
+        hChart = (HorizontalBarChart) findViewById(R.id.rate_Barchart);
+        // hChart.setHighlightEnabled(false);
+
+        hChart.setDrawBarShadow(false);
+
+        hChart.setDrawValueAboveBar(true);
+
+        hChart.getDescription().setEnabled(false);
+
+        // if more than 60 entries are displayed in the chart, no values will be
+        // drawn
+        hChart.setMaxVisibleValueCount(100);
+
+        // scaling can now only be done on x- and y-axis separately
+        hChart.setPinchZoom(false);
+
+        // draw shadows for each bar that show the maximum value
+        // hChart.setDrawBarShadow(true);
+
+        hChart.setDrawGridBackground(false);
+        XAxis xl = hChart.getXAxis();
+        xl.setDrawGridLines(false);
+        hChart.getAxisLeft().setEnabled(false);
+        hChart.getXAxis().setEnabled(false);
+
+        xl.setGranularity(1f);
+        xl.setCenterAxisLabels(true);
+        xl.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return String.valueOf((int) value);
+            }
+        });
+//        xl.setPosition(XAxisPosition.BOTTOM);
+//        xl.setTypeface(mTfLight);
+//        xl.setDrawAxisLine(true);
+
+//        xl.setGranularity(10f);
+//
+        //YAxis yl = hChart.getAxisLeft();
+//        yl.setTypeface(mTfLight);
+//        yl.setDrawAxisLine(true);
+        //yl.setDrawGridLines(false);
+        //hChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        //hChart.getXAxis().setEnabled(false);
+
+//        yl.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+////        yl.setInverted(true);
+//
+//        YAxis yr = hChart.getAxisRight();
+//        yr.setTypeface(mTfLight);
+//        yr.setDrawAxisLine(true);
+//        yr.setDrawGridLines(false);
+//        yr.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+////        yr.setInverted(true);
+
+        setDataH(hChart,5,rateList,rateRatio);
+        hChart.setFitBars(true);
+        hChart.animateY(2500);
+
+        hChart.getLegend().setEnabled(false);
+        //hChart.setEntryLabelTextSize(12f);
+
+        // setting data
+//        Legend l = hChart.getLegend();
+//        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+//        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+//        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+//        l.setDrawInside(false);
+//        l.setFormSize(8f);
+//        l.setXEntrySpace(4f);
+    }
+
+//    private String[] rateList = {"사업완료","계속추진","정상추진","일부추진","검토중"};
+//    private float[] rateRatio ={37,50,10,2,1};
+
+    private String[] rateList = {"검토중","일부추진","정상추진","계속추진","사업완료"};
+    private float[] rateRatio ={1,2,10,50,37};
+    private void setDataH(HorizontalBarChart hchart, int count,String[] s, float[] f) {
+
+        float barWidth = 9f;
+        float spaceForBar = 15f;
+        ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
+
+        for (int i = 0; i < count; i++) {
+            yVals1.add(new BarEntry(i * spaceForBar, f[i],s[i]));
+        }
+
+        BarDataSet set1;
+
+
+        if (hchart.getData() != null &&
+                hchart.getData().getDataSetCount() > 0) {
+            set1 = (BarDataSet) hchart.getData().getDataSetByIndex(0);
+
+//            ArrayList<Integer> colors = new ArrayList<Integer>();
+//            colors.add(getResources().getColor(R.color.rate_title_one));
+//            colors.add(getResources().getColor(R.color.rate_title_two));
+//            colors.add(getResources().getColor(R.color.rate_title_three));
+//            colors.add(getResources().getColor(R.color.rate_title_four));
+//            colors.add(getResources().getColor(R.color.rate_title_five));
+  //          set1.setColors(colors);
+
+            set1.setValues(yVals1);
+            hchart.getData().notifyDataChanged();
+            hchart.notifyDataSetChanged();
+        } else {
+            set1 = new BarDataSet(yVals1, "DataSet 1");
+
+            ArrayList<Integer> colors = new ArrayList<Integer>();
+            colors.add(getResources().getColor(R.color.rate_title_five));
+            colors.add(getResources().getColor(R.color.rate_title_four));
+            colors.add(getResources().getColor(R.color.rate_title_three));
+            colors.add(getResources().getColor(R.color.rate_title_two));
+            colors.add(getResources().getColor(R.color.rate_title_one));
+            set1.setColors(colors);
+
+            set1.setDrawIcons(false);
+            ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
+            dataSets.add(set1);
+            BarData data = new BarData(dataSets);
+
+            data.setValueTextSize(10f);
+            data.setBarWidth(barWidth);
+            hchart.setData(data);
+        }
+    }
+
+
     //make chart
     private PieChart mChart;
-    private String[] rateList = {"사업완료","계속추진","정상추진","일부추진","검토중"};
-    private float[] rateRatio ={37,50,10,2,1};
-
     private void makeChart(){
         mChart = (PieChart) findViewById(R.id.chart1);
         mChart.setUsePercentValues(true);
@@ -242,7 +375,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
 
         mChart.getLegend().setEnabled(false);
-        mChart.setEntryLabelTextSize(0f);
+        mChart.setEntryLabelTextSize(12f);
 
     }
     private void setData(PieChart chart,int count,String[] s, float[] f, int mode) {
@@ -268,6 +401,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
         ArrayList<Integer> colors = new ArrayList<Integer>();
 
         if(mode ==1) {
+            //dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+            //dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+
             colors.add(getResources().getColor(R.color.rate_title_one));
             colors.add(getResources().getColor(R.color.rate_title_two));
             colors.add(getResources().getColor(R.color.rate_title_three));
@@ -289,7 +425,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         data.setValueFormatter(new PercentFormatter());
         data.setValueTextSize(20f);
-        data.setValueTextColor(getResources().getColor(R.color.colorWhite));
+        data.setValueTextColor(getResources().getColor(R.color.colorBlack));
         //data.setValueTypeface(mTfLight);
         chart.setData(data);
 
@@ -298,6 +434,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         chart.invalidate();
     }
+
     //make table
     private void makeTable(){
         TableLayout table = (TableLayout) findViewById(R.id.rate_table_layout);
@@ -575,9 +712,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT,0.0F);
-        int tenDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
+        int tenDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics());
 
-        params.setMargins(tenDp,tenDp/2,tenDp,tenDp/2);
+        params.setMargins(tenDp,tenDp,tenDp,tenDp);
         //linear.setGravity(Gravity.CENTER_VERTICAL);
         row.setOrientation(LinearLayout.HORIZONTAL);
 
@@ -590,11 +727,11 @@ public class ManifestoRateActivity extends AppCompatActivity {
         row.setOrientation(LinearLayout.VERTICAL);
         row.setLayoutParams(params);
 
-        TextView textView1 = new TextView(this);
+        TextView textView1 = new TextView(new ContextThemeWrapper(this,R.style.rate_news_cor));
         textView1.setText(cop);
         textView1.setTextColor(getResources().getColor(R.color.colorBlack));
 
-        TextView textView2 = new TextView(this);
+        TextView textView2 = new TextView(new ContextThemeWrapper(this, R.style.rate_news_nontitle));
         textView2.setText(date);
         textView2.setTextColor(getResources().getColor(R.color.colorBlack));
 
@@ -604,18 +741,30 @@ public class ManifestoRateActivity extends AppCompatActivity {
         textView2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         textLayout.addView(textView1);
         textLayout.addView(textView2);
+        row.addView(textLayout);
 
-        LinearLayout empty = new LinearLayout(this);
-        empty.setBackgroundResource(R.color.fbutton_color_green_sea);
-        empty.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, tenDp/2));
+//        LinearLayout empty = new LinearLayout(this);
+//        empty.setOrientation(LinearLayout.HORIZONTAL);
+//        //empty.setBackgroundResource(R.color.fbutton_color_green_sea);
+//        empty.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, tenDp));
+//
+//        LinearLayout empty1 = new LinearLayout(this);
+//        empty1.setBackgroundResource(R.color.rate_new_1);
+//        empty1.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT,1.0f));
+//
+//        LinearLayout empty2 = new LinearLayout(this);
+//        empty2.setBackgroundResource(R.color.rate_new_2);
+//        empty2.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT,1.0f));
+//        empty.addView(empty1);
+//        empty.addView(empty2);
+//        row.addView(empty);
 
-        TextView textViewTitle = new TextView(this);
+        TextView textViewTitle = new TextView(new ContextThemeWrapper(this,R.style.rate_news_title));
         textViewTitle.setText(title);
         textViewTitle.setLayoutParams(paramsT1);
+
         textViewTitle.setTextColor(getResources().getColor(R.color.colorBlack));
 
-        row.addView(textLayout);
-        row.addView(empty);
         row.addView(textViewTitle);
 
         int oneDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics());

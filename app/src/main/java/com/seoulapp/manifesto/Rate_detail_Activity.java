@@ -85,7 +85,7 @@ public class Rate_detail_Activity extends AppCompatActivity {
 
 
         CardView promiseBtn = new CardView(this);
-        promiseBtn.setRadius(36.0f);
+        promiseBtn.setRadius(5.0f);
         //promiseBtn.setCardElevation(10.0f);
 
 
