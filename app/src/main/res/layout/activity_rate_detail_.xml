@@ -238,7 +238,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/gab"
             android:background="@color/colorBackgroundGray"></LinearLayout>
-
+<!---->
         <!--list-->
         <LinearLayout
             android:id="@+id/detail_list"

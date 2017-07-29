@@ -13,14 +13,14 @@
     <color name="colorBlack">#000</color>
 
 
-    <color name="promise_care">#00B050</color>
-    <color name="promise_culture">#FFC000</color>
-    <color name="promise_edu">#0070C0</color>
-    <color name="promise_eco">#FF00</color>
-    <color name="promise_city">#00FFFF</color>
+    <color name="welfare">#00B050</color>
+    <color name="economy">#0070C0</color>
+    <color name="administation">#FF00</color>
+    <color name="culture">#e67e22</color>
+    <color name="environment">#00FFFF</color>
+    <color name="cityAndSafty">#f1c40f</color>
 
     <color name="need_category">#f39c12</color>
-
 
     <color name="rate_title_one">#f39c12</color>
     <color name="rate_title_two">#f1c40f</color>
@@ -29,6 +29,15 @@
     <color name="rate_title_five">#bdc3c7</color>
 
     <!-- -->
+
+
+    <color name="promise_care">#00B050</color>
+    <color name="promise_culture">#FFC000</color>
+    <color name="promise_edu">#0070C0</color>
+    <color name="promise_eco">#FF00</color>
+    <color name="promise_city">#00FFFF</color>
+
+
     <color name="fbutton_color_turquoise">#1abc9c</color>
     <color name="fbutton_color_green_sea">#16a085</color>
     <color name="fbutton_color_emerald">#2ecc71</color>
