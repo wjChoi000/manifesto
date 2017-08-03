@@ -52,9 +52,9 @@
                     android:layout_height="wrap_content"
                     android:text="@string/citizen_add"
                     android:textSize="15dp"
-                    android:textColor="@color/colorGray"/>
+                    android:textColor="@color/add"/>
                 <ImageView
-                    android:src="@drawable/move_black"
+                    android:src="@drawable/move_addcolor"
                     android:layout_width="20dp"
                     android:layout_height="20dp" />
             </LinearLayout>
@@ -62,6 +62,8 @@
 
         //들려줘요 내용1
         <LinearLayout
+            android:id="@+id/layout_listen1"
+            android:onClick="onclick"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -69,17 +71,14 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageButton
+                <ImageView
                     android:id="@+id/Listen_list_image_num1"
-                    android:padding="0sp"
-                    android:scaleType="centerCrop"
-                    android:onClick="onClick"
                     android:layout_marginLeft="13dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/citizen_listen_park"/>
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/citizen_listen_park"/>
 
             </LinearLayout>
             //게시글
@@ -121,7 +120,7 @@
                             android:layout_width="10dp"
                             android:layout_height="10dp" />
                         <TextView
-                            android:text="456 찬성"
+                            android:text=" 456"
                             android:textSize="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -137,7 +136,7 @@
                             android:layout_width="10dp"
                             android:layout_height="10dp" />
                         <TextView
-                            android:text="299 반대"
+                            android:text=" 299"
                             android:textSize="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -153,7 +152,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="10dp" />
                         <TextView
-                            android:text="362 의견"
+                            android:text=" 362"
                             android:textSize="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -185,16 +184,13 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageButton
-                    android:padding="0sp"
-                    android:scaleType="centerCrop"
-                    android:onClick="onClick"
+                <ImageView
                     android:layout_marginLeft="13dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/citizen_listen_park"/>
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/citizen_listen_park"/>
 
             </LinearLayout>
             //게시글
@@ -235,7 +231,7 @@
                             android:layout_width="10dp"
                             android:layout_height="10dp" />
                         <TextView
-                            android:text="456 찬성"
+                            android:text=" 456"
                             android:textSize="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -251,7 +247,7 @@
                             android:layout_width="10dp"
                             android:layout_height="10dp" />
                         <TextView
-                            android:text="299 반대"
+                            android:text=" 299"
                             android:textSize="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -267,7 +263,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="10dp" />
                         <TextView
-                            android:text="362 의견"
+                            android:text=" 362"
                             android:textSize="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -299,16 +295,13 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageButton
-                    android:padding="0sp"
-                    android:scaleType="centerCrop"
-                    android:onClick="onClick"
+                <ImageView
                     android:layout_marginLeft="13dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/citizen_listen_park"/>
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/citizen_listen_park"/>
 
             </LinearLayout>
             //게시글
@@ -349,7 +342,7 @@
                             android:layout_width="10dp"
                             android:layout_height="10dp" />
                         <TextView
-                            android:text="456 찬성"
+                            android:text=" 456"
                             android:textSize="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -365,7 +358,7 @@
                             android:layout_width="10dp"
                             android:layout_height="10dp" />
                         <TextView
-                            android:text="299 반대"
+                            android:text=" 299"
                             android:textSize="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -381,7 +374,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="10dp" />
                         <TextView
-                            android:text="362 의견"
+                            android:text=" 362"
                             android:textSize="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -437,9 +430,9 @@
                     android:layout_height="wrap_content"
                     android:text="@string/citizen_add"
                     android:textSize="15dp"
-                    android:textColor="@color/colorGray"/>
+                    android:textColor="@color/add"/>
                 <ImageView
-                    android:src="@drawable/move_black"
+                    android:src="@drawable/move_addcolor"
                     android:layout_width="20dp"
                     android:layout_height="20dp" />
             </LinearLayout>
@@ -447,6 +440,8 @@
 
         //도와줘요 내용1
         <LinearLayout
+            android:id="@+id/layout_help1"
+            android:onClick="onclick"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -454,18 +449,14 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageButton
+                <ImageView
                     android:id="@+id/Help_list_image_num1"
-                    android:padding="0sp"
-                    android:scaleType="centerCrop"
-                    android:onClick="onClick"
                     android:layout_marginLeft="13dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/citizen_help_trash"/>
-
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/citizen_help_trash"/>
 
             </LinearLayout>
             //게시글
@@ -481,7 +472,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:id="@+id/Help_list_title_num1"
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -507,7 +497,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="10dp" />
                         <TextView
-                            android:text="362 의견"
+                            android:text=" 362"
                             android:textSize="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -539,16 +529,13 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageButton
-                    android:padding="0sp"
-                    android:scaleType="centerCrop"
-                    android:onClick="onClick"
+                <ImageView
                     android:layout_marginLeft="13dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/citizen_help_trash"/>
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/citizen_help_trash"/>
 
             </LinearLayout>
             //게시글
@@ -589,7 +576,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="10dp" />
                         <TextView
-                            android:text="362 의견"
+                            android:text=" 362"
                             android:textSize="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -621,16 +608,13 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageButton
-                    android:padding="0sp"
-                    android:scaleType="centerCrop"
-                    android:onClick="onClick"
+                <ImageView
                     android:layout_marginLeft="13dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/citizen_help_trash"/>
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/citizen_help_trash"/>
 
             </LinearLayout>
             //게시글
@@ -671,7 +655,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="10dp" />
                         <TextView
-                            android:text="362 의견"
+                            android:text=" 362"
                             android:textSize="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -727,9 +711,9 @@
                     android:layout_height="wrap_content"
                     android:text="@string/citizen_add"
                     android:textSize="15dp"
-                    android:textColor="@color/colorGray"/>
+                    android:textColor="@color/add"/>
                 <ImageView
-                    android:src="@drawable/move_black"
+                    android:src="@drawable/move_addcolor"
                     android:layout_width="20dp"
                     android:layout_height="20dp" />
             </LinearLayout>
@@ -737,73 +721,47 @@
 
         //필요해요 내용1
         <LinearLayout
-            android:orientation="horizontal"
+            android:id="@+id/layout_need1"
+            android:onClick="onclick"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             //카테고리
             <LinearLayout
+                android:orientation="horizontal"
                 android:layout_marginLeft="13dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="8dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp">
+                android:layout_marginBottom="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
                 <TextView
+                    style="@style/citizen_need_category"
                     android:id="@+id/Need_list_cate_num1"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
+                    android:text="[복지]" />
+                <TextView
+                    android:id="@+id/Need_list_title_num1"
+                    android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="[복지]"
-                    android:textColor="@color/need_category"/>
-
+                    android:text="어떤 복지가 필요합니다."/>
             </LinearLayout>
+
             //게시글
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginLeft="13dp"
+                android:layout_marginBottom="6dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                //제목
-                <LinearLayout
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginBottom="5dp"
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textSize="10sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:id="@+id/Need_list_title_num1"
-                        android:textColor="@color/colorBlack"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="어떤 복지가 필요합니다."/>
-
-                </LinearLayout>
-                //구
-                <LinearLayout
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginLeft="15dp"
-
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    //구
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:text="중랑구"
-                            android:textSize="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </LinearLayout>
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:text="중랑구"/>
             </LinearLayout>
+
         </LinearLayout>
         //줄긋기
         <LinearLayout
@@ -816,72 +774,60 @@
 
         //필요해요 내용2
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             //카테고리
             <LinearLayout
+                android:orientation="horizontal"
                 android:layout_marginLeft="13dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="8dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp">
+                android:layout_marginBottom="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
+                    style="@style/citizen_need_category"
+                    android:text="[경제]" />
+                <TextView
+                    android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="[경제]"
-                    android:textColor="@color/need_category"/>
-
+                    android:text="어떠한 경제 요소가 있어야 할 것 같습니다."/>
             </LinearLayout>
+
             //게시글
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginLeft="13dp"
+                android:layout_marginBottom="6dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                //제목
-                <LinearLayout
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginBottom="5dp"
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="15dp"
+                    android:textSize="10sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textColor="@color/colorBlack"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="어떠한 경제 요소가 있어야 할 것 같습니다."/>
-
-                </LinearLayout>
-                //구
-                <LinearLayout
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginLeft="15dp"
-
-                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:text="성북구"/>
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:textSize="10sp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    //구
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:text="성북구"
-                            android:textSize="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </LinearLayout>
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:text="BogyuPark"/>
+                <ImageView
+                    android:src="@drawable/comment_black"
+                    android:layout_width="10dp"
+                    android:layout_margin="1dp"
+                    android:layout_height="10dp" />
+                <TextView
+                    android:text=" 362"
+                    android:textSize="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
+
         </LinearLayout>
         //줄긋기
         <LinearLayout
@@ -892,74 +838,55 @@
             android:layout_height="@dimen/gab">
         </LinearLayout>
 
+
         //필요해요 내용3
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             //카테고리
             <LinearLayout
+                android:orientation="horizontal"
                 android:layout_marginLeft="13dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="8dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp">
+                android:layout_marginBottom="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
+                    style="@style/citizen_need_category"
+                    android:text="[도시·안전]" />
+                <TextView
+                    android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="[환경]"
-                    android:textColor="@color/need_category"/>
-
+                    android:text="어떠한 경제 요소가 있어야 할 것 같습니다."/>
             </LinearLayout>
+
             //게시글
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginLeft="13dp"
+                android:layout_marginBottom="6dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                //제목
-                <LinearLayout
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginBottom="5dp"
+                <TextView
+                    android:text="[도시·안전]"
+                    style="@style/citizen_need_category_white" />
+                <TextView
+                    android:textSize="10sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textColor="@color/colorBlack"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="이것이 있어야 환경이 살 수 있습니다."/>
-
-                </LinearLayout>
-                //구
-                <LinearLayout
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginLeft="15dp"
-
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    //구
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:text="종로구"
-                            android:textSize="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </LinearLayout>
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:text="종로구"/>
             </LinearLayout>
+
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
         </LinearLayout>
 
 

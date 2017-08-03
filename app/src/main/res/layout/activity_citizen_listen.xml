@@ -81,12 +81,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_marginLeft="13dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/citizen_listen_park"/>
+                            style="@style/citizen_Image"
+                            android:background="@drawable/citizen_listen_park"/>
 
                     </LinearLayout>
                     //게시글
@@ -191,12 +187,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_marginLeft="13dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/citizen_listen_park"/>
+                            style="@style/citizen_Image"
+                            android:background="@drawable/citizen_listen_park"/>
 
                     </LinearLayout>
                     //게시글
@@ -301,12 +293,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_marginLeft="13dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/citizen_listen_park"/>
+                            style="@style/citizen_Image"
+                            android:background="@drawable/citizen_listen_park"/>
 
                     </LinearLayout>
                     //게시글
@@ -411,12 +399,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_marginLeft="13dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/citizen_listen_park"/>
+                            style="@style/citizen_Image"
+                            android:background="@drawable/citizen_listen_park"/>
 
                     </LinearLayout>
                     //게시글
@@ -521,12 +505,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_marginLeft="13dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/citizen_listen_park"/>
+                            style="@style/citizen_Image"
+                            android:background="@drawable/citizen_listen_park"/>
 
                     </LinearLayout>
                     //게시글
@@ -631,12 +611,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_marginLeft="13dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/citizen_listen_park"/>
+                            style="@style/citizen_Image"
+                            android:background="@drawable/citizen_listen_park"/>
 
                     </LinearLayout>
                     //게시글
@@ -741,12 +717,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_marginLeft="13dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/citizen_listen_park"/>
+                            style="@style/citizen_Image"
+                            android:background="@drawable/citizen_listen_park"/>
 
                     </LinearLayout>
                     //게시글
@@ -851,12 +823,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_marginLeft="13dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/citizen_listen_park"/>
+                            style="@style/citizen_Image"
+                            android:background="@drawable/citizen_listen_park"/>
 
                     </LinearLayout>
                     //게시글
@@ -961,12 +929,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_marginLeft="13dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/citizen_listen_park"/>
+                            style="@style/citizen_Image"
+                            android:background="@drawable/citizen_listen_park"/>
 
                     </LinearLayout>
                     //게시글
@@ -1071,12 +1035,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                         <ImageView
-                            android:layout_marginLeft="13dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="8dp"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/citizen_listen_park"/>
+                            style="@style/citizen_Image"
+                            android:background="@drawable/citizen_listen_park"/>
 
                     </LinearLayout>
                     //게시글

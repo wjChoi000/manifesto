@@ -90,21 +90,6 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onClick(View target){
-        int id=target.getId();
-
-        switch (id){
-            case R.id.goodImageBtn:
-            case R.id.goodTitleBtn:
-                Toast.makeText(this, "좋아요", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.commentImageBtn:
-            case R.id.commentTitleBtn:
-                Toast.makeText(this, "댓글 쓰기", Toast.LENGTH_SHORT).show();
-                break;
-        }
-
-    }
 
 }
 

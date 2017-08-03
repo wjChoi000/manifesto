@@ -40,6 +40,7 @@
 
     <color name="numhighlight">	#FF0000</color>
 
+    <color name="add">#666666</color>
 
     <color name="rate_new_1">#16a085</color>
     <color name="rate_new_2">#2ecc71</color>

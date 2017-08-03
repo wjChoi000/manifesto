@@ -46,12 +46,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[복지]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[복지]" />
 
             </LinearLayout>
             //게시글
@@ -123,12 +119,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[경제]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[경제]" />
 
             </LinearLayout>
             //게시글
@@ -201,12 +193,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[환경]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[환경]" />
 
             </LinearLayout>
             //게시글
@@ -279,12 +267,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[복지]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[문화]" />
 
             </LinearLayout>
             //게시글
@@ -356,12 +340,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[경제]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[행정]" />
 
             </LinearLayout>
             //게시글
@@ -434,12 +414,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[환경]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[도시·안전]" />
 
             </LinearLayout>
             //게시글
@@ -512,12 +488,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[복지]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[복지]" />
 
             </LinearLayout>
             //게시글
@@ -589,12 +561,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[경제]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[문화]" />
 
             </LinearLayout>
             //게시글
@@ -667,12 +635,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[환경]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[경제]" />
 
             </LinearLayout>
             //게시글
@@ -745,12 +709,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[복지]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[환경]" />
 
             </LinearLayout>
             //게시글
@@ -822,12 +782,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[경제]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[행정]" />
 
             </LinearLayout>
             //게시글
@@ -900,12 +856,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[환경]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[도시·안전]" />
 
             </LinearLayout>
             //게시글
@@ -978,12 +930,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[복지]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[복지]" />
 
             </LinearLayout>
             //게시글
@@ -1055,12 +1003,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[경제]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[경제]" />
 
             </LinearLayout>
             //게시글
@@ -1133,12 +1077,8 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp">
                 <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="[환경]"
-                    android:textColor="@color/need_category"/>
+                    style="@style/citizen_need_category"
+                    android:text="[도시·안전]" />
 
             </LinearLayout>
             //게시글
