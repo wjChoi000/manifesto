@@ -20,10 +20,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        SharedPreferences pref = getSharedPreferences("info",MODE_APPEND);
-        final String strid = pref.getString("ID","");
-        //final String strpw = pref.getString("PW","");
-
         btnLogin = (Button) findViewById(R.id.btn_login);
         etId = (EditText) findViewById(R.id.input_ID);
         etPw = (EditText) findViewById(R.id.input_password);
@@ -31,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override   //&& etPw.getText().toString().equals(strpw)
             public void onClick(View v) {
-                if (etId.getText().toString().equals(strid)) {
+                if (etId.getText().toString().equals("admin")&&etPw.getText().toString().equals("123")) {
                     Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
                     Intent intentLogin = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intentLogin);
