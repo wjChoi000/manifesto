@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical">
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -15,272 +15,21 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            //핫이슈 이미지
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginBottom="10dp">
 
-                <ImageView
-                    android:id="@+id/Listen_content_num1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/citizen_listen_park" />
-            </LinearLayout>
-            //제목
-            <LinearLayout
+            <ListView
+                android:id="@+id/listview_listen_content_comment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textStyle="bold"
-                    android:textColor="@color/colorBlack"
-                    android:layout_margin="10dp"
-                    android:textSize="17dp"
-                    android:text="'서울시네마테크'건립에 대한 당신의 생각은?"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            //줄긋기
-            <LinearLayout
-                android:background="@color/colorBackgroundGray"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/gab">
-            </LinearLayout>
-            //찬성반대 버튼
-            <LinearLayout
-                android:background="@color/colorBackgroundGray"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="70dp">
-                //찬성
-                <Button
-                    android:background="@color/colorWhite"
-                    android:id="@+id/agreementBtn"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawableTop="@drawable/agreement_black"
-                    android:text="찬성 405"
-                    android:textColor="@color/agreement"
-                    android:textSize="13dp"
-                    android:paddingTop="15dp"
-                    android:onClick="onClick"/>
-                //세로줄긋기
-                <LinearLayout
-                    android:background="@color/colorBackgroundGray"
-                    android:layout_width="@dimen/gab"
-                    android:layout_height="match_parent">
-                </LinearLayout>
-                //반대
-                <Button
-                    android:background="@color/colorWhite"
-                    android:id="@+id/oppositionBtn"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawableTop="@drawable/opposition_black"
-                    android:text="반대 312"
-                    android:textColor="@color/opposition"
-                    android:textSize="13dp"
-                    android:paddingTop="15dp"
-                    android:onClick="onClick"/>
-
-            </LinearLayout>
-            //줄긋기
-            <LinearLayout
-                android:layout_marginBottom="15dp"
-                android:background="@color/colorBackgroundGray"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/gab">
-            </LinearLayout>
-            //줄긋기
-            <LinearLayout
-                android:background="@color/colorBackgroundGray"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/gab">
-            </LinearLayout>
-            //댓글 id, 찬/반, 시간(1)
-            <LinearLayout
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                //ID
-                <TextView
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="3dp"
-                    android:textSize="17dp"
-                    android:textColor="@color/colorBlack"
-                    android:text="Wonsoonpark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                //찬/반
-                <TextView
-                    android:layout_marginTop="3dp"
-                    android:layout_marginRight="3dp"
-                    android:layout_gravity="center"
-                    android:textColor="@color/agreement"
-                    android:text="찬성"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                //시간
-
-                <TextView
-                    android:id="@+id/dateNow1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:layout_marginRight="15dp"
-                    android:gravity="right" />
-            </LinearLayout>
-            //내용
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:textColor="@color/colorBlack"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:text="저도 똑같은 경험을 하였습니다. 해도 너무하네요!!"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            //줄긋기
-            <LinearLayout
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:background="@color/colorBackgroundGray"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/gab">
-            </LinearLayout>
-            //댓글 id, 찬/반, 시간(2)
-            <LinearLayout
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                //ID
-                <TextView
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="3dp"
-                    android:textSize="17dp"
-                    android:textColor="@color/colorBlack"
-                    android:text="Bogyupark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                //찬/반
-                <TextView
-                    android:layout_marginTop="3dp"
-                    android:layout_marginRight="3dp"
-                    android:layout_gravity="center"
-                    android:textColor="@color/opposition"
-                    android:text="반대"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                //시간
-
-                <TextView
-                    android:id="@+id/dateNow2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:layout_marginRight="15dp"
-                    android:gravity="right" />
-            </LinearLayout>
-            //내용
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:textColor="@color/colorBlack"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:text="서울시에서 보상을 해줘야하는 거 아닙니까??"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            //줄긋기
-            <LinearLayout
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:background="@color/colorBackgroundGray"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/gab">
-            </LinearLayout>
-
-            //댓글 id, 찬/반, 시간(3)
-            <LinearLayout
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                //ID
-                <TextView
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="3dp"
-                    android:textSize="17dp"
-                    android:textColor="@color/colorBlack"
-                    android:text="Wonsoonpark"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                //찬/반
-                <TextView
-                    android:layout_marginTop="3dp"
-                    android:layout_marginRight="3dp"
-                    android:layout_gravity="center"
-                    android:textColor="@color/agreement"
-                    android:text="찬성"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                //시간
-
-                <TextView
-                    android:id="@+id/dateNow3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:layout_marginRight="15dp"
-                    android:gravity="right" />
-            </LinearLayout>
-            //내용
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:textColor="@color/colorBlack"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:text="저도 똑같은 경험을 하였습니다. 해도 너무하네요!!"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            //줄긋기
-            <LinearLayout
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:background="@color/colorBackgroundGray"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/gab">
-            </LinearLayout>
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+
+    //줄긋기
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/gab"
         android:background="@color/colorBackgroundGray"></LinearLayout>
+    //의견올리기
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

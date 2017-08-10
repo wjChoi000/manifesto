@@ -4,8 +4,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +17,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CitizenListenContentActivity extends AppCompatActivity {
+
+
 
     // 현재시간을 msec 으로 구한다.
     long now = System.currentTimeMillis();
@@ -31,17 +37,57 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_citizen_listen_content);
 
-        //현재시간 출력(1)
-        dateNow = (TextView) findViewById(R.id.dateNow1);
-        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
+        //리스트뷰
+        ListView listview ;
+        ListViewAdapter_comment adapter;
 
-        //현재시간 출력(2)
-        dateNow = (TextView) findViewById(R.id.dateNow2);
-        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
+        // Adapter 생성
+        adapter = new ListViewAdapter_comment() ;
 
-        //현재시간 출력(3)
-        dateNow = (TextView) findViewById(R.id.dateNow3);
-        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
+        // 리스트뷰 참조 및 Adapter달기
+        listview = (ListView) findViewById(R.id.listview_listen_content_comment);
+        listview.setAdapter(adapter);
+
+        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+
+
+        LayoutInflater inflater = getLayoutInflater();
+        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.custom_header_content, listview, false);
+        LinearLayout listen = (LinearLayout)header.findViewById(R.id.listheader_listen_content);
+        LinearLayout help = (LinearLayout)header.findViewById(R.id.listheader_help_content);
+        LinearLayout need = (LinearLayout)header.findViewById(R.id.listheader_need_content);
+        help.setVisibility(View.GONE);
+        need.setVisibility(View.GONE);
+
+        listview.addHeaderView(header, null, false);
+
+
+//        //현재시간 출력(1)
+//        dateNow = (TextView) findViewById(R.id.dateNow1);
+//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
+//
+//        //현재시간 출력(2)
+//        dateNow = (TextView) findViewById(R.id.dateNow2);
+//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
+//
+//        //현재시간 출력(3)
+//        dateNow = (TextView) findViewById(R.id.dateNow3);
+//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
 
 
         //actionbar title

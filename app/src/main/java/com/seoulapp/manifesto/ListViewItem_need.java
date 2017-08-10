@@ -4,6 +4,8 @@ public class ListViewItem_need {
     private String need_titleStr ;
     private String cateStr ;
     private String guStr;
+    private String goodStr;
+    private String commentStr;
 
     public void setNeed_title(String need_title) {
         need_titleStr = need_title ;
@@ -29,4 +31,19 @@ public class ListViewItem_need {
         return this.guStr;
     }
 
+    public String getGoodStr() {
+        return goodStr;
+    }
+
+    public void setGoodStr(String goodStr) {
+        this.goodStr = goodStr;
+    }
+
+    public String getCommentStr() {
+        return commentStr;
+    }
+
+    public void setCommentStr(String commentStr) {
+        this.commentStr = commentStr;
+    }
 }

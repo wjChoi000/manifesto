@@ -12,4 +12,5 @@
     <dimen name="gab">1dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
 </resources>

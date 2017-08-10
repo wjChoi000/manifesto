@@ -3,9 +3,13 @@ package com.seoulapp.manifesto;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,16 +22,33 @@ import org.w3c.dom.Text;
  */
 
 public class TabCitizen extends Fragment {
+    ViewPager vp;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab_citizen, container, false);
 
+        vp = (ViewPager)rootView.findViewById(R.id.vp);
+        vp.setAdapter(new pagerAdapter(getFragmentManager()));
+        vp.setCurrentItem(0);
+
+
         //들려줘요 첫번째 레이아웃
-        ViewGroup Listenlayout1 = (ViewGroup) rootView.findViewById(R.id.layout_listen1);
+        final ViewGroup Listenlayout1 = (ViewGroup) rootView.findViewById(R.id.layout_listen1);
         Listenlayout1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view){
                 onClickListenlayout1(view);
+            }
+        });
+
+        //들려줘요 더보기 레이아웃
+        ViewGroup ListenAddlayout = (ViewGroup) rootView.findViewById(R.id.layout_listenAdd);
+        ListenAddlayout.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view){
+                onClickListenAddlayout(view);
             }
         });
 
@@ -41,6 +62,16 @@ public class TabCitizen extends Fragment {
             }
         });
 
+        //도와줘요 더보기 레이아웃
+        ViewGroup HelpAddlayout = (ViewGroup) rootView.findViewById(R.id.layout_helpAdd);
+        HelpAddlayout.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view){
+                onClickHelpAddlayout(view);
+            }
+        });
+
         //필요해요 첫번째 레이아웃
         ViewGroup Needlayout1 = (ViewGroup) rootView.findViewById(R.id.layout_need1);
         Needlayout1.setOnClickListener(new View.OnClickListener() {
@@ -51,30 +82,16 @@ public class TabCitizen extends Fragment {
             }
         });
 
-        //더보기 들려줘요 버튼
-        TextView listenAddBtn = (TextView)rootView.findViewById(R.id.listen_add);
-        listenAddBtn.setOnClickListener(new View.OnClickListener(){
+        //필요해요 더보기 레이아웃
+        ViewGroup NeedAddlayout = (ViewGroup) rootView.findViewById(R.id.layout_needAdd);
+        NeedAddlayout.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view){
-                onClickListenAdd(view);
-            }
-        });
-        //더보기 도와줘요 버튼
-        TextView helpAddBtn = (TextView)rootView.findViewById(R.id.help_add);
-        helpAddBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                onClickHelpAdd(view);
+                onClickNeedAddlayout(view);
             }
         });
 
-        TextView needAddBtn = (TextView)rootView.findViewById(R.id.need_add);
-        needAddBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                onClickNeedAdd(view);
-            }
-        });
         return rootView;
 
     }
@@ -97,19 +114,47 @@ public class TabCitizen extends Fragment {
     }
 
 
-    public void onClickListenAdd(View view){
+    public void onClickListenAddlayout(View view){
         Intent intent = new Intent(getActivity(),CitizenListenActivity.class);
         startActivity(intent);
     }
 
-    public void onClickHelpAdd(View view){
+    public void onClickHelpAddlayout(View view){
         Intent intent = new Intent(getActivity(),CitizenHelpActivity.class);
         startActivity(intent);
     }
 
-    public void onClickNeedAdd(View view){
+    public void onClickNeedAddlayout(View view){
         Intent intent = new Intent(getActivity(),CitizenNeedActivity.class);
         startActivity(intent);
+    }
+
+    private class pagerAdapter extends FragmentStatePagerAdapter
+    {
+        public pagerAdapter(android.support.v4.app.FragmentManager fm)
+        {
+            super(fm);
+        }
+        @Override
+        public android.support.v4.app.Fragment getItem(int position)
+        {
+            switch(position)
+            {
+                case 0:
+                    return new FirstFragment();
+                case 1:
+                    return new SecondFragment();
+                case 2:
+                    return new ThirdFragment();
+                default:
+                    return null;
+            }
+        }
+        @Override
+        public int getCount()
+        {
+            return 3;
+        }
     }
 
 

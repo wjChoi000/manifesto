@@ -39,6 +39,8 @@ public class ListViewAdapter_need extends BaseAdapter {
         TextView titleTextView = (TextView) convertView.findViewById(R.id.textView_need_title) ;
         TextView cateTextView = (TextView) convertView.findViewById(R.id.textView_cate) ;
         TextView guTextView = (TextView) convertView.findViewById(R.id.textView_Gu) ;
+        TextView n_goodTextView = (TextView) convertView.findViewById(R.id.textView_n_good) ;
+        TextView n_commentTextView = (TextView) convertView.findViewById(R.id.textView_n_comment) ;
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         ListViewItem_need listViewItem_need = listViewItemList_need.get(position);
@@ -47,6 +49,8 @@ public class ListViewAdapter_need extends BaseAdapter {
         titleTextView.setText(listViewItem_need.getNeed_title());
         cateTextView.setText(listViewItem_need.getCate());
         guTextView.setText(listViewItem_need.getGu());
+        n_goodTextView.setText(listViewItem_need.getGoodStr());
+        n_commentTextView.setText(listViewItem_need.getCommentStr());
 
 
         return convertView;
@@ -65,12 +69,14 @@ public class ListViewAdapter_need extends BaseAdapter {
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(String cate, String need_title, String gu) {
+    public void addItem(String cate, String need_title, String gu, String goodStr, String commentStr ) {
         ListViewItem_need item = new ListViewItem_need();
 
         item.setCate(cate);
         item.setNeed_title(need_title);
         item.setGu(gu);
+        item.setGoodStr(goodStr);
+        item.setCommentStr(commentStr);
 
         listViewItemList_need.add(item);
     }

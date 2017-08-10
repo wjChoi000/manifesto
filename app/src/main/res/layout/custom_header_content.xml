@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    //리슨
+    <LinearLayout
+        android:id="@+id/listheader_listen_content"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        //핫이슈 이미지
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/Listen_content_num1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/citizen_listen_park" />
+        </LinearLayout>
+        //제목
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:layout_margin="10dp"
+                android:textSize="17dp"
+                android:text="'서울시네마테크'건립에 대한 당신의 생각은?"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right"
+                android:text="2017.08.03"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            //찬성반대 버튼
+            <LinearLayout
+                android:background="@color/colorBackgroundGray"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+                //찬성
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/agreementBtn"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableTop="@drawable/agreement_black"
+                    android:text="찬성 405"
+                    android:textColor="@color/agreement"
+                    android:textSize="13dp"
+                    android:paddingTop="15dp"
+                    android:onClick="onClick"
+
+                    fbutton:buttonColor="@color/colorWhite"
+                    fbutton:cornerRadius="0dp"
+                    fbutton:shadowEnabled="false"
+                    />
+                //세로줄긋기
+                <LinearLayout
+                    android:background="@color/colorBackgroundGray"
+                    android:layout_width="@dimen/gab"
+                    android:layout_height="match_parent">
+                </LinearLayout>
+                //반대
+                <info.hoang8f.widget.FButton
+                    android:id="@+id/oppositionBtn"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableTop="@drawable/opposition_black"
+                    android:text="반대 312"
+                    android:textColor="@color/opposition"
+                    android:textSize="13dp"
+                    android:paddingTop="15dp"
+                    android:onClick="onClick"
+
+                    fbutton:buttonColor="@color/colorWhite"
+                    fbutton:cornerRadius="0dp"
+                    fbutton:shadowEnabled="false"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="vs"/>
+            </LinearLayout>
+        </FrameLayout>
+
+        //줄긋기
+        <LinearLayout
+            android:layout_marginBottom="15dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+    </LinearLayout>
+    //헬프
+    <LinearLayout
+        android:id="@+id/listheader_help_content"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        //해당 이미지
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:scaleType="centerCrop"
+                android:id="@+id/help_content_num1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/citizen_help_trash" />
+        </LinearLayout>
+        //제목
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="쓰레기통 설치를 어떻게 해야 효율적일까요?"
+                android:textColor="@color/colorBlack"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right"
+                android:text="2017.08.03"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+        //좋아요, 댓글, 조회수
+        <LinearLayout
+            android:layout_margin="13dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/good"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp" />
+                //좋아요
+                <TextView
+                    android:onClick="onClickGood"
+                    android:gravity="center"
+                    android:layout_margin="3dp"
+                    android:text="좋아요"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                //좋아요 갯수
+                <TextView
+                    android:gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/numhighlight"
+                    android:text="100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/comment_black"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp" />
+                //댓글
+                <TextView
+                    android:layout_margin="3dp"
+                    android:text="댓글"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                //댓글 갯수
+                <TextView
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/numhighlight"
+                    android:text="100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="3dp"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                //조회수
+                <TextView
+                    android:layout_margin="3dp"
+                    android:text="조회수"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                //조회수 갯수
+                <TextView
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/numhighlight"
+                    android:text="200"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        //줄긋기
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab"
+            android:background="@color/colorBackgroundGray">
+        </LinearLayout>
+    </LinearLayout>
+    //니드
+    <LinearLayout
+        android:id="@+id/listheader_need_content"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        //타이틀
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="20dp"
+                android:textSize="25dp"
+                android:text="이런 복지가 필요합니다."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            //아이디
+            <TextView
+                android:layout_marginRight="3dp"
+                android:layout_gravity="center"
+                android:gravity="right"
+                android:textColor="@color/colorMain"
+                android:layout_weight="1"
+                android:text="Jeewoong Yang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            //시간
+            <TextView
+                android:id="@+id/dateNowTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+
+        //내용
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+            <TextView
+                android:padding="15dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:layout_margin="10dp"
+                android:textSize="15dp"
+                android:text="잠실야구장 주차관리 너무하네요. 주차장 들어올때 고장이라고 요금징수 안한더니 나갈때 한꺼번에 나가는데 요금받는다고 잠실야구장에 갇혔습니다. 이 빗속에 30분이상 제자리에 서있네요"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+        //좋아요, 댓글, 조회수
+        <LinearLayout
+            android:layout_margin="13dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/good"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp" />
+                //좋아요
+                <TextView
+                    android:onClick="onClickGood"
+                    android:gravity="center"
+                    android:layout_margin="3dp"
+                    android:text="좋아요"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                //좋아요 갯수
+                <TextView
+                    android:gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/numhighlight"
+                    android:text="100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/comment_black"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp" />
+                //댓글
+                <TextView
+                    android:layout_margin="3dp"
+                    android:text="댓글"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                //댓글 갯수
+                <TextView
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/numhighlight"
+                    android:text="100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="3dp"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                //조회수
+                <TextView
+                    android:layout_margin="3dp"
+                    android:text="조회수"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                //조회수 갯수
+                <TextView
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/numhighlight"
+                    android:text="200"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        //줄긋기
+        <LinearLayout
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>

@@ -6,6 +6,7 @@ public class ListViewItem_help {
     private Drawable iconDrawable ;
     private String titleStr ;
     private String comStr ;
+    private String goodStr;
 
     public void setIcon(Drawable icon) {
         iconDrawable = icon ;
@@ -13,9 +14,11 @@ public class ListViewItem_help {
     public void setTitle(String title) {
         titleStr = title ;
     }
-
     public void setComment(String comment) {
         comStr = comment ;
+    }
+    public void setGoodStr(String goodStr) {
+        this.goodStr = goodStr;
     }
 
     public Drawable getIcon() {
@@ -24,9 +27,14 @@ public class ListViewItem_help {
     public String getTitle() {
         return this.titleStr ;
     }
-
     public String getComment() {
         return this.comStr ;
     }
+    public String getGoodStr() {
+        return goodStr;
+    }
+
+
+
 
 }

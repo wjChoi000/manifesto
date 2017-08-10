@@ -9,12 +9,15 @@
     android:orientation="horizontal">
 
     <ImageView
+        android:layout_margin="8dp"
+        android:scaleType="centerCrop"
         android:layout_marginRight="20dp"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
         android:id="@+id/imageView"/>
 
     <LinearLayout
+        android:layout_margin="8dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,12 +30,29 @@
             android:textColor="@color/colorBlack"
             android:gravity="center_vertical"
             android:layout_weight="3" />
-        //의견
+        //좋아요 의견
         <LinearLayout
             android:layout_weight="1"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            //좋아요
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/agreement_black"
+                    android:layout_margin="1dp"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp" />
+                <TextView
+                    android:layout_marginLeft="2dp"
+                    android:id="@+id/textView_good"
+                    android:textSize="13dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
             //의견
             <LinearLayout
                 android:layout_weight="1"
@@ -40,13 +60,13 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:src="@drawable/comment_black"
-                    android:layout_width="10dp"
+                    android:layout_width="13dp"
                     android:layout_margin="1dp"
-                    android:layout_height="10dp" />
+                    android:layout_height="13dp" />
                 <TextView
                     android:layout_marginLeft="2dp"
                     android:id="@+id/textView_Comment"
-                    android:textSize="10dp"
+                    android:textSize="13dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -61,3 +81,4 @@
     </LinearLayout>
 
 </LinearLayout>
+

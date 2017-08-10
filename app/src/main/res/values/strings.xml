@@ -61,23 +61,21 @@
     <string-array name="category_array">
         <item>전체</item>
         <item>경제</item>
-        <item>교육</item>
+        <item>도시</item>
         <item>문화</item>
         <item>복지</item>
         <item>행정</item>
         <item>환경</item>
-        <item>기타</item>
     </string-array>
 
     <string-array name="writing_category_array">
         <item>분류를 선택해 주세요.</item>
         <item>경제</item>
-        <item>교육</item>
+        <item>도시</item>
         <item>문화</item>
         <item>복지</item>
         <item>행정</item>
         <item>환경</item>
-        <item>기타</item>
     </string-array>
 
     <string-array name="writing_Gu_array">

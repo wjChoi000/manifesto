@@ -42,9 +42,9 @@ public class TabKnowledge extends Fragment {
         first=0;
         String temp = "매니페스토(Manifesto)는 개인이나 단체가 대중에 대하여 확고한 정치적 의도와 견해를 밝히는 것으로 연설이나 문서의 형태이다. 종종 비정치적인 분야에서도 자신의 주장과 견해를 분명히 밝히는 때에도 사용된다. 한국에서는 예산확보, 구체적 실행계획 등이 있어 이행이 가능한 선거 공약의 의미로 주로 쓰인다.";
         addNewLayout(L1, t1);
-//        addNewLayout(L1, t1);
-//        addNewLayout(L1, t1);
-//        addNewLayout(L1, t1);
+        addNewLayout(L1, t1);
+        addNewLayout(L1, t1);
+        addNewLayout(L1, t1);
 
         return rootView;
     }
