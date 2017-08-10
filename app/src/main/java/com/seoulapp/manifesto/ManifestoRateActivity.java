@@ -2,7 +2,6 @@ package com.seoulapp.manifesto;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -32,7 +31,6 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -41,17 +39,7 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.MPPointF;
-import com.seoulapp.manifesto.model.KnowContent;
-
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-
-import javax.net.ssl.HttpsURLConnection;
 
 
 public class ManifestoRateActivity extends AppCompatActivity {
@@ -76,59 +64,10 @@ public class ManifestoRateActivity extends AppCompatActivity {
     private LinearLayout btnFour;
     private Intent thisintent;
     private String city;
-
-    private JSONObject jres;
-    int ep_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manifesto_rate);
-        Intent intent = getIntent();
-        ep_id = intent.getIntExtra("ep_id",-1);
-        String city = intent.getStringExtra("city");
-        //thread
-        AsyncTask.execute(new Runnable() {
-            private String mapUrl =
-                    "http://localhost:8080/ManifestoServer/ElectedPersonInfo?ep_id="+ep_id;
-            @Override
-            public void run() {
-                // Create URL
-                Log.i("rate","startThread");
-                try {
-                    URL url = new URL(mapUrl);
-                    HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-
-                    //connection.addRequestProperty("x-api-key",context.getString(R.string.open_weather_maps_app_id));
-
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    int size = 2^20;
-                    StringBuffer json = new StringBuffer(size);
-                    String tmp="";
-                    while((tmp=reader.readLine())!=null)
-                        json.append(tmp).append("\n");
-                    reader.close();
-                    jres = new JSONObject(json.toString());
-
-                    // This value will be 404 if the request was not
-                    if(jres.getInt("cod") != 200){
-                        Log.i("rate","fail");
-                        jres = null;
-                    }
-                    // successful
-                    if(jres.getString("code").compareTo("SUCCESS") != 0){
-                        jres =null;
-                    }else
-                        Log.i("rate",jres.toString());
-                }catch(Exception e){
-                    e.printStackTrace();
-                    Log.i("rate","thread Exception error");
-                }
-                Log.i("rate","EndThread");
-
-            }
-        });
-
-
 
         //back button
         ActionBar actionBar = getSupportActionBar();
@@ -143,7 +82,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 Gravity.CENTER);
 
         TextView Title = (TextView) view.findViewById(R.id.actionbar_title);
-        Title.setText(city);
+        Title.setText("서울시청");
 
         getSupportActionBar().setCustomView(view,params);
         getSupportActionBar().setDisplayShowCustomEnabled(true); //show custom title
@@ -262,8 +201,30 @@ public class ManifestoRateActivity extends AppCompatActivity {
     private LinearLayout promiseOne;
     private TableLayout promiseTwo;
     private void rate(){
+        //RadioButton segment1 = (RadioButton) findViewById(R.id.rate_gr_1);
+        //RadioButton segment2 = (RadioButton) findViewById(R.id.rate_gr_2);
 
         promiseOne = (LinearLayout) findViewById(R.id.rate_graph_layout);
+        promiseTwo = (TableLayout) findViewById(R.id.rate_table_layout);
+
+//        segment1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                promiseOne.setVisibility(View.VISIBLE);
+//                promiseTwo.setVisibility(View.GONE);
+//            }
+//        });
+//
+//        segment2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                promiseOne.setVisibility(View.GONE);
+//                promiseTwo.setVisibility(View.VISIBLE);
+//            }
+//        });
+//
+//        segment1.performClick();
+        //makeTable();
 
     }
     //make barchrt : rate_Barchart
@@ -296,13 +257,50 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         xl.setGranularity(1f);
         xl.setCenterAxisLabels(true);
-       // xl.setValueFormatter(new LabelFormatter(rateList));
+        xl.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return String.valueOf((int) value);
+            }
+        });
+//        xl.setPosition(XAxisPosition.BOTTOM);
+//        xl.setTypeface(mTfLight);
+//        xl.setDrawAxisLine(true);
+
+//        xl.setGranularity(10f);
+//
+        //YAxis yl = hChart.getAxisLeft();
+//        yl.setTypeface(mTfLight);
+//        yl.setDrawAxisLine(true);
+        //yl.setDrawGridLines(false);
+        //hChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        //hChart.getXAxis().setEnabled(false);
+
+//        yl.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+////        yl.setInverted(true);
+//
+//        YAxis yr = hChart.getAxisRight();
+//        yr.setTypeface(mTfLight);
+//        yr.setDrawAxisLine(true);
+//        yr.setDrawGridLines(false);
+//        yr.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+////        yr.setInverted(true);
 
         setDataH(hChart,5,rateList,rateRatio);
         hChart.setFitBars(true);
         hChart.animateY(2500);
 
         hChart.getLegend().setEnabled(false);
+        //hChart.setEntryLabelTextSize(12f);
+
+        // setting data
+//        Legend l = hChart.getLegend();
+//        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+//        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+//        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+//        l.setDrawInside(false);
+//        l.setFormSize(8f);
+//        l.setXEntrySpace(4f);
     }
 
 //    private String[] rateList = {"사업완료","계속추진","정상추진","일부추진","검토중"};
@@ -317,7 +315,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
 
         for (int i = 0; i < count; i++) {
-            yVals1.add(new BarEntry(i * spaceForBar, f[i]));
+            yVals1.add(new BarEntry(i * spaceForBar, f[i],s[i]));
         }
 
         BarDataSet set1;
@@ -326,6 +324,14 @@ public class ManifestoRateActivity extends AppCompatActivity {
         if (hchart.getData() != null &&
                 hchart.getData().getDataSetCount() > 0) {
             set1 = (BarDataSet) hchart.getData().getDataSetByIndex(0);
+
+//            ArrayList<Integer> colors = new ArrayList<Integer>();
+//            colors.add(getResources().getColor(R.color.rate_title_one));
+//            colors.add(getResources().getColor(R.color.rate_title_two));
+//            colors.add(getResources().getColor(R.color.rate_title_three));
+//            colors.add(getResources().getColor(R.color.rate_title_four));
+//            colors.add(getResources().getColor(R.color.rate_title_five));
+  //          set1.setColors(colors);
 
             set1.setValues(yVals1);
             hchart.getData().notifyDataChanged();
@@ -344,12 +350,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
             set1.setDrawIcons(false);
             ArrayList<IBarDataSet> dataSets = new ArrayList<IBarDataSet>();
             dataSets.add(set1);
-
-
             BarData data = new BarData(dataSets);
-            //data.setValueFormatter(s);
 
-            data.setValueTextSize(15f);
+            data.setValueTextSize(10f);
             data.setBarWidth(barWidth);
             hchart.setData(data);
         }

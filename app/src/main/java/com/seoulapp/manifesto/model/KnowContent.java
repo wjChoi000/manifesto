@@ -7,10 +7,10 @@ import java.io.Serializable;
  */
 
 public class KnowContent implements Serializable{
-    private String title;
-    private String contents;
-    private int goodSum;
-    private int commentSum;
+    String title;
+    String contents;
+    int goodSum;
+    int commentSum;
 
     public KnowContent(String title, String contents, int goodSum,int commentSum){
         this.title = title;
