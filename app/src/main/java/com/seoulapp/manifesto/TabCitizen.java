@@ -1,10 +1,13 @@
 package com.seoulapp.manifesto;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,22 +17,38 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by wjcho on 2017-07-04.
  */
 
 public class TabCitizen extends Fragment {
-    ViewPager vp;
+    private ViewPager mViewPager = null;
+    private RollingAdapter mAdapter = null;
+    private IndicatorView mIndicatorView = null;
+    private AutoRollingManager mAutoRollingManager = null;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab_citizen, container, false);
+        final View rootView = inflater.inflate(R.layout.tab_citizen, container, false);
 
-        vp = (ViewPager)rootView.findViewById(R.id.vp);
-        vp.setAdapter(new pagerAdapter(getFragmentManager()));
-        vp.setCurrentItem(0);
+        mIndicatorView = (IndicatorView)rootView.findViewById(R.id.indicator_view);
+        mViewPager = (ViewPager)rootView.findViewById(R.id.view_pager);
+        mAdapter = new RollingAdapter(rootView.getContext(), getData(), new RollingAdapter.OnAdapterItemClickListener() {
+            @Override
+            public void onItemClick(RollingModel object, int position) {
+               // Toast.makeText(rootView.getContext(), position + " items click!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        mViewPager.setAdapter(mAdapter);
+        mIndicatorView.setViewPager(mViewPager);
+        mAutoRollingManager = new AutoRollingManager(mViewPager, mAdapter, mIndicatorView);
+        mAutoRollingManager.setRollingTime(5500);
 
 
         //들려줘요 첫번째 레이아웃
@@ -157,5 +176,34 @@ public class TabCitizen extends Fragment {
         }
     }
 
+    private List<RollingModel> getData(){
+        List<RollingModel> list = new ArrayList<>();
+
+        list.add(new RollingModel("1", R.drawable.issue1));
+        list.add(new RollingModel("2", R.drawable.issue2));
+        list.add(new RollingModel("3", R.drawable.issue3));
+        list.add(new RollingModel("4", R.drawable.issue4));
+        list.add(new RollingModel("5", R.drawable.issue5));
+
+        return list;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mAutoRollingManager.onRollingStop();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mAutoRollingManager.onRollingStart();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mAutoRollingManager.onRollingDestroy();
+    }
 
 }
