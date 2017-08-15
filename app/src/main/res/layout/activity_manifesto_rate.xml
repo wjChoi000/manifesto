@@ -681,22 +681,23 @@
                             android:layout_height="wrap_content"
                             style="@style/m_profile_title"/>
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/m_education"
-                            style="@style/m_profile_title"/>
-                        <TextView
-                            android:id="@+id/rate_profile_education"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/m_profile_title"/>
-                    </LinearLayout>
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--&gt;-->
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="@string/m_education"-->
+                            <!--style="@style/m_profile_title"/>-->
+                        <!--<TextView-->
+                            <!--android:id="@+id/rate_profile_education"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--style="@style/m_profile_title"/>-->
+                    <!--</LinearLayout>-->
                 </LinearLayout>
                 <ImageView
                     android:layout_width="0dp"
@@ -705,49 +706,109 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/manifesto_major"/>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/gab"
-                android:background="@color/colorBackgroundGray"
-                android:layout_marginTop="10dp"></LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/m_profile_aware"
-                style="@style/m_profile_title"/>
+            <!--gab-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/gab"-->
+                <!--android:background="@color/colorBackgroundGray"-->
+                <!--android:layout_marginTop="10dp"></LinearLayout>-->
 
-            <LinearLayout
-                android:id="@+id/m_profile_aware"
+            <info.hoang8f.android.segmented.SegmentedGroup
+                xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/rate_segment_gr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
 
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                segmentedgroup:sc_border_width="2dp"
+                segmentedgroup:sc_corner_radius="10dp"
+                android:layout_gravity="center"
+            >
+
+            <RadioButton
+                android:id="@+id/rate_gr_1"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/m_profile_career"
-                style="@style/m_profile_title"/>
-            <LinearLayout
-                android:id="@+id/m_profile_career"
+                android:text="@string/rate_profile_aware"
+                style="@style/RadioButton"
+                android:textSize="24dp"/>
+
+            <RadioButton
+                android:id="@+id/rate_gr_2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/rate_profile_career"
+                style="@style/RadioButton"
+                android:textSize="24dp"/>
+            <RadioButton
+                android:id="@+id/rate_gr_3"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/rate_profile_education"
+                style="@style/RadioButton"
+                android:textSize="24dp"/>
+            </info.hoang8f.android.segmented.SegmentedGroup>
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                >
+                <LinearLayout
+                    android:id="@+id/m_profile_aware"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/m_profile_crime"
-                style="@style/m_profile_title"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/m_profile_career"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-            <LinearLayout
-                android:id="@+id/m_profile_crime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                </LinearLayout>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/m_profile_crime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                </LinearLayout>
+
+            </FrameLayout>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/m_profile_aware"-->
+                <!--style="@style/m_profile_title"/>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/m_profile_career"-->
+                <!--style="@style/m_profile_title"/>-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/m_profile_crime"-->
+                <!--style="@style/m_profile_title"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/m_profile_crime"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+
+            <!--</LinearLayout>-->
         </LinearLayout>
     </FrameLayout>
     </ScrollView>

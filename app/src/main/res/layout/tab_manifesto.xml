@@ -25,11 +25,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             >
-            <Button
+            <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 style="@style/manifestoPartyImage"
-                android:background="@android:color/holo_blue_dark"/>
+                android:src="@drawable/party_minju"/>
+            <!--<Button-->
+                <!--android:layout_width="24dp"-->
+                <!--android:layout_height="24dp"-->
+                <!--style="@style/manifestoPartyImage"-->
+                <!--android:background="@android:color/holo_blue_dark"/>-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,11 +45,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <Button
+            <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:background="@android:color/holo_red_dark"
                 style="@style/manifestoPartyImage"
-                android:background="@android:color/holo_red_dark"/>
+                android:src="@drawable/party_free_white"/>
+            <!--<Button-->
+                <!--android:layout_width="24dp"-->
+                <!--android:layout_height="24dp"-->
+                <!--style="@style/manifestoPartyImage"-->
+                <!--android:background="@android:color/holo_red_dark"/>-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

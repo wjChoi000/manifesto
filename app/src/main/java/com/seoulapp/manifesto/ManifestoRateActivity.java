@@ -800,17 +800,52 @@ public class ManifestoRateActivity extends AppCompatActivity {
         TextView textDay = (TextView) findViewById(R.id.rate_profile_day);
         TextView textBorn = (TextView) findViewById(R.id.rate_profile_born);
         TextView textAge = (TextView) findViewById(R.id.rate_profile_age);
-        TextView textEdu = (TextView) findViewById(R.id.rate_profile_education);
+//        TextView textEdu = (TextView) findViewById(R.id.rate_profile_education);
 
         textName.setText("박원순");
         textDay.setText("1996.3.26");
         textBorn.setText("경상남도 창녕");
         textAge.setText("62세");
-        textEdu.setText("단국대학교");
+//        textEdu.setText("단국대학교");
 
-        LinearLayout aware = (LinearLayout) findViewById(R.id.m_profile_aware);
-        LinearLayout career = (LinearLayout) findViewById(R.id.m_profile_career);
-        LinearLayout crime = (LinearLayout) findViewById(R.id.m_profile_crime);
+        final LinearLayout aware = (LinearLayout) findViewById(R.id.m_profile_aware);
+        final LinearLayout career = (LinearLayout) findViewById(R.id.m_profile_career);
+        final LinearLayout crime = (LinearLayout) findViewById(R.id.m_profile_crime);
+
+
+        RadioButton segment1 = (RadioButton) findViewById(R.id.rate_gr_1);
+        RadioButton segment2 = (RadioButton) findViewById(R.id.rate_gr_2);
+        RadioButton segment3 = (RadioButton) findViewById(R.id.rate_gr_3);
+
+        segment1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                aware.setVisibility(View.VISIBLE);
+                career.setVisibility(View.GONE);
+                crime.setVisibility(View.GONE);
+            }
+        });
+
+        segment2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                aware.setVisibility(View.GONE);
+                career.setVisibility(View.VISIBLE);
+                crime.setVisibility(View.GONE);
+            }
+        });
+
+        segment3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                aware.setVisibility(View.GONE);
+                career.setVisibility(View.GONE);
+                crime.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        segment1.performClick();
 
         addText(aware,"2014년 매니패스토");
         addText(aware,"2016 예테보리 지속 가능 방성상");

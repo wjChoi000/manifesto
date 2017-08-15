@@ -52,6 +52,10 @@
     <string name="rate_table_title_four_des">추진하고 있으나, 예상 목표를 달성하지 못하고 부진한 사업</string>
     <string name="rate_table_title_five_des">추진 되지 못하는 사업</string>
 
+    <string name="rate_profile_career">경력</string>
+    <string name="rate_profile_aware">수상</string>
+    <string name="rate_profile_education">학력</string>
+
     <string name="citizen_listen">들려줘요</string>
     <string name="citizen_help">도와줘요</string>
     <string name="citizen_need">필요해요</string>
