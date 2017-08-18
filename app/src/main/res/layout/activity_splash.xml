@@ -9,6 +9,7 @@
     tools:context="com.seoulapp.manifesto.SplashActivity"
     android:gravity="center"
     android:background="@drawable/login">
+
     <TextView
             android:textStyle="bold"
             android:textSize="40sp"

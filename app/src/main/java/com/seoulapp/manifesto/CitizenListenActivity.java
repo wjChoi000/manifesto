@@ -67,16 +67,16 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
         ListViewAdapter adapter;
         adapter = new ListViewAdapter() ;
 
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.citizen_listen_park), "'서울시네마테크' 건립에 대한 당신의 생각은?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.citizen_listen_park), "'서울시네마테크' 건립에 대한 당신의 생각은?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.citizen_listen_park), "'서울시네마테크' 건립에 대한 당신의 생각은?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.citizen_listen_park), "'서울시네마테크' 건립에 대한 당신의 생각은?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.citizen_listen_park), "'서울시네마테크' 건립에 대한 당신의 생각은?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.citizen_listen_park), "'서울시네마테크' 건립에 대한 당신의 생각은?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.citizen_listen_park), "'서울시네마테크' 건립에 대한 당신의 생각은?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.citizen_listen_park), "'서울시네마테크' 건립에 대한 당신의 생각은?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.citizen_listen_park), "'서울시네마테크' 건립에 대한 당신의 생각은?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.citizen_listen_park), "'서울시네마테크' 건립에 대한 당신의 생각은?", "423","299","362") ;
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_thaad), "대한민국의 사드 배치는 누구를 위해서인가?", "63","49","32") ;
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_tax), "‘대기업+고소득자 증세‘ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_skktlg), "‘단통법 폐지’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_trump), "트럼프정권 ‘대북 선제타격론’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_power), "‘탈 원전’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_book), "‘역사교과서 국정화’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_privilege), "‘국회의원 특권 내려놓기’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_religion), "‘종교인 과세 2년 유예’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_out), "‘국회의원 국민소환제’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_moon100), "文 대통령 ‘100일 기자회견’ 무엇이 옳은 걸까?", "423","299","362") ;
 
 
 

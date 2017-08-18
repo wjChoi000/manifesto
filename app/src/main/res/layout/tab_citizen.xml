@@ -12,7 +12,7 @@
         //핫이슈 이미지
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             android:layout_marginBottom="10dp">
 
 
@@ -110,7 +110,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/citizen_listen_park"/>
+                    android:src="@drawable/listen_thaad"/>
 
             </LinearLayout>
             //게시글
@@ -127,11 +127,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:id="@+id/Listen_list_title_num1"
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=" '서울시네마파크' 건립에 대한 당신의 생각은? "/>
+                        android:text="‘대한민국의 사드 배치‘ 무엇이 옳은 걸까?"/>
 
                 </LinearLayout>
                 //찬,반,의견
@@ -226,7 +228,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/citizen_listen_park"/>
+                    android:src="@drawable/listen_tax"/>
 
             </LinearLayout>
             //게시글
@@ -242,10 +244,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=" '서울시네마파크' 건립에 대한 당신의 생각은? "/>
+                        android:text="‘대기업+고소득자 증세‘ 무엇이 옳은 걸까?"/>
 
                 </LinearLayout>
                 //찬,반,의견
@@ -340,7 +344,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/citizen_listen_park"/>
+                    android:src="@drawable/listen_skktlg"/>
 
             </LinearLayout>
             //게시글
@@ -356,10 +360,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=" '서울시네마파크' 건립에 대한 당신의 생각은? "/>
+                        android:text="‘단통법 폐지’ 무엇이 옳은 걸까?"/>
 
                 </LinearLayout>
                 //찬,반,의견
@@ -516,6 +522,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -615,6 +623,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -713,6 +723,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -855,12 +867,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:layout_margin="1dp"
                     android:id="@+id/Need_list_title_num1"
                     android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="어떤 복지가 필요 합니다."/>
+                    android:text="고속터미널 지하상가와 반포역에 노숙자 쉼터 개설"/>
                 //구,좋아요,의견
                 <LinearLayout
                     android:layout_marginBottom="10dp"
@@ -877,7 +891,7 @@
                             android:textSize="13sp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="용산구"/>
+                            android:text="서초구"/>
                     </LinearLayout>
                     //좋아요
                     <LinearLayout
@@ -890,7 +904,7 @@
                             android:layout_width="13dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 456"
+                            android:text=" 34"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -907,7 +921,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 60"
+                            android:text=" 20"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -946,7 +960,6 @@
             android:layout_height="wrap_content">
             //카테고리
             <LinearLayout
-                android:layout_margin="5dp"
                 android:layout_weight="5"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
@@ -969,12 +982,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:layout_margin="1dp"
                     android:id="@+id/Need_list_title_num2"
                     android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="어떤 경제 요소가 있어야 할 것 같습니다."/>
+                    android:text="청년 일자리 창출을 위한 청년벤처기업 조성"/>
                 //구,좋아요,의견
                 <LinearLayout
                     android:layout_marginBottom="10dp"
@@ -1004,7 +1019,7 @@
                             android:layout_width="13dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 234"
+                            android:text=" 74"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -1021,7 +1036,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 12"
+                            android:text=" 33"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -1060,7 +1075,6 @@
             android:layout_height="wrap_content">
             //카테고리
             <LinearLayout
-                android:layout_margin="5dp"
                 android:layout_weight="5"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
@@ -1069,7 +1083,7 @@
                     android:gravity="center"
                     style="@style/citizen_need_category"
                     android:id="@+id/Need_list_cate_num3"
-                    android:text="[도시]" />
+                    android:text="[경제]" />
 
             </LinearLayout>
 
@@ -1083,12 +1097,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:layout_margin="1dp"
                     android:id="@+id/Need_list_title_num3"
                     android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="어떤 안전요소가 필요하고 도시로서 무엇이 필요합니다."/>
+                    android:text="상암 롯데몰 빠른 진행을 바랍니다."/>
                 //구,좋아요,의견
                 <LinearLayout
                     android:layout_marginBottom="10dp"
@@ -1105,7 +1121,7 @@
                             android:textSize="13sp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="중랑구"/>
+                            android:text="마포구"/>
                     </LinearLayout>
                     //좋아요
                     <LinearLayout
@@ -1118,7 +1134,7 @@
                             android:layout_width="13dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 42"
+                            android:text=" 57"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -1135,7 +1151,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 97"
+                            android:text=" 30"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />

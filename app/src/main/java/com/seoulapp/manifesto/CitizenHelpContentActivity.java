@@ -66,6 +66,7 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         LinearLayout need = (LinearLayout)header.findViewById(R.id.listheader_need_content);
         listen.setVisibility(View.GONE);
         need.setVisibility(View.GONE);
+        help.setBackgroundColor(getResources().getColor(R.color.colorWhite));
 
         listview.addHeaderView(header, null, false);
 

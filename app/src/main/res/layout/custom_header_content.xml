@@ -5,12 +5,14 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     //리슨
+
     <LinearLayout
         android:id="@+id/listheader_listen_content"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         //핫이슈 이미지
+
         <LinearLayout
 
             android:layout_width="match_parent"
@@ -21,111 +23,222 @@
                 android:id="@+id/Listen_content_num1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/citizen_listen_park" />
+                android:background="@drawable/listen_thaad" />
         </LinearLayout>
         //제목
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <TextView
-                android:textStyle="bold"
-                android:textColor="@color/colorBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:textSize="17dp"
-                android:text="'서울시네마테크'건립에 대한 당신의 생각은?"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:text="‘대한민국의 사드 배치‘ 무엇이 옳은 걸까?"
+                android:textColor="@color/colorBlack"
+                android:textSize="19dp"
+                android:textStyle="bold" />
+
             <TextView
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="right"
-                android:text="2017.08.03"
+                android:lineSpacingExtra="13dip"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="대한민국의 사드 배치 논란은 주한 미군이 대한민국 경상북도 성주군에 사드를 배치한 것에 대하여 발생한 논란이다."
+                android:textColor="@color/colorBlack" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="찬성측의 주장 : "
+                    android:textColor="@color/agreement" />
+
+                <TextView
+                    android:lineSpacingExtra="13dip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="사드는 '국가 안보·국민 안전 위한 방어 체계'이며, 북한 핵·미사일 등 위협 대응할 수 있고 미국과의 관계·한미 동맹 강화를 위해서 필요하다."
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="반대측의 주장 : "
+                    android:textColor="@color/opposition" />
+
+                <TextView
+                    android:lineSpacingExtra="13dip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="사드는 효과가 없으며 국익에 도움이 안되고 국민 공감 부족·일방적 추진이므로 필요없다."
+                    android:textColor="@color/colorBlack" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:gravity="right"
+                android:text="2017.08.03" />
         </LinearLayout>
         //줄긋기
+
         <LinearLayout
-            android:background="@color/colorBackgroundGray"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/gab">
-        </LinearLayout>
+            android:layout_height="@dimen/gab"
+            android:background="@color/colorBackgroundGray"></LinearLayout>
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             //찬성반대 버튼
+
             <LinearLayout
-                android:background="@color/colorBackgroundGray"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="70dp">
-                //찬성
-                <info.hoang8f.widget.FButton
-                    android:id="@+id/agreementBtn"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:drawableTop="@drawable/agreement_black"
-                    android:text="찬성 405"
-                    android:textColor="@color/agreement"
-                    android:textSize="13dp"
-                    android:paddingTop="15dp"
-                    android:onClick="onClick"
+                android:layout_height="70dp"
+                android:background="@color/colorBackgroundGray"
+                android:orientation="horizontal">
 
-                    fbutton:buttonColor="@color/colorWhite"
-                    fbutton:cornerRadius="0dp"
-                    fbutton:shadowEnabled="false"
-                    />
-                //세로줄긋기
                 <LinearLayout
-                    android:background="@color/colorBackgroundGray"
-                    android:layout_width="@dimen/gab"
-                    android:layout_height="match_parent">
-                </LinearLayout>
-                //반대
-                <info.hoang8f.widget.FButton
-                    android:id="@+id/oppositionBtn"
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:drawableTop="@drawable/opposition_black"
-                    android:text="반대 312"
-                    android:textColor="@color/opposition"
-                    android:textSize="13dp"
-                    android:paddingTop="15dp"
-                    android:onClick="onClick"
+                    android:layout_weight="1"
+                    android:background="@color/bt_ag_op"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    //찬성
 
-                    fbutton:buttonColor="@color/colorWhite"
-                    fbutton:cornerRadius="0dp"
-                    fbutton:shadowEnabled="false"/>
+                    <CheckBox
+                        android:id="@+id/agreementBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/bt_ag_op"
+                        android:button="@drawable/bt_ag_selector" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/ag_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="찬성 0" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                //세로줄긋기
+
+                <LinearLayout
+                    android:layout_width="@dimen/gab"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBackgroundGray"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/bt_ag_op"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    //반대
+
+                    <CheckBox
+                        android:id="@+id/oppositionBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/bt_ag_op"
+                        android:button="@drawable/bt_op_selector"
+                        android:src="@drawable/opposition_black" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/op_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="반대 0" />
+                    </LinearLayout>
+                </LinearLayout>
+
 
             </LinearLayout>
+
             <LinearLayout
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
                 <TextView
-                    android:textSize="20sp"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="vs"/>
+                    android:gravity="center"
+                    android:text="vs"
+                    android:textSize="20sp" />
             </LinearLayout>
         </FrameLayout>
 
         //줄긋기
+
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab"
             android:layout_marginBottom="15dp"
-            android:background="@color/colorBackgroundGray"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/gab">
-        </LinearLayout>
+            android:background="@color/colorBackgroundGray"></LinearLayout>
         //줄긋기
+
         <LinearLayout
-            android:background="@color/colorBackgroundGray"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/gab">
+            android:layout_height="@dimen/gab"
+            android:background="@color/colorBackgroundGray"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bt_ag_op"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="댓글"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp" />
         </LinearLayout>
+
     </LinearLayout>
     //헬프
     <LinearLayout
@@ -152,7 +265,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="70dp">
+            android:layout_height="wrap_content">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -161,6 +274,14 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="17dp"
                 android:textStyle="bold" />
+            <TextView
+                android:lineSpacingExtra="13dip"
+                android:text="서초구는 2012년부터 대로변에 설치된 거리 쓰레기통 140개를 모두 없앴다. 쓰레기통을 설치해 놓으면 무단으로 생활쓰레기를 버리고 가는 주민들이 많아져 도로가 더 지저분해진다는 이유였다. 현재 서초구 거리 전체에 쓰레기통은 단 2곳뿐이다. 쓰레기통이 없어 불편하다는 민원이 강하게 제기됐던 양재동 동산로와 우면동 태봉로에만 쓰레기통이 설치돼 있다. 서초구청 관계자는 “쓰레기통이 있으면 그 안에 음식물쓰레기부터 아이들 기저귀까지 각종 처치 곤란한 쓰레기들이 버려져 처리 비용이 만만치 않다. 이는 쓰레기 종량제라는 제도 자체를 무색하게 만드는 행위”라고 설명했다.
+\n\n반면 강남구에는 934개의 쓰레기통이 있다. 유동인구가 100만 명에 이르는 강남대로의 경우엔 최소 하루 두 번 쓰레기통을 비운다. 강남구청 관계자는 “쓰레기통이 없으면 화단이나 도로변에 쓰레기를 버리기 때문에 도로가 지저분해지고 주민들도 불편을 느끼기 때문”이라고 말했다."
+                android:layout_width="match_parent"
+                android:layout_margin="15dp"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content" />
             <TextView
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
@@ -266,6 +387,32 @@
             android:layout_height="@dimen/gab"
             android:background="@color/colorBackgroundGray">
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bt_ag_op"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="댓글"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp" />
+        </LinearLayout>
+
     </LinearLayout>
     //니드
     <LinearLayout
@@ -326,8 +473,10 @@
         //내용
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="wrap_content">
             <TextView
+                android:lineSpacingExtra="13dip"
+                android:minLines="13"
                 android:padding="15dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorBlack"
@@ -433,6 +582,32 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/gab">
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bt_ag_op"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="댓글"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 

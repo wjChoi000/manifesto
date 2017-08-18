@@ -148,43 +148,14 @@ public class TabCitizen extends Fragment {
         startActivity(intent);
     }
 
-    private class pagerAdapter extends FragmentStatePagerAdapter
-    {
-        public pagerAdapter(android.support.v4.app.FragmentManager fm)
-        {
-            super(fm);
-        }
-        @Override
-        public android.support.v4.app.Fragment getItem(int position)
-        {
-            switch(position)
-            {
-                case 0:
-                    return new FirstFragment();
-                case 1:
-                    return new SecondFragment();
-                case 2:
-                    return new ThirdFragment();
-                default:
-                    return null;
-            }
-        }
-        @Override
-        public int getCount()
-        {
-            return 3;
-        }
-    }
-
     private List<RollingModel> getData(){
         List<RollingModel> list = new ArrayList<>();
 
-        list.add(new RollingModel("1", R.drawable.issue1));
-        list.add(new RollingModel("2", R.drawable.issue2));
-        list.add(new RollingModel("3", R.drawable.issue3));
-        list.add(new RollingModel("4", R.drawable.issue4));
-        list.add(new RollingModel("5", R.drawable.issue5));
-
+        list.add(new RollingModel("1", R.drawable.listen_trump));
+        list.add(new RollingModel("2", R.drawable.listen_religion));
+        list.add(new RollingModel("3", R.drawable.listen_tax));
+        list.add(new RollingModel("4", R.drawable.listen_privilege));
+        list.add(new RollingModel("5", R.drawable.listen_power));
         return list;
     }
 

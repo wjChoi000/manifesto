@@ -1,23 +1,29 @@
 package com.seoulapp.manifesto;
 
+
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CitizenListenContentActivity extends AppCompatActivity {
-
+    int agcount = 0;
+    int opcount = 0;
+    TextView agtextview,optextview;
+    CheckBox agCheck,opCheck;
 
 
     // 현재시간을 msec 으로 구한다.
@@ -73,6 +79,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         LinearLayout need = (LinearLayout)header.findViewById(R.id.listheader_need_content);
         help.setVisibility(View.GONE);
         need.setVisibility(View.GONE);
+        listen.setBackgroundColor(getResources().getColor(R.color.colorWhite));
 
         listview.addHeaderView(header, null, false);
 
@@ -110,7 +117,68 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
+        agtextview = (TextView)findViewById(R.id.ag_count);
+        findViewById(R.id.agreementBtn).setOnClickListener(clickListener);
+        agCheck = (CheckBox)findViewById(R.id.agreementBtn);
+
+        optextview = (TextView)findViewById(R.id.op_count);
+        findViewById(R.id.oppositionBtn).setOnClickListener(clickListener);
+        opCheck = (CheckBox)findViewById(R.id.oppositionBtn);
+
     }
+
+    private View.OnClickListener clickListener = new View.OnClickListener(){
+        @Override
+        public void onClick(View v){
+
+            switch (v.getId()){
+                case R.id.agreementBtn:
+                    if(opCheck.isChecked() ==true){
+                        opcount--;
+                        optextview.setText("반대 "+opcount);
+                        optextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+                        opCheck.setChecked(false);
+                        agcount++;
+                        agtextview.setText("찬성 "+agcount);
+                        agtextview.setTextColor(getResources().getColor(R.color.agreement));
+                    }else {
+                        if(agCheck.isChecked() ==true){
+                            agcount++;
+                            agtextview.setText("찬성 "+agcount);
+                            agtextview.setTextColor(getResources().getColor(R.color.agreement));
+                        }else{
+                            agcount--;
+                            agtextview.setText("찬성 "+agcount);
+                            agtextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+                        }
+                    }
+                    break;
+                case R.id.oppositionBtn:
+                    if(agCheck.isChecked() ==true){
+                        agcount--;
+                        agtextview.setText("찬성 "+agcount);
+                        agtextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+                        agCheck.setChecked(false);
+                        opcount++;
+                        optextview.setText("반대 "+opcount);
+                        optextview.setTextColor(getResources().getColor(R.color.opposition));
+                    }else{
+                        if(opCheck.isChecked() ==true){
+                            opcount++;
+                            optextview.setText("반대 "+opcount);
+                            optextview.setTextColor(getResources().getColor(R.color.opposition));
+                        }else{
+                            opcount--;
+                            optextview.setText("반대 "+opcount);
+                            optextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 
     //back button
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
@@ -124,6 +192,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
     
     public void onClick(View target){
         int id=target.getId();
+
 
         switch (id){
             case R.id.agreementBtn:
