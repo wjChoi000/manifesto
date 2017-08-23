@@ -38,14 +38,6 @@
                 android:layout_marginBottom="9dp"
                 android:layout_gravity="bottom|center" />
 
-
-
-            <!--<ImageView-->
-                <!--android:scaleType="centerCrop"-->
-                <!--android:id="@+id/imageView"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:src="@drawable/citizen_hotissue" />-->
         </FrameLayout>
         //들어줘요
         <LinearLayout
@@ -271,7 +263,7 @@
                             android:layout_width="13dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 456"
+                            android:text=" 28"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -287,7 +279,7 @@
                             android:layout_width="13dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 299"
+                            android:text=" 81"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -303,7 +295,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 362"
+                            android:text=" 128"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -387,7 +379,7 @@
                             android:layout_width="13dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 456"
+                            android:text=" 32"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -403,7 +395,7 @@
                             android:layout_width="13dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 299"
+                            android:text=" 20"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -419,7 +411,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 362"
+                            android:text=" 31"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -550,7 +542,7 @@
                             android:layout_width="13dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 456"
+                            android:text=" 86"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -566,7 +558,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 362"
+                            android:text=" 69"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -607,7 +599,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/citizen_help_trash"/>
+                    android:src="@drawable/help_pay"/>
 
             </LinearLayout>
             //게시글
@@ -628,7 +620,7 @@
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="쓰레기통 설치를 어떻게 해야 효율적일까요?"/>
+                        android:text="최저임금의 적정 수준은 얼마일까?"/>
 
                 </LinearLayout>
                 //찬,반,의견
@@ -650,7 +642,7 @@
                             android:layout_width="13dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 456"
+                            android:text=" 172"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -666,7 +658,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 362"
+                            android:text=" 100"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -707,7 +699,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_width="70dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/citizen_help_trash"/>
+                    android:src="@drawable/help_edu"/>
 
             </LinearLayout>
             //게시글
@@ -728,7 +720,7 @@
                         android:textColor="@color/colorBlack"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="쓰레기통 설치를 어떻게 해야 효율적일까요?"/>
+                        android:text="‘공교육 경쟁력’을 위해 외고·자사고 폐지가 최선일까?"/>
 
                 </LinearLayout>
                 //의견
@@ -750,7 +742,7 @@
                             android:layout_width="13dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 456"
+                            android:text=" 261"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -766,7 +758,7 @@
                             android:layout_margin="1dp"
                             android:layout_height="13dp" />
                         <TextView
-                            android:text=" 362"
+                            android:text=" 192"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -844,9 +836,10 @@
             android:layout_height="wrap_content">
             //카테고리
             <LinearLayout
-                android:layout_weight="5"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
                 android:layout_gravity="center"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="match_parent"
@@ -960,9 +953,10 @@
             android:layout_height="wrap_content">
             //카테고리
             <LinearLayout
-                android:layout_weight="5"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
                 android:layout_gravity="center"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <TextView
                     android:gravity="center"
@@ -1075,9 +1069,10 @@
             android:layout_height="wrap_content">
             //카테고리
             <LinearLayout
-                android:layout_weight="5"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
                 android:layout_gravity="center"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <TextView
                     android:gravity="center"

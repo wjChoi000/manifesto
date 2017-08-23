@@ -307,7 +307,7 @@
             <LinearLayout
                 android:layout_weight="1"
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
                     android:layout_gravity="center"
@@ -332,36 +332,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
+                <!--<ImageView-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_margin="3dp"-->
+                    <!--android:src="@drawable/comment_black"-->
+                    <!--android:layout_width="13dp"-->
+                    <!--android:layout_height="13dp" />-->
+                <!--//댓글-->
+                <!--<TextView-->
+                    <!--android:layout_margin="3dp"-->
+                    <!--android:text="댓글"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--//댓글 갯수-->
+                <!--<TextView-->
+                    <!--android:layout_marginTop="3dp"-->
+                    <!--android:textColor="@color/numhighlight"-->
+                    <!--android:text="100"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
             <LinearLayout
-                android:layout_weight="2"
+                android:layout_marginLeft="6dp"
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_gravity="center"
-                    android:layout_margin="3dp"
-                    android:src="@drawable/comment_black"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp" />
-                //댓글
-                <TextView
-                    android:layout_margin="3dp"
-                    android:text="댓글"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                //댓글 갯수
-                <TextView
-                    android:layout_marginTop="3dp"
-                    android:textColor="@color/numhighlight"
-                    android:text="100"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginLeft="3dp"
-                android:layout_weight="2"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 //조회수
                 <TextView
@@ -442,7 +440,15 @@
             android:layout_height="wrap_content">
             <TextView
                 android:layout_weight="1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            //구
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="right"
+                android:layout_marginRight="3dp"
+                android:text="서초구"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             //아이디
             <TextView
@@ -450,18 +456,17 @@
                 android:layout_gravity="center"
                 android:gravity="right"
                 android:textColor="@color/colorMain"
-                android:layout_weight="1"
                 android:text="Jeewoong Yang"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             //시간
             <TextView
+                android:text="2017.08.20"
                 android:id="@+id/dateNowTitle"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
-                android:layout_marginRight="15dp"
-                android:layout_weight="1" />
+                android:layout_marginRight="15dp"/>
         </LinearLayout>
         //줄긋기
         <LinearLayout
@@ -503,7 +508,7 @@
             <LinearLayout
                 android:layout_weight="1"
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
                     android:layout_gravity="center"
@@ -528,36 +533,34 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
+                <!--<ImageView-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_margin="3dp"-->
+                    <!--android:src="@drawable/comment_black"-->
+                    <!--android:layout_width="13dp"-->
+                    <!--android:layout_height="13dp" />-->
+                <!--//댓글-->
+                <!--<TextView-->
+                    <!--android:layout_margin="3dp"-->
+                    <!--android:text="댓글"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+                <!--//댓글 갯수-->
+                <!--<TextView-->
+                    <!--android:layout_marginTop="3dp"-->
+                    <!--android:textColor="@color/numhighlight"-->
+                    <!--android:text="100"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content" />-->
+            <!--</LinearLayout>-->
             <LinearLayout
-                android:layout_weight="2"
+                android:layout_marginLeft="6dp"
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_gravity="center"
-                    android:layout_margin="3dp"
-                    android:src="@drawable/comment_black"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp" />
-                //댓글
-                <TextView
-                    android:layout_margin="3dp"
-                    android:text="댓글"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                //댓글 갯수
-                <TextView
-                    android:layout_marginTop="3dp"
-                    android:textColor="@color/numhighlight"
-                    android:text="100"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginLeft="3dp"
-                android:layout_weight="2"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 //조회수
                 <TextView

@@ -24,6 +24,8 @@
         android:layout_weight="4">
 
         <TextView
+            android:maxLines="1"
+            android:ellipsize="end"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView_Title"
@@ -38,18 +40,18 @@
             android:layout_height="wrap_content">
             //좋아요
             <LinearLayout
-                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginRight="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:layout_marginRight="6dp"
                     android:src="@drawable/agreement_black"
-                    android:layout_margin="1dp"
                     android:layout_width="13dp"
                     android:layout_height="13dp" />
                 <TextView
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:layout_marginLeft="2dp"
                     android:id="@+id/textView_good"
                     android:textSize="13dp"
                     android:layout_width="wrap_content"
@@ -57,13 +59,13 @@
             </LinearLayout>
             //의견
             <LinearLayout
-                android:layout_weight="1"
+                android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:layout_marginRight="6dp"
                     android:src="@drawable/comment_black"
                     android:layout_width="13dp"
-                    android:layout_margin="1dp"
                     android:layout_height="13dp" />
                 <TextView
                     android:layout_marginLeft="2dp"
@@ -73,7 +75,7 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
-                android:layout_weight="5"
+                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 

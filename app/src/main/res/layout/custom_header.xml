@@ -8,18 +8,17 @@
 
     android:orientation="vertical">
 
-
     <ImageView
 
         android:id="@+id/listHeaderImage_help"
 
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
 
         android:layout_height="match_parent"
 
         android:scaleType="centerCrop"
 
-        android:src="@drawable/citizen_help_trash" />
+        android:src="@drawable/help_background" />
 
     <ImageView
 
@@ -31,6 +30,5 @@
 
         android:scaleType="centerCrop"
 
-        android:src="@drawable/citizen_listen_park" />
-
+        android:src="@drawable/listen_content_back" />
 </LinearLayout>
