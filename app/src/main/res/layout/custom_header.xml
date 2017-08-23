@@ -12,13 +12,13 @@
 
         android:id="@+id/listHeaderImage_help"
 
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
 
         android:layout_height="match_parent"
 
         android:scaleType="centerCrop"
 
-        android:src="@drawable/help_background" />
+        android:src="@drawable/help_list_background" />
 
     <ImageView
 

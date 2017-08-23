@@ -133,11 +133,6 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_citizen_listenhelp,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {

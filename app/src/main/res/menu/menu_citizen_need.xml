@@ -8,11 +8,6 @@
         android:icon="@drawable/writing_white"
         gom:showAsAction="always"
         android:title="writing" />
-    <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/search_white"
-        gom:showAsAction="always"
-        android:title="search" />
     <!--<item-->
     <!--android:id="@+id/action_settings"-->
     <!--android:orderInCategory="100"-->

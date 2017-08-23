@@ -138,13 +138,6 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_citizen_listenhelp,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-
-    @Override
 
     public void onScrollStateChanged(AbsListView view, int scrollState) {
 
