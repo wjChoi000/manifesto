@@ -111,9 +111,12 @@ public class CitizenNeedActivity extends AppCompatActivity {
                 ListViewItem_need item = (ListViewItem_need) parent.getItemAtPosition(position) ;
 
                 String titleStr = item.getNeed_title() ;
+                String guStr = item.getGu();
 
-                Toast.makeText(CitizenNeedActivity.this, titleStr, Toast.LENGTH_SHORT).show();
                 Intent intentRow = new Intent(CitizenNeedActivity.this, CitizenNeedContentActivity.class);
+
+                intentRow.putExtra("title",titleStr);
+                intentRow.putExtra("gu",guStr);
                 startActivity(intentRow);
 
             }

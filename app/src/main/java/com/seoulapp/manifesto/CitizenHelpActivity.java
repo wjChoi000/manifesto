@@ -62,16 +62,16 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
         ListViewAdapter_help adapter;
         adapter = new ListViewAdapter_help() ;
 
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.citizen_help_trash), "쓰레기통 설치를 어떻게 해야 효율적일까?","47","123");
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.help_pay), "최저임금의 적정 수준은 얼마일까?","179","27");
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.help_edu), "‘공교육 경쟁력’을 위해 외고·자사고 폐지가 최선일까?","37","95");
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.help_date_abuse), "‘데이트 폭력’ 어떻게 해결해야 할까?","100","271");
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.help_baby), "저출산·고령화사회 대책은 무엇일까?","279","53");
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.help_ai), "인간과 인공지능은 공존할 수 있을까?","108","21");
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.help_guui), "제 2의 구의역 스크린도어 사고가 발생하지 않으려면?","127","141");
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.help_noise), "층간소음, 해결할 방법은 없는가?","187","121");
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.help_gab), "‘갑질 문화’ 어떻게 해결할까?","88","791");
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.help_elec), "바람직한 전기요금 누진세는 무엇일까?","270","123");
+        adapter.addItem(R.drawable.citizen_help_trash, "쓰레기통 설치를 어떻게 해야 효율적일까?","47","123");
+        adapter.addItem(R.drawable.help_pay, "최저임금의 적정 수준은 얼마일까?","179","27");
+        adapter.addItem(R.drawable.help_edu, "‘공교육 경쟁력’을 위해 외고·자사고 폐지가 최선일까?","37","95");
+        adapter.addItem(R.drawable.help_date_abuse, "‘데이트 폭력’ 어떻게 해결해야 할까?","100","271");
+        adapter.addItem(R.drawable.help_baby, "저출산·고령화사회 대책은 무엇일까?","279","53");
+        adapter.addItem(R.drawable.help_ai, "인간과 인공지능은 공존할 수 있을까?","108","21");
+        adapter.addItem(R.drawable.help_guui, "제 2의 구의역 스크린도어 사고가 발생하지 않으려면?","127","141");
+        adapter.addItem(R.drawable.help_noise, "층간소음, 해결할 방법은 없는가?","187","121");
+        adapter.addItem(R.drawable.help_gab, "‘갑질 문화’ 어떻게 해결할까?","88","791");
+        adapter.addItem(R.drawable.help_elec, "바람직한 전기요금 누진세는 무엇일까?","270","123");
 
 
         listview.setAdapter(adapter);
@@ -89,20 +89,6 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
         listview.setOnScrollListener(this);
 
 
-//        ListView listview ;
-//        ListViewAdapter_help adapter;
-//
-//        // Adapter 생성
-//        adapter = new ListViewAdapter_help() ;
-//
-//        // 리스트뷰 참조 및 Adapter달기
-//        listview = (ListView) findViewById(R.id.listview_help);
-//        listview.setAdapter(adapter);
-
-
-
-
-
 
         // 위에서 생성한 listview에 클릭 이벤트 핸들러 정의.
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -112,9 +98,11 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
                 ListViewItem_help item = (ListViewItem_help) parent.getItemAtPosition(position) ;
 
                 String titleStr = item.getTitle() ;
-
-                Toast.makeText(CitizenHelpActivity.this, titleStr, Toast.LENGTH_SHORT).show();
+                int image = item.getTitleImage();
                 Intent intentRow = new Intent(CitizenHelpActivity.this, CitizenHelpContentActivity.class);
+
+                intentRow.putExtra("title",titleStr);
+                intentRow.putExtra("img",image);
                 startActivity(intentRow);
 
             }

@@ -1,6 +1,7 @@
 package com.seoulapp.manifesto;
 
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -124,6 +127,16 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         optextview = (TextView)findViewById(R.id.op_count);
         findViewById(R.id.oppositionBtn).setOnClickListener(clickListener);
         opCheck = (CheckBox)findViewById(R.id.oppositionBtn);
+
+
+        TextView tvTitle = (TextView)findViewById(R.id.titleText);
+        ImageView iv = (ImageView)findViewById(R.id.Listen_content_num1);
+
+        Intent intent = getIntent(); // 보내온 Intent를 얻는다
+        tvTitle.setText(intent.getStringExtra("title"));
+        iv.setImageResource(intent.getIntExtra("img",0));
+
+
 
     }
 

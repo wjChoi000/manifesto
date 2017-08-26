@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -32,7 +33,6 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
     private int lastTopValue = 0;
     private ListView listview;
     private ImageView backgroundImage;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,22 +67,18 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
         ListViewAdapter adapter;
         adapter = new ListViewAdapter() ;
 
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_thaad), "대한민국의 사드 배치는 누구를 위해서인가?", "63","49","32") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_tax), "‘대기업+고소득자 증세‘ 무엇이 옳은 걸까?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_skktlg), "‘단통법 폐지’ 무엇이 옳은 걸까?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_trump), "트럼프정권 ‘대북 선제타격론’ 무엇이 옳은 걸까?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_power), "‘탈 원전’ 무엇이 옳은 걸까?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_book), "‘역사교과서 국정화’ 무엇이 옳은 걸까?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_privilege), "‘국회의원 특권 내려놓기’ 무엇이 옳은 걸까?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_religion), "‘종교인 과세 2년 유예’ 무엇이 옳은 걸까?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_out), "‘국회의원 국민소환제’ 무엇이 옳은 걸까?", "423","299","362") ;
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.listen_moon100), "文 대통령 ‘100일 기자회견’ 무엇이 옳은 걸까?", "423","299","362") ;
-
-
+        adapter.addItem(R.drawable.listen_thaad, "대한민국의 사드 배치는 누구를 위해서인가?", "63","49","32") ;
+        adapter.addItem(R.drawable.listen_tax, "‘대기업+고소득자 증세‘ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(R.drawable.listen_skktlg, "‘단통법 폐지’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(R.drawable.listen_trump, "트럼프정권 ‘대북 선제타격론’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(R.drawable.listen_power, "‘탈 원전’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(R.drawable.listen_book, "‘역사교과서 국정화’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(R.drawable.listen_privilege, "‘국회의원 특권 내려놓기’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(R.drawable.listen_religion, "‘종교인 과세 2년 유예’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(R.drawable.listen_out, "‘국회의원 국민소환제’ 무엇이 옳은 걸까?", "423","299","362") ;
+        adapter.addItem(R.drawable.listen_moon100, "文 대통령 ‘100일 기자회견’ 무엇이 옳은 걸까?", "423","299","362") ;
 
         listview.setAdapter(adapter);
-
-
 
         // inflate custom header and attach it to the list
         LayoutInflater inflater = getLayoutInflater();
@@ -98,17 +94,6 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
         listview.setOnScrollListener(this);
 
 
-
-//        ListView listview ;
-//        ListViewAdapter adapter;
-//
-//        // Adapter 생성
-//        adapter = new ListViewAdapter() ;
-//
-//        // 리스트뷰 참조 및 Adapter달기
-//        listview = (ListView) findViewById(R.id.listview_listen);
-//        listview.setAdapter(adapter);
-//
          //위에서 생성한 listview에 클릭 이벤트 핸들러 정의.
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -117,9 +102,11 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
                 ListViewItem item = (ListViewItem) parent.getItemAtPosition(position) ;
 
                 String titleStr = item.getTitle() ;
-
-                Toast.makeText(CitizenListenActivity.this, titleStr, Toast.LENGTH_SHORT).show();
+                int image = item.getTitleImage();
                 Intent intentRow = new Intent(CitizenListenActivity.this, CitizenListenContentActivity.class);
+
+                intentRow.putExtra("title",titleStr);
+                intentRow.putExtra("img",image);
                 startActivity(intentRow);
 
             }

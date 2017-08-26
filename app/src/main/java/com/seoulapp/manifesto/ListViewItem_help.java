@@ -3,14 +3,12 @@ package com.seoulapp.manifesto;
 import android.graphics.drawable.Drawable;
 
 public class ListViewItem_help {
-    private Drawable iconDrawable ;
+    private int titleImage;
     private String titleStr ;
     private String comStr ;
     private String goodStr;
 
-    public void setIcon(Drawable icon) {
-        iconDrawable = icon ;
-    }
+
     public void setTitle(String title) {
         titleStr = title ;
     }
@@ -21,9 +19,7 @@ public class ListViewItem_help {
         this.goodStr = goodStr;
     }
 
-    public Drawable getIcon() {
-        return this.iconDrawable ;
-    }
+
     public String getTitle() {
         return this.titleStr ;
     }
@@ -34,7 +30,11 @@ public class ListViewItem_help {
         return goodStr;
     }
 
+    public int getTitleImage() {
+        return titleImage;
+    }
 
-
-
+    public void setTitleImage(int titleImage) {
+        this.titleImage = titleImage;
+    }
 }

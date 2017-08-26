@@ -1,5 +1,6 @@
 package com.seoulapp.manifesto;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -74,27 +76,6 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
 
         listview.addHeaderView(header, null, false);
 
-//        //타이틀현재시간 출력
-//        dateNow = (TextView) findViewById(R.id.dateNowTitle);
-//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
-//
-//        //현재시간 출력(1)
-//        dateNow = (TextView) findViewById(R.id.dateNow1);
-//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
-//
-//        //현재시간 출력(2)
-//        dateNow = (TextView) findViewById(R.id.dateNow2);
-//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
-//
-//        //현재시간 출력(3)
-//        dateNow = (TextView) findViewById(R.id.dateNow3);
-//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
-//
-//        //현재시간 출력(4)
-//        dateNow = (TextView) findViewById(R.id.dateNow4);
-//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
-
-
 
         //actionbar title
         View view = getLayoutInflater().inflate(R.layout.actionbar_title, null);
@@ -112,13 +93,20 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
 
 
 
-
-
         //back button
         ActionBar actionBar = getSupportActionBar();
 
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+
+
+        TextView tvTitle = (TextView)findViewById(R.id.need_title_context);
+        TextView tvGu = (TextView)findViewById(R.id.gu);
+
+        Intent intent = getIntent(); // 보내온 Intent를 얻는다
+        tvTitle.setText(intent.getStringExtra("title"));
+        tvGu.setText(intent.getStringExtra("gu"));
+
 
 
 

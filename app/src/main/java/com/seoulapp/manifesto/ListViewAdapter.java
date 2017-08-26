@@ -51,7 +51,7 @@ public class ListViewAdapter extends BaseAdapter{
         ListViewItem listViewItem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
-        iconImageView.setImageDrawable(listViewItem.getIcon());
+        iconImageView.setImageResource(listViewItem.getTitleImage());
         titleTextView.setText(listViewItem.getTitle());
         AgTextView.setText(listViewItem.getAg());
         OpTextView.setText(listViewItem.getOp());
@@ -76,10 +76,10 @@ public class ListViewAdapter extends BaseAdapter{
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(Drawable icon, String title, String ag, String op, String comment) {
+    public void addItem(int icon, String title, String ag, String op, String comment) {
         ListViewItem item = new ListViewItem();
 
-        item.setIcon(icon);
+        item.setTitleImage(icon);
         item.setTitle(title);
         item.setAg(ag);
         item.setOp(op);
@@ -89,3 +89,4 @@ public class ListViewAdapter extends BaseAdapter{
     }
 
 }
+

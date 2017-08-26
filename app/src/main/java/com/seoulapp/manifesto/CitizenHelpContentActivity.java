@@ -1,5 +1,6 @@
 package com.seoulapp.manifesto;
 
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -107,6 +109,12 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         actionBar.setHomeButtonEnabled(true);
 
 
+        TextView tvTitle = (TextView)findViewById(R.id.help_content_title);
+        ImageView iv = (ImageView)findViewById(R.id.help_content_num1);
+
+        Intent intent = getIntent(); // 보내온 Intent를 얻는다
+        tvTitle.setText(intent.getStringExtra("title"));
+        iv.setImageResource(intent.getIntExtra("img",0));
 
     }
 
