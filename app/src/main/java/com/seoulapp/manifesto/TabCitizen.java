@@ -2,6 +2,8 @@ package com.seoulapp.manifesto;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -21,6 +23,7 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,12 +114,29 @@ public class TabCitizen extends Fragment {
             }
         });
 
-        return rootView;
 
+        ImageView imgListenN1 = (ImageView) rootView.findViewById(R.id.Listen_list_image_num1);
+        TextView tvListenN1_Title = (TextView)rootView.findViewById(R.id.Listen_list_title_num1);
+        TextView tvListenN1_Ag = (TextView)rootView.findViewById(R.id.Listen_list_ag_num1);
+        TextView tvListenN1_Op = (TextView)rootView.findViewById(R.id.Listen_list_op_num1);
+        TextView tvListenN1_Com = (TextView)rootView.findViewById(R.id.Listen_list_com_num1);
+
+        imgListenN1.setImageResource(R.drawable.listen_thaad);
+        tvListenN1_Title.setText("‘대한민국의 사드 배치‘ 무엇이 옳은 걸까?");
+        tvListenN1_Ag.setText("63");
+        tvListenN1_Op.setText("49");
+        tvListenN1_Com.setText("32");
+
+
+
+        return rootView;
     }
 
     public void onClickListenlayout1(View view){
+
         Intent intent = new Intent(getActivity(),CitizenListenContentActivity.class);
+        intent.putExtra("title","‘대한민국의 사드 배치‘ 무엇이 옳은 걸까?");
+
         startActivity(intent);
     }
 

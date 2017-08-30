@@ -5,8 +5,11 @@ import android.graphics.drawable.Drawable;
 public class ListViewItem_help {
     private int titleImage;
     private String titleStr ;
-    private String comStr ;
+    private String subcontext;
+    private String c_date;
     private String goodStr;
+    private String hitStr;
+    private String comStr ;
 
 
     public void setTitle(String title) {
@@ -36,5 +39,29 @@ public class ListViewItem_help {
 
     public void setTitleImage(int titleImage) {
         this.titleImage = titleImage;
+    }
+
+    public String getSubcontext() {
+        return subcontext;
+    }
+
+    public void setSubcontext(String subcontext) {
+        this.subcontext = subcontext;
+    }
+
+    public String getHitStr() {
+        return hitStr;
+    }
+
+    public void setHitStr(String hitStr) {
+        this.hitStr = hitStr;
+    }
+
+    public String getC_date() {
+        return c_date;
+    }
+
+    public void setC_date(String c_date) {
+        this.c_date = c_date;
     }
 }

@@ -2,6 +2,7 @@ package com.seoulapp.manifesto;
 
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -132,9 +133,32 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         TextView tvTitle = (TextView)findViewById(R.id.titleText);
         ImageView iv = (ImageView)findViewById(R.id.Listen_content_num1);
 
+        TextView tvSubTitle = (TextView)findViewById(R.id.Listen_subtitle);
+        TextView tvAgContext = (TextView)findViewById(R.id.Ag_context);
+        TextView tvOpContext = (TextView)findViewById(R.id.Op_context);
+        TextView tvCDate = (TextView)findViewById(R.id.c_date);
+
+
+//        ImageView imgListenN1 = (ImageView)findViewById(R.id.Listen_list_image_num1);
+//        TextView tvListenN1_Title = (TextView)findViewById(R.id.Listen_list_title_num1);
+//        TextView tvListenN1_Ag = (TextView)findViewById(R.id.Listen_list_ag_num1);
+//        TextView tvListenN1_Op = (TextView)findViewById(R.id.Listen_list_op_num1);
+//        TextView tvListenN1_Com = (TextView)findViewById(R.id.Listen_list_com_num1);
+
         Intent intent = getIntent(); // 보내온 Intent를 얻는다
+
         tvTitle.setText(intent.getStringExtra("title"));
         iv.setImageResource(intent.getIntExtra("img",0));
+        tvSubTitle.setText(intent.getStringExtra("subtitle"));
+        tvAgContext.setText(intent.getStringExtra("ag_context"));
+        tvOpContext.setText(intent.getStringExtra("op_context"));
+        tvCDate.setText(intent.getStringExtra("c_date"));
+
+
+
+
+
+
 
 
 

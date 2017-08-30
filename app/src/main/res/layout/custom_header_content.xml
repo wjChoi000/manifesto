@@ -44,6 +44,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/Listen_subtitle"
                 android:lineSpacingExtra="13dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,6 +65,7 @@
                     android:textColor="@color/agreement" />
 
                 <TextView
+                    android:id="@+id/Ag_context"
                     android:lineSpacingExtra="13dip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,6 +86,7 @@
                     android:textColor="@color/opposition" />
 
                 <TextView
+                    android:id="@+id/Op_context"
                     android:lineSpacingExtra="13dip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -92,6 +95,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/c_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -278,6 +282,7 @@
                 android:textSize="17dp"
                 android:textStyle="bold" />
             <TextView
+                android:id="@+id/help_context"
                 android:lineSpacingExtra="13dip"
                 android:text="서초구는 2012년부터 대로변에 설치된 거리 쓰레기통 140개를 모두 없앴다. 쓰레기통을 설치해 놓으면 무단으로 생활쓰레기를 버리고 가는 주민들이 많아져 도로가 더 지저분해진다는 이유였다. 현재 서초구 거리 전체에 쓰레기통은 단 2곳뿐이다. 쓰레기통이 없어 불편하다는 민원이 강하게 제기됐던 양재동 동산로와 우면동 태봉로에만 쓰레기통이 설치돼 있다. 서초구청 관계자는 “쓰레기통이 있으면 그 안에 음식물쓰레기부터 아이들 기저귀까지 각종 처치 곤란한 쓰레기들이 버려져 처리 비용이 만만치 않다. 이는 쓰레기 종량제라는 제도 자체를 무색하게 만드는 행위”라고 설명했다.
 \n\n반면 강남구에는 934개의 쓰레기통이 있다. 유동인구가 100만 명에 이르는 강남대로의 경우엔 최소 하루 두 번 쓰레기통을 비운다. 강남구청 관계자는 “쓰레기통이 없으면 화단이나 도로변에 쓰레기를 버리기 때문에 도로가 지저분해지고 주민들도 불편을 느끼기 때문”이라고 말했다."
@@ -286,6 +291,7 @@
                 android:textColor="@color/colorBlack"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/help_date"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="right"
@@ -328,6 +334,7 @@
                     android:layout_height="wrap_content" />
                 //좋아요 갯수
                 <TextView
+                    android:id="@+id/help_good"
                     android:gravity="center"
                     android:layout_marginTop="3dp"
                     android:textColor="@color/numhighlight"
@@ -335,30 +342,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-            <!--<LinearLayout-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content">-->
-                <!--<ImageView-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:layout_margin="3dp"-->
-                    <!--android:src="@drawable/comment_black"-->
-                    <!--android:layout_width="13dp"-->
-                    <!--android:layout_height="13dp" />-->
-                <!--//댓글-->
-                <!--<TextView-->
-                    <!--android:layout_margin="3dp"-->
-                    <!--android:text="댓글"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content" />-->
-                <!--//댓글 갯수-->
-                <!--<TextView-->
-                    <!--android:layout_marginTop="3dp"-->
-                    <!--android:textColor="@color/numhighlight"-->
-                    <!--android:text="100"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content" />-->
-            <!--</LinearLayout>-->
+
             <LinearLayout
                 android:layout_marginLeft="6dp"
                 android:orientation="horizontal"
@@ -372,6 +356,7 @@
                     android:layout_height="wrap_content" />
                 //조회수 갯수
                 <TextView
+                    android:id="@+id/help_hit"
                     android:layout_marginTop="3dp"
                     android:textColor="@color/numhighlight"
                     android:text="200"
@@ -406,6 +391,7 @@
                 android:textSize="17sp" />
 
             <TextView
+                android:id="@+id/help_commentNum"
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

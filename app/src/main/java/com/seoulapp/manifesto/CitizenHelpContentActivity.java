@@ -111,10 +111,26 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
 
         TextView tvTitle = (TextView)findViewById(R.id.help_content_title);
         ImageView iv = (ImageView)findViewById(R.id.help_content_num1);
+        TextView tvContext = (TextView)findViewById(R.id.help_context);
+        TextView tvGoodNum = (TextView)findViewById(R.id.help_good);
+        TextView tvHitNum = (TextView)findViewById(R.id.help_hit);
+        TextView tvCDate = (TextView)findViewById(R.id.help_date);
+        TextView tvComNum = (TextView)findViewById(R.id.help_commentNum);
+
+
 
         Intent intent = getIntent(); // 보내온 Intent를 얻는다
+
+
         tvTitle.setText(intent.getStringExtra("title"));
         iv.setImageResource(intent.getIntExtra("img",0));
+
+        tvContext.setText(intent.getStringExtra("subContext"));
+        tvGoodNum.setText(intent.getStringExtra("goodNum"));
+        tvHitNum.setText(intent.getStringExtra("hitNum"));
+        tvCDate.setText(intent.getStringExtra("C_date"));
+        tvComNum.setText(intent.getStringExtra("comNum"));
+
 
     }
 

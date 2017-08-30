@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorWhite"
-    >
+    android:background="@color/colorWhite">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -14,7 +13,6 @@
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginBottom="10dp">
-
 
             <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"
@@ -39,7 +37,7 @@
                 android:layout_gravity="bottom|center" />
 
         </FrameLayout>
-        //들어줘요
+        //들려줘요
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -132,7 +130,6 @@
                 <LinearLayout
                     android:layout_marginBottom="15dp"
                     android:layout_marginLeft="15dp"
-
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -147,6 +144,8 @@
                             android:layout_width="13dp"
                             android:layout_height="13dp" />
                         <TextView
+                            android:layout_marginLeft="4dp"
+                            android:id="@+id/Listen_list_ag_num1"
                             android:text=" 456"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
@@ -163,6 +162,8 @@
                             android:layout_width="13dp"
                             android:layout_height="13dp" />
                         <TextView
+                            android:layout_marginLeft="4dp"
+                            android:id="@+id/Listen_list_op_num1"
                             android:text=" 299"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
@@ -179,6 +180,8 @@
                             android:layout_margin="1dp"
                             android:layout_height="13dp" />
                         <TextView
+                            android:layout_marginLeft="4dp"
+                            android:id="@+id/Listen_list_com_num1"
                             android:text=" 362"
                             android:textSize="13dp"
                             android:layout_width="wrap_content"
@@ -825,112 +828,107 @@
             </LinearLayout>
         </LinearLayout>
 
-        //필요해요 내용1
+        //필요해요 내용 1
         <LinearLayout
-            android:background="?android:attr/selectableItemBackground"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="7dp"
             android:id="@+id/layout_need1"
-            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            //카테고리
             <LinearLayout
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    style="@style/citizen_need_category"
-                    android:id="@+id/Need_list_cate_num1"
-                    android:text="[복지]" />
-
-            </LinearLayout>
-
-            //게시글
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:orientation="vertical"
-                android:layout_marginLeft="13dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/textView_cate"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    style="@style/citizen_need_category"
+                    android:text="[복지]" />
+                <TextView
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:layout_margin="1dp"
-                    android:id="@+id/Need_list_title_num1"
+                    android:id="@+id/textView_need_title"
                     android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="고속터미널 지하상가와 반포역에 노숙자 쉼터 개설"/>
-                //구,좋아요,의견
+            </LinearLayout>
+
+            //구,좋아요,의견
+            <LinearLayout
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                //구
                 <LinearLayout
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="4dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    //구
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:textSize="13sp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="서초구"/>
-                    </LinearLayout>
-                    //좋아요
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:src="@drawable/agreement_black"
-                            android:layout_margin="1dp"
-                            android:layout_width="13dp"
-                            android:layout_height="13dp" />
-                        <TextView
-                            android:text=" 34"
-                            android:textSize="13dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
 
-                    //의견
-                    <LinearLayout
-                        android:layout_weight="1"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="11dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/textView_Gu"
+                        android:textSize="13sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="서초구"/>
+                </LinearLayout>
+                //좋아요
+                <LinearLayout
+                    android:layout_marginRight="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:gravity="center"
+                        android:src="@drawable/agreement_black"
+                        android:layout_margin="1dp"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp" />
+                    <TextView
+                        android:layout_marginLeft="4dp"
+                        android:gravity="center"
+                        android:id="@+id/textView_n_good"
+                        android:text="34"
+                        android:textSize="13dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:src="@drawable/comment_black"
-                            android:layout_width="13dp"
-                            android:layout_margin="1dp"
-                            android:layout_height="13dp" />
-                        <TextView
-                            android:text=" 20"
-                            android:textSize="13dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </LinearLayout>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
+                //의견
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:gravity="center"
+                        android:src="@drawable/comment_black"
+                        android:layout_width="13dp"
+                        android:layout_margin="1dp"
+                        android:layout_height="13dp" />
+                    <TextView
+                        android:layout_marginLeft="4dp"
+                        android:gravity="center"
+                        android:id="@+id/textView_n_comment"
+                        android:text="20"
+                        android:textSize="13dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-
-
-
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -942,111 +940,102 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/gab">
         </LinearLayout>
-        //필요해요 내용2
+
+        //필요해요 내용 2
         <LinearLayout
-            android:background="?android:attr/selectableItemBackground"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="7dp"
-            android:id="@+id/layout_need2"
-            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="13dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            //카테고리
             <LinearLayout
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:gravity="center"
-                    style="@style/citizen_need_category"
-                    android:id="@+id/Need_list_cate_num2"
-                    android:text="[경제]" />
-
-            </LinearLayout>
-
-            //게시글
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:orientation="vertical"
-                android:layout_marginLeft="13dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    style="@style/citizen_need_category"
+                    android:text="[경제]" />
+                <TextView
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:layout_margin="1dp"
-                    android:id="@+id/Need_list_title_num2"
                     android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="청년 일자리 창출을 위한 청년벤처기업 조성"/>
-                //구,좋아요,의견
+            </LinearLayout>
+
+            //구,좋아요,의견
+            <LinearLayout
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                //구
                 <LinearLayout
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="4dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    //구
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:textSize="13sp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="종로구"/>
-                    </LinearLayout>
-                    //좋아요
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:src="@drawable/agreement_black"
-                            android:layout_margin="1dp"
-                            android:layout_width="13dp"
-                            android:layout_height="13dp" />
-                        <TextView
-                            android:text=" 74"
-                            android:textSize="13dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
 
-                    //의견
-                    <LinearLayout
-                        android:layout_weight="1"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="11dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="종로구"/>
+                </LinearLayout>
+                //좋아요
+                <LinearLayout
+                    android:layout_marginRight="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:gravity="center"
+                        android:src="@drawable/agreement_black"
+                        android:layout_margin="1dp"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp" />
+                    <TextView
+                        android:layout_marginLeft="4dp"
+                        android:gravity="center"
+                        android:text="74"
+                        android:textSize="13dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:src="@drawable/comment_black"
-                            android:layout_width="13dp"
-                            android:layout_margin="1dp"
-                            android:layout_height="13dp" />
-                        <TextView
-                            android:text=" 33"
-                            android:textSize="13dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </LinearLayout>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
+                //의견
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:gravity="center"
+                        android:src="@drawable/comment_black"
+                        android:layout_width="13dp"
+                        android:layout_margin="1dp"
+                        android:layout_height="13dp" />
+                    <TextView
+                        android:layout_marginLeft="4dp"
+                        android:gravity="center"
+                        android:text="33"
+                        android:textSize="13dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-
-
-
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -1058,111 +1047,102 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/gab">
         </LinearLayout>
-        //필요해요 내용3
+
+        //필요해요 내용 3
         <LinearLayout
-            android:background="?android:attr/selectableItemBackground"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="7dp"
-            android:id="@+id/layout_need3"
-            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="13dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            //카테고리
             <LinearLayout
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:gravity="center"
-                    style="@style/citizen_need_category"
-                    android:id="@+id/Need_list_cate_num3"
-                    android:text="[경제]" />
-
-            </LinearLayout>
-
-            //게시글
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:orientation="vertical"
-                android:layout_marginLeft="13dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    style="@style/citizen_need_category"
+                    android:text="[경제]" />
+                <TextView
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:layout_margin="1dp"
-                    android:id="@+id/Need_list_title_num3"
                     android:textColor="@color/colorBlack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="상암 롯데몰 빠른 진행을 바랍니다."/>
-                //구,좋아요,의견
+            </LinearLayout>
+
+            //구,좋아요,의견
+            <LinearLayout
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                //구
                 <LinearLayout
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="4dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    //구
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:textSize="13sp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="마포구"/>
-                    </LinearLayout>
-                    //좋아요
-                    <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:src="@drawable/agreement_black"
-                            android:layout_margin="1dp"
-                            android:layout_width="13dp"
-                            android:layout_height="13dp" />
-                        <TextView
-                            android:text=" 57"
-                            android:textSize="13dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
 
-                    //의견
-                    <LinearLayout
-                        android:layout_weight="1"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="11dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:gravity="center"
+                        android:textSize="13sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="서초구"/>
+                </LinearLayout>
+                //좋아요
+                <LinearLayout
+                    android:layout_marginRight="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:gravity="center"
+                        android:src="@drawable/agreement_black"
+                        android:layout_margin="1dp"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp" />
+                    <TextView
+                        android:layout_marginLeft="4dp"
+                        android:gravity="center"
+                        android:text="57"
+                        android:textSize="13dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:src="@drawable/comment_black"
-                            android:layout_width="13dp"
-                            android:layout_margin="1dp"
-                            android:layout_height="13dp" />
-                        <TextView
-                            android:text=" 30"
-                            android:textSize="13dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_weight="5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </LinearLayout>
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
+                //의견
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:gravity="center"
+                        android:src="@drawable/comment_black"
+                        android:layout_width="13dp"
+                        android:layout_margin="1dp"
+                        android:layout_height="13dp" />
+                    <TextView
+                        android:layout_marginLeft="4dp"
+                        android:gravity="center"
+                        android:text="30"
+                        android:textSize="13dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-
-
-
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -1174,6 +1154,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/gab">
         </LinearLayout>
+
 
 
 
