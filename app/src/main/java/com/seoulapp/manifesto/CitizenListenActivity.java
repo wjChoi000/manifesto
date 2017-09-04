@@ -158,6 +158,9 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
                 String ag_context = item.getAg_context();
                 String op_context = item.getOp_context();
                 String c_date = item.getC_date();
+                String comNum = item.getComment();
+                String ag_Num = item.getAg();
+                String op_Num = item.getOp();
 
                 Intent intentRow = new Intent(CitizenListenActivity.this, CitizenListenContentActivity.class);
 
@@ -168,6 +171,10 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
                 intentRow.putExtra("ag_context",ag_context);
                 intentRow.putExtra("op_context",op_context);
                 intentRow.putExtra("c_date",c_date);
+                intentRow.putExtra("comNum",comNum);
+
+                intentRow.putExtra("agNum",ag_Num);
+                intentRow.putExtra("opNum",op_Num);
 
                 startActivity(intentRow);
 

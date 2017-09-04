@@ -1,6 +1,7 @@
 package com.seoulapp.manifesto;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,21 +16,16 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CitizenHelpContentActivity extends AppCompatActivity {
-
-    // 현재시간을 msec 으로 구한다.
-    long now = System.currentTimeMillis();
-    // 현재시간을 date 변수에 저장한다.
-    Date date = new Date(now);
-    // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
-    SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-    // nowDate 변수에 값을 저장한다.
-    String formatDate = sdfNow.format(date);
-
-    TextView dateNow;
+    int goodCount;
+    int checknum = 0;
+    ImageView imgGood;
+    TextView tvGood, tvGoodCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,22 +67,6 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         help.setBackgroundColor(getResources().getColor(R.color.colorWhite));
 
         listview.addHeaderView(header, null, false);
-
-//        //현재시간 출력(1)
-//        dateNow = (TextView) findViewById(R.id.dateNow1);
-//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
-//
-//        //현재시간 출력(2)
-//        dateNow = (TextView) findViewById(R.id.dateNow2);
-//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
-//
-//        //현재시간 출력(3)
-//        dateNow = (TextView) findViewById(R.id.dateNow3);
-//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
-//
-//        //현재시간 출력(4)
-//        dateNow = (TextView) findViewById(R.id.dateNow4);
-//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
 
         //actionbar title
         View view = getLayoutInflater().inflate(R.layout.actionbar_title, null);
@@ -131,6 +111,15 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         tvCDate.setText(intent.getStringExtra("C_date"));
         tvComNum.setText(intent.getStringExtra("comNum"));
 
+        tvGood = (TextView)findViewById(R.id.goodTvBtn);
+        tvGoodCount = (TextView)findViewById(R.id.help_good);
+
+        String countTest = intent.getStringExtra("goodNum");
+        goodCount = Integer.parseInt(countTest);
+
+        findViewById(R.id.goodTvBtn).setOnClickListener(clickListener);
+
+        imgGood = (ImageView)findViewById(R.id.imgGood);
 
     }
 
@@ -143,6 +132,32 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private View.OnClickListener clickListener = new View.OnClickListener(){
+        @Override
+        public void onClick(View v){
+
+            switch (checknum){
+                case 0:
+                    checknum++;
+                    goodCount++;
+                    imgGood.setImageResource(R.drawable.ag_pressed);
+                    tvGood.setTextColor(getResources().getColor(R.color.agreement));
+                    tvGoodCount.setTextColor(getResources().getColor(R.color.agreement));
+                    tvGoodCount.setText(""+goodCount);
+                    break;
+                case 1:
+                    checknum--;
+                    goodCount--;
+                    imgGood.setImageResource(R.drawable.agreement_normal);
+                    tvGoodCount.setText(""+goodCount);
+                    tvGood.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+                    tvGoodCount.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+                default:
+                    break;
+            }
+        }
+    };
 
 
 }

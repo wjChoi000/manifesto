@@ -19,17 +19,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CitizenNeedContentActivity extends AppCompatActivity {
+    int need_goodCount;
+    int need_checknum = 0;
+    ImageView need_imgGood;
+    TextView need_tvGood, need_tvGoodCount;
 
-    // 현재시간을 msec 으로 구한다.
-    long now = System.currentTimeMillis();
-    // 현재시간을 date 변수에 저장한다.
-    Date date = new Date(now);
-    // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
-    SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-    // nowDate 변수에 값을 저장한다.
-    String formatDate = sdfNow.format(date);
-
-    TextView dateNow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,14 +93,36 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
         TextView tvTitle = (TextView)findViewById(R.id.need_title_context);
         TextView tvGu = (TextView)findViewById(R.id.gu);
+        TextView tvU_id = (TextView)findViewById(R.id.need_context_u_id);
+        TextView tvC_date = (TextView)findViewById(R.id.need_C_date);
+        TextView tvContext = (TextView)findViewById(R.id.need_context);
+        TextView tvGoodNum = (TextView)findViewById(R.id.need_goodNum);
+        TextView tvHitNum = (TextView)findViewById(R.id.need_hitNum);
+        TextView tvComNum = (TextView)findViewById(R.id.need_comNum);
 
         Intent intent = getIntent(); // 보내온 Intent를 얻는다
-        tvTitle.setText(intent.getStringExtra("title"));
-        tvGu.setText(intent.getStringExtra("gu"));
 
+        tvTitle.setText(intent.getStringExtra("title"));
+        tvU_id.setText(intent.getStringExtra("u_id"));
+        tvGu.setText(intent.getStringExtra("gu"));
+        tvC_date.setText(intent.getStringExtra("C_date"));
+        tvContext.setText(intent.getStringExtra("Need_context"));
+        tvGoodNum.setText(intent.getStringExtra("GoodNum"));
+        tvHitNum.setText(intent.getStringExtra("HitNum"));
+        tvComNum.setText(intent.getStringExtra("ComNum"));
+
+        need_tvGood = (TextView)findViewById(R.id.need_goodTvBtn);
+        need_tvGoodCount = (TextView)findViewById(R.id.need_goodNum);
+
+        String countTest = intent.getStringExtra("GoodNum");
+        need_goodCount = Integer.parseInt(countTest);
+
+        findViewById(R.id.need_goodTvBtn).setOnClickListener(need_clickListener);
+
+        need_imgGood = (ImageView)findViewById(R.id.need_imgGood);
 
 
 
@@ -121,6 +137,34 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    private View.OnClickListener need_clickListener = new View.OnClickListener(){
+        @Override
+        public void onClick(View v){
+
+            switch (need_checknum){
+                case 0:
+                    need_checknum++;
+                    need_goodCount++;
+                    need_imgGood.setImageResource(R.drawable.ag_pressed);
+                    need_tvGood.setTextColor(getResources().getColor(R.color.agreement));
+                    need_tvGoodCount.setTextColor(getResources().getColor(R.color.agreement));
+                    need_tvGoodCount.setText(""+need_goodCount);
+                    break;
+                case 1:
+                    need_checknum--;
+                    need_goodCount--;
+                    need_imgGood.setImageResource(R.drawable.agreement_normal);
+                    need_tvGoodCount.setText(""+need_goodCount);
+                    need_tvGood.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+                    need_tvGoodCount.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+                default:
+                    break;
+            }
+        }
+    };
+
 
 
 }

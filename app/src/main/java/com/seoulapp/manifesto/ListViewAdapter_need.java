@@ -69,13 +69,17 @@ public class ListViewAdapter_need extends BaseAdapter {
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(String cate, String need_title, String gu, String goodStr, String commentStr ) {
+    public void addItem(String cate, String need_title, String gu, String u_id, String C_date, String need_context,  String goodStr, String hitNum, String commentStr ) {
         ListViewItem_need item = new ListViewItem_need();
 
         item.setCate(cate);
         item.setNeed_title(need_title);
         item.setGu(gu);
+        item.setU_id(u_id);
+        item.setC_date(C_date);
+        item.setNeed_context(need_context);
         item.setGoodStr(goodStr);
+        item.setHitNum(hitNum);
         item.setCommentStr(commentStr);
 
         listViewItemList_need.add(item);

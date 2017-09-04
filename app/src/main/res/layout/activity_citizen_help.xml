@@ -6,9 +6,7 @@
         android:dividerHeight="1dp"
         android:divider="@drawable/list_divider"
         android:id="@+id/listview_help"
-
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
         />
 </LinearLayout>

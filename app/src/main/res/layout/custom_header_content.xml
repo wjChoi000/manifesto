@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     //리슨
-
     <LinearLayout
         android:id="@+id/listheader_listen_content"
         android:layout_width="match_parent"
@@ -237,6 +236,7 @@
                 android:textSize="17sp" />
 
             <TextView
+                android:id="@+id/listen_comNum"
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -319,14 +319,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:id="@+id/imgGood"
                     android:layout_gravity="center"
                     android:layout_margin="3dp"
-                    android:src="@drawable/good"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp" />
+                    android:src="@drawable/agreement_normal"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp" />
                 //좋아요
                 <TextView
-                    android:onClick="onClickGood"
+                    android:id="@+id/goodTvBtn"
+                    android:onClick="onClick"
                     android:gravity="center"
                     android:layout_margin="3dp"
                     android:text="좋아요"
@@ -337,7 +339,6 @@
                     android:id="@+id/help_good"
                     android:gravity="center"
                     android:layout_marginTop="3dp"
-                    android:textColor="@color/numhighlight"
                     android:text="100"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -443,6 +444,7 @@
                 android:layout_height="wrap_content" />
             //아이디
             <TextView
+                android:id="@+id/need_context_u_id"
                 android:layout_marginRight="3dp"
                 android:layout_gravity="center"
                 android:gravity="right"
@@ -453,7 +455,7 @@
             //시간
             <TextView
                 android:text="2017.08.20"
-                android:id="@+id/dateNowTitle"
+                android:id="@+id/need_C_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
@@ -471,6 +473,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/need_context"
                 android:lineSpacingExtra="13dip"
                 android:minLines="13"
                 android:padding="15dp"
@@ -502,14 +505,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:id="@+id/need_imgGood"
                     android:layout_gravity="center"
                     android:layout_margin="3dp"
-                    android:src="@drawable/good"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp" />
+                    android:src="@drawable/agreement_normal"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp" />
                 //좋아요
                 <TextView
-                    android:onClick="onClickGood"
+                    android:id="@+id/need_goodTvBtn"
+                    android:onClick="onClick"
                     android:gravity="center"
                     android:layout_margin="3dp"
                     android:text="좋아요"
@@ -517,37 +522,14 @@
                     android:layout_height="wrap_content" />
                 //좋아요 갯수
                 <TextView
+                    android:id="@+id/need_goodNum"
                     android:gravity="center"
                     android:layout_marginTop="3dp"
-                    android:textColor="@color/numhighlight"
                     android:text="100"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
-            <!--<LinearLayout-->
-                <!--android:orientation="horizontal"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content">-->
-                <!--<ImageView-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:layout_margin="3dp"-->
-                    <!--android:src="@drawable/comment_black"-->
-                    <!--android:layout_width="13dp"-->
-                    <!--android:layout_height="13dp" />-->
-                <!--//댓글-->
-                <!--<TextView-->
-                    <!--android:layout_margin="3dp"-->
-                    <!--android:text="댓글"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content" />-->
-                <!--//댓글 갯수-->
-                <!--<TextView-->
-                    <!--android:layout_marginTop="3dp"-->
-                    <!--android:textColor="@color/numhighlight"-->
-                    <!--android:text="100"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content" />-->
-            <!--</LinearLayout>-->
+
             <LinearLayout
                 android:layout_marginLeft="6dp"
                 android:orientation="horizontal"
@@ -561,6 +543,7 @@
                     android:layout_height="wrap_content" />
                 //조회수 갯수
                 <TextView
+                    android:id="@+id/need_hitNum"
                     android:layout_marginTop="3dp"
                     android:textColor="@color/numhighlight"
                     android:text="200"
@@ -594,6 +577,7 @@
                 android:textSize="17sp" />
 
             <TextView
+                android:id="@+id/need_comNum"
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

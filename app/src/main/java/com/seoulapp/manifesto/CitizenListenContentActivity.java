@@ -24,8 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CitizenListenContentActivity extends AppCompatActivity {
-    int agcount = 0;
-    int opcount = 0;
+    int agcount;
+    int opcount;
     TextView agtextview,optextview;
     CheckBox agCheck,opCheck;
 
@@ -121,6 +121,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
+        /////////////////////////////////////////////////////////////////////////
         agtextview = (TextView)findViewById(R.id.ag_count);
         findViewById(R.id.agreementBtn).setOnClickListener(clickListener);
         agCheck = (CheckBox)findViewById(R.id.agreementBtn);
@@ -130,6 +131,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         opCheck = (CheckBox)findViewById(R.id.oppositionBtn);
 
 
+        //////////////////////////////////////////////////////////////////////////////
         TextView tvTitle = (TextView)findViewById(R.id.titleText);
         ImageView iv = (ImageView)findViewById(R.id.Listen_content_num1);
 
@@ -137,6 +139,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         TextView tvAgContext = (TextView)findViewById(R.id.Ag_context);
         TextView tvOpContext = (TextView)findViewById(R.id.Op_context);
         TextView tvCDate = (TextView)findViewById(R.id.c_date);
+        TextView tvComNum = (TextView)findViewById(R.id.listen_comNum);
 
 
 //        ImageView imgListenN1 = (ImageView)findViewById(R.id.Listen_list_image_num1);
@@ -153,10 +156,16 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         tvAgContext.setText(intent.getStringExtra("ag_context"));
         tvOpContext.setText(intent.getStringExtra("op_context"));
         tvCDate.setText(intent.getStringExtra("c_date"));
+        tvComNum.setText(intent.getStringExtra("comNum"));
 
+        agtextview.setText("찬성 "+intent.getStringExtra("agNum"));
+        optextview.setText("반대 "+intent.getStringExtra("opNum"));
 
+        String agtest = intent.getStringExtra("agNum");
+        agcount = Integer.parseInt(agtest);
 
-
+        String optest = intent.getStringExtra("opNum");
+        opcount = Integer.parseInt(optest);
 
 
 
