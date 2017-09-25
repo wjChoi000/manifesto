@@ -602,19 +602,23 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            >
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="약력"
                 style="@style/rate_small_title"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+
                 android:paddingBottom="10dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
                 <!--profile-->
                 <LinearLayout
                     android:layout_width="0dp"
@@ -706,55 +710,84 @@
                     android:scaleType="fitXY"
                     android:src="@drawable/manifesto_major"/>
             </LinearLayout>
-            <!--gab-->
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="@dimen/gab"-->
-                <!--android:background="@color/colorBackgroundGray"-->
-                <!--android:layout_marginTop="10dp"></LinearLayout>-->
 
-            <info.hoang8f.android.segmented.SegmentedGroup
-                xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/rate_segment_gr"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="10dp"
                 android:orientation="horizontal"
-                segmentedgroup:sc_border_width="2dp"
-                segmentedgroup:sc_corner_radius="10dp"
-                android:layout_gravity="center"
-            >
+                android:layout_marginTop="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorBackgroundGray"
+                    android:paddingTop="@dimen/rate_profile_header_gap"
+                    >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:layout_marginLeft="@dimen/rate_profile_header_gap"
+                        android:id="@+id/rate_profile_header1"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/rate_profile_header"
+                            android:text="수상"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:layout_marginLeft="@dimen/rate_profile_header_gap"
+                        android:id="@+id/rate_profile_header2"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/rate_profile_header"
+                            android:text="경력"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:layout_marginLeft="@dimen/rate_profile_header_gap"
+                        android:id="@+id/rate_profile_header3"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/rate_profile_header"
+                            android:text="학력"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:layout_marginLeft="@dimen/rate_profile_header_gap"
+                        android:layout_marginRight="@dimen/rate_profile_header_gap"
+                        android:id="@+id/rate_profile_header4"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/rate_profile_header"
+                            android:text="범죄경력"/>
+                    </LinearLayout>
+                </LinearLayout>
 
-            <RadioButton
-                android:id="@+id/rate_gr_1"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/rate_profile_aware"
-                style="@style/RadioButton"
-                android:textSize="24dp"/>
+            </LinearLayout>
+            <!--gab-->
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rate_profile_header_gap"
+            android:background="@color/colorBackgroundGray"
+                android:layout_marginBottom="10dp">
+            </LinearLayout>
 
-            <RadioButton
-                android:id="@+id/rate_gr_2"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/rate_profile_career"
-                style="@style/RadioButton"
-                android:textSize="24dp"/>
-            <RadioButton
-                android:id="@+id/rate_gr_3"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/rate_profile_education"
-                style="@style/RadioButton"
-                android:textSize="24dp"/>
-            </info.hoang8f.android.segmented.SegmentedGroup>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -783,32 +816,7 @@
                     android:visibility="gone">
 
                 </LinearLayout>
-
             </FrameLayout>
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/m_profile_aware"-->
-                <!--style="@style/m_profile_title"/>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/m_profile_career"-->
-                <!--style="@style/m_profile_title"/>-->
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/m_profile_crime"-->
-                <!--style="@style/m_profile_title"/>-->
-
-            <!--<LinearLayout-->
-                <!--android:id="@+id/m_profile_crime"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical">-->
-
-            <!--</LinearLayout>-->
         </LinearLayout>
     </FrameLayout>
     </ScrollView>
@@ -823,7 +831,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="4">
+        >
 
         <LinearLayout
             android:id="@+id/rate_btn_one"
@@ -871,29 +879,29 @@
                 android:visibility="invisible" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/rate_btn_three"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#FFF"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/rate_btn_three"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="#FFF"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:orientation="vertical">-->
 
-            <TextView
-                android:id="@+id/m_map_small_t_three"
-                style="@style/m_map_smallTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/m_map_small_title_three" />
+            <!--<TextView-->
+                <!--android:id="@+id/m_map_small_t_three"-->
+                <!--style="@style/m_map_smallTitle"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/m_map_small_title_three" />-->
 
-            <TextView
-                android:id="@+id/m_map_small_s_three"
-                style="@style/m_map_stick"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:visibility="invisible" />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/m_map_small_s_three"-->
+                <!--style="@style/m_map_stick"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="5dp"-->
+                <!--android:visibility="invisible" />-->
+        <!--</LinearLayout>-->
 
         <LinearLayout
             android:id="@+id/rate_btn_four"

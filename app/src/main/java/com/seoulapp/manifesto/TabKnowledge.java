@@ -93,12 +93,16 @@ public class TabKnowledge extends Fragment {
         int tenDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics());
         buttonLayout.setPadding(tenDp,tenDp,tenDp,tenDp);
 
+        int imageDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24, getResources().getDisplayMetrics());
+        LinearLayout.LayoutParams paramsImage = new LinearLayout.LayoutParams(imageDp,
+                imageDp,0.0F);
+
         LinearLayout.LayoutParams paramsWrap = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT,0.0F);
 
 
         ImageView goodI = new ImageView(context);
-        goodI.setLayoutParams(paramsWrap);
+        goodI.setLayoutParams(paramsImage);
         goodI.setImageResource(R.drawable.agreement_black);
         goodI.setPadding(tenDp,0,0,0);
         buttonLayout.addView(goodI);
@@ -110,7 +114,7 @@ public class TabKnowledge extends Fragment {
         buttonLayout.addView(goodTV);
 
         ImageView commentI = new ImageView(context);
-        commentI.setLayoutParams(paramsWrap);
+        commentI.setLayoutParams(paramsImage);
         commentI.setImageResource(R.drawable.comment_black);
         commentI.setPadding(tenDp,0,0,0);
         buttonLayout.addView(commentI);

@@ -39,6 +39,10 @@ import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.MPPointF;
+import com.seoulapp.manifesto.restful.RestAPI;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 
@@ -90,26 +94,27 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         //intent
         thisintent = getIntent();
-        city = thisintent.getStringExtra("city");
+        int id = thisintent.getIntExtra("id",0);
 
+        city ="서울특별시";
         //small titile
         oneT = (TextView)findViewById(R.id.m_map_small_t_one);
         oneS = (TextView)findViewById(R.id.m_map_small_s_one);
         twoT = (TextView)findViewById(R.id.m_map_small_t_two);
         twoS = (TextView)findViewById(R.id.m_map_small_s_two);
-        threeT = (TextView)findViewById(R.id.m_map_small_t_three);
-        threeS = (TextView)findViewById(R.id.m_map_small_s_three);
+//        threeT = (TextView)findViewById(R.id.m_map_small_t_three);
+//        threeS = (TextView)findViewById(R.id.m_map_small_s_three);
         fourT =  (TextView) findViewById(R.id.m_map_small_t_four);
         fourS = (TextView) findViewById(R.id.m_map_small_s_four);
 
         frameOne = (LinearLayout)findViewById(R.id.rate_frame_one);
         frameTwo = (LinearLayout)findViewById(R.id.rate_frame_two);
-        frameThree = (LinearLayout)findViewById(R.id.rate_frame_three);
+//        frameThree = (LinearLayout)findViewById(R.id.rate_frame_three);
         frameFour = (LinearLayout) findViewById(R.id.rate_frame_four);
 
         btnOne =(LinearLayout) findViewById(R.id.rate_btn_one);
         btnTwo =(LinearLayout) findViewById(R.id.rate_btn_two);
-        btnThree =(LinearLayout) findViewById(R.id.rate_btn_three);
+//        btnThree =(LinearLayout) findViewById(R.id.rate_btn_three);
         btnFour =(LinearLayout) findViewById(R.id.rate_btn_four);
         //fragmen
 
@@ -127,12 +132,12 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 replaceButton(2);
             }
         });
-        btnThree.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                replaceButton(3);
-            }
-        });
+//        btnThree.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) {
+//                replaceButton(3);
+//            }
+//        });
         btnFour.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -140,30 +145,45 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
             }
         });
-
         btnOne.performClick();
-
+        restful();
         rate();
         promise();
-        news();
+//        news();
         profile();
 
     }
 
+    void restful(){
+        RestAPI rest = new RestAPI();
+        JSONObject json = rest.getJSONObject("nul",1);
+        try{
+            if(json !=null){
+                Log.i("rate",json.getString("code"));
+            }
+            else{
+                Log.i("rate","null");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.i("rate","fail");
+        }
+
+    }
     private void replaceButton(int fragmentId){
         oneT.setTextColor(getResources().getColor(R.color.colorBlack));
         twoT.setTextColor(getResources().getColor(R.color.colorBlack));
-        threeT.setTextColor(getResources().getColor(R.color.colorBlack));
+//        threeT.setTextColor(getResources().getColor(R.color.colorBlack));
         fourT.setTextColor(getResources().getColor(R.color.colorBlack));
 
         oneS.setVisibility(View.INVISIBLE);
         twoS.setVisibility(View.INVISIBLE);
-        threeS.setVisibility(View.INVISIBLE);
+//        threeS.setVisibility(View.INVISIBLE);
         fourS.setVisibility(View.INVISIBLE);
 
         frameOne.setVisibility(View.GONE);
         frameTwo.setVisibility(View.GONE);
-        frameThree.setVisibility(View.GONE);
+//        frameThree.setVisibility(View.GONE);
         frameFour.setVisibility(View.GONE);
 
         switch (fragmentId){
@@ -181,9 +201,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
 //                replaceFragment(2);
                 break;
             case 3:
-                threeT.setTextColor(getResources().getColor(R.color.colorMain));
-                threeS.setVisibility(View.VISIBLE);
-                frameThree.setVisibility(View.VISIBLE);
+//                threeT.setTextColor(getResources().getColor(R.color.colorMain));
+//                threeS.setVisibility(View.VISIBLE);
+//                frameThree.setVisibility(View.VISIBLE);
 //                replaceFragment(3);
                 break;
             case 4:
@@ -439,7 +459,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         data.setValueFormatter(new PercentFormatter());
         data.setValueTextSize(20f);
-        data.setValueTextColor(getResources().getColor(R.color.colorBlack));
+        data.setValueTextColor(getResources().getColor(R.color.colorWhite));
         //data.setValueTypeface(mTfLight);
         chart.setData(data);
 
@@ -813,16 +833,22 @@ public class ManifestoRateActivity extends AppCompatActivity {
         final LinearLayout crime = (LinearLayout) findViewById(R.id.m_profile_crime);
 
 
-        RadioButton segment1 = (RadioButton) findViewById(R.id.rate_gr_1);
-        RadioButton segment2 = (RadioButton) findViewById(R.id.rate_gr_2);
-        RadioButton segment3 = (RadioButton) findViewById(R.id.rate_gr_3);
+//        RadioButton segment1 = (RadioButton) findViewById(R.id.rate_gr_1);
+//        RadioButton segment2 = (RadioButton) findViewById(R.id.rate_gr_2);
+//        RadioButton segment3 = (RadioButton) findViewById(R.id.rate_gr_3);
 
+        final LinearLayout segment1 = (LinearLayout) findViewById(R.id.rate_profile_header1);
+        final LinearLayout segment2 = (LinearLayout) findViewById(R.id.rate_profile_header2);
+        final LinearLayout segment3 = (LinearLayout) findViewById(R.id.rate_profile_header3);
         segment1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 aware.setVisibility(View.VISIBLE);
                 career.setVisibility(View.GONE);
                 crime.setVisibility(View.GONE);
+                segment1.setBackgroundResource(R.color.colorBackgroundGray);
+                segment2.setBackgroundResource(R.color.colorWhite);
+                segment3.setBackgroundResource(R.color.colorWhite);
             }
         });
 
@@ -832,6 +858,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 aware.setVisibility(View.GONE);
                 career.setVisibility(View.VISIBLE);
                 crime.setVisibility(View.GONE);
+                segment1.setBackgroundResource(R.color.colorWhite);
+                segment2.setBackgroundResource(R.color.colorBackgroundGray);
+                segment3.setBackgroundResource(R.color.colorWhite);
             }
         });
 
@@ -841,6 +870,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 aware.setVisibility(View.GONE);
                 career.setVisibility(View.GONE);
                 crime.setVisibility(View.VISIBLE);
+                segment1.setBackgroundResource(R.color.colorWhite);
+                segment2.setBackgroundResource(R.color.colorWhite);
+                segment3.setBackgroundResource(R.color.colorBackgroundGray);
             }
         });
 
@@ -869,7 +901,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         text.setText(s);
         text.setTextColor(getResources().getColor(R.color.colorBlack));
-        text.setPadding(80,0,0,0);
+        text.setPadding(40,0,0,0);
         parent.addView(text);
     }
 

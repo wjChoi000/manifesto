@@ -10,6 +10,8 @@
     <dimen name="margin_default">10dp</dimen>
 
     <dimen name="gab">1dp</dimen>
+    <dimen name="rate_profile_header_gap">2dp</dimen>
+
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
 

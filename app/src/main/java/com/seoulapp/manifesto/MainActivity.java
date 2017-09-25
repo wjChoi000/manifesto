@@ -70,7 +70,8 @@ public class MainActivity extends AppCompatActivity{
                 Gravity.CENTER);
 
         TextView Title = (TextView) view.findViewById(R.id.actionbar_title);
-        Title.setText("Manifesto");
+        Title.setText(R.string.app_name);
+
 
         getSupportActionBar().setCustomView(view,params);
         getSupportActionBar().setDisplayShowCustomEnabled(true); //show custom title

@@ -16,8 +16,8 @@
     <color name="welfare">#00B050</color>
     <color name="economy">#0070C0</color>
     <color name="administation">#FF00</color>
-    <color name="culture">#fb9d22</color>
-    <color name="environment">#00FFFF</color>
+    <color name="culture">#FF7F00</color>
+    <color name="environment">#87CEFA</color>
     <color name="cityAndSafty">#f1c40f</color>
 
     <color name="need_category">#f39c12</color>
@@ -28,6 +28,8 @@
     <color name="rate_title_four">#3498db</color>
     <color name="rate_title_five">#bdc3c7</color>
 
+    <color name="rate_profile_head_dark_gray">#</color>
+    <color name="rate_profile_head_white_gray">#</color>
     <!-- -->
     <color name="promise_care">#00B050</color>
     <color name="promise_culture">#FFC000</color>

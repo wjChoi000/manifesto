@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Manifesto</string>
+    <string name="app_name">공약지킴이</string>
 
     <string name="tab_title_one">매니페스토</string>
     <string name="tab_title_two">시민의원</string>

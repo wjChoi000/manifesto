@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
-    android:background="#fff">
+    android:background="#fff"
+    android:orientation="vertical">
 
     <!-- the number of people-->
     <LinearLayout
@@ -18,7 +19,6 @@
         android:layout_marginBottom="1dp"
         android:background="#FFF"
         android:gravity="center"
-        android:layout_alignParentTop="true"
         android:id="@+id/manifestoParty">
         <LinearLayout
             android:layout_width="wrap_content"
@@ -30,11 +30,6 @@
                 android:layout_height="24dp"
                 style="@style/manifestoPartyImage"
                 android:src="@drawable/party_minju"/>
-            <!--<Button-->
-                <!--android:layout_width="24dp"-->
-                <!--android:layout_height="24dp"-->
-                <!--style="@style/manifestoPartyImage"-->
-                <!--android:background="@android:color/holo_blue_dark"/>-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -83,44 +78,17 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorBackgroundGray"
-        android:layout_alignBottom="@id/manifestoParty"
+
         android:id="@+id/manifestoPartyB"
         android:orientation="horizontal" />
-    <!---->
-    <LinearLayout
-        android:id="@+id/manifestoContents"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFF"
-        android:layout_marginTop="1dp"
-        android:layout_alignParentBottom="true"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:text="@string/manifesto_content"
-            android:textColor="#000"
-            android:textSize="20dp"
-            android:textAlignment="center"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorBackgroundGray"
-        android:layout_alignTop="@id/manifestoContents"
-        android:id="@+id/manifestoContentsT"
-        android:orientation="horizontal" />
-
     <!-- map-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="#FFF"
-        android:layout_below="@id/manifestoPartyB"
-        android:layout_above="@id/manifestoContentsT"
-
         android:orientation="vertical"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         >
         <RelativeLayout
             android:layout_width="350dp"
@@ -131,15 +99,13 @@
                 android:layout_height="30dp"
                 android:text="@string/manifesto_mayor"
                 android:layout_alignParentLeft="true"
-
-                android:id="@+id/manifestoBtnOfficial"
+                android:id="@+id/manifestoBtn1"
                 android:layout_gravity="left"
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
 
+                android:layout_marginTop="10dp"
                 fbutton:buttonColor="@color/fbutton_color_peter_river"
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="5dp"
@@ -149,12 +115,11 @@
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:text="@string/manifesto_education"
-
+                android:id="@+id/manifestoBtn27"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
 
                 fbutton:buttonColor="@android:color/darker_gray"
@@ -162,17 +127,15 @@
                 fbutton:cornerRadius="5dp"
 
                 />
-
             <ImageView
                 android:layout_width="350dp"
                 android:layout_height="350dp"
                 android:src="@drawable/manifesto_seoul_map" />
-
             <!--button-->
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn18"
                 android:text="성북"
                 android:textSize="12dp"
                 android:layout_marginLeft="190dp"
@@ -185,11 +148,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn11"
                 android:text="도봉"
                 android:textSize="12dp"
                 android:layout_marginLeft="200dp"
@@ -202,11 +164,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn10"
                 android:text="노원"
                 android:textSize="12dp"
                 android:layout_marginLeft="235dp"
@@ -222,7 +183,7 @@
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn4"
                 android:text="강북"
                 android:textSize="12dp"
                 android:layout_marginLeft="177dp"
@@ -238,7 +199,7 @@
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn26"
                 android:text="중랑"
                 android:textSize="12dp"
                 android:layout_marginLeft="247dp"
@@ -254,7 +215,7 @@
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn23"
                 android:text="은평"
                 android:textSize="12dp"
                 android:layout_marginLeft="110dp"
@@ -267,11 +228,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn24"
                 android:text="종로"
                 android:textSize="12dp"
                 android:layout_marginLeft="157dp"
@@ -283,11 +243,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="40dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn12"
                 android:text="동대문"
                 android:textSize="12dp"
                 android:layout_marginLeft="210dp"
@@ -302,7 +261,7 @@
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn7"
                 android:text="광진"
                 android:textSize="12dp"
                 android:layout_marginLeft="250dp"
@@ -314,11 +273,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn3"
                 android:text="강동"
                 android:textSize="12dp"
                 android:layout_marginLeft="295dp"
@@ -330,11 +288,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn17"
                 android:text="성동"
                 android:textSize="12dp"
                 android:layout_marginLeft="210dp"
@@ -346,11 +303,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn25"
                 android:text="중구"
                 android:textSize="12dp"
                 android:layout_marginLeft="173dp"
@@ -365,7 +321,7 @@
             <info.hoang8f.widget.FButton
                 android:layout_width="40dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn15"
                 android:text="서대문"
                 android:textSize="12dp"
                 android:layout_marginLeft="118dp"
@@ -380,7 +336,7 @@
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn14"
                 android:text="마포"
                 android:textSize="12dp"
                 android:layout_marginLeft="90dp"
@@ -392,11 +348,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn5"
                 android:text="강서"
                 android:textSize="12dp"
                 android:layout_marginLeft="30dp"
@@ -411,7 +366,7 @@
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn20"
                 android:text="양천"
                 android:textSize="12dp"
                 android:layout_marginLeft="50dp"
@@ -426,7 +381,7 @@
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn8"
                 android:text="구로"
                 android:textSize="12dp"
                 android:layout_marginLeft="50dp"
@@ -441,7 +396,7 @@
             <info.hoang8f.widget.FButton
                 android:layout_width="40dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn21"
                 android:text="영등포"
                 android:textSize="12dp"
                 android:layout_marginLeft="95dp"
@@ -453,11 +408,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn13"
                 android:text="동작"
                 android:textSize="12dp"
                 android:layout_marginLeft="140dp"
@@ -469,11 +423,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn22"
                 android:text="용산"
                 android:textSize="12dp"
                 android:layout_marginLeft="160dp"
@@ -485,11 +438,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn9"
                 android:text="금천"
                 android:textSize="12dp"
                 android:layout_marginLeft="90dp"
@@ -504,7 +456,7 @@
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn6"
                 android:text="관악"
                 android:textSize="12dp"
                 android:layout_marginLeft="133dp"
@@ -516,11 +468,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn16"
                 android:text="서초"
                 android:textSize="12dp"
                 android:layout_marginLeft="185dp"
@@ -532,11 +483,10 @@
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="3dp"
                 />
-
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn2"
                 android:text="강남"
                 android:textSize="12dp"
                 android:layout_marginLeft="225dp"
@@ -551,7 +501,7 @@
             <info.hoang8f.widget.FButton
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-
+                android:id="@+id/manifestoBtn19"
                 android:text="송파"
                 android:textSize="12dp"
                 android:layout_marginLeft="270dp"
@@ -564,7 +514,5 @@
                 fbutton:cornerRadius="3dp"
                 />
         </RelativeLayout>
-
-
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
