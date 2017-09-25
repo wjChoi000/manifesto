@@ -28,8 +28,8 @@
     <color name="rate_title_four">#3498db</color>
     <color name="rate_title_five">#bdc3c7</color>
 
-    <color name="rate_profile_head_dark_gray">#</color>
-    <color name="rate_profile_head_white_gray">#</color>
+    <color name="rate_profile_head_dark_gray">#898989</color>
+    <color name="rate_profile_head_white_gray">#dbdada</color>
     <!-- -->
     <color name="promise_care">#00B050</color>
     <color name="promise_culture">#FFC000</color>

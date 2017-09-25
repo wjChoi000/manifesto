@@ -832,23 +832,24 @@ public class ManifestoRateActivity extends AppCompatActivity {
         final LinearLayout career = (LinearLayout) findViewById(R.id.m_profile_career);
         final LinearLayout crime = (LinearLayout) findViewById(R.id.m_profile_crime);
 
-
-//        RadioButton segment1 = (RadioButton) findViewById(R.id.rate_gr_1);
-//        RadioButton segment2 = (RadioButton) findViewById(R.id.rate_gr_2);
-//        RadioButton segment3 = (RadioButton) findViewById(R.id.rate_gr_3);
-
         final LinearLayout segment1 = (LinearLayout) findViewById(R.id.rate_profile_header1);
         final LinearLayout segment2 = (LinearLayout) findViewById(R.id.rate_profile_header2);
         final LinearLayout segment3 = (LinearLayout) findViewById(R.id.rate_profile_header3);
+        final TextView segementt1=(TextView) findViewById(R.id.rate_profile_header_text1);
+        final TextView segementt2=(TextView) findViewById(R.id.rate_profile_header_text2);
+        final TextView segementt3=(TextView) findViewById(R.id.rate_profile_header_text3);
         segment1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 aware.setVisibility(View.VISIBLE);
                 career.setVisibility(View.GONE);
                 crime.setVisibility(View.GONE);
-                segment1.setBackgroundResource(R.color.colorBackgroundGray);
-                segment2.setBackgroundResource(R.color.colorWhite);
-                segment3.setBackgroundResource(R.color.colorWhite);
+                segment1.setBackgroundResource(R.color.rate_profile_head_dark_gray);
+                segment2.setBackgroundResource(R.color.rate_profile_head_white_gray);
+                segment3.setBackgroundResource(R.color.rate_profile_head_white_gray);
+                segementt1.setTextColor(getResources().getColor(R.color.colorWhite));
+                segementt2.setTextColor(getResources().getColor(R.color.colorBlack));
+                segementt3.setTextColor(getResources().getColor(R.color.colorBlack));
             }
         });
 
@@ -858,9 +859,12 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 aware.setVisibility(View.GONE);
                 career.setVisibility(View.VISIBLE);
                 crime.setVisibility(View.GONE);
-                segment1.setBackgroundResource(R.color.colorWhite);
-                segment2.setBackgroundResource(R.color.colorBackgroundGray);
-                segment3.setBackgroundResource(R.color.colorWhite);
+                segment1.setBackgroundResource(R.color.rate_profile_head_white_gray);
+                segment2.setBackgroundResource(R.color.rate_profile_head_dark_gray);
+                segment3.setBackgroundResource(R.color.rate_profile_head_white_gray);
+                segementt1.setTextColor(getResources().getColor(R.color.colorBlack));
+                segementt2.setTextColor(getResources().getColor(R.color.colorWhite));
+                segementt3.setTextColor(getResources().getColor(R.color.colorBlack));
             }
         });
 
@@ -870,9 +874,12 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 aware.setVisibility(View.GONE);
                 career.setVisibility(View.GONE);
                 crime.setVisibility(View.VISIBLE);
-                segment1.setBackgroundResource(R.color.colorWhite);
-                segment2.setBackgroundResource(R.color.colorWhite);
-                segment3.setBackgroundResource(R.color.colorBackgroundGray);
+                segment1.setBackgroundResource(R.color.rate_profile_head_white_gray);
+                segment2.setBackgroundResource(R.color.rate_profile_head_white_gray);
+                segment3.setBackgroundResource(R.color.rate_profile_head_dark_gray);
+                segementt1.setTextColor(getResources().getColor(R.color.colorBlack));
+                segementt2.setTextColor(getResources().getColor(R.color.colorBlack));
+                segementt3.setTextColor(getResources().getColor(R.color.colorWhite));
             }
         });
 
