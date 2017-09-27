@@ -41,13 +41,21 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.MPPointF;
 import com.seoulapp.manifesto.restful.RestAPI;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.StringTokenizer;
 
 
 public class ManifestoRateActivity extends AppCompatActivity {
-
+    private RestAPI restAPI;
+    private JSONObject person;
+    private JSONArray profile;
+    private JSONObject promise_num;
+    private int persent=0;
     private TextView oneT;
     private TextView oneS;
     private TextView twoT;
@@ -67,16 +75,29 @@ public class ManifestoRateActivity extends AppCompatActivity {
     private LinearLayout btnThree;
     private LinearLayout btnFour;
     private Intent thisintent;
-    private String city;
+    private String cityString;
+    private int id=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manifesto_rate);
-
         //back button
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+
+        //intent
+        thisintent = getIntent();
+        id = thisintent.getIntExtra("id",0);
+
+        //rest api
+        restAPI = new RestAPI();
+        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/ElectedPersonInfoServlet?ep_id="+id;
+        JSONObject result = null;
+        try {
+            result = restAPI.execute(url).get();
+        }catch (Exception e){
+        }
 
         //actionbar title
         View view = getLayoutInflater().inflate(R.layout.actionbar_title, null);
@@ -85,18 +106,10 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 ActionBar.LayoutParams.MATCH_PARENT,
                 Gravity.CENTER);
 
-        TextView Title = (TextView) view.findViewById(R.id.actionbar_title);
-        Title.setText("서울시청");
-
         getSupportActionBar().setCustomView(view,params);
         getSupportActionBar().setDisplayShowCustomEnabled(true); //show custom title
         getSupportActionBar().setDisplayShowTitleEnabled(false); //hide the default title
 
-        //intent
-        thisintent = getIntent();
-        int id = thisintent.getIntExtra("id",0);
-
-        city ="서울특별시";
         //small titile
         oneT = (TextView)findViewById(R.id.m_map_small_t_one);
         oneS = (TextView)findViewById(R.id.m_map_small_s_one);
@@ -121,23 +134,15 @@ public class ManifestoRateActivity extends AppCompatActivity {
         btnOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                makeHChart();
                 replaceButton(1);
             }
         });
         btnTwo.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                makePromiseChart();
                 replaceButton(2);
             }
         });
-//        btnThree.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view) {
-//                replaceButton(3);
-//            }
-//        });
         btnFour.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -146,30 +151,26 @@ public class ManifestoRateActivity extends AppCompatActivity {
             }
         });
         btnOne.performClick();
-        restful();
+
+        //dynamic
+        try{
+            person = result.getJSONObject("person");
+            profile = result.getJSONArray("profile");
+            promise_num = result.getJSONObject("promise_num");
+            cityString = person.getString("local");
+            Log.i("restful","Success");
+        }catch (Exception e){
+            Log.i("result","fail rest",e);
+        }
+
+        TextView Title = (TextView) view.findViewById(R.id.actionbar_title);
+        Title.setText(cityString);
         rate();
         promise();
-//        news();
         profile();
 
     }
 
-    void restful(){
-        RestAPI rest = new RestAPI();
-        JSONObject json = rest.getJSONObject("nul",1);
-        try{
-            if(json !=null){
-                Log.i("rate",json.getString("code"));
-            }
-            else{
-                Log.i("rate","null");
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-            Log.i("rate","fail");
-        }
-
-    }
     private void replaceButton(int fragmentId){
         oneT.setTextColor(getResources().getColor(R.color.colorBlack));
         twoT.setTextColor(getResources().getColor(R.color.colorBlack));
@@ -218,57 +219,62 @@ public class ManifestoRateActivity extends AppCompatActivity {
     /*
     make rate
      */
-    private LinearLayout promiseOne;
-    private TableLayout promiseTwo;
+    private String[] rateList2 = {"일부추진","정상추진","계속추진","사업완료","검토중"};
+    private float[] rateRatio2 ={2,10,50,37,1};
+    private PieChart mChart;
+    private String[] rateList = {"검토중","일부추진","정상추진","계속추진","사업완료"};
+    private float[] rateRatio =null;
+    protected HorizontalBarChart hChart;
+
     private void rate(){
-        //RadioButton segment1 = (RadioButton) findViewById(R.id.rate_gr_1);
-        //RadioButton segment2 = (RadioButton) findViewById(R.id.rate_gr_2);
-
-        promiseOne = (LinearLayout) findViewById(R.id.rate_graph_layout);
-        promiseTwo = (TableLayout) findViewById(R.id.rate_table_layout);
-
-//        segment1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                promiseOne.setVisibility(View.VISIBLE);
-//                promiseTwo.setVisibility(View.GONE);
-//            }
-//        });
-//
-//        segment2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                promiseOne.setVisibility(View.GONE);
-//                promiseTwo.setVisibility(View.VISIBLE);
-//            }
-//        });
-//
-//        segment1.performClick();
-        //makeTable();
-
+        try {
+            int review = person.getInt("review");
+            int part = person.getInt("part");
+            int complete = person.getInt("complete");
+            int normal = person.getInt("normal");
+            int continues = person.getInt("continues");
+            // {"검토중","일부추진","정상추진","계속추진","사업완료"};
+            rateRatio = new float[]{(float)review, (float)part, (float)complete, (float)normal, (float)continues};
+            int sum = review+part+complete+normal+continues;
+            //{"일부추진","정상추진","계속추진","사업완료","검토중"};
+            rateRatio2 = new float[]{(float)part/sum,(float)normal/sum,(float)continues/sum,(float)complete/sum,(float)review/sum};
+            persent = (sum-review)*100/sum;
+            Log.i("rate", rateRatio[0]+" "+rateRatio[4]);
+        }catch (Exception e){
+            Log.i("rate","rate json error",e);
+        }
+        hChart = (HorizontalBarChart) findViewById(R.id.rate_Barchart);
+        mChart = (PieChart) findViewById(R.id.chart1);
+        makeChart();
+        makeHChart();
+        RadioButton segment1 = (RadioButton) findViewById(R.id.rate_gr_1);
+        RadioButton segment2 = (RadioButton) findViewById(R.id.rate_gr_2);
+        segment1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mChart.setVisibility(View.VISIBLE);
+                hChart.setVisibility(View.GONE);
+            }
+        });
+        segment2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mChart.setVisibility(View.GONE);
+                hChart.setVisibility(View.VISIBLE);
+            }
+        });
+        segment1.performClick();
     }
     //make barchrt : rate_Barchart
-    protected HorizontalBarChart hChart;
+
+
     private void makeHChart(){
-        hChart = (HorizontalBarChart) findViewById(R.id.rate_Barchart);
-        // hChart.setHighlightEnabled(false);
-
         hChart.setDrawBarShadow(false);
-
         hChart.setDrawValueAboveBar(true);
-
         hChart.getDescription().setEnabled(false);
 
-        // if more than 60 entries are displayed in the chart, no values will be
-        // drawn
         hChart.setMaxVisibleValueCount(100);
-
-        // scaling can now only be done on x- and y-axis separately
         hChart.setPinchZoom(false);
-
-        // draw shadows for each bar that show the maximum value
-        // hChart.setDrawBarShadow(true);
-
         hChart.setDrawGridBackground(false);
         XAxis xl = hChart.getXAxis();
         xl.setDrawGridLines(false);
@@ -283,51 +289,12 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 return String.valueOf((int) value);
             }
         });
-//        xl.setPosition(XAxisPosition.BOTTOM);
-//        xl.setTypeface(mTfLight);
-//        xl.setDrawAxisLine(true);
-
-//        xl.setGranularity(10f);
-//
-        //YAxis yl = hChart.getAxisLeft();
-//        yl.setTypeface(mTfLight);
-//        yl.setDrawAxisLine(true);
-        //yl.setDrawGridLines(false);
-        //hChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-        //hChart.getXAxis().setEnabled(false);
-
-//        yl.setAxisMinimum(0f); // this replaces setStartAtZero(true)
-////        yl.setInverted(true);
-//
-//        YAxis yr = hChart.getAxisRight();
-//        yr.setTypeface(mTfLight);
-//        yr.setDrawAxisLine(true);
-//        yr.setDrawGridLines(false);
-//        yr.setAxisMinimum(0f); // this replaces setStartAtZero(true)
-////        yr.setInverted(true);
 
         setDataH(hChart,5,rateList,rateRatio);
         hChart.setFitBars(true);
         hChart.animateY(2500);
-
         hChart.getLegend().setEnabled(false);
-        //hChart.setEntryLabelTextSize(12f);
-
-        // setting data
-//        Legend l = hChart.getLegend();
-//        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
-//        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
-//        l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-//        l.setDrawInside(false);
-//        l.setFormSize(8f);
-//        l.setXEntrySpace(4f);
     }
-
-//    private String[] rateList = {"사업완료","계속추진","정상추진","일부추진","검토중"};
-//    private float[] rateRatio ={37,50,10,2,1};
-
-    private String[] rateList = {"검토중","일부추진","정상추진","계속추진","사업완료"};
-    private float[] rateRatio ={1,2,10,50,37};
     private void setDataH(HorizontalBarChart hchart, int count,String[] s, float[] f) {
 
         float barWidth = 9f;
@@ -340,19 +307,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         BarDataSet set1;
 
-
         if (hchart.getData() != null &&
                 hchart.getData().getDataSetCount() > 0) {
             set1 = (BarDataSet) hchart.getData().getDataSetByIndex(0);
-
-//            ArrayList<Integer> colors = new ArrayList<Integer>();
-//            colors.add(getResources().getColor(R.color.rate_title_one));
-//            colors.add(getResources().getColor(R.color.rate_title_two));
-//            colors.add(getResources().getColor(R.color.rate_title_three));
-//            colors.add(getResources().getColor(R.color.rate_title_four));
-//            colors.add(getResources().getColor(R.color.rate_title_five));
-  //          set1.setColors(colors);
-
             set1.setValues(yVals1);
             hchart.getData().notifyDataChanged();
             hchart.notifyDataSetChanged();
@@ -378,11 +335,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
         }
     }
 
-
     //make chart
-    private PieChart mChart;
+
     private void makeChart(){
-        mChart = (PieChart) findViewById(R.id.chart1);
         mChart.setUsePercentValues(true);
         mChart.getDescription().setEnabled(false);
         mChart.setExtraOffsets(5, 10, 5, 5);
@@ -391,7 +346,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         mChart.setDrawHoleEnabled(true);
         mChart.setHoleColor(getResources().getColor(R.color.colorWhite));
-        mChart.setCenterText("공약이행률\n88%");
+        mChart.setCenterText("공약이행률\n"+persent+"%");
         mChart.setCenterTextSize(20f);
 
         mChart.setTransparentCircleColor(getResources().getColor(R.color.colorWhite));
@@ -404,7 +359,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         mChart.setRotationEnabled(false);
         mChart.setHighlightPerTapEnabled(true);
 
-        setData(mChart,5,rateList,rateRatio,1);
+        setData(mChart,5,rateList2,rateRatio2,1);
 
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
 
@@ -433,11 +388,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         // add a lot of colors
 
         ArrayList<Integer> colors = new ArrayList<Integer>();
-
         if(mode ==1) {
-            //dataSet.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-            //dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
-
             colors.add(getResources().getColor(R.color.rate_title_one));
             colors.add(getResources().getColor(R.color.rate_title_two));
             colors.add(getResources().getColor(R.color.rate_title_three));
@@ -469,59 +420,6 @@ public class ManifestoRateActivity extends AppCompatActivity {
         chart.invalidate();
     }
 
-    //make table
-    private void makeTable(){
-        TableLayout table = (TableLayout) findViewById(R.id.rate_table_layout);
-
-        int[] a = {10,20,30,40,50};
-        addNewTableRow(table,"전체",a);
-        addNewTableRow(table,"문화",a);
-        addNewTableRow(table,"정치",a);
-        addNewTableRow(table,"경제",a);
-        addNewTableRow(table,"외교",a);
-        addNewTableRow(table,"교육",a);
-        Log.i("rate","table complete");
-
-    }
-    private void addNewTableRow(TableLayout parent, String s, int[] a){
-
-        TableRow row = new TableRow(this);
-        row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
-
-        //1dp
-        float d = this.getResources().getDisplayMetrics().density;
-        int margin = (int)(d);
-        //params
-        TableRow.LayoutParams params = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT,1.0f);
-        params.setMargins(margin,0,0,margin);
-
-        //row
-        TextView text = new TextView(this);
-        text.setText(s);
-
-        for(int i: a){
-            text.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
-            text.setLayoutParams(params);
-            text.setBackgroundResource(R.color.colorWhite);
-            text.setTextColor(getResources().getColor(R.color.colorBlack));
-
-            row.addView(text);
-
-            text = new TextView(this);
-            text.setText(i+"");
-        }
-
-        params.setMargins(margin,0,margin,margin);
-        text.setLayoutParams(params);
-        text.setTextColor(getResources().getColor(R.color.colorBlack));
-        text.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
-        text.setBackgroundResource(R.color.colorWhite);
-        row.addView(text);
-
-        parent.addView(row, new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
-;
-    }
-
     /*
     make promise
      */
@@ -529,6 +427,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
     private TextView tvX, tvY;
 
     private void promise(){
+        makePromiseChart();
         LinearLayout promiseList = (LinearLayout) findViewById(R.id.m_promise_list);
         Button welfare = (Button) findViewById(R.id.rate_list_welfare);
         Button culture = (Button) findViewById(R.id.rate_list_culture);
@@ -542,7 +441,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
                 intent.putExtra("name","복지");
-                intent.putExtra("city", city);
+                intent.putExtra("city", cityString);
+                intent.putExtra("ep_id",id);
+                intent.putExtra("category","wel");
                 startActivity(intent);
             }
         });
@@ -551,7 +452,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
                 intent.putExtra("name","문화");
-                intent.putExtra("city", city);
+                intent.putExtra("city", cityString);
+                intent.putExtra("ep_id",id);
+                intent.putExtra("category","cul");
                 startActivity(intent);
             }
         });
@@ -560,7 +463,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
                 intent.putExtra("name","경제");
-                intent.putExtra("city", city);
+                intent.putExtra("city", cityString);
+                intent.putExtra("ep_id",id);
+                intent.putExtra("category","eco");
                 startActivity(intent);
             }
         });
@@ -569,7 +474,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
                 intent.putExtra("name","환경");
-                intent.putExtra("city", city);
+                intent.putExtra("city", cityString);
+                intent.putExtra("ep_id",id);
+                intent.putExtra("category","envi");
                 startActivity(intent);
             }
         });
@@ -578,7 +485,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
                 intent.putExtra("name","행정");
-                intent.putExtra("city", city);
+                intent.putExtra("city", cityString);
+                intent.putExtra("ep_id",id);
+                intent.putExtra("category","adm");
                 startActivity(intent);
             }
         });
@@ -587,15 +496,15 @@ public class ManifestoRateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ManifestoRateActivity.this, Rate_detail_Activity.class);
                 intent.putExtra("name","도시·안전");
-                intent.putExtra("city", city);
+                intent.putExtra("city", cityString);
+                intent.putExtra("ep_id",id);
+                intent.putExtra("category","city");
                 startActivity(intent);
             }
         });
     }
-
     private void makePromiseChart(){
         listChart= (PieChart) findViewById(R.id.rate_list_chart);
-
         listChart.setUsePercentValues(true);
         listChart.getDescription().setEnabled(false);
         listChart.setExtraOffsets(5, 10, 5, 5);
@@ -616,11 +525,20 @@ public class ManifestoRateActivity extends AppCompatActivity {
         // enable rotation of the chart by touch
         listChart.setRotationEnabled(false);
         listChart.setHighlightPerTapEnabled(true);
-
-        float[] rate = {33.0f, 35.0f, 10.0f, 20.0f, 8.0f, 12.0f};
-        String[] list = {"복지","문화","경제","환경","행정","도시안전"};
-        setData(listChart,6,list,rate,2);
-
+        try{
+            int wel = promise_num.getInt("welfare");
+            int cul =  promise_num.getInt("culture");
+            int eco =  promise_num.getInt("economy");
+            int envi =  promise_num.getInt("envi");
+            int city = promise_num.getInt("city");
+            int admi =  promise_num.getInt("admi");
+            int sum= wel+cul+ eco+envi+city+admi;
+            float[] rate = {(float)wel/sum, (float)cul/sum, (float)eco/sum, (float)envi/sum, (float)admi/sum, (float)city/sum};
+            String[] list = {"복지","문화","경제","환경","행정","도시안전"};
+            setData(listChart,6,list,rate,2);
+        }catch (Exception e){
+            Log.i("promise","json promise error",e);
+        }
         listChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
 
         listChart.getLegend().setEnabled(false);
@@ -821,16 +739,24 @@ public class ManifestoRateActivity extends AppCompatActivity {
         TextView textBorn = (TextView) findViewById(R.id.rate_profile_born);
         TextView textAge = (TextView) findViewById(R.id.rate_profile_age);
 //        TextView textEdu = (TextView) findViewById(R.id.rate_profile_education);
+        try{
+            textName.setText(person.getString("person_name"));
+            String born_date = person.getString("born_day");
+            StringTokenizer tokens = new StringTokenizer(born_date);
+            int born = Integer.parseInt(tokens.nextToken("-"));
+            textDay.setText(born_date);
+            textBorn.setText(person.getString("born_region"));
 
-        textName.setText("박원순");
-        textDay.setText("1996.3.26");
-        textBorn.setText("경상남도 창녕");
-        textAge.setText("62세");
-//        textEdu.setText("단국대학교");
+            java.util.Calendar cal = java.util.Calendar.getInstance();
+            String ntime = new String();
+            textAge.setText((cal.get(Calendar.YEAR)-born)+"세");
+        }catch (Exception e){
+            Log.i("profile","profile json error",e);
+        }
 
         final LinearLayout aware = (LinearLayout) findViewById(R.id.m_profile_aware);
         final LinearLayout career = (LinearLayout) findViewById(R.id.m_profile_career);
-        final LinearLayout crime = (LinearLayout) findViewById(R.id.m_profile_crime);
+        final LinearLayout edu = (LinearLayout) findViewById(R.id.m_profile_edu);
 
         final LinearLayout segment1 = (LinearLayout) findViewById(R.id.rate_profile_header1);
         final LinearLayout segment2 = (LinearLayout) findViewById(R.id.rate_profile_header2);
@@ -843,7 +769,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 aware.setVisibility(View.VISIBLE);
                 career.setVisibility(View.GONE);
-                crime.setVisibility(View.GONE);
+                edu.setVisibility(View.GONE);
                 segment1.setBackgroundResource(R.color.rate_profile_head_dark_gray);
                 segment2.setBackgroundResource(R.color.rate_profile_head_white_gray);
                 segment3.setBackgroundResource(R.color.rate_profile_head_white_gray);
@@ -858,7 +784,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 aware.setVisibility(View.GONE);
                 career.setVisibility(View.VISIBLE);
-                crime.setVisibility(View.GONE);
+                edu.setVisibility(View.GONE);
                 segment1.setBackgroundResource(R.color.rate_profile_head_white_gray);
                 segment2.setBackgroundResource(R.color.rate_profile_head_dark_gray);
                 segment3.setBackgroundResource(R.color.rate_profile_head_white_gray);
@@ -873,7 +799,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 aware.setVisibility(View.GONE);
                 career.setVisibility(View.GONE);
-                crime.setVisibility(View.VISIBLE);
+                edu.setVisibility(View.VISIBLE);
                 segment1.setBackgroundResource(R.color.rate_profile_head_white_gray);
                 segment2.setBackgroundResource(R.color.rate_profile_head_white_gray);
                 segment3.setBackgroundResource(R.color.rate_profile_head_dark_gray);
@@ -882,25 +808,25 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 segementt3.setTextColor(getResources().getColor(R.color.colorWhite));
             }
         });
-
-
         segment1.performClick();
 
-        addText(aware,"2014년 매니패스토");
-        addText(aware,"2016 예테보리 지속 가능 방성상");
-        addText(aware,"2015 세계도시 전자정부 평가 공로상");
-        addText(aware,"2009 제 15회 불교 인권상");
-        addText(aware,"2016 예테보리 지속 가능 방성상");
-        addText(aware,"2015 세계도시 전자정부 평가 공로상");
+        try{
+            int len = profile.length();
+            for(int i =0; i<len; i++){
+                JSONObject jsonObject = profile.getJSONObject(i);
+                String category = jsonObject.getString("category");
+                if(category.compareTo("career") == 0){
+                    addText(career,jsonObject.getString("date")+" "+jsonObject.get("contents"));
+                }else if(category.compareTo("prize") == 0){
+                    addText(aware,jsonObject.getString("date")+" "+jsonObject.get("contents"));
+                }else if(category.compareTo("eduback") == 0){
+                    addText(edu,jsonObject.getString("date")+" "+jsonObject.get("contents"));
+                }
+            }
+        }catch (Exception e){
 
-        addText(career,"2011~2015 한국 상수도 협회장");
-        addText(career,"2006~2011 희망 제작소 상임이사");
-        addText(career,"2005 미국 스탠퍼드 대학교 방분교수");
-        addText(career,"2003 사법개혁 위원회 위원");
-        addText(career,"2011~2015 한국 상수도 협회장");
-        addText(career,"2005 미국 스탠퍼드 대학교 방분교수");
-
-        addText(crime,"없음");
+        }
+//        addText(crime,"없음");
     }
 
     private void addText(LinearLayout parent,String s){

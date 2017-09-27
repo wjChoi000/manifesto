@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -14,9 +15,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.seoulapp.manifesto.restful.RestAPI;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 public class Rate_detail_Activity extends AppCompatActivity {
+
+    private JSONArray promise =null;
+    private JSONObject count = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,22 +37,35 @@ public class Rate_detail_Activity extends AppCompatActivity {
                 ActionBar.LayoutParams.WRAP_CONTENT,
                 ActionBar.LayoutParams.MATCH_PARENT,
                 Gravity.CENTER);
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
+        String city = intent.getStringExtra("city");
+        int id = intent.getIntExtra("ep_id",0);
+        String category = intent.getStringExtra("category");
+
+        //rest api
+        RestAPI restAPI = new RestAPI();
+        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/ElectedPersonPromiseServlet?ep_id="+id+"&category="+category;
+        JSONObject result = null;
+        try {
+            result = restAPI.execute(url).get();
+            promise = result.getJSONArray("promise");
+            count = result.getJSONObject("count");
+        }catch (Exception e){
+            Log.i("rest","rest api err",e);
+        }
 
         TextView Title = (TextView) view.findViewById(R.id.actionbar_title);
-        Title.setText("서울시청");
+        Title.setText(city);
 
         getSupportActionBar().setCustomView(view,params);
         getSupportActionBar().setDisplayShowCustomEnabled(true); //show custom title
         getSupportActionBar().setDisplayShowTitleEnabled(false); //hide the default title
 
-    //back button
+        //back button
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
-
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
-        String city = intent.getStringExtra("city");
 
         TextView guTxt = (TextView)findViewById(R.id.rate_detail_gu);
         guTxt.setText(city);
@@ -63,25 +84,26 @@ public class Rate_detail_Activity extends AppCompatActivity {
             categoryCard.setCardBackgroundColor(getResources().getColor(R.color.administation));
         else if(name.compareTo("도시·안전")==0)
             categoryCard.setCardBackgroundColor(getResources().getColor(R.color.cityAndSafty));
+
         list();
-    }
-
-    private void cardviewFunc() {
-
+        count();
     }
 
     private void list() {
         LinearLayout list_view = (LinearLayout) findViewById(R.id.detail_list);
-        addPromise(list_view,"도시 안전 예산 확대 및 통합",1);
-        addPromise(list_view,"시작 직속 재난 컨트롤 타워",2);
-        addPromise(list_view,"도시 안전 예산 확대 및 통합",3);
-        addPromise(list_view,"시작 직속 재난 컨트롤 타워",4);
-        addPromise(list_view,"도시 안전 예산 확대 및 통합",5);
-        addPromise(list_view,"시작 직속 재난 컨트롤 타워",1);
+        int len = promise.length();
+        try {
+            for(int i = 0; i<len; i++){
+                    JSONObject jsonObject = promise.getJSONObject(i);
+                    addPromise(list_view,jsonObject.getString("contents"),jsonObject.getString("state"));
+            }
+        }
+        catch (Exception e){
+            Log.i("list","list json error",e);
+        }
 
     }
-
-    private void addPromise(LinearLayout parent, String s1, int i) {
+    private void addPromise(LinearLayout parent, String s1, String i) {
         LinearLayout linear = new LinearLayout(this);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
@@ -98,11 +120,8 @@ public class Rate_detail_Activity extends AppCompatActivity {
         promiseText.setTextColor(getResources().getColor(R.color.colorBlack));
         linear.addView(promiseText);
 
-
         CardView promiseBtn = new CardView(this);
         promiseBtn.setRadius(5.0f);
-        //promiseBtn.setCardElevation(10.0f);
-
 
         int threedp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics());
         CardView.LayoutParams paramsBtn = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
@@ -113,37 +132,23 @@ public class Rate_detail_Activity extends AppCompatActivity {
         txtParam.setMargins(fiveDp*2,fiveDp,fiveDp*2,fiveDp);
         txt.setLayoutParams(txtParam);
         txt.setTypeface(null, Typeface.BOLD);
-        switch (i) {
-            //사업완료
-            case 1:
-                promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_one));
-                txt.setText(R.string.rate_table_title_one);
-                break;
-            //정상추진
-            case 2:
-                promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_two));
-                txt.setText(R.string.rate_table_title_two);
-                break;
-
-            //일부추진
-            case 3:
-                promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_three));
-                txt.setText(R.string.rate_table_title_three);
-                break;
-            //계속추진
-            case 4:
-                promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_four));
-                txt.setText(R.string.rate_table_title_four);
-                break;
-            //검토중
-            case 5:
-                promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_five));
-                txt.setText(R.string.rate_table_title_five);
-                break;
-            default:
+        if( i.compareTo("complete")==0){
+            promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_one));
+            txt.setText(R.string.rate_table_title_one);
+        }else if(i.compareTo("normal")==0){
+            promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_two));
+            txt.setText(R.string.rate_table_title_two);
+        }else if(i.compareTo("part")==0) {
+            promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_three));
+            txt.setText(R.string.rate_table_title_three);
+        }else if(i.compareTo("continues")==0) {
+            promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_four));
+            txt.setText(R.string.rate_table_title_four);
+        }else if(i.compareTo("review")==0) {
+            promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_five));
+            txt.setText(R.string.rate_table_title_five);
         }
         txt.setTextColor(getResources().getColor(R.color.colorWhite));
-        //promiseBtn.setPadding(3, 3, 3, 3);
         promiseBtn.addView(txt);
         linear.addView(promiseBtn);
 
@@ -157,6 +162,24 @@ public class Rate_detail_Activity extends AppCompatActivity {
 
     }
 
+    private void count(){
+        TextView detail_one = (TextView) findViewById(R.id.detail_one);
+        TextView detail_two = (TextView) findViewById(R.id.detail_two);
+        TextView detail_three = (TextView) findViewById(R.id.detail_three);
+        TextView detail_four = (TextView) findViewById(R.id.detail_four);
+        TextView detail_five = (TextView) findViewById(R.id.detail_five);
+        TextView detail_six = (TextView) findViewById(R.id.detail_six);
+        try{
+            detail_one.setText((count.getInt("complete")+count.getInt("normal")+count.getInt("part")+count.getInt("continues")+count.getInt("review"))+"");
+            detail_two.setText(count.get("complete")+"");
+            detail_three.setText(count.getInt("normal")+"");
+            detail_four.setText(count.getInt("part")+"");
+            detail_five.setText(count.getInt("continues")+"");
+            detail_six.setText(count.getInt("review")+"");
+        }catch (Exception e){
+            Log.i("count","count json error",e);
+        }
+    }
     //back button
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
         switch (item.getItemId()) {

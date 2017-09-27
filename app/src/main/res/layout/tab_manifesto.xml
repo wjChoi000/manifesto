@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
-    android:background="#fff"
-    android:orientation="vertical">
+    android:background="#fff">
 
     <!-- the number of people-->
     <LinearLayout
@@ -19,6 +18,7 @@
         android:layout_marginBottom="1dp"
         android:background="#FFF"
         android:gravity="center"
+        android:layout_alignParentTop="true"
         android:id="@+id/manifestoParty">
         <LinearLayout
             android:layout_width="wrap_content"
@@ -78,21 +78,50 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorBackgroundGray"
-
+        android:layout_alignBottom="@id/manifestoParty"
         android:id="@+id/manifestoPartyB"
         android:orientation="horizontal" />
-    <!-- map-->
+    <!---->
+    <LinearLayout
+        android:id="@+id/manifestoContents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:text="@string/manifesto_content"
+            android:textColor="#000"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:background="@color/colorBackgroundGray"
+        android:layout_alignTop="@id/manifestoContents"
+        android:id="@+id/manifestoContentsT"
+        android:orientation="horizontal" />
+
+    <!-- map-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="#FFF"
+        android:layout_below="@id/manifestoPartyB"
+        android:layout_above="@id/manifestoContentsT"
+
         android:orientation="vertical"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         >
         <RelativeLayout
             android:layout_width="350dp"
             android:layout_height="350dp"
+            android:layout_marginTop="30dp"
             >
             <info.hoang8f.widget.FButton
                 android:layout_width="100dp"
@@ -104,7 +133,6 @@
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 android:textSize="20dp"
-
                 android:layout_marginTop="10dp"
                 fbutton:buttonColor="@color/fbutton_color_peter_river"
                 fbutton:shadowEnabled="false"
@@ -120,8 +148,8 @@
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:layout_marginTop="10dp"
 
+                android:layout_marginTop="10dp"
                 fbutton:buttonColor="@android:color/darker_gray"
                 fbutton:shadowEnabled="false"
                 fbutton:cornerRadius="5dp"
@@ -514,5 +542,7 @@
                 fbutton:cornerRadius="3dp"
                 />
         </RelativeLayout>
+
+
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
