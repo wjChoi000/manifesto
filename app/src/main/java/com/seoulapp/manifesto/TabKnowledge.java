@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -14,6 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.seoulapp.manifesto.model.KnowContent;
+import com.seoulapp.manifesto.restful.RestAPI;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -29,22 +34,38 @@ public class TabKnowledge extends Fragment {
     private Intent intent;
     private int first;
     private KnowContent content;
-
+    private RestAPI restAPI;
+    private int offset = 0;
+    private int limit = 10;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.tab_knowledge, container, false);
         context = rootView.getContext();
-        //temt
-        KnowContent t1 = new KnowContent("매니패스토",getString(R.string.k_temp),150,300);
-
         //click listener
         LinearLayout L1 = (LinearLayout) rootView.findViewById(R.id.k_main);
-
         first=0;
-        String temp = "매니페스토(Manifesto)는 개인이나 단체가 대중에 대하여 확고한 정치적 의도와 견해를 밝히는 것으로 연설이나 문서의 형태이다. 종종 비정치적인 분야에서도 자신의 주장과 견해를 분명히 밝히는 때에도 사용된다. 한국에서는 예산확보, 구체적 실행계획 등이 있어 이행이 가능한 선거 공약의 의미로 주로 쓰인다.";
-        addNewLayout(L1, t1);
-        addNewLayout(L1, t1);
-        addNewLayout(L1, t1);
-        addNewLayout(L1, t1);
+        offset = 0;
+        restAPI = new RestAPI();
+        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/KnowledgeServlet?offset="+offset+"&limit="+limit;
+        JSONObject result = null;
+        JSONArray jsonArray=null;
+        try {
+            result = restAPI.execute(url).get();
+            jsonArray = result.getJSONArray("list");
+            offset += limit;
+        }catch (Exception e){
+            Log.i("rest","rest api error",e);
+        }
+
+        int len =  jsonArray.length();
+        try {
+            for (int i = 0; i < len; i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                KnowContent t1 = new KnowContent(jsonObject.getString("title"), jsonObject.getString("contents"), jsonObject.getInt("good"),jsonObject.getInt("comment_num"));
+                addNewLayout(L1,t1);
+            }
+        }catch (Exception e){
+            Log.i("list","list json error",e);
+        }
 
         return rootView;
     }

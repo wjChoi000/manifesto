@@ -11,6 +11,8 @@ public class KnowContent implements Serializable{
     String contents;
     int goodSum;
     int commentSum;
+    int hits;
+
 
     public KnowContent(String title, String contents, int goodSum,int commentSum){
         this.title = title;

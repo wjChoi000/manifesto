@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">공약지킴이</string>
 
-    <string name="tab_title_one">매니페스토</string>
+    <string name="tab_title_one">공약이행</string>
     <string name="tab_title_two">시민의원</string>
-    <string name="tab_title_three">상식</string>
+    <string name="tab_title_three">토막상식</string>
 
 
     <string name="manifesto_content">클릭해서 공약이행률 보기</string>
@@ -40,11 +40,11 @@
 
     <string name="reta_table_title">분류별 공약 이행률</string>
     <string name="rate_table_title_zero">분류</string>
-    <string name="rate_table_title_one">사업완료</string>
-    <string name="rate_table_title_two">정상추진</string>
-    <string name="rate_table_title_three">일부추진</string>
-    <string name="rate_table_title_four">계속추진</string>
-    <string name="rate_table_title_five">검토 중</string>
+    <string name="rate_table_title_one">사업완료 :</string>
+    <string name="rate_table_title_two">정상추진 :</string>
+    <string name="rate_table_title_three">일부추진 :</string>
+    <string name="rate_table_title_four">계속추진 :</string>
+    <string name="rate_table_title_five">검토 중  :</string>
 
     <string name="rate_table_title_one_des">공약 이행이 완료되어 종료된 사업</string>
     <string name="rate_table_title_two_des">공약 내용 이행 완료 후 추가적인 목표를 세워 추진중인 사업</string>

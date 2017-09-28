@@ -1,7 +1,9 @@
 package com.seoulapp.manifesto;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -40,10 +42,12 @@ import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.MPPointF;
 import com.seoulapp.manifesto.restful.RestAPI;
+import com.seoulapp.manifesto.restful.RestAPIImage;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -55,7 +59,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
     private JSONObject person;
     private JSONArray profile;
     private JSONObject promise_num;
-    private int persent=0;
+    private float persent=0f;
     private TextView oneT;
     private TextView oneS;
     private TextView twoT;
@@ -92,10 +96,14 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         //rest api
         restAPI = new RestAPI();
-        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/ElectedPersonInfoServlet?ep_id="+id;
+        RestAPIImage restAPIImage = new RestAPIImage();
+        String url1 = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/ElectedPersonInfoServlet?ep_id="+id;
+        String url2 = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/gorvenor/"+id+".jpg";
         JSONObject result = null;
+        Bitmap bitmap = null;
         try {
-            result = restAPI.execute(url).get();
+            result = restAPI.execute(url1).get();
+            bitmap = restAPIImage.execute(url2).get();
         }catch (Exception e){
         }
 
@@ -167,7 +175,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         Title.setText(cityString);
         rate();
         promise();
-        profile();
+        profile(bitmap);
 
     }
 
@@ -238,7 +246,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
             int sum = review+part+complete+normal+continues;
             //{"일부추진","정상추진","계속추진","사업완료","검토중"};
             rateRatio2 = new float[]{(float)part/sum,(float)normal/sum,(float)continues/sum,(float)complete/sum,(float)review/sum};
-            persent = (sum-review)*100/sum;
+            persent = (float)((sum-review-part)*100)/sum;
             Log.i("rate", rateRatio[0]+" "+rateRatio[4]);
         }catch (Exception e){
             Log.i("rate","rate json error",e);
@@ -346,7 +354,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         mChart.setDrawHoleEnabled(true);
         mChart.setHoleColor(getResources().getColor(R.color.colorWhite));
-        mChart.setCenterText("공약이행률\n"+persent+"%");
+        mChart.setCenterText("공약이행률\n"+String.format("%.1f",persent)+"%");
         mChart.setCenterTextSize(20f);
 
         mChart.setTransparentCircleColor(getResources().getColor(R.color.colorWhite));
@@ -732,7 +740,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
     /*
     four view
      */
-    private void profile(){
+    private void profile(Bitmap bitmap){
+        ImageView imageView = (ImageView) findViewById(R.id.rate_profile_governor);
+        imageView.setImageBitmap(bitmap);
 
         TextView textName = (TextView)  findViewById(R.id.rate_profile_name);
         TextView textDay = (TextView) findViewById(R.id.rate_profile_day);
