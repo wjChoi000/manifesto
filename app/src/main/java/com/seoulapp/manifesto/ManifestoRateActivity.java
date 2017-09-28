@@ -227,7 +227,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
     /*
     make rate
      */
-    private String[] rateList2 = {"일부추진","정상추진","계속추진","사업완료","검토중"};
+    private String[] rateList2 = {"계속추진","일부추진","정상추진","사업완료","검토중"};
     private float[] rateRatio2 ={2,10,50,37,1};
     private PieChart mChart;
     private String[] rateList = {"검토중","일부추진","정상추진","계속추진","사업완료"};
@@ -242,10 +242,10 @@ public class ManifestoRateActivity extends AppCompatActivity {
             int normal = person.getInt("normal");
             int continues = person.getInt("continues");
             // {"검토중","일부추진","정상추진","계속추진","사업완료"};
-            rateRatio = new float[]{(float)review, (float)part, (float)complete, (float)normal, (float)continues};
+            rateRatio = new float[]{(float)review,(float)part,(float)normal,(float)continues,(float)complete};
             int sum = review+part+complete+normal+continues;
             //{"일부추진","정상추진","계속추진","사업완료","검토중"};
-            rateRatio2 = new float[]{(float)part/sum,(float)normal/sum,(float)continues/sum,(float)complete/sum,(float)review/sum};
+            rateRatio2 = new float[]{(float)continues/sum,(float)part/sum,(float)normal/sum,(float)complete/sum,(float)review/sum};
             persent = (float)((sum-review-part)*100)/sum;
             Log.i("rate", rateRatio[0]+" "+rateRatio[4]);
         }catch (Exception e){
@@ -367,15 +367,32 @@ public class ManifestoRateActivity extends AppCompatActivity {
         mChart.setRotationEnabled(false);
         mChart.setHighlightPerTapEnabled(true);
 
-        setData(mChart,5,rateList2,rateRatio2,1);
+        int count = 0;
+        for(int i =0; i< rateRatio2.length;i++){
+            if(rateRatio2[i] !=0){
+                count += 1;
+            }
+        }
+        float[] rateRatioTemp = new float[count];
+        String[] rateListTemp = new String[count];
+        int j =0;
+        for(int i =0; i< rateRatio2.length;i++) {
+            if (rateRatio2[i] != 0) {
+                rateRatioTemp[j] = rateRatio2[i];
+                rateListTemp[j] = rateList2[i];
+                j += 1;
+            }
+        }
+        setData(mChart,count,rateListTemp,rateRatioTemp,1,false);
 
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
 
         mChart.getLegend().setEnabled(false);
-        mChart.setEntryLabelTextSize(12f);
+        mChart.setEntryLabelTextSize(20f);
+        mChart.setEntryLabelColor(getResources().getColor(R.color.colorWhite));
 
     }
-    private void setData(PieChart chart,int count,String[] s, float[] f, int mode) {
+    private void setData(PieChart chart,int count,String[] s, float[] f, int mode,boolean outLable) {
 
         ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
 
@@ -397,19 +414,39 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         ArrayList<Integer> colors = new ArrayList<Integer>();
         if(mode ==1) {
-            colors.add(getResources().getColor(R.color.rate_title_one));
-            colors.add(getResources().getColor(R.color.rate_title_two));
-            colors.add(getResources().getColor(R.color.rate_title_three));
-            colors.add(getResources().getColor(R.color.rate_title_four));
-            colors.add(getResources().getColor(R.color.rate_title_five));
+
+            for(String item: s){
+                if(item.compareTo("사업완료")==0){
+                    colors.add(getResources().getColor(R.color.rate_title_one));
+                }
+                else if(item.compareTo("정상추진")==0){
+                    colors.add(getResources().getColor(R.color.rate_title_two));
+                }
+                else if(item.compareTo("일부추진")==0){
+                    colors.add(getResources().getColor(R.color.rate_title_three));
+                }
+                else if(item.compareTo("계속추진")==0){
+                    colors.add(getResources().getColor(R.color.rate_title_four));
+                }
+                else if(item.compareTo("검토중")==0){
+                    colors.add(getResources().getColor(R.color.rate_title_five));
+                }
+            }
         }else{
-            String[] list = {"복지","문화","경제","환경","행정","도시안전"};
-            colors.add(getResources().getColor(R.color.welfare));
-            colors.add(getResources().getColor(R.color.culture));
-            colors.add(getResources().getColor(R.color.economy));
-            colors.add(getResources().getColor(R.color.environment));
-            colors.add(getResources().getColor(R.color.administation));
-            colors.add(getResources().getColor(R.color.cityAndSafty));
+            for(String item: s){
+                if(item.compareTo("복지")==0)
+                    colors.add(getResources().getColor(R.color.welfare));
+                else if(item.compareTo("문화")==0)
+                    colors.add(getResources().getColor(R.color.culture));
+                else if(item.compareTo("경제")==0)
+                    colors.add(getResources().getColor(R.color.economy));
+                else if(item.compareTo("환경")==0)
+                    colors.add(getResources().getColor(R.color.environment));
+                else if(item.compareTo("행정")==0)
+                    colors.add(getResources().getColor(R.color.administation));
+                else if(item.compareTo("도시안전")==0)
+                    colors.add(getResources().getColor(R.color.cityAndSafty));
+            }
         }
         dataSet.setColors(colors);
         //dataSet.setSelectionShift(0f);
@@ -418,8 +455,14 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         data.setValueFormatter(new PercentFormatter());
         data.setValueTextSize(20f);
-        data.setValueTextColor(getResources().getColor(R.color.colorWhite));
+
         //data.setValueTypeface(mTfLight);
+        if(outLable) {
+            data.setValueTextColor(getResources().getColor(R.color.colorBlack));
+            dataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+        }else{
+            data.setValueTextColor(getResources().getColor(R.color.colorWhite));
+        }
         chart.setData(data);
 
         // undo all highlights
@@ -543,7 +586,24 @@ public class ManifestoRateActivity extends AppCompatActivity {
             int sum= wel+cul+ eco+envi+city+admi;
             float[] rate = {(float)wel/sum, (float)cul/sum, (float)eco/sum, (float)envi/sum, (float)admi/sum, (float)city/sum};
             String[] list = {"복지","문화","경제","환경","행정","도시안전"};
-            setData(listChart,6,list,rate,2);
+
+            int count = 0;
+            for(int i =0; i< rate.length;i++){
+                if(rate[i] !=0){
+                    count += 1;
+                }
+            }
+            float[] rateRatioTemp = new float[count];
+            String[] rateListTemp = new String[count];
+            int j =0;
+            for(int i =0; i< rate.length;i++) {
+                if (rate[i] != 0) {
+                    rateRatioTemp[j] = rate[i];
+                    rateListTemp[j] = list[i];
+                    j += 1;
+                }
+            }
+            setData(listChart,count,rateListTemp,rateRatioTemp,2,false);
         }catch (Exception e){
             Log.i("promise","json promise error",e);
         }
@@ -553,7 +613,6 @@ public class ManifestoRateActivity extends AppCompatActivity {
         listChart.setEntryLabelTextSize(0f);
 
         listChart.setEntryLabelColor(getResources().getColor(R.color.colorWhite));
-
         listChart.setEntryLabelTextSize(20f);
     }
     private void addPromise(LinearLayout parent,String s1, int i){
