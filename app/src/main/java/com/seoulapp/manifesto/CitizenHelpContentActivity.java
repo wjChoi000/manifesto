@@ -1,14 +1,11 @@
 package com.seoulapp.manifesto;
 
 import android.content.Intent;
-import android.media.Image;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,11 +14,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.seoulapp.manifesto.model.Citizen;
-
-import org.w3c.dom.Text;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class CitizenHelpContentActivity extends AppCompatActivity {
     int goodCount;

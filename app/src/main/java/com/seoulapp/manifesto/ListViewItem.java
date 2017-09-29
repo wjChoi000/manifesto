@@ -1,6 +1,5 @@
 package com.seoulapp.manifesto;
 
-import android.graphics.drawable.Drawable;
 
 public class ListViewItem {
     private int titleImage;

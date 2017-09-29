@@ -17,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.seoulapp.manifesto.model.KnowContent;
-import com.seoulapp.manifesto.restful.RestAPI;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

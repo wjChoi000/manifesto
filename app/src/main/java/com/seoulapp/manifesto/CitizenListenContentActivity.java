@@ -2,17 +2,14 @@ package com.seoulapp.manifesto;
 
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -21,9 +18,6 @@ import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.Citizen;
 
-import org.w3c.dom.Text;
-
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

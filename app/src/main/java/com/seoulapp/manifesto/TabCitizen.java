@@ -17,8 +17,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.Citizen;
-import com.seoulapp.manifesto.restful.RestAPI;
-import com.seoulapp.manifesto.restful.RestAPIImage;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

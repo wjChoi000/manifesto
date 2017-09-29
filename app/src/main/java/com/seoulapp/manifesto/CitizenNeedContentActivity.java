@@ -6,19 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.Citizen;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class CitizenNeedContentActivity extends AppCompatActivity {
     int need_goodCount;
