@@ -48,17 +48,6 @@ public class RestAPI extends AsyncTask<String, Void, JSONObject>{
             reader.close();
 
             data = new JSONObject(json.toString());
-//            //image
-//            if(urls[1] !=null){
-//                url = new URL(urls[1]);
-//                connection =(HttpURLConnection) url.openConnection();
-//                connection.setDoInput(true);
-//                connection.connect();
-//
-//                InputStream is  = connection.getInputStream();
-//                bitmap = BitmapFactory.decodeStream(is);
-//            }
-
         } catch (Exception e) {
             Log.i("result", urls[0], e);
         }

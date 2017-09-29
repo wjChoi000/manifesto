@@ -15,6 +15,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.seoulapp.manifesto.model.Citizen;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -40,24 +42,6 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
         // 리스트뷰 참조 및 Adapter달기
         listview = (ListView) findViewById(R.id.listview_need_content_comment);
         listview.setAdapter(adapter);
-
-
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-
 
         LayoutInflater inflater = getLayoutInflater();
         ViewGroup header = (ViewGroup) inflater.inflate(R.layout.custom_header_content, listview, false);
@@ -94,6 +78,9 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
         actionBar.setHomeButtonEnabled(true);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
+        Intent intent = getIntent(); // 보내온 Intent를 얻는다
+        Citizen content = (Citizen) intent.getSerializableExtra("need");
+
         TextView tvTitle = (TextView)findViewById(R.id.need_title_context);
         TextView tvGu = (TextView)findViewById(R.id.gu);
         TextView tvU_id = (TextView)findViewById(R.id.need_context_u_id);
@@ -102,29 +89,42 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
         TextView tvGoodNum = (TextView)findViewById(R.id.need_goodNum);
         TextView tvHitNum = (TextView)findViewById(R.id.need_hitNum);
         TextView tvComNum = (TextView)findViewById(R.id.need_comNum);
-
-        Intent intent = getIntent(); // 보내온 Intent를 얻는다
-
-        tvTitle.setText(intent.getStringExtra("title"));
-        tvU_id.setText(intent.getStringExtra("u_id"));
-        tvGu.setText(intent.getStringExtra("gu"));
-        tvC_date.setText(intent.getStringExtra("C_date"));
-        tvContext.setText(intent.getStringExtra("Need_context"));
-        tvGoodNum.setText(intent.getStringExtra("GoodNum"));
-        tvHitNum.setText(intent.getStringExtra("HitNum"));
-        tvComNum.setText(intent.getStringExtra("ComNum"));
+        tvTitle.setText(content.getTitle());
+        tvU_id.setText(content.getU_id()+"");
+        tvGu.setText(content.getGu());
+        tvC_date.setText(content.getCreate_date());
+        tvContext.setText(content.getComment());
+        tvGoodNum.setText(content.getGood()+"");
+        tvHitNum.setText(content.getHit()+"");
+        tvComNum.setText(content.getCount()+"");
 
         need_tvGood = (TextView)findViewById(R.id.need_goodTvBtn);
         need_tvGoodCount = (TextView)findViewById(R.id.need_goodNum);
 
-        String countTest = intent.getStringExtra("GoodNum");
-        need_goodCount = Integer.parseInt(countTest);
+        need_goodCount = content.getGood();
 
         findViewById(R.id.need_goodTvBtn).setOnClickListener(need_clickListener);
 
         need_imgGood = (ImageView)findViewById(R.id.need_imgGood);
 
 
+        //
+
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
 
     }
 

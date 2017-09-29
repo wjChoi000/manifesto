@@ -2,8 +2,10 @@ package com.seoulapp.manifesto;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.media.Image;
+import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -47,6 +49,10 @@ import com.seoulapp.manifesto.restful.RestAPIImage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -55,7 +61,6 @@ import java.util.StringTokenizer;
 
 
 public class ManifestoRateActivity extends AppCompatActivity {
-    private RestAPI restAPI;
     private JSONObject person;
     private JSONArray profile;
     private JSONObject promise_num;
@@ -81,6 +86,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
     private Intent thisintent;
     private String cityString;
     private int id=0;
+    private TextView Title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,29 +96,22 @@ public class ManifestoRateActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
-        //intent
-        thisintent = getIntent();
-        id = thisintent.getIntExtra("id",0);
-
-        //rest api
-        restAPI = new RestAPI();
-        RestAPIImage restAPIImage = new RestAPIImage();
-        String url1 = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/ElectedPersonInfoServlet?ep_id="+id;
-        String url2 = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/gorvenor/"+id+".jpg";
-        JSONObject result = null;
-        Bitmap bitmap = null;
-        try {
-            result = restAPI.execute(url1).get();
-            bitmap = restAPIImage.execute(url2).get();
-        }catch (Exception e){
-        }
-
         //actionbar title
         View view = getLayoutInflater().inflate(R.layout.actionbar_title, null);
         ActionBar.LayoutParams params = new ActionBar.LayoutParams(
                 ActionBar.LayoutParams.WRAP_CONTENT,
                 ActionBar.LayoutParams.MATCH_PARENT,
                 Gravity.CENTER);
+        Title = (TextView) view.findViewById(R.id.actionbar_title);
+
+        //intent
+        thisintent = getIntent();
+        id = thisintent.getIntExtra("id",0);
+        //rest api
+        RateRestAPI rateRestAPI = new RateRestAPI();
+        String url1 = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/ElectedPersonInfoServlet?ep_id="+id;
+        rateRestAPI.execute(url1);
+
 
         getSupportActionBar().setCustomView(view,params);
         getSupportActionBar().setDisplayShowCustomEnabled(true); //show custom title
@@ -159,23 +158,6 @@ public class ManifestoRateActivity extends AppCompatActivity {
             }
         });
         btnOne.performClick();
-
-        //dynamic
-        try{
-            person = result.getJSONObject("person");
-            profile = result.getJSONArray("profile");
-            promise_num = result.getJSONObject("promise_num");
-            cityString = person.getString("local");
-            Log.i("restful","Success");
-        }catch (Exception e){
-            Log.i("result","fail rest",e);
-        }
-
-        TextView Title = (TextView) view.findViewById(R.id.actionbar_title);
-        Title.setText(cityString);
-        rate();
-        promise();
-        profile(bitmap);
 
     }
 
@@ -799,9 +781,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
     /*
     four view
      */
-    private void profile(Bitmap bitmap){
-        ImageView imageView = (ImageView) findViewById(R.id.rate_profile_governor);
-        imageView.setImageBitmap(bitmap);
+    private void profile(){
 
         TextView textName = (TextView)  findViewById(R.id.rate_profile_name);
         TextView textDay = (TextView) findViewById(R.id.rate_profile_day);
@@ -915,6 +895,90 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    private class RateRestAPI extends AsyncTask<String, Void, JSONObject> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... urls) {
+            JSONObject data = null;
+            Bitmap bitmap = null;
+            try {
+                URL url = new URL(urls[0]);
+                HttpURLConnection connection =
+                        (HttpURLConnection) url.openConnection();
+                //connection.addRequestProperty("x-api-key", context.getString(R.string.open_weather_maps_app_id));
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(connection.getInputStream()));
+
+                StringBuffer json = new StringBuffer(1024);
+                String tmp = "";
+                while ((tmp = reader.readLine()) != null)
+                    json.append(tmp).append("\n");
+                reader.close();
+
+                data = new JSONObject(json.toString());
+            } catch (Exception e) {
+                Log.i("result", urls[0], e);
+            }
+            return data;
+        }
+
+        protected void onPostExecute(JSONObject result) {
+
+            try{
+                person = result.getJSONObject("person");
+                String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/gorvenor/"+person.getString("priture");
+                Log.i("restful", url);
+                RateRestAPIImage restAPIImage = new RateRestAPIImage();
+                restAPIImage.execute(url);
+
+                profile = result.getJSONArray("profile");
+                promise_num = result.getJSONObject("promise_num");
+                cityString = person.getString("local");
+                Log.i("restful","Success");
+            }catch (Exception e){
+                Log.i("result","fail rest",e);
+            }
+
+
+            Title.setText(cityString);
+            rate();
+            promise();
+            profile();
+        }
+    }
+
+    private class RateRestAPIImage  extends AsyncTask<String, Void, Bitmap> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+        protected Bitmap doInBackground(String... urls) {
+            Bitmap bitmap = null;
+            try {
+                URL url = new URL(urls[0]);
+                HttpURLConnection connection =
+                        (HttpURLConnection) url.openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream is  = connection.getInputStream();
+                bitmap = BitmapFactory.decodeStream(is);
+
+            } catch (Exception e) {
+                Log.i("result", urls[0], e);
+            }
+            return bitmap;
+        }
+        @Override
+        protected void onPostExecute(Bitmap bitmap){
+            ImageView imageView = (ImageView) findViewById(R.id.rate_profile_governor);
+            imageView.setImageBitmap(bitmap);
+        }
     }
 
 }

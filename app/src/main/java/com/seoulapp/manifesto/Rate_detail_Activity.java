@@ -1,8 +1,10 @@
 package com.seoulapp.manifesto;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +22,11 @@ import com.seoulapp.manifesto.restful.RestAPI;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class Rate_detail_Activity extends AppCompatActivity {
 
@@ -44,16 +51,9 @@ public class Rate_detail_Activity extends AppCompatActivity {
         String category = intent.getStringExtra("category");
 
         //rest api
-        RestAPI restAPI = new RestAPI();
+        DetailRestAPI restAPI = new DetailRestAPI();
         String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/ElectedPersonPromiseServlet?ep_id="+id+"&category="+category;
-        JSONObject result = null;
-        try {
-            result = restAPI.execute(url).get();
-            promise = result.getJSONArray("promise");
-            count = result.getJSONObject("count");
-        }catch (Exception e){
-            Log.i("rest","rest api err",e);
-        }
+        restAPI.execute(url);
 
         TextView Title = (TextView) view.findViewById(R.id.actionbar_title);
         Title.setText(city);
@@ -84,9 +84,6 @@ public class Rate_detail_Activity extends AppCompatActivity {
             categoryCard.setCardBackgroundColor(getResources().getColor(R.color.administation));
         else if(name.compareTo("도시·안전")==0)
             categoryCard.setCardBackgroundColor(getResources().getColor(R.color.cityAndSafty));
-
-        list();
-        count();
     }
 
     private void list() {
@@ -190,5 +187,52 @@ public class Rate_detail_Activity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     };
+
+    private class DetailRestAPI extends AsyncTask<String, Void, JSONObject> {
+
+        final static String openJSONObjectURL = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... urls) {
+            JSONObject data = null;
+            Bitmap bitmap = null;
+            try {
+                URL url = new URL(urls[0]);
+                HttpURLConnection connection =
+                        (HttpURLConnection) url.openConnection();
+                //connection.addRequestProperty("x-api-key", context.getString(R.string.open_weather_maps_app_id));
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(connection.getInputStream()));
+
+                StringBuffer json = new StringBuffer(1024);
+                String tmp = "";
+                while ((tmp = reader.readLine()) != null)
+                    json.append(tmp).append("\n");
+                reader.close();
+
+                data = new JSONObject(json.toString());
+            } catch (Exception e) {
+                Log.i("result", urls[0], e);
+            }
+            return data;
+        }
+        @Override
+        protected void  onPostExecute(JSONObject result){
+            try {
+                promise = result.getJSONArray("promise");
+                count = result.getJSONObject("count");
+                list();
+                count();
+            }catch (Exception e){
+                Log.i("rest","rest api err",e);
+            }
+        }
+    }
+
 }
 
