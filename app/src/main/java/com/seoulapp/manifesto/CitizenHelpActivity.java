@@ -71,14 +71,14 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
 
         // inflate custom header and attach it to the list
         LayoutInflater inflater = getLayoutInflater();
-        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.custom_header, listview, false);
+        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.custom_header_help, listview, false);
         listview.addHeaderView(header, null, false);
 
 
         // we take the background image and button reference from the header
         backgroundImage = (ImageView) header.findViewById(R.id.listHeaderImage_help);
-        ImageView del = (ImageView) header.findViewById(R.id.listHeaderImage);
-        del.setVisibility(View.GONE);
+//        ImageView del = (ImageView) header.findViewById(R.id.listHeaderImage);
+//        del.setVisibility(View.GONE);
         listview.setOnScrollListener(this);
 
 

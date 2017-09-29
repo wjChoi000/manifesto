@@ -303,7 +303,7 @@ public class TabCitizen extends Fragment {
                 mViewPager.setAdapter(mAdapter);
                 mIndicatorView.setViewPager(mViewPager);
                 mAutoRollingManager = new AutoRollingManager(mViewPager, mAdapter, mIndicatorView);
-                mAutoRollingManager.setRollingTime(7000);
+                mAutoRollingManager.setRollingTime(5500);
                 mAutoRollingManager.onRollingStart();
             } catch (Exception e) {
                 Log.i("Help", "help error", e);
