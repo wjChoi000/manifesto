@@ -155,7 +155,7 @@
 
     <style name="rate_small_title">
         <item name="android:textColor">#000</item>
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingTop">10dp</item>

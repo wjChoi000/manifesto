@@ -346,7 +346,8 @@
             <!--공약 비율 차트-->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -356,36 +357,14 @@
                     android:layout_alignParentLeft="true"
                     />
                 <com.github.mikephil.charting.charts.PieChart
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
                     android:id="@+id/rate_list_chart"
-                    android:layout_width="370dp"
-                    android:layout_height="370dp"
+                    android:layout_width="350dp"
+                    android:layout_height="350dp"
                     android:layout_centerInParent="true"
                     />
             </RelativeLayout>
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical"-->
-                <!--android:gravity="center_horizontal"-->
-                <!--&gt;-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="지역구 공약 비율"-->
-                    <!--android:padding="10dp"-->
-                    <!--android:textColor="#000"-->
-                    <!--android:textSize="18dp"-->
-                    <!--android:textStyle="bold"-->
-                    <!--/>-->
-                <!--<com.github.mikephil.charting.charts.PieChart-->
-                    <!--android:id="@+id/rate_list_chart"-->
-                    <!--android:layout_width="370dp"-->
-                    <!--android:layout_height="370dp"-->
-
-                    <!--/>-->
-
-            <!--</LinearLayout>-->
             <LinearLayout
                 android:id="@+id/m_promise_list"
                 android:orientation="vertical"

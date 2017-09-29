@@ -125,6 +125,7 @@ public class Rate_detail_Activity extends AppCompatActivity {
 
         int threedp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3, getResources().getDisplayMetrics());
         CardView.LayoutParams paramsBtn = new CardView.LayoutParams(CardView.LayoutParams.WRAP_CONTENT, CardView.LayoutParams.WRAP_CONTENT);
+        paramsBtn.setMargins(fiveDp,0,0,0);
         promiseBtn.setLayoutParams(paramsBtn);
 
         TextView txt = new TextView(this);
@@ -134,19 +135,19 @@ public class Rate_detail_Activity extends AppCompatActivity {
         txt.setTypeface(null, Typeface.BOLD);
         if( i.compareTo("complete")==0){
             promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_one));
-            txt.setText(R.string.rate_table_title_one);
+            txt.setText(R.string.rate_detail_table_title_one);
         }else if(i.compareTo("normal")==0){
             promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_two));
-            txt.setText(R.string.rate_table_title_two);
+            txt.setText(R.string.rate_detail_table_title_two);
         }else if(i.compareTo("part")==0) {
             promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_three));
-            txt.setText(R.string.rate_table_title_three);
+            txt.setText(R.string.rate_detail_table_title_three);
         }else if(i.compareTo("continues")==0) {
             promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_four));
-            txt.setText(R.string.rate_table_title_four);
+            txt.setText(R.string.rate_detail_table_title_four);
         }else if(i.compareTo("review")==0) {
             promiseBtn.setCardBackgroundColor(getResources().getColor(R.color.rate_title_five));
-            txt.setText(R.string.rate_table_title_five);
+            txt.setText(R.string.rate_detail_table_title_five);
         }
         txt.setTextColor(getResources().getColor(R.color.colorWhite));
         promiseBtn.addView(txt);

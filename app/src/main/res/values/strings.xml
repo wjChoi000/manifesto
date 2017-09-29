@@ -45,6 +45,11 @@
     <string name="rate_table_title_three">일부추진 :</string>
     <string name="rate_table_title_four">계속추진 :</string>
     <string name="rate_table_title_five">검토 중  :</string>
+    <string name="rate_detail_table_title_one">사업완료</string>
+    <string name="rate_detail_table_title_two">정상추진</string>
+    <string name="rate_detail_table_title_three">일부추진</string>
+    <string name="rate_detail_table_title_four">계속추진</string>
+    <string name="rate_detail_table_title_five">검토 중 </string>
 
     <string name="rate_table_title_one_des">공약 이행이 완료되어 종료된 사업</string>
     <string name="rate_table_title_two_des">공약 내용 이행 완료 후 추가적인 목표를 세워 추진중인 사업</string>

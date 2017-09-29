@@ -302,7 +302,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         hChart.setFitBars(true);
         hChart.animateY(2500);
         hChart.getLegend().setEnabled(false);
-    }
+          }
     private void setDataH(HorizontalBarChart hchart, int count,String[] s, float[] f) {
 
         float barWidth = 9f;
@@ -388,7 +388,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
 
         mChart.getLegend().setEnabled(false);
-        mChart.setEntryLabelTextSize(20f);
+        mChart.setEntryLabelTextSize(15f);
         mChart.setEntryLabelColor(getResources().getColor(R.color.colorWhite));
 
     }
@@ -454,7 +454,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         PieData data = new PieData(dataSet);
 
         data.setValueFormatter(new PercentFormatter());
-        data.setValueTextSize(20f);
+        data.setValueTextSize(15f);
 
         //data.setValueTypeface(mTfLight);
         if(outLable) {
@@ -613,7 +613,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         listChart.setEntryLabelTextSize(0f);
 
         listChart.setEntryLabelColor(getResources().getColor(R.color.colorWhite));
-        listChart.setEntryLabelTextSize(20f);
+        listChart.setEntryLabelTextSize(15f);
     }
     private void addPromise(LinearLayout parent,String s1, int i){
         LinearLayout linear = new LinearLayout(this);
