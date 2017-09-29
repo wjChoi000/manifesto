@@ -75,7 +75,6 @@ public class TabCitizen extends Fragment {
         //도와줘요 더보기 레이아웃
         ViewGroup HelpAddlayout = (ViewGroup) rootView.findViewById(R.id.layout_helpAdd);
         HelpAddlayout.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 onClickHelpAddlayout(view);
