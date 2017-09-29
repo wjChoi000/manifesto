@@ -186,7 +186,6 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
                         Intent intent = new Intent(CitizenListenActivity.this, CitizenListenContentActivity.class);
                         try {
                             JSONArray jsonArray = jsonObject.getJSONArray("list");
-                            Log.i("position",position+"");
                             JSONObject jres = jsonArray.getJSONObject(position - offset+limit-1);
                             Citizen citizen = Citizen.convertJsonToListen(jres);
                             intent.putExtra("say",citizen);

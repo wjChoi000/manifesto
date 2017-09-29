@@ -180,7 +180,6 @@ public class CitizenNeedActivity extends AppCompatActivity {
                         Intent intent = new Intent(CitizenNeedActivity.this, CitizenNeedContentActivity.class);
                         try {
                             JSONArray jsonArray = jsonObject.getJSONArray("list");
-                            Log.i("position",position+"");
                             JSONObject jres = jsonArray.getJSONObject(position - offset+limit-1);
                             Citizen citizen = Citizen.convertJsonToNeed(jres);
                             intent.putExtra("need",citizen);

@@ -178,7 +178,6 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
                         Intent intent = new Intent(CitizenHelpActivity.this, CitizenHelpContentActivity.class);
                         try {
                             JSONArray jsonArray = jsonObject.getJSONArray("list");
-                            Log.i("position",position+"");
                             JSONObject jres = jsonArray.getJSONObject(position - offset+limit-1);
                             Citizen citizen = Citizen.convertJsonToHelp(jres);
                             intent.putExtra("help",citizen);
