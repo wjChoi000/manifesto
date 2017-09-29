@@ -12,7 +12,7 @@ import java.util.Date;
  */
 
 public class Citizen implements Serializable{
-
+//
     private int id;
     private int u_id;
     private String title;
