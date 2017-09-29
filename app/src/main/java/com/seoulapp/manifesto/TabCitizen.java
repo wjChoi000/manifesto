@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.Citizen;
 import com.seoulapp.manifesto.restful.RestAPI;
@@ -51,21 +52,10 @@ public class TabCitizen extends Fragment {
 
         mIndicatorView = (IndicatorView) rootView.findViewById(R.id.indicator_view);
         mViewPager = (ViewPager) rootView.findViewById(R.id.view_pager);
-        mAdapter = new RollingAdapter(rootView.getContext(), getData(), new RollingAdapter.OnAdapterItemClickListener() {
-            @Override
-            public void onItemClick(RollingModel object, int position) {
-                // Toast.makeText(rootView.getContext(), position + " items click!", Toast.LENGTH_SHORT).show();
-            }
-        });
-        mViewPager.setAdapter(mAdapter);
-        mIndicatorView.setViewPager(mViewPager);
-        mAutoRollingManager = new AutoRollingManager(mViewPager, mAdapter, mIndicatorView);
-        mAutoRollingManager.setRollingTime(5500);
 
         //들려줘요 더보기 레이아웃
         ViewGroup ListenAddlayout = (ViewGroup) rootView.findViewById(R.id.layout_listenAdd);
         ListenAddlayout.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 onClickListenAddlayout(view);
@@ -84,7 +74,6 @@ public class TabCitizen extends Fragment {
         //필요해요 더보기 레이아웃
         ViewGroup NeedAddlayout = (ViewGroup) rootView.findViewById(R.id.layout_needAdd);
         NeedAddlayout.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 onClickNeedAddlayout(view);
@@ -115,6 +104,8 @@ public class TabCitizen extends Fragment {
         list.add(new RollingModel("1", R.drawable.listen_book_issue));
         list.add(new RollingModel("2", R.drawable.listen_moon100_issue));
         list.add(new RollingModel("3", R.drawable.listen_power_issue));
+        list.add(new RollingModel("4", R.drawable.listen_moon100_issue));
+
         return list;
     }
 
@@ -127,7 +118,9 @@ public class TabCitizen extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mAutoRollingManager.onRollingStart();
+        if(mAutoRollingManager !=null){
+            mAutoRollingManager.onRollingStart();
+        }
     }
 
     @Override
@@ -233,17 +226,14 @@ public class TabCitizen extends Fragment {
                         startActivity(intent);
                     }
                 });
-            } catch (Exception e) {
-                Log.i("say", "say error", e);
-            }
-            try {
-                JSONArray jsonArray = jsonObject.getJSONArray("help");
-                int len = jsonArray.length();
-                final Citizen[] list_help = new Citizen[len];
-                for (int i = 0; i < len; i++) {
-                    list_help[i] = Citizen.convertJsonToHelp(jsonArray.getJSONObject(i));
+
+                JSONArray jsonArray2 = jsonObject.getJSONArray("help");
+                int len2 = jsonArray2.length();
+                final Citizen[] list_help = new Citizen[len2];
+                for (int i = 0; i < len2; i++) {
+                    list_help[i] = Citizen.convertJsonToHelp(jsonArray2.getJSONObject(i));
                 }
-                int j = 0;
+                j = 0;
                 //리스트뷰1
                 H_listview1 = (ListView) rootView.findViewById(R.id.listview_help_tab1);
                 ListViewAdapter_help H_adapter1;
@@ -297,6 +287,26 @@ public class TabCitizen extends Fragment {
                         startActivity(intent);
                     }
                 });
+
+                mAdapter = new RollingAdapter(rootView.getContext(), getData(), new RollingAdapter.OnAdapterItemClickListener() {
+                    @Override
+                    public void onItemClick(RollingModel object, int position) {
+                        if(position <2){
+                            Intent intent = new Intent(getActivity(), CitizenListenContentActivity.class);
+                            intent.putExtra("say", list_say[position]);
+                            startActivity(intent);
+                        }else{
+                            Intent intent = new Intent(getActivity(), CitizenHelpContentActivity.class);
+                            intent.putExtra("help", list_help[position-2]);
+                            startActivity(intent);
+                        }
+                    }
+                });
+                mViewPager.setAdapter(mAdapter);
+                mIndicatorView.setViewPager(mViewPager);
+                mAutoRollingManager = new AutoRollingManager(mViewPager, mAdapter, mIndicatorView);
+                mAutoRollingManager.setRollingTime(7000);
+                mAutoRollingManager.onRollingStart();
             } catch (Exception e) {
                 Log.i("Help", "help error", e);
             }
