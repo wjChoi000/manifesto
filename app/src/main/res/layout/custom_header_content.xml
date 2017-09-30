@@ -328,7 +328,7 @@
                 //좋아요
                 <TextView
                     android:id="@+id/goodTvBtn"
-                    android:onClick="onClick"
+
                     android:gravity="center"
                     android:layout_margin="3dp"
                     android:text="좋아요"
@@ -514,7 +514,7 @@
                 //좋아요
                 <TextView
                     android:id="@+id/need_goodTvBtn"
-                    android:onClick="onClick"
+
                     android:gravity="center"
                     android:layout_margin="3dp"
                     android:text="좋아요"

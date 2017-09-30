@@ -21,10 +21,15 @@ public class LoginCheck {
         return pref.getInt("id", 0);
     }
 
-    public void login(int id){
+    public String getNickname(){
+        return pref.getString("nickname", "미등록");
+    }
+
+    public void login(int id,String nickname){
         SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean("login", true);
         editor.putInt("id",id);
+        editor.putString("nickname",nickname);
         editor.commit();
     }
     public void logout(){

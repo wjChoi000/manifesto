@@ -21,6 +21,9 @@ import com.kakao.util.helper.log.Logger;
 import com.seoulapp.manifesto.restful.RestAPI;
 import com.seoulapp.manifesto.util.LoginCheck;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class LoginsActivity extends AppCompatActivity {
     private SessionCallback callback;
     @Override
@@ -127,10 +130,14 @@ public class LoginsActivity extends AppCompatActivity {
                 int id = 0;
 
                 LoginCheck loginCheck = new LoginCheck(LoginsActivity.this);
-                loginCheck.login(id);
+
                 RestAPI restAPI = new RestAPI();
                 String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/UserInsertServlet?email="+kakaoID+"&nickname="+kakaoNickname;
-                restAPI.execute(url);
+                try {
+                    JSONObject jres = restAPI.execute(url).get();
+                    id = jres.getInt("id");
+                }catch (Exception e){}
+                loginCheck.login(id,kakaoNickname);
                 redirectMainActivity(); // 로그인 성공시 MainActivity로
             }
         });

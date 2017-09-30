@@ -13,14 +13,20 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.Citizen;
+import com.seoulapp.manifesto.restful.RestAPI;
+import com.seoulapp.manifesto.util.LoginCheck;
+import com.seoulapp.manifesto.util.LoginCheckDialog;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,6 +38,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Handler;
+
+import info.hoang8f.widget.FButton;
 
 public class CitizenListenContentActivity extends AppCompatActivity {
     int agcount;
@@ -49,12 +58,14 @@ public class CitizenListenContentActivity extends AppCompatActivity {
     String formatDate = sdfNow.format(date);
     TextView dateNow;
 
-
+    private EditText editText;
+    private int id;
+    private LoginCheck loginCheck;
+    private boolean opinion= true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_citizen_listen_content);
-
         //리스트뷰
         ListView listview ;
 
@@ -100,17 +111,16 @@ public class CitizenListenContentActivity extends AppCompatActivity {
 
         /////////////////////////////////////////////////////////////////////////
         agtextview = (TextView)findViewById(R.id.ag_count);
-        findViewById(R.id.agreementBtn).setOnClickListener(clickListener);
         agCheck = (CheckBox)findViewById(R.id.agreementBtn);
-
         optextview = (TextView)findViewById(R.id.op_count);
-        findViewById(R.id.oppositionBtn).setOnClickListener(clickListener);
         opCheck = (CheckBox)findViewById(R.id.oppositionBtn);
-
-
+//
+//        findViewById(R.id.agreementBtn).setOnClickListener(clickListener);
+//        findViewById(R.id.oppositionBtn).setOnClickListener(clickListener);
         //////////////////////////////////////////////////////////////////////////////
         Intent intent = getIntent();
         Citizen content = (Citizen) intent.getSerializableExtra("say");
+        id = content.getId();
         ListenRestAPIImage listenRestAPIImage = new  ListenRestAPIImage();
         listenRestAPIImage.execute(content.getPriture());
 
@@ -134,64 +144,110 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         agcount = content.getGood();
         opcount = content.getBad();
 
+        //edit text
+        loginCheck = new LoginCheck(this);
+        editText = (EditText) findViewById(R.id.listen_editText);
+        TextView listen_fake= (TextView) findViewById(R.id.listen_fake);
+
+        if(loginCheck.isItLogin()){
+            editText.setVisibility(View.VISIBLE);
+            listen_fake.setVisibility(View.GONE);
+            FButton listen_transmit = (FButton) findViewById(R.id.listen_transmit);
+            listen_transmit.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public  void onClick(View v){
+                    String comment =editText.getText().toString();
+                    if ( comment.length() > 0 ) {
+                        RestAPI restAPI = new RestAPI();
+                        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenCommentInsertServlet?category=say&u_id="+loginCheck.getID()+"&h_id="+id+"&comment="+comment+"&opinion="+opinion;
+                        editText.setText("");
+                        restAPI.execute(url);
+                        if(opinion){
+                            adapter.addFirstItem(loginCheck.getNickname()+"","찬성","", "방금",comment);
+                        }else{
+                            adapter.addFirstItem(loginCheck.getNickname()+"","","반대", "방금",comment);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                    InputMethodManager imm = (InputMethodManager) getSystemService(CitizenListenContentActivity.this.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+//                    LinearLayout listen_focus = (LinearLayout) findViewById(R.id.listen_focus);
+
+                }
+            });
+        }else{
+            editText.setVisibility(View.GONE);
+            listen_fake.setVisibility(View.VISIBLE);
+
+            LinearLayout listen_comment = (LinearLayout) findViewById(R.id.listen_comment);
+            listen_comment.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    LoginCheckDialog loginCheckDialog = new LoginCheckDialog(CitizenListenContentActivity.this,false);
+                    loginCheckDialog.show();
+                }
+            });
+        }
+
         String url="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetCommentListServlet?offset=0&category=say&id="+content.getId();
         CommentRestAPI commentRestAPI = new CommentRestAPI();
         commentRestAPI.execute(url);
 
+
     }
 
-    private View.OnClickListener clickListener = new View.OnClickListener(){
-        @Override
-        public void onClick(View v){
-
-            switch (v.getId()){
-                case R.id.agreementBtn:
-                    if(opCheck.isChecked() ==true){
-                        opcount--;
-                        optextview.setText("반대 "+opcount);
-                        optextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
-                        opCheck.setChecked(false);
-                        agcount++;
-                        agtextview.setText("찬성 "+agcount);
-                        agtextview.setTextColor(getResources().getColor(R.color.agreement));
-                    }else {
-                        if(agCheck.isChecked() ==true){
-                            agcount++;
-                            agtextview.setText("찬성 "+agcount);
-                            agtextview.setTextColor(getResources().getColor(R.color.agreement));
-                        }else{
-                            agcount--;
-                            agtextview.setText("찬성 "+agcount);
-                            agtextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
-                        }
-                    }
-                    break;
-                case R.id.oppositionBtn:
-                    if(agCheck.isChecked() ==true){
-                        agcount--;
-                        agtextview.setText("찬성 "+agcount);
-                        agtextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
-                        agCheck.setChecked(false);
-                        opcount++;
-                        optextview.setText("반대 "+opcount);
-                        optextview.setTextColor(getResources().getColor(R.color.opposition));
-                    }else{
-                        if(opCheck.isChecked() ==true){
-                            opcount++;
-                            optextview.setText("반대 "+opcount);
-                            optextview.setTextColor(getResources().getColor(R.color.opposition));
-                        }else{
-                            opcount--;
-                            optextview.setText("반대 "+opcount);
-                            optextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
-                        }
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
+//    private View.OnClickListener clickListener = new View.OnClickListener(){
+//        @Override
+//        public void onClick(View v){
+//
+//            switch (v.getId()){
+//                case R.id.agreementBtn:
+//                    if(opCheck.isChecked() ==true){
+//                        opcount--;
+//                        optextview.setText("반대 "+opcount);
+//                        optextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+//                        opCheck.setChecked(false);
+//                        agcount++;
+//                        agtextview.setText("찬성 "+agcount);
+//                        agtextview.setTextColor(getResources().getColor(R.color.agreement));
+//                    }else {
+//                        if(agCheck.isChecked() ==true){
+//                            agcount++;
+//                            agtextview.setText("찬성 "+agcount);
+//                            agtextview.setTextColor(getResources().getColor(R.color.agreement));
+//                        }else{
+//                            agcount--;
+//                            agtextview.setText("찬성 "+agcount);
+//                            agtextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+//                        }
+//                    }
+//                    break;
+//                case R.id.oppositionBtn:
+//                    if(agCheck.isChecked() ==true){
+//                        agcount--;
+//                        agtextview.setText("찬성 "+agcount);
+//                        agtextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+//                        agCheck.setChecked(false);
+//                        opcount++;
+//                        optextview.setText("반대 "+opcount);
+//                        optextview.setTextColor(getResources().getColor(R.color.opposition));
+//                    }else{
+//                        if(opCheck.isChecked() ==true){
+//                            opcount++;
+//                            optextview.setText("반대 "+opcount);
+//                            optextview.setTextColor(getResources().getColor(R.color.opposition));
+//                        }else{
+//                            opcount--;
+//                            optextview.setText("반대 "+opcount);
+//                            optextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+//                        }
+//                    }
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+//    };
 
     //back button
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
@@ -203,20 +259,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     
-    public void onClick(View target){
-        int id=target.getId();
 
-
-        switch (id){
-            case R.id.agreementBtn:
-                Toast.makeText(this, "찬성", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.oppositionBtn:
-                Toast.makeText(this, "반대", Toast.LENGTH_SHORT).show();
-                break;
-        }
-
-    }
 
     private class ListenRestAPIImage  extends AsyncTask<String, Void, Bitmap> {
         @Override
@@ -298,6 +341,30 @@ public class CitizenListenContentActivity extends AppCompatActivity {
             }
         }
     }
-    
+
+    public static void scrollToView(View view,final ScrollView scrollView){
+        scrollToView(view,scrollView,0);
+    }
+    public static void scrollToView(View view, final ScrollView scrollView,int count){
+        if(view !=null && view != scrollView){
+            count += view.getTop();
+            scrollToView((View) view.getParent(),scrollView,count);
+        }
+        else if(scrollView!= null){
+            final int finalCount =count;
+            scrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    scrollView.smoothScrollTo(0,finalCount);
+                }
+            });
+//            new Handler().postDelayed(new Runnable(){
+//                @Override
+//                public void run(){
+//                    scrollView.smoothScrollTo(0,finalCount);
+//                }
+//            },200);
+        }
+    }
 }
 

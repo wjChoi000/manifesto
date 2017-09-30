@@ -2,6 +2,7 @@ package com.seoulapp.manifesto.util;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.seoulapp.manifesto.LoginsActivity;
 import com.seoulapp.manifesto.R;
 
 import info.hoang8f.widget.FButton;
@@ -24,6 +26,7 @@ public class LoginCheckDialog extends Dialog{
     private Boolean flag;
     private TextView textView;
     private LoginCheck loginCheck;
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +59,8 @@ public class LoginCheckDialog extends Dialog{
                 @Override
                 public void onClick(View view) {
                     LoginCheckDialog.this.dismiss();
-                    //go login page
+                    Intent intent = new Intent(context, LoginsActivity.class);
+                    context.startActivity(intent);
                 }
             });
         }
@@ -72,6 +76,7 @@ public class LoginCheckDialog extends Dialog{
     // 클릭버튼이 하나일때 생성자 함수로 클릭이벤트를 받는다.
     public LoginCheckDialog(Context context, boolean flag) {
         super(context, android.R.style.Theme_Translucent_NoTitleBar);
+        this.context= context;
         this.flag = flag;
         loginCheck = new LoginCheck(context);
     }

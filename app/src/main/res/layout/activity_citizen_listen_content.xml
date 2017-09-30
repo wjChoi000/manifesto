@@ -14,7 +14,8 @@
             android:focusableInTouchMode="true"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/listen_focus">
 
             <ListView
                 android:dividerHeight="0.5dp"
@@ -40,13 +41,14 @@
         android:paddingBottom="6dp"
         android:paddingTop="6dp">
         <LinearLayout
+            android:id="@+id/listen_comment"
             android:orientation="vertical"
             android:layout_weight="1"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content">
             <EditText
                 android:textSize="14sp"
-                android:id="@+id/help_editText"
+                android:id="@+id/listen_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -55,6 +57,18 @@
                 android:background="@null"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp" />
+                <TextView
+                    android:textSize="14sp"
+                    android:id="@+id/listen_fake"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:hint="의견을 남겨보세요."
+                    android:background="@null"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"/>
             <TextView
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
@@ -62,23 +76,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_weight="5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <info.hoang8f.widget.FButton
-                android:id="@+id/help_transmit"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:text="전송"
-                android:textStyle="bold"
-                fbutton:buttonColor="@color/colorMain"
-                android:textColor="@color/colorWhite"
-                android:layout_marginRight="10dp"
-
-                fbutton:shadowEnabled="false"
-                fbutton:cornerRadius="5dp"/>
-        </LinearLayout>
+        <info.hoang8f.widget.FButton
+            android:id="@+id/listen_transmit"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:text="전송"
+            android:textStyle="bold"
+            fbutton:buttonColor="@color/colorMain"
+            android:textColor="@color/colorWhite"
+            android:layout_marginRight="10dp"
+            fbutton:shadowEnabled="false"
+            fbutton:cornerRadius="5dp"/>
 
     </LinearLayout>
 </LinearLayout>

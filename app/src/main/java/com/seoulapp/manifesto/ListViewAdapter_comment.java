@@ -81,4 +81,16 @@ public class ListViewAdapter_comment extends BaseAdapter {
         listViewItemList_comment.add(item);
     }
 
+
+    public void addFirstItem(String id, String agStr, String opStr, String cdate, String cont) {
+        ListViewItem_comment item = new ListViewItem_comment();
+
+        item.setId(id);
+        item.setAgStr(agStr);
+        item.setOpStr(opStr);
+        item.setDate(cdate);
+        item.setCont(cont);
+
+        listViewItemList_comment.add(0,item);
+    }
 }
