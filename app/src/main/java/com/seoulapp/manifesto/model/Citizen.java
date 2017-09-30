@@ -1,5 +1,6 @@
 package com.seoulapp.manifesto.model;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import org.json.JSONObject;
@@ -26,8 +27,9 @@ public class Citizen implements Serializable{
     private String opposite;
     private int count;
     private String gu;
+    private String priture;
 
-    public Citizen(int id, int u_id, String title, String category, String comment, int good, int bad, int hit, String create_date, String agree, String opposite, int count) {
+    public Citizen(int id, int u_id, String title, String category, String comment, int good, int bad, int hit, String create_date, String agree, String opposite, int count, String priture) {
         this.id = id;
         this.u_id = u_id;
         this.title = title;
@@ -40,9 +42,10 @@ public class Citizen implements Serializable{
         this.agree = agree;
         this.opposite = opposite;
         this.count = count;
+        this.priture =priture;
     }
 
-    public Citizen(int id, int u_id, String title, String category, String comment, int good, int hit, String create_date, int count) {
+    public Citizen(int id, int u_id, String title, String category, String comment, int good, int hit, String create_date, int count,String priture) {
         this.id = id;
         this.u_id = u_id;
         this.title = title;
@@ -52,9 +55,10 @@ public class Citizen implements Serializable{
         this.hit = hit;
         this.create_date = create_date;
         this.count = count;
+        this.priture =priture;
     }
 
-    public Citizen(int id, int u_id, String title, String category, String comment, int good, int hit, String create_date, int count, String gu) {
+    public Citizen(int id, int u_id, String title, String category, String comment, int good, int hit, String create_date, int count, String gu,String priture) {
         this.id = id;
         this.u_id = u_id;
         this.title = title;
@@ -65,6 +69,7 @@ public class Citizen implements Serializable{
         this.create_date = create_date;
         this.count = count;
         this.gu = gu;
+        this.priture =priture;
     }
 
     public static Citizen convertJsonToListen(JSONObject jsonObject){
@@ -72,7 +77,7 @@ public class Citizen implements Serializable{
             Citizen say = new Citizen(jsonObject.getInt("id"), jsonObject.getInt("u_id"), jsonObject.getString("title"),
                     jsonObject.getString("category"), jsonObject.getString("comments"), jsonObject.getInt("good"),
                     jsonObject.getInt("bad"), jsonObject.getInt("hits"), jsonObject.getString("create_date"), jsonObject.getString("agree"),
-                    jsonObject.getString("opposite"),jsonObject.getInt("count"));
+                    jsonObject.getString("opposite"),jsonObject.getInt("count"),jsonObject.getString("priture"));
             return say;
         }catch (Exception e){
             Log.i("Citizen","listen convert error",e);
@@ -84,7 +89,8 @@ public class Citizen implements Serializable{
         try {
             Citizen say = new Citizen(jsonObject.getInt("id"), jsonObject.getInt("u_id"), jsonObject.getString("title"),
                     jsonObject.getString("category"), jsonObject.getString("comments"), jsonObject.getInt("good"),
-                    jsonObject.getInt("hits"), jsonObject.getString("create_date"), jsonObject.getInt("count"));
+                    jsonObject.getInt("hits"), jsonObject.getString("create_date"), jsonObject.getInt("count")
+                    ,jsonObject.getString("priture"));
             return say;
         }catch (Exception e){
             Log.i("Citizen","Help convert error",e);
@@ -97,7 +103,7 @@ public class Citizen implements Serializable{
             Citizen say = new Citizen(jsonObject.getInt("id"), jsonObject.getInt("u_id"), jsonObject.getString("title"),
                     jsonObject.getString("category"), jsonObject.getString("comments"), jsonObject.getInt("good"),
                     jsonObject.getInt("hits"), jsonObject.getString("create_date"), jsonObject.getInt("count"),
-                    jsonObject.getString("gu"));
+                    jsonObject.getString("gu"),jsonObject.getString("priture"));
             return say;
         }catch (Exception e){
             Log.i("Citizen","Need convert error",e);
@@ -207,5 +213,13 @@ public class Citizen implements Serializable{
 
     public void setGu(String gu) {
         this.gu = gu;
+    }
+
+    public String getPriture() {
+        return priture;
+    }
+
+    public void setPriture(String priture) {
+        this.priture = priture;
     }
 }

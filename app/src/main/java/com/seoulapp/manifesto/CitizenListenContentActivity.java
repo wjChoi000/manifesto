@@ -2,9 +2,13 @@ package com.seoulapp.manifesto;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +22,9 @@ import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.Citizen;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -112,9 +119,10 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         //////////////////////////////////////////////////////////////////////////////
         Intent intent = getIntent();
         Citizen content = (Citizen) intent.getSerializableExtra("say");
+        ListenRestAPIImage listenRestAPIImage = new  ListenRestAPIImage();
+        listenRestAPIImage.execute(content.getPriture());
 
         TextView tvTitle = (TextView)findViewById(R.id.titleText);
-        ImageView iv = (ImageView)findViewById(R.id.Listen_content_num1);
         TextView tvSubTitle = (TextView)findViewById(R.id.Listen_subtitle);
         TextView tvAgContext = (TextView)findViewById(R.id.Ag_context);
         TextView tvOpContext = (TextView)findViewById(R.id.Op_context);
@@ -122,7 +130,6 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         TextView tvComNum = (TextView)findViewById(R.id.listen_comNum);
 
         tvTitle.setText(content.getTitle());
-        iv.setImageResource(R.drawable.listen_tax);
         tvSubTitle.setText(content.getComment());
         tvAgContext.setText(content.getAgree()+"");
         tvOpContext.setText(content.getOpposite()+"");
@@ -232,6 +239,35 @@ public class CitizenListenContentActivity extends AppCompatActivity {
                 break;
         }
 
+    }
+
+    private class ListenRestAPIImage  extends AsyncTask<String, Void, Bitmap> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+        protected Bitmap doInBackground(String... urls) {
+            Bitmap bitmap = null;
+            try {
+                URL url = new URL(urls[0]);
+                HttpURLConnection connection =
+                        (HttpURLConnection) url.openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream is  = connection.getInputStream();
+                bitmap = BitmapFactory.decodeStream(is);
+
+            } catch (Exception e) {
+                Log.i("result", urls[0], e);
+            }
+            return bitmap;
+        }
+        @Override
+        protected void onPostExecute(Bitmap bitmap){
+            ImageView iv = (ImageView)findViewById(R.id.Listen_content_num1);
+            iv.setImageBitmap(bitmap);
+        }
     }
     
 }

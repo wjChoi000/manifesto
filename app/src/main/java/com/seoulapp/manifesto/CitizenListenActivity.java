@@ -2,6 +2,7 @@ package com.seoulapp.manifesto;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 
 import android.os.AsyncTask;
@@ -31,6 +32,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -159,15 +161,55 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
         @Override
         protected void onPostExecute(JSONObject result){
             jsonObject = result;
-            ListViewAdapter adapter = new ListViewAdapter() ;
+
             try{
                 JSONArray jsonArray = jsonObject.getJSONArray("list");
-                int len = jsonArray.length();
+                CitizenRestAPIImage citizenRestAPIImage = new CitizenRestAPIImage();
+                citizenRestAPIImage.execute(jsonArray);
 
+            }catch (Exception e){
+                Log.i("listen","error",e);
+            }
+
+        }
+    }
+
+
+    private class CitizenRestAPIImage  extends AsyncTask<JSONArray, Void, Bitmap[]> {
+        JSONArray jsonArray;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+        protected Bitmap[] doInBackground(JSONArray... urls) {
+            jsonArray = urls[0];
+            int len = jsonArray.length();
+            Bitmap[] bitmap = new Bitmap[len];
+            try {
+                for(int i =0 ; i<len;i++) {
+                    URL url = new URL("http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/listen/"+jsonArray.getJSONObject(i).getString("priture"));
+                    HttpURLConnection connection =
+                            (HttpURLConnection) url.openConnection();
+                    connection.setDoInput(true);
+                    connection.connect();
+                    InputStream is = connection.getInputStream();
+                    bitmap[i] = BitmapFactory.decodeStream(is);
+                }
+            } catch (Exception e) {
+                Log.i("result", "error", e);
+            }
+            return bitmap;
+        }
+        @Override
+        protected void onPostExecute(Bitmap[] bitmap){
+            try {
+                int len = jsonArray.length();
+                ListViewAdapter adapter = new ListViewAdapter() ;
                 for(int i=0; i<len; i++){
                     JSONObject jres = jsonArray.getJSONObject(i);
                     Citizen item = Citizen.convertJsonToListen(jres);
-                    adapter.addItem(R.drawable.listen_thaad, item.getTitle(), item.getComment(),
+                    adapter.addItem(bitmap[i], item.getTitle(), item.getComment(),
                             item.getAgree(), item.getOpposite(), item.getCreate_date(),
                             item.getGood() + "", item.getBad() + "", item.getCount() + "") ;
                 }
@@ -183,6 +225,7 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
                             JSONArray jsonArray = jsonObject.getJSONArray("list");
                             JSONObject jres = jsonArray.getJSONObject(position - offset+limit-1);
                             Citizen citizen = Citizen.convertJsonToListen(jres);
+                            citizen.setPriture("http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/listen/"+citizen.getPriture());
                             intent.putExtra("say",citizen);
                             startActivity(intent);
                         }catch(Exception e){
@@ -190,11 +233,9 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
                         }
                     }
                 }) ;
-
             }catch (Exception e){
-                Log.i("listen","error",e);
+                Log.i("help","error",e);
             }
-
         }
     }
 }

@@ -680,18 +680,18 @@ public class ManifestoRateActivity extends AppCompatActivity {
     /*
     Three
      */
-    private void news(){
-        LinearLayout newsLayout = (LinearLayout) findViewById(R.id.rate_news);
-
-        String title="서울시 중국등 동북아 도시와 미세먼지 대응 나선다.";
-
-        newList = new ArrayList<>();
-
-        for(int i =0 ; i<10; i++){
-            newList.add(new News("아시아 투데이",title,"2017-05-26"));
-        }
-        addNewsList(newsLayout,newList);
-    }
+//    private void news(){
+//        LinearLayout newsLayout = (LinearLayout) findViewById(R.id.rate_news);
+//
+//        String title="서울시 중국등 동북아 도시와 미세먼지 대응 나선다.";
+//
+//        newList = new ArrayList<>();
+//
+//        for(int i =0 ; i<10; i++){
+//            newList.add(new News("아시아 투데이",title,"2017-05-26"));
+//        }
+//        addNewsList(newsLayout,newList);
+//    }
     ArrayList<News> newList;
     class News{
         News(String cop, String title, String date){

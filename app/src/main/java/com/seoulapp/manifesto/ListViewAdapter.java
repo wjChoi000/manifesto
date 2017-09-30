@@ -2,6 +2,7 @@ package com.seoulapp.manifesto;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,7 @@ public class ListViewAdapter extends BaseAdapter{
         ListViewItem listViewItem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
-        iconImageView.setImageResource(listViewItem.getTitleImage());
+        iconImageView.setImageBitmap(listViewItem.getTitleImage());
         titleTextView.setText(listViewItem.getTitle());
         AgTextView.setText(listViewItem.getAg());
         OpTextView.setText(listViewItem.getOp());
@@ -74,7 +75,7 @@ public class ListViewAdapter extends BaseAdapter{
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(int icon, String title, String subcontext, String ag_context, String op_context, String c_date, String ag, String op, String comment) {
+    public void addItem(Bitmap icon, String title, String subcontext, String ag_context, String op_context, String c_date, String ag, String op, String comment) {
         ListViewItem item = new ListViewItem();
 
         item.setTitleImage(icon);

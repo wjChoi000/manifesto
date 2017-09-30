@@ -1,8 +1,10 @@
 package com.seoulapp.manifesto;
 
 
+import android.graphics.Bitmap;
+
 public class ListViewItem_help {
-    private int titleImage;
+    private Bitmap titleImage;
     private String titleStr ;
     private String subcontext;
     private String c_date;
@@ -32,11 +34,11 @@ public class ListViewItem_help {
         return goodStr;
     }
 
-    public int getTitleImage() {
+    public Bitmap getTitleImage() {
         return titleImage;
     }
 
-    public void setTitleImage(int titleImage) {
+    public void setTitleImage(Bitmap titleImage) {
         this.titleImage = titleImage;
     }
 

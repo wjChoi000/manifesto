@@ -64,6 +64,100 @@
                         style="@style/RadioButton" />
                 </info.hoang8f.android.segmented.SegmentedGroup>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_marginBottom="1dp"
+                android:background="#FFF"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:id="@+id/manifestoParty">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <Button
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        style="@style/manifestoPartyImage"
+                        android:background="@color/rate_title_one"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/rateDescription"
+                        android:text="@string/rate_detail_table_title_one"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        style="@style/manifestoPartyImage"
+                        android:background="@color/rate_title_two"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/rateDescription"
+                        android:text="@string/rate_detail_table_title_two"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        style="@style/manifestoPartyImage"
+                        android:background="@color/rate_title_three"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/rateDescription"
+                        android:text="@string/rate_detail_table_title_three"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        style="@style/manifestoPartyImage"
+                        android:background="@color/rate_title_four"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/rateDescription"
+                        android:text="@string/rate_detail_table_title_four"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            style="@style/manifestoPartyImage"
+                            android:background="@color/rate_title_five"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/rateDescription"
+                            android:text="@string/rate_detail_table_title_five"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
             <!--frame-->
             <FrameLayout
                 android:layout_width="match_parent"
@@ -348,14 +442,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="지역구 공약 비율"
-                    style="@style/rate_small_title"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    />
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="지역구 공약 비율"-->
+                    <!--style="@style/rate_small_title"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:layout_alignParentLeft="true"-->
+                    <!--/>-->
                 <com.github.mikephil.charting.charts.PieChart
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center_horizontal"
@@ -378,35 +472,35 @@
         </LinearLayout>
 
         <!--three-->
-        <LinearLayout
-            android:id="@+id/rate_frame_three"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="News"
-                style="@style/rate_small_title"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/gab"
-                android:background="@color/colorBackgroundGray"></LinearLayout>
-            <LinearLayout
-                android:id="@+id/rate_news"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                >
+        <!--<LinearLayout-->
+            <!--android:id="@+id/rate_frame_three"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:visibility="gone"-->
+            <!--android:orientation="vertical"-->
+            <!--&gt;-->
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="News"-->
+                <!--style="@style/rate_small_title"-->
+                <!--/>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/gab"-->
+                <!--android:background="@color/colorBackgroundGray"></LinearLayout>-->
+            <!--<LinearLayout-->
+                <!--android:id="@+id/rate_news"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_marginLeft="15dp"-->
+                <!--android:layout_marginRight="15dp"-->
+                <!--&gt;-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
         <!--tour-->
         <LinearLayout
@@ -690,29 +784,7 @@
                 android:visibility="invisible" />
         </LinearLayout>
 
-        <!--<LinearLayout-->
-            <!--android:id="@+id/rate_btn_three"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="#FFF"-->
-            <!--android:gravity="center_horizontal"-->
-            <!--android:orientation="vertical">-->
 
-            <!--<TextView-->
-                <!--android:id="@+id/m_map_small_t_three"-->
-                <!--style="@style/m_map_smallTitle"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/m_map_small_title_three" />-->
-
-            <!--<TextView-->
-                <!--android:id="@+id/m_map_small_s_three"-->
-                <!--style="@style/m_map_stick"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="5dp"-->
-                <!--android:visibility="invisible" />-->
-        <!--</LinearLayout>-->
 
         <LinearLayout
             android:id="@+id/rate_btn_four"

@@ -2,6 +2,7 @@ package com.seoulapp.manifesto;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
@@ -24,6 +25,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -150,20 +152,59 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
         @Override
         protected void onPostExecute(JSONObject result){
             jsonObject = result;
-            ListViewAdapter_help adapter = new ListViewAdapter_help() ;
             try{
                 JSONArray jsonArray = jsonObject.getJSONArray("list");
-                int len = jsonArray.length();
+                CitizenRestAPIImage citizenRestAPIImage = new CitizenRestAPIImage();
+                citizenRestAPIImage.execute(jsonArray);
 
-                for(int i=0; i<len; i++){
+            }catch (Exception e){
+                Log.i("help","error",e);
+            }
+
+        }
+    }
+
+
+    private class CitizenRestAPIImage  extends AsyncTask<JSONArray, Void, Bitmap[]> {
+        JSONArray jsonArray;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+        protected Bitmap[] doInBackground(JSONArray... urls) {
+            jsonArray = urls[0];
+            int len = jsonArray.length();
+            Bitmap[] bitmap = new Bitmap[len];
+            try {
+                for(int i =0 ; i<len;i++) {
+                    URL url = new URL("http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/help/"+jsonArray.getJSONObject(i).getString("priture"));
+                    HttpURLConnection connection =
+                            (HttpURLConnection) url.openConnection();
+                    connection.setDoInput(true);
+                    connection.connect();
+                    InputStream is = connection.getInputStream();
+                    bitmap[i] = BitmapFactory.decodeStream(is);
+                }
+            } catch (Exception e) {
+                Log.i("result", "error", e);
+            }
+            return bitmap;
+        }
+        @Override
+        protected void onPostExecute(Bitmap[] bitmap){
+            try {
+                ListViewAdapter_help adapter = new ListViewAdapter_help();
+                int len = jsonArray.length();
+                for (int i = 0; i < len; i++) {
                     JSONObject jres = jsonArray.getJSONObject(i);
                     Citizen item = Citizen.convertJsonToHelp(jres);
-                    adapter.addItem(R.drawable.help_elec, item.getTitle(), item.getComment(),
+                    adapter.addItem(bitmap[i], item.getTitle(), item.getComment(),
                             item.getCreate_date(), item.getGood() + "", "0", item.getCount() + "");
                 }
                 listview.setAdapter(adapter);
 
-                offset +=limit;
+                offset += limit;
                 listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView parent, View v, int position, long id) {
@@ -171,20 +212,19 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
                         Intent intent = new Intent(CitizenHelpActivity.this, CitizenHelpContentActivity.class);
                         try {
                             JSONArray jsonArray = jsonObject.getJSONArray("list");
-                            JSONObject jres = jsonArray.getJSONObject(position - offset+limit-1);
+                            JSONObject jres = jsonArray.getJSONObject(position - offset + limit - 1);
                             Citizen citizen = Citizen.convertJsonToHelp(jres);
-                            intent.putExtra("help",citizen);
+                            citizen.setPriture("http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/help/"+citizen.getPriture());
+                            intent.putExtra("help", citizen);
                             startActivity(intent);
-                        }catch(Exception e){
-                            Log.i("help","click listen error",e);
+                        } catch (Exception e) {
+                            Log.i("help", "click listen error", e);
                         }
                     }
-                }) ;
-
+                });
             }catch (Exception e){
                 Log.i("help","error",e);
             }
-
         }
     }
 }
