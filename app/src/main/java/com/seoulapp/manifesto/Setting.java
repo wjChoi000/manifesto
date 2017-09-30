@@ -1,11 +1,19 @@
 package com.seoulapp.manifesto;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
+import com.seoulapp.manifesto.util.LoginCheck;
+
+import org.w3c.dom.Text;
 
 public class Setting extends AppCompatActivity {
 
@@ -34,8 +42,38 @@ public class Setting extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
-    }
+        final LoginCheck loginCheck = new LoginCheck(this);
+        if(loginCheck.isItLogin()){
+            LinearLayout setting_logout = (LinearLayout) findViewById(R.id.setting_logout);
+            setting_logout.setOnClickListener(new View.OnClickListener(){
 
+                @Override
+                public void onClick(View view) {
+
+                    UserManagement.requestLogout(new LogoutResponseCallback() {
+                        @Override
+                        public void onCompleteLogout() {
+                            loginCheck.logout();
+                            Intent intent = new Intent(Setting.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                                    }
+            });
+            ((LinearLayout) findViewById(R.id.setting_login)).setVisibility(View.GONE);
+        }else{
+            LinearLayout setting_login = (LinearLayout) findViewById(R.id.setting_login);
+            setting_login.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Setting.this, LoginsActivity.class);
+                    startActivity(intent);
+                }
+            });
+            ((LinearLayout) findViewById(R.id.setting_logout)).setVisibility(View.GONE);
+        }
+    }
     //back button
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
         switch (item.getItemId()) {

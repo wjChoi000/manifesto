@@ -22,7 +22,12 @@ import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.Citizen;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -33,7 +38,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
     int opcount;
     TextView agtextview,optextview;
     CheckBox agCheck,opCheck;
-
+    private ListViewAdapter_comment adapter;
     // 현재시간을 msec 으로 구한다.
     long now = System.currentTimeMillis();
     // 현재시간을 date 변수에 저장한다.
@@ -52,7 +57,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
 
         //리스트뷰
         ListView listview ;
-        ListViewAdapter_comment adapter;
+
 
         // Adapter 생성
         adapter = new ListViewAdapter_comment() ;
@@ -71,19 +76,6 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         listen.setBackgroundColor(getResources().getColor(R.color.colorWhite));
 
         listview.addHeaderView(header, null, false);
-
-
-//        //현재시간 출력(1)
-//        dateNow = (TextView) findViewById(R.id.dateNow1);
-//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
-//
-//        //현재시간 출력(2)
-//        dateNow = (TextView) findViewById(R.id.dateNow2);
-//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
-//
-//        //현재시간 출력(3)
-//        dateNow = (TextView) findViewById(R.id.dateNow3);
-//        dateNow.setText(formatDate);    // TextView 에 현재 시간 문자열 할당
 
 
         //actionbar title
@@ -142,24 +134,9 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         agcount = content.getGood();
         opcount = content.getBad();
 
-        //
-
-        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","찬성","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","반대", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        String url="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetCommentListServlet?offset=0&category=say&id="+content.getId();
+        CommentRestAPI commentRestAPI = new CommentRestAPI();
+        commentRestAPI.execute(url);
 
     }
 
@@ -267,6 +244,58 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         protected void onPostExecute(Bitmap bitmap){
             ImageView iv = (ImageView)findViewById(R.id.Listen_content_num1);
             iv.setImageBitmap(bitmap);
+        }
+    }
+
+    private class CommentRestAPI extends AsyncTask<String, Void, JSONObject> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... urls) {
+            JSONObject data = null;
+            Bitmap bitmap = null;
+            try {
+                URL url = new URL(urls[0]);
+                HttpURLConnection connection =
+                        (HttpURLConnection) url.openConnection();
+                //connection.addRequestProperty("x-api-key", context.getString(R.string.open_weather_maps_app_id));
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(connection.getInputStream()));
+
+                StringBuffer json = new StringBuffer(1024);
+                String tmp = "";
+                while ((tmp = reader.readLine()) != null)
+                    json.append(tmp).append("\n");
+                reader.close();
+
+                data = new JSONObject(json.toString());
+            } catch (Exception e) {
+                Log.i("result", urls[0], e);
+            }
+            return data;
+        }
+
+        protected void onPostExecute(JSONObject result) {
+            try {
+                JSONArray jsonArray = result.getJSONArray("list");
+                int len = jsonArray.length();
+
+                for(int i =0; i<len; i++){
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                    if(jsonObject.getString("opinion").compareTo("1")==0)
+                        adapter.addItem(jsonObject.getInt("u_id")+"","찬성","", jsonObject.getString("create_date"),jsonObject.getString("comments"));
+                    else
+                        adapter.addItem(jsonObject.getInt("u_id")+"","","반대", jsonObject.getString("create_date"),jsonObject.getString("comments"));
+
+                }
+                adapter.notifyDataSetChanged();
+            }catch (Exception e){
+                Log.i("result","fail rest",e);
+            }
         }
     }
     

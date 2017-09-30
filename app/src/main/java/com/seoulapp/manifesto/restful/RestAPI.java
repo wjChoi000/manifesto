@@ -22,8 +22,6 @@ import java.net.URL;
 
 public class RestAPI extends AsyncTask<String, Void, JSONObject>{
 
-    final static String openJSONObjectURL = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/";
-
     @Override
     protected void onPreExecute() {
         super.onPreExecute();

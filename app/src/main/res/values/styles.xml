@@ -213,4 +213,11 @@
         <item name="colorControlActivated">#FFE05C</item>
         <item name="colorControlHighlight">#FFE05C</item>
     </style>
+
+    <style name="CitizenNeedAcitivitySort">
+        <item name="android:textSize">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
 </resources>

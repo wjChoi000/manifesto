@@ -1,9 +1,12 @@
 package com.seoulapp.manifesto;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,13 +18,21 @@ import android.widget.TextView;
 
 import com.seoulapp.manifesto.model.Citizen;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 
 public class CitizenNeedContentActivity extends AppCompatActivity {
     int need_goodCount;
     int need_checknum = 0;
     ImageView need_imgGood;
     TextView need_tvGood, need_tvGoodCount;
-
+    private  ListViewAdapter_comment adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +41,7 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
 
         //리스트뷰
         ListView listview ;
-        ListViewAdapter_comment adapter;
+
 
         // Adapter 생성
         adapter = new ListViewAdapter_comment() ;
@@ -103,24 +114,9 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
 
         need_imgGood = (ImageView)findViewById(R.id.need_imgGood);
 
-
-        //
-
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
+        String url="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetCommentListServlet?offset=0&category=post&id="+content.getId();
+        CommentRestAPI commentRestAPI = new CommentRestAPI();
+        commentRestAPI.execute(url);
 
     }
 
@@ -161,7 +157,52 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
         }
     };
 
+    private class CommentRestAPI extends AsyncTask<String, Void, JSONObject> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
 
+        @Override
+        protected JSONObject doInBackground(String... urls) {
+            JSONObject data = null;
+            Bitmap bitmap = null;
+            try {
+                URL url = new URL(urls[0]);
+                HttpURLConnection connection =
+                        (HttpURLConnection) url.openConnection();
+                //connection.addRequestProperty("x-api-key", context.getString(R.string.open_weather_maps_app_id));
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(connection.getInputStream()));
+
+                StringBuffer json = new StringBuffer(1024);
+                String tmp = "";
+                while ((tmp = reader.readLine()) != null)
+                    json.append(tmp).append("\n");
+                reader.close();
+
+                data = new JSONObject(json.toString());
+            } catch (Exception e) {
+                Log.i("result", urls[0], e);
+            }
+            return data;
+        }
+
+        protected void onPostExecute(JSONObject result) {
+            try {
+                JSONArray jsonArray = result.getJSONArray("list");
+                int len = jsonArray.length();
+
+                for(int i =0; i<len; i++){
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    adapter.addItem(jsonObject.getInt("u_id")+"","","", jsonObject.getString("create_date"),jsonObject.getString("comments"));
+                }
+                adapter.notifyDataSetChanged();
+            }catch (Exception e){
+                Log.i("result","fail rest",e);
+            }
+        }
+    }
 
 }
 

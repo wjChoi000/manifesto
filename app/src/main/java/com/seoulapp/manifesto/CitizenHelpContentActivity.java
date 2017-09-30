@@ -19,24 +19,32 @@ import android.widget.TextView;
 
 import com.seoulapp.manifesto.model.Citizen;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class CitizenHelpContentActivity extends AppCompatActivity {
-    int goodCount;
-    int checknum = 0;
-    ImageView imgGood;
-    TextView tvGood, tvGoodCount;
-
+    private int goodCount;
+    private int checknum = 0;
+    private ImageView imgGood;
+    private TextView tvGood, tvGoodCount;
+    private ListViewAdapter_comment adapter;
+    private ListView listview ;
+    private ViewGroup header;
+    private  Citizen content;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_citizen_help_content);
 
-        //리스트뷰
-        ListView listview ;
-        ListViewAdapter_comment adapter;
+        //get intent and write text
+        Intent intent = getIntent();
+        Citizen content = (Citizen) intent.getSerializableExtra("help");
 
         // Adapter 생성
         adapter = new ListViewAdapter_comment() ;
@@ -45,9 +53,10 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         listview = (ListView) findViewById(R.id.listview_help_content_comment);
         listview.setAdapter(adapter);
 
-        //
         LayoutInflater inflater = getLayoutInflater();
-        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.custom_header_content, listview, false);
+        header = (ViewGroup) inflater.inflate(R.layout.custom_header_content, listview, false);
+
+
         LinearLayout listen = (LinearLayout)header.findViewById(R.id.listheader_listen_content);
         LinearLayout help = (LinearLayout)header.findViewById(R.id.listheader_help_content);
         LinearLayout need = (LinearLayout)header.findViewById(R.id.listheader_need_content);
@@ -78,9 +87,7 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         actionBar.setHomeButtonEnabled(true);
 
 
-        //get intent and write text
-        Intent intent = getIntent();
-        Citizen content = (Citizen) intent.getSerializableExtra("help");
+
         HelpRestAPIImage helpRestAPIImage = new HelpRestAPIImage();
         helpRestAPIImage.execute(content.getPriture());
 
@@ -106,23 +113,10 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         findViewById(R.id.goodTvBtn).setOnClickListener(clickListener);
         imgGood = (ImageView)findViewById(R.id.imgGood);
 
-
         //add comment
-
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-        adapter.addItem("Wonsoonpark","","", "2017-08-04","저도 똑같은 경험을 하였습니다. 해도 너무하네요");
-
+        CommentRestAPI commentRestAPI = new CommentRestAPI();
+        String url="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetCommentListServlet?offset=0&category=help&id="+content.getId();
+        commentRestAPI.execute(url);
     }
 
     //back button
@@ -188,6 +182,54 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         protected void onPostExecute(Bitmap bitmap){
             ImageView iv = (ImageView)findViewById(R.id.help_content_num1);
             iv.setImageBitmap(bitmap);
+        }
+    }
+
+
+    private class CommentRestAPI extends AsyncTask<String, Void, JSONObject> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected JSONObject doInBackground(String... urls) {
+            JSONObject data = null;
+            Bitmap bitmap = null;
+            try {
+                URL url = new URL(urls[0]);
+                HttpURLConnection connection =
+                        (HttpURLConnection) url.openConnection();
+                //connection.addRequestProperty("x-api-key", context.getString(R.string.open_weather_maps_app_id));
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(connection.getInputStream()));
+
+                StringBuffer json = new StringBuffer(1024);
+                String tmp = "";
+                while ((tmp = reader.readLine()) != null)
+                    json.append(tmp).append("\n");
+                reader.close();
+
+                data = new JSONObject(json.toString());
+            } catch (Exception e) {
+                Log.i("result", urls[0], e);
+            }
+            return data;
+        }
+
+        protected void onPostExecute(JSONObject result) {
+            try {
+                JSONArray jsonArray = result.getJSONArray("list");
+                int len = jsonArray.length();
+
+                for(int i =0; i<len; i++){
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    adapter.addItem(jsonObject.getInt("u_id")+"","","", jsonObject.getString("create_date"),jsonObject.getString("comments"));
+                }
+                adapter.notifyDataSetChanged();
+            }catch (Exception e){
+                Log.i("result","fail rest",e);
+            }
         }
     }
 }
