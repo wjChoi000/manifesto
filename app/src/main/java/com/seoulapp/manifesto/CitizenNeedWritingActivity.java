@@ -4,23 +4,23 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.seoulapp.manifesto.util.Dialog_Category;
-import com.seoulapp.manifesto.util.Dialog_gu;
+import com.seoulapp.manifesto.restful.RestAPI;
+import com.seoulapp.manifesto.util.LoginCheck;
 
 public class CitizenNeedWritingActivity extends AppCompatActivity {
-    private String gu=null;
-    private String category=null;
-
+    private String gu="";
+    private String category="";
+    private String priture="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +55,7 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 if(pos ==0){
-                    category = null;
+                    category = "";
                 }else{
                     category = parent.getItemAtPosition(pos).toString();
                 }
@@ -76,7 +76,7 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 if(pos ==0){
-                    gu = null;
+                    gu = "";
                 }else{
                     gu = parent.getItemAtPosition(pos).toString();
                 }
@@ -95,9 +95,39 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.action_complete:
-                Toast.makeText(this, "새 글 등록 완료", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this,CitizenNeedActivity.class);
-                startActivity(intent);
+                EditText writing_title = (EditText) findViewById(R.id.writing_title);
+                String title= writing_title.getText().toString();
+
+                EditText writing_comments = (EditText) findViewById(R.id.writing_comments);
+                String comment= writing_comments.getText().toString();
+
+                String error=null;
+
+                if(title.length()==0 )
+                    error ="제목을 입력해주세요.";
+                else if(gu.length() ==0)
+                    error = "구를 선택해주세요.";
+                else if(category.length()==0)
+                    error = "분류를 선택해주세요";
+                else if(comment.length() ==0)
+                    error = "내용을 입력해주세요";
+                else {
+                    category = "["+category+"]";
+                    LoginCheck loginCheck = new LoginCheck(CitizenNeedWritingActivity.this);
+                    String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenPosterInsertServlet?u_id=" + loginCheck.getID() + "&title=" + title + "&category=" + category + "&comments=" + comment + "&gu=" + gu+"&priture="+priture;
+                    RestAPI restAPI = new RestAPI();
+                    restAPI.execute(url);
+
+                    Intent intent = new Intent(this,CitizenNeedActivity.class);
+                    startActivity(intent);
+
+                    finish();
+                    error = "새 글 등록 완료";
+
+
+
+                }
+                Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);

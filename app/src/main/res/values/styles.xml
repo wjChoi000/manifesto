@@ -39,6 +39,7 @@
     <style name="manifestoPartyText">
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:textColor">#000</item>
+        <item name="android:textSize">15dp</item>
         <!--<item name="android:singleLine">true</item>-->
         <!--<item name="android:ellipsize">end</item>-->
     </style>

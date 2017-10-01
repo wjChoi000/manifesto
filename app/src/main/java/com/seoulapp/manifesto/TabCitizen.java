@@ -225,7 +225,6 @@ public class TabCitizen extends Fragment {
                     N_adapter1 = new ListViewAdapter_need();
                     N_adapter1.addItem(list_need[j].getCategory(), list_need[j].getTitle(), list_need[j].getGu(), list_need[j].getU_id() + "",
                             list_need[j].getComment(), list_need[j].getCreate_date(), list_need[j].getGood() + "", "0", list_need[j].getCount() + "");
-
                     N_listview1.setAdapter(N_adapter1);
                     // 위에서 생성한 listview에 클릭 이벤트 핸들러 정의.
                     N_listview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -270,8 +269,13 @@ public class TabCitizen extends Fragment {
                             Intent intent = new Intent(getActivity(), CitizenNeedContentActivity.class);
                             intent.putExtra("need", list_need[2]);
                             startActivity(intent);
+
+
                         }
                     });
+                    N_adapter1.notifyDataSetChanged();
+                    N_adapter2.notifyDataSetChanged();
+                    N_adapter3.notifyDataSetChanged();
                 } catch (Exception e) {
                     Log.i("need", "need list error", e);
                 }

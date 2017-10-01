@@ -86,7 +86,7 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
 
         TextView Title = (TextView) view.findViewById(R.id.actionbar_title);
         Title.setText("도와줘요");
-
+//
         getSupportActionBar().setCustomView(view,params);
         getSupportActionBar().setDisplayShowCustomEnabled(true); //show custom title
         getSupportActionBar().setDisplayShowTitleEnabled(false); //hide the default title
@@ -123,7 +123,7 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         goodCount = content.getGood();
         findViewById(R.id.goodTvBtn).setOnClickListener(clickListener);
         imgGood = (ImageView)findViewById(R.id.imgGood);
-
+//
         //add comment
         CommentRestAPI commentRestAPI = new CommentRestAPI();
         String url="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetCommentListServlet?offset=0&category=help&id="+content.getId();
@@ -159,11 +159,12 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
 
                 }
             });
-        }else{
+        }
+        else{
             editText.setVisibility(View.GONE);
             listen_fake.setVisibility(View.VISIBLE);
 
-            LinearLayout listen_comment = (LinearLayout) findViewById(R.id.listen_comment);
+            LinearLayout listen_comment = (LinearLayout) findViewById(R.id.help_comment);
             listen_comment.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){

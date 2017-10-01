@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.seoulapp.manifesto.util.LoginCheck;
+import com.seoulapp.manifesto.util.LoginCheckDialog;
 
 import org.w3c.dom.Text;
 
@@ -46,19 +47,11 @@ public class Setting extends AppCompatActivity {
         if(loginCheck.isItLogin()){
             LinearLayout setting_logout = (LinearLayout) findViewById(R.id.setting_logout);
             setting_logout.setOnClickListener(new View.OnClickListener(){
-
                 @Override
                 public void onClick(View view) {
-
-                    UserManagement.requestLogout(new LogoutResponseCallback() {
-                        @Override
-                        public void onCompleteLogout() {
-                            loginCheck.logout();
-                            Intent intent = new Intent(Setting.this, MainActivity.class);
-                            startActivity(intent);
-                        }
-                    });
-                                    }
+                    LoginCheckDialog loginCheckDialog = new LoginCheckDialog(Setting.this,true);
+                    loginCheckDialog.show();
+                }
             });
             ((LinearLayout) findViewById(R.id.setting_login)).setVisibility(View.GONE);
         }else{

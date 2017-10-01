@@ -28,6 +28,7 @@
                 android:layout_marginBottom="10dp">
                 <EditText
                     android:hint="제목을 입력해 주세요(25자 내외)"
+                    android:id="@+id/writing_title"
                     android:maxLength="25"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
@@ -127,7 +128,7 @@
                 android:layout_margin="10dp"
                 >
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/writing_comments"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"

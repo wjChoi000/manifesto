@@ -5,11 +5,13 @@
     <color name="colorPrimaryDark">@android:color/black</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorMain">#0039bc</color>
+    <!--#319acd-->
+    <!--#0039bc-->
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGray">#747474</color>
 
     <color name="textGray">#d0d0d0</color>
-    <color name="colorBackgroundGray">#b6b6b6</color>
+    <color name="colorBackgroundGray">#e9e8e8</color>
     <color name="colorBlack">#000</color>
     <color name="backgroundEditText">#dcdcdc</color>
 

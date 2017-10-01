@@ -161,7 +161,7 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
             editText.setVisibility(View.GONE);
             listen_fake.setVisibility(View.VISIBLE);
 
-            LinearLayout listen_comment = (LinearLayout) findViewById(R.id.listen_comment);
+            LinearLayout listen_comment = (LinearLayout) findViewById(R.id.need_comment);
             listen_comment.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){

@@ -8,8 +8,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.seoulapp.manifesto.LoginsActivity;
+import com.seoulapp.manifesto.MainActivity;
 import com.seoulapp.manifesto.R;
+import com.seoulapp.manifesto.Setting;
 
 import info.hoang8f.widget.FButton;
 
@@ -25,6 +29,7 @@ public class LoginCheckDialog extends Dialog{
     private TextView textView;
     private LoginCheck loginCheck;
     private Context context;
+    private View.OnClickListener rightListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +53,15 @@ public class LoginCheckDialog extends Dialog{
                 public void onClick(View view) {
                     loginCheck.logout();
                     LoginCheckDialog.this.dismiss();
-
                     //go logout page
+                    UserManagement.requestLogout(new LogoutResponseCallback() {
+                        @Override
+                        public void onCompleteLogout() {
+                            loginCheck.logout();
+                            Intent intent = new Intent(context, MainActivity.class);
+                            context.startActivity(intent);
+                        }
+                    });
                 }
             });
         }else{

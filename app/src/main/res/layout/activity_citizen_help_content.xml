@@ -35,6 +35,7 @@
         android:layout_height="@dimen/gab"
         android:background="@color/colorBackgroundGray"></LinearLayout>
     <LinearLayout
+        android:id="@+id/help_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
