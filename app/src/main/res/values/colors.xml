@@ -11,7 +11,7 @@
     <color name="textGray">#d0d0d0</color>
     <color name="colorBackgroundGray">#b6b6b6</color>
     <color name="colorBlack">#000</color>
-
+    <color name="backgroundEditText">#dcdcdc</color>
 
     <color name="welfare">#00B050</color>
     <color name="economy">#0070C0</color>

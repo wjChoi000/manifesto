@@ -1,158 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhite">
-        //분류
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!--제목-->
         <LinearLayout
-            android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
             <TextView
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorBlack"
-                android:text="분류"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp">
-
-            <Spinner
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:id="@+id/writing_category_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </Spinner>
-
-        </LinearLayout>
-
-        //구선택
-        <LinearLayout
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorBlack"
-                android:text="구 선택"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp">
-
-            <Spinner
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:id="@+id/writing_Gu_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </Spinner>
-
-        </LinearLayout>
-
-        //제목
-        <LinearLayout
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="제목"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp">
-            <EditText
-                android:hint="제목을 입력해 주세요(25자 내외)"
-                android:maxLength="25"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@null"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-            <TextView
-                android:layout_marginRight="25dp"
-                android:layout_marginLeft="25dp"
-                android:background="@color/colorMain"
-                android:layout_width="match_parent"
-                android:layout_height="2dp" />
+                android:textSize="@dimen/writing_text_size"
+                android:textColor="@color/colorBlack"/>
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+                <EditText
+                    android:hint="제목을 입력해 주세요(25자 내외)"
+                    android:maxLength="25"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/writing_text_size"/>
+                <TextView
+                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:background="@color/colorMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp" />
+            </LinearLayout>
         </LinearLayout>
 
-        //내용
-        <LinearLayout
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorBlack"
-                android:text="내용"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+        <!--내용-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp">
-            <EditText
-                android:minLines="10"
-                android:gravity="top|start"
-                android:hint="내용을 입력해 주세요"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="내용"
+                    android:textSize="@dimen/writing_text_size"
+                    android:textColor="@color/colorBlack"/>
 
-        </LinearLayout>
-        //사진 넣기
-        <LinearLayout
-            android:background="@color/colorBackgroundGray"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
+
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    card_view:cardBackgroundColor="@color/colorMain"
+                    card_view:cardCornerRadius="5dp"
+                    card_view:cardElevation="3dp"
+                    android:layout_marginRight="20dp"
+                    >
+                    <android.support.v7.widget.CardView
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        card_view:cardBackgroundColor="@color/colorWhite"
+                        card_view:cardCornerRadius="5dp"
+                        card_view:cardElevation="3dp"
+                        android:layout_margin="2dp"
+                        >
+                        <Spinner
+                            android:id="@+id/writing_category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                    </android.support.v7.widget.CardView>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    card_view:cardBackgroundColor="@color/colorMain"
+                    card_view:cardCornerRadius="5dp"
+                    card_view:cardElevation="3dp"
+                    android:layout_marginRight="10dp"
+                    >
+                    <android.support.v7.widget.CardView
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        card_view:cardBackgroundColor="@color/colorWhite"
+                        card_view:cardCornerRadius="5dp"
+                        card_view:cardElevation="3dp"
+                        android:layout_margin="2dp"
+                        >
+                        <Spinner
+                            android:id="@+id/writing_gu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                    </android.support.v7.widget.CardView>
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                card_view:cardBackgroundColor="@color/backgroundEditText"
+                card_view:cardCornerRadius="5dp"
+                card_view:cardElevation="3dp"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
-                android:textSize="15dp"
-                android:textColor="@color/colorBlack"
-                android:text="사진 0장"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                >
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
 
-            // android:scaleType="centerCrop"
-            <ImageButton
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:onClick="onClick"
-                android:id="@+id/photo_addBtn"
-                android:src="@drawable/photo_add"
-                android:layout_width="80dp"
-                android:layout_height="80dp" />
+                    android:background="@color/backgroundEditText"
+                    android:hint="내용을 입력해 주세요"
+                    android:textSize="@dimen/writing_text_size"
+                    android:gravity="top"
+                    />
+
+            </android.support.v7.widget.CardView>
 
         </LinearLayout>
+
     </LinearLayout>
-</ScrollView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/need_writing_btnFAB"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        fabSize="normal"
+        android:elevation="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:backgroundTint="@color/colorMain"
+        android:src="@drawable/image" />
+
+    <!--<LinearLayout-->
+        <!--android:focusable="true"-->
+        <!--android:focusableInTouchMode="true"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/colorWhite">-->
+        <!--//분류-->
+        <!--<LinearLayout-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:textSize="20dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:text="분류"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginBottom="10dp">-->
+
+            <!--<Spinner-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:id="@+id/writing_category_spinner"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+            <!--</Spinner>-->
+
+        <!--</LinearLayout>-->
+
+        <!--//구선택-->
+        <!--<LinearLayout-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:textSize="20dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:text="구 선택"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginBottom="10dp">-->
+
+            <!--<Spinner-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:id="@+id/writing_Gu_spinner"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+            <!--</Spinner>-->
+
+        <!--</LinearLayout>-->
+
+        <!--//제목-->
+        <!--<LinearLayout-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:textSize="20dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:text="제목"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginBottom="10dp">-->
+            <!--<EditText-->
+                <!--android:hint="제목을 입력해 주세요(25자 내외)"-->
+                <!--android:maxLength="25"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:background="@null"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent" />-->
+            <!--<TextView-->
+                <!--android:layout_marginRight="25dp"-->
+                <!--android:layout_marginLeft="25dp"-->
+                <!--android:background="@color/colorMain"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="2dp" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--//내용-->
+        <!--<LinearLayout-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:textSize="20dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:text="내용"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginBottom="10dp">-->
+            <!--<EditText-->
+                <!--android:minLines="10"-->
+                <!--android:gravity="top|start"-->
+                <!--android:hint="내용을 입력해 주세요"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"/>-->
+
+        <!--</LinearLayout>-->
+        <!--//사진 넣기-->
+        <!--<LinearLayout-->
+            <!--android:background="@color/colorBackgroundGray"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:textStyle="bold"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textColor="@color/colorBlack"-->
+                <!--android:text="사진 0장"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" />-->
+
+            <!--// android:scaleType="centerCrop"-->
+            <!--<ImageButton-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:onClick="onClick"-->
+                <!--android:id="@+id/photo_addBtn"-->
+                <!--android:src="@drawable/photo_add"-->
+                <!--android:layout_width="80dp"-->
+                <!--android:layout_height="80dp" />-->
+
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+</RelativeLayout>
 

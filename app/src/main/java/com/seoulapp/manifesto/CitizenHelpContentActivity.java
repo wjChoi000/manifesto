@@ -12,12 +12,17 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.seoulapp.manifesto.model.Citizen;
+import com.seoulapp.manifesto.restful.RestAPI;
+import com.seoulapp.manifesto.util.LoginCheck;
+import com.seoulapp.manifesto.util.LoginCheckDialog;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -28,6 +33,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import info.hoang8f.widget.FButton;
+
 public class CitizenHelpContentActivity extends AppCompatActivity {
     private int goodCount;
     private int checknum = 0;
@@ -37,6 +44,10 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
     private ListView listview ;
     private ViewGroup header;
     private  Citizen content;
+
+    private LoginCheck loginCheck;
+    private EditText editText;
+    private int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +56,7 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         //get intent and write text
         Intent intent = getIntent();
         Citizen content = (Citizen) intent.getSerializableExtra("help");
-
+        id = content.getId();
         // Adapter 생성
         adapter = new ListViewAdapter_comment() ;
 
@@ -117,6 +128,50 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         CommentRestAPI commentRestAPI = new CommentRestAPI();
         String url="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetCommentListServlet?offset=0&category=help&id="+content.getId();
         commentRestAPI.execute(url);
+
+        //comment
+        //edit text
+        loginCheck = new LoginCheck(this);
+        editText = (EditText) findViewById(R.id.help_editText);
+        TextView listen_fake= (TextView) findViewById(R.id.help_fake);
+
+        if(loginCheck.isItLogin()){
+            editText.setVisibility(View.VISIBLE);
+            listen_fake.setVisibility(View.GONE);
+            FButton listen_transmit = (FButton) findViewById(R.id.help_transmit);
+            listen_transmit.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public  void onClick(View v){
+                    String comment =editText.getText().toString();
+                    if ( comment.length() > 0 ) {
+                        RestAPI restAPI = new RestAPI();
+                        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenCommentInsertServlet?category=help&u_id="+loginCheck.getID()+"&h_id="+id+"&comment="+comment;
+                        editText.setText("");
+                        restAPI.execute(url);
+
+                        adapter.addFirstItem(loginCheck.getNickname()+"","","", "방금",comment);
+
+                        adapter.notifyDataSetChanged();
+                    }
+                    InputMethodManager imm = (InputMethodManager) getSystemService(CitizenHelpContentActivity.this.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+
+
+                }
+            });
+        }else{
+            editText.setVisibility(View.GONE);
+            listen_fake.setVisibility(View.VISIBLE);
+
+            LinearLayout listen_comment = (LinearLayout) findViewById(R.id.listen_comment);
+            listen_comment.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    LoginCheckDialog loginCheckDialog = new LoginCheckDialog(CitizenHelpContentActivity.this,false);
+                    loginCheckDialog.show();
+                }
+            });
+        }
     }
 
     //back button

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
@@ -13,49 +14,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.seoulapp.manifesto.util.Dialog_Category;
+import com.seoulapp.manifesto.util.Dialog_gu;
+
 public class CitizenNeedWritingActivity extends AppCompatActivity {
+    private String gu=null;
+    private String category=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_citizen_need_writing);
-        
-        
-        //Writing_spinner_category
-        Spinner WcateSpinner = (Spinner)findViewById(R.id.writing_category_spinner);
-        ArrayAdapter<CharSequence> WcateAdapter = ArrayAdapter.createFromResource(
-                this,R.array.writing_category_array, android.R.layout.simple_spinner_item);
-        WcateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        WcateSpinner.setAdapter(WcateAdapter);
-        WcateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-
-            }
-        });
-
-        //Writing_spinner_Gu
-        Spinner WGuSpinner = (Spinner)findViewById(R.id.writing_Gu_spinner);
-        ArrayAdapter<CharSequence> WGuAdapter = ArrayAdapter.createFromResource(
-                this,R.array.writing_Gu_array, android.R.layout.simple_spinner_item);
-        WGuAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        WGuSpinner.setAdapter(WGuAdapter);
-        WGuSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-
-            }
-        });
 
         //actionbar title
         View view = getLayoutInflater().inflate(R.layout.actionbar_title, null);
@@ -75,7 +44,50 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+
+
+        Spinner cateSpinner = (Spinner)findViewById(R.id.writing_category);
+        ArrayAdapter<CharSequence> cateAdapter = ArrayAdapter.createFromResource(
+                this,R.array.category_array, android.R.layout.simple_spinner_item);
+        cateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        cateSpinner.setAdapter(cateAdapter);
+        cateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                if(pos ==0){
+                    category = null;
+                }else{
+                    category = parent.getItemAtPosition(pos).toString();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+
+        //spinner_sort
+        Spinner spinner_sort = (Spinner)findViewById(R.id.writing_gu);
+        ArrayAdapter<CharSequence> adapter_sort = ArrayAdapter.createFromResource(
+                this,R.array.writing_Gu_array, android.R.layout.simple_spinner_item);
+        adapter_sort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_sort.setAdapter(adapter_sort);
+        spinner_sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                if(pos ==0){
+                    gu = null;
+                }else{
+                    gu = parent.getItemAtPosition(pos).toString();
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
     }
+
+
     //back button
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
         switch (item.getItemId()) {

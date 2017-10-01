@@ -37,6 +37,7 @@
     <string name="promise_eco">경제</string>
     <string name="promise_city">도시</string>
     <string name="promise_admin">행정</string>
+    <string name="promise_env">환경</string>
 
     <string name="reta_table_title">분류별 공약 이행률</string>
     <string name="rate_table_title_zero">분류</string>
@@ -64,11 +65,11 @@
     <string name="citizen_listen">들려줘요</string>
     <string name="citizen_help">도와줘요</string>
     <string name="citizen_need">필요해요</string>
-    <string name="citizen_add">더보기</string>
+    <string name="citizen_add">전체보기</string>
 
 
     <string-array name="category_array">
-        <item>전체</item>
+        <item>분류</item>
         <item>경제</item>
         <item>도시</item>
         <item>문화</item>
@@ -88,7 +89,7 @@
     </string-array>
 
     <string-array name="writing_Gu_array">
-        <item>구를 선택해 주세요.</item>
+        <item>구 선택</item>
         <item>강남구</item>
         <item>강동구</item>
         <item>강북구</item>

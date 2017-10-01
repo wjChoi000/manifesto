@@ -70,23 +70,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_weight="5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <info.hoang8f.widget.FButton
-                android:id="@+id/help_transmit"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:text="전송"
-                android:textStyle="bold"
-                fbutton:buttonColor="@color/colorMain"
-                android:textColor="@color/colorWhite"
-                android:layout_marginRight="10dp"
-
-                fbutton:shadowEnabled="false"
-                fbutton:cornerRadius="5dp"/>
-        </LinearLayout>
+        <info.hoang8f.widget.FButton
+            android:id="@+id/need_transmit"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:text="전송"
+            android:textStyle="bold"
+            fbutton:buttonColor="@color/colorMain"
+            android:textColor="@color/colorWhite"
+            android:layout_marginRight="10dp"
+            fbutton:shadowEnabled="false"
+            fbutton:cornerRadius="5dp"/>
 
     </LinearLayout>
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,11 +15,14 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.seoulapp.manifesto.model.Citizen;
+import com.seoulapp.manifesto.util.LoginCheck;
+import com.seoulapp.manifesto.util.LoginCheckDialog;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -100,6 +104,22 @@ public class CitizenNeedActivity extends AppCompatActivity {
         String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset="+offset;
         NeedRestAPI helpRestAPI = new NeedRestAPI();
         helpRestAPI.execute(url);
+
+        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.need_btnFAB);
+        floatingActionButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+
+                LoginCheck loginCheck = new LoginCheck(CitizenNeedActivity.this);
+                if(loginCheck.isItLogin()) {
+                    Intent intent = new Intent(CitizenNeedActivity.this, CitizenNeedWritingActivity.class);
+                    startActivity(intent);
+                }else{
+                    LoginCheckDialog loginCheckDialog = new LoginCheckDialog(CitizenNeedActivity.this, false);
+                    loginCheckDialog.show();
+                }
+            }
+        });
     }
     //back button
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
@@ -179,7 +199,7 @@ public class CitizenNeedActivity extends AppCompatActivity {
                         Intent intent = new Intent(CitizenNeedActivity.this, CitizenNeedContentActivity.class);
                         try {
                             JSONArray jsonArray = jsonObject.getJSONArray("list");
-                            JSONObject jres = jsonArray.getJSONObject(position - offset+limit-1);
+                            JSONObject jres = jsonArray.getJSONObject(position - offset+limit);
                             Citizen citizen = Citizen.convertJsonToNeed(jres);
                             intent.putExtra("need",citizen);
                             startActivity(intent);

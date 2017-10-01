@@ -68,6 +68,35 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/gab">
         </LinearLayout>
+        //오픈소스 라이선스
+        <LinearLayout
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25dp">
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"
+                android:text="오픈소스 라이선스"
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:src="@drawable/move_black"
+                android:layout_weight="1"
+                android:layout_width="35dp"
+                android:layout_height="35dp" />
+
+        </LinearLayout>
+        //줄긋기
+        <LinearLayout
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+
         //로그인
         <LinearLayout
             android:gravity="center"
@@ -91,74 +120,19 @@
                 android:layout_height="35dp" />
 
         </LinearLayout>
-    <LinearLayout
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:id="@+id/setting_logout">
-        <TextView
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/colorBlack"
-            android:textSize="20sp"
-            android:text="로그아웃"
-            android:layout_weight="3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:src="@drawable/move_black"
-            android:layout_weight="1"
-            android:layout_width="35dp"
-            android:layout_height="35dp" />
-
-    </LinearLayout>
-    //줄긋기
-    <LinearLayout
-        android:background="@color/colorBackgroundGray"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/gab"/>
-
-    //회원정보 수정
+        //로그 아웃
         <LinearLayout
             android:gravity="center"
             android:layout_margin="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="25dp">
+            android:layout_height="25dp"
+            android:id="@+id/setting_logout">
             <TextView
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp"
-                android:text="회원정보 수정"
-                android:layout_weight="3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <ImageView
-                android:src="@drawable/move_black"
-                android:layout_weight="1"
-                android:layout_width="35dp"
-                android:layout_height="35dp" />
-
-        </LinearLayout>
-        //줄긋기
-        <LinearLayout
-            android:background="@color/colorBackgroundGray"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/gab">
-        </LinearLayout>
-        //오픈소스 라이선스
-        <LinearLayout
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="25dp">
-            <TextView
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/colorBlack"
-                android:textSize="20sp"
-                android:text="오픈소스 라이선스"
+                android:text="로그아웃"
                 android:layout_weight="3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

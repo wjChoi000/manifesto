@@ -171,8 +171,6 @@ public class CitizenListenContentActivity extends AppCompatActivity {
                     }
                     InputMethodManager imm = (InputMethodManager) getSystemService(CitizenListenContentActivity.this.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-//                    LinearLayout listen_focus = (LinearLayout) findViewById(R.id.listen_focus);
-
                 }
             });
         }else{

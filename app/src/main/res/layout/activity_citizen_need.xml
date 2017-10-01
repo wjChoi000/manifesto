@@ -61,5 +61,19 @@
 
 
     </LinearLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/need_btnFAB"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="16dp"
+        fabSize="normal"
+        android:elevation="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:backgroundTint="@color/colorMain"
+        android:src="@drawable/writing_white" />
 </RelativeLayout>
 
