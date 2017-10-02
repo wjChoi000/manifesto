@@ -30,31 +30,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
+            <!--title-->
             <TextView
                 android:id="@+id/titleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="‘대한민국의 사드 배치‘ 무엇이 옳은 걸까?"
                 android:textColor="@color/colorBlack"
                 android:textSize="19dp"
-                android:textStyle="bold" />
-
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+            <!--date-->
+            <TextView
+                android:id="@+id/c_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="right" />
+            <!--content-->
             <TextView
                 android:id="@+id/Listen_subtitle"
                 android:lineSpacingExtra="13dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="대한민국의 사드 배치 논란은 주한 미군이 대한민국 경상북도 성주군에 사드를 배치한 것에 대하여 발생한 논란이다."
+                android:layout_marginBottom="10dp"
                 android:textColor="@color/colorBlack" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -75,7 +81,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -93,14 +98,7 @@
                     android:textColor="@color/colorBlack" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/c_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="right"
-                android:text="2017.08.03" />
+
         </LinearLayout>
         //줄긋기
 
@@ -244,7 +242,12 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="17sp" />
         </LinearLayout>
-
+        //줄긋기
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab"
+            android:background="@color/colorBackgroundGray">
+        </LinearLayout>
     </LinearLayout>
     //헬프
     <LinearLayout
@@ -252,14 +255,11 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         //해당 이미지
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginBottom="10dp">
-
             <ImageView
                 android:scaleType="centerCrop"
                 android:id="@+id/help_content_num1"
@@ -271,33 +271,29 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="20dp">
             <TextView
                 android:id="@+id/help_content_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="쓰레기통 설치를 어떻게 해야 효율적일까요?"
                 android:textColor="@color/colorBlack"
                 android:textSize="17dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/help_date"
+                android:layout_marginBottom="20dp"
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/help_context"
                 android:lineSpacingExtra="13dip"
-                android:text="서초구는 2012년부터 대로변에 설치된 거리 쓰레기통 140개를 모두 없앴다. 쓰레기통을 설치해 놓으면 무단으로 생활쓰레기를 버리고 가는 주민들이 많아져 도로가 더 지저분해진다는 이유였다. 현재 서초구 거리 전체에 쓰레기통은 단 2곳뿐이다. 쓰레기통이 없어 불편하다는 민원이 강하게 제기됐던 양재동 동산로와 우면동 태봉로에만 쓰레기통이 설치돼 있다. 서초구청 관계자는 “쓰레기통이 있으면 그 안에 음식물쓰레기부터 아이들 기저귀까지 각종 처치 곤란한 쓰레기들이 버려져 처리 비용이 만만치 않다. 이는 쓰레기 종량제라는 제도 자체를 무색하게 만드는 행위”라고 설명했다.
-\n\n반면 강남구에는 934개의 쓰레기통이 있다. 유동인구가 100만 명에 이르는 강남대로의 경우엔 최소 하루 두 번 쓰레기통을 비운다. 강남구청 관계자는 “쓰레기통이 없으면 화단이나 도로변에 쓰레기를 버리기 때문에 도로가 지저분해지고 주민들도 불편을 느끼기 때문”이라고 말했다."
                 android:layout_width="match_parent"
-                android:layout_margin="15dp"
                 android:textColor="@color/colorBlack"
                 android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/help_date"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="right"
-                android:text="2017.08.03"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+
         </LinearLayout>
         //줄긋기
         <LinearLayout
@@ -311,7 +307,7 @@
         <LinearLayout
             android:layout_margin="13dp"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_weight="1"
@@ -328,7 +324,6 @@
                 //좋아요
                 <TextView
                     android:id="@+id/goodTvBtn"
-
                     android:gravity="center"
                     android:layout_margin="3dp"
                     android:text="좋아요"
@@ -339,7 +334,6 @@
                     android:id="@+id/help_good"
                     android:gravity="center"
                     android:layout_marginTop="3dp"
-                    android:text="100"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -360,7 +354,6 @@
                     android:id="@+id/help_hit"
                     android:layout_marginTop="3dp"
                     android:textColor="@color/numhighlight"
-                    android:text="200"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -400,7 +393,13 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="17sp" />
         </LinearLayout>
+        //줄긋기
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab"
+            android:background="@color/colorBackgroundGray">
+        </LinearLayout>
     </LinearLayout>
     //니드
     <LinearLayout
@@ -481,7 +480,6 @@
                 android:textColor="@color/colorBlack"
                 android:layout_margin="10dp"
                 android:textSize="15dp"
-                android:text="잠실야구장 주차관리 너무하네요. 주차장 들어올때 고장이라고 요금징수 안한더니 나갈때 한꺼번에 나가는데 요금받는다고 잠실야구장에 갇혔습니다. 이 빗속에 30분이상 제자리에 서있네요"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -500,7 +498,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
-                android:layout_weight="1"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -525,7 +522,6 @@
                     android:id="@+id/need_goodNum"
                     android:gravity="center"
                     android:layout_marginTop="3dp"
-                    android:text="100"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -546,7 +542,6 @@
                     android:id="@+id/need_hitNum"
                     android:layout_marginTop="3dp"
                     android:textColor="@color/numhighlight"
-                    android:text="200"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -585,13 +580,14 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="17sp" />
         </LinearLayout>
+        //줄긋기
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab"
+            android:background="@color/colorBackgroundGray">
+        </LinearLayout>
 
     </LinearLayout>
-
-
-
-
-
-
 
 </LinearLayout>

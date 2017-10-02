@@ -103,9 +103,9 @@ public class CitizenNeedActivity extends AppCompatActivity {
         listview = (ListView) findViewById(R.id.listview_need);
 
         //rest
-        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset="+offset;
-        NeedRestAPI helpRestAPI = new NeedRestAPI();
-        helpRestAPI.execute(url);
+//        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset="+offset;
+//        NeedRestAPI helpRestAPI = new NeedRestAPI();
+//        helpRestAPI.execute(url);
 
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.need_btnFAB);
         floatingActionButton.setOnClickListener(new View.OnClickListener(){
@@ -217,6 +217,15 @@ public class CitizenNeedActivity extends AppCompatActivity {
 
         }
     }
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset="+offset;
+        NeedRestAPI helpRestAPI = new NeedRestAPI();
+        helpRestAPI.execute(url);
+    }
+
     //fonts
     @Override
     protected void attachBaseContext(Context newBase) {

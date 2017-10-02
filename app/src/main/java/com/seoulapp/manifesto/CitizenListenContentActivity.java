@@ -64,6 +64,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
     private int id;
     private LoginCheck loginCheck;
     private boolean opinion= true;
+    private  Citizen content;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +122,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
 //        findViewById(R.id.oppositionBtn).setOnClickListener(clickListener);
         //////////////////////////////////////////////////////////////////////////////
         Intent intent = getIntent();
-        Citizen content = (Citizen) intent.getSerializableExtra("say");
+        content = (Citizen) intent.getSerializableExtra("say");
         id = content.getId();
         ListenRestAPIImage listenRestAPIImage = new  ListenRestAPIImage();
         listenRestAPIImage.execute(content.getPriture());
@@ -169,7 +170,10 @@ public class CitizenListenContentActivity extends AppCompatActivity {
                         }else{
                             adapter.addFirstItem(loginCheck.getNickname()+"","","반대", "방금",comment);
                         }
+                        content.setCount(content.getCount()+1);
+                        ((TextView)findViewById(R.id.listen_comNum)).setText(content.getCount()+"");
                         adapter.notifyDataSetChanged();
+                        Toast.makeText(CitizenListenContentActivity.this,"댓글 작성 완료",Toast.LENGTH_SHORT).show();
                     }
                     InputMethodManager imm = (InputMethodManager) getSystemService(CitizenListenContentActivity.this.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
@@ -330,10 +334,9 @@ public class CitizenListenContentActivity extends AppCompatActivity {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                     if(jsonObject.getString("opinion").compareTo("1")==0)
-                        adapter.addItem(jsonObject.getInt("u_id")+"","찬성","", jsonObject.getString("create_date"),jsonObject.getString("comments"));
+                        adapter.addItem(jsonObject.getString("u_id"),"찬성","", jsonObject.getString("create_date"),jsonObject.getString("comments"));
                     else
-                        adapter.addItem(jsonObject.getInt("u_id")+"","","반대", jsonObject.getString("create_date"),jsonObject.getString("comments"));
-
+                        adapter.addItem(jsonObject.getString("u_id"),"","반대", jsonObject.getString("create_date"),jsonObject.getString("comments"));
                 }
                 adapter.notifyDataSetChanged();
             }catch (Exception e){

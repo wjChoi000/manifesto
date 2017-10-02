@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.Citizen;
 import com.seoulapp.manifesto.restful.RestAPI;
@@ -57,7 +58,7 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
 
         //get intent and write text
         Intent intent = getIntent();
-        Citizen content = (Citizen) intent.getSerializableExtra("help");
+        content = (Citizen) intent.getSerializableExtra("help");
         id = content.getId();
         // Adapter 생성
         adapter = new ListViewAdapter_comment() ;
@@ -152,8 +153,10 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
                         restAPI.execute(url);
 
                         adapter.addFirstItem(loginCheck.getNickname()+"","","", "방금",comment);
-
+                        content.setCount(content.getCount()+1);
+                        ((TextView)findViewById(R.id.help_commentNum)).setText(content.getCount()+"");
                         adapter.notifyDataSetChanged();
+                        Toast.makeText(CitizenHelpContentActivity.this,"댓글 작성 완료",Toast.LENGTH_SHORT).show();
                     }
                     InputMethodManager imm = (InputMethodManager) getSystemService(CitizenHelpContentActivity.this.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
@@ -282,7 +285,7 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
 
                 for(int i =0; i<len; i++){
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    adapter.addItem(jsonObject.getInt("u_id")+"","","", jsonObject.getString("create_date"),jsonObject.getString("comments"));
+                    adapter.addItem(jsonObject.getString("u_id"),"","", jsonObject.getString("create_date"),jsonObject.getString("comments"));
                 }
                 adapter.notifyDataSetChanged();
             }catch (Exception e){

@@ -15,9 +15,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.seoulapp.manifesto.model.Citizen;
 import com.seoulapp.manifesto.restful.RestAPI;
 import com.seoulapp.manifesto.util.LoginCheck;
 import com.tsengvn.typekit.TypekitContextWrapper;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class CitizenNeedWritingActivity extends AppCompatActivity {
     private String gu="";
@@ -118,9 +122,17 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
                     LoginCheck loginCheck = new LoginCheck(CitizenNeedWritingActivity.this);
                     String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenPosterInsertServlet?u_id=" + loginCheck.getID() + "&title=" + title + "&category=" + category + "&comments=" + comment + "&gu=" + gu+"&priture="+priture;
                     RestAPI restAPI = new RestAPI();
-                    restAPI.execute(url);
+                    Citizen citizen =null;
+                    try {
+                        JSONObject jres = restAPI.execute(url).get();
 
+                        citizen = new Citizen(jres.getInt("id"),loginCheck.getID(),title,category,comment,0,0,"방금",0," ");
+                    }catch (Exception e){
+
+                    }
                     Intent intent = new Intent(this,CitizenNeedActivity.class);
+                    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //intent.putExtra("post",citizen);
                     startActivity(intent);
 
                     finish();

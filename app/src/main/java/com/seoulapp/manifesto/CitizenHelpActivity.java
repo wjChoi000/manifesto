@@ -68,10 +68,10 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
         //리스트뷰
         listview = (ListView) findViewById(R.id.listview_help);
 
-        //rest
-        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=help&offset="+offset;
-        HelpRestAPI helpRestAPI = new HelpRestAPI();
-        helpRestAPI.execute(url);
+//        //rest
+//        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=help&offset="+offset;
+//        HelpRestAPI helpRestAPI = new HelpRestAPI();
+//        helpRestAPI.execute(url);
 
         // inflate custom header and attach it to the list
         LayoutInflater inflater = getLayoutInflater();
@@ -206,7 +206,7 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
                 }
                 listview.setAdapter(adapter);
 
-                offset += limit;
+//                offset += limit;
                 listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView parent, View v, int position, long id) {
@@ -214,7 +214,8 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
                         Intent intent = new Intent(CitizenHelpActivity.this, CitizenHelpContentActivity.class);
                         try {
                             JSONArray jsonArray = jsonObject.getJSONArray("list");
-                            JSONObject jres = jsonArray.getJSONObject(position - offset + limit - 1);
+//                            JSONObject jres = jsonArray.getJSONObject(position - offset + limit - 1);
+                            JSONObject jres = jsonArray.getJSONObject(position - offset - 1);
                             Citizen citizen = Citizen.convertJsonToHelp(jres);
                             citizen.setPriture("http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/help/"+citizen.getPriture());
                             intent.putExtra("help", citizen);
@@ -233,5 +234,13 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=help&offset="+offset;
+        HelpRestAPI helpRestAPI = new HelpRestAPI();
+        helpRestAPI.execute(url);
     }
 }

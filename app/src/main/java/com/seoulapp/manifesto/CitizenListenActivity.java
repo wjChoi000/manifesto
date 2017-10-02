@@ -76,10 +76,6 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
         //리스트뷰
         listview = (ListView) findViewById(R.id.listview_listen);
         //rest
-        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=say&offset="+offset;
-        ListenRestAPI listenRestAPI = new ListenRestAPI();
-        listenRestAPI.execute(url);
-
 
         // inflate custom header and attach it to the list
         LayoutInflater inflater = getLayoutInflater();
@@ -217,7 +213,7 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
                 }
                 listview.setAdapter(adapter);
 
-                offset +=limit;
+//                offset +=limit;
                 listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView parent, View v, int position, long id) {
@@ -225,7 +221,8 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
                         Intent intent = new Intent(CitizenListenActivity.this, CitizenListenContentActivity.class);
                         try {
                             JSONArray jsonArray = jsonObject.getJSONArray("list");
-                            JSONObject jres = jsonArray.getJSONObject(position - offset+limit-1);
+//                            JSONObject jres = jsonArray.getJSONObject(position - offset+limit-1);
+                            JSONObject jres = jsonArray.getJSONObject(position - offset-1);
                             Citizen citizen = Citizen.convertJsonToListen(jres);
                             citizen.setPriture("http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/listen/"+citizen.getPriture());
                             intent.putExtra("say",citizen);
@@ -244,5 +241,12 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=say&offset="+offset;
+        ListenRestAPI listenRestAPI = new ListenRestAPI();
+        listenRestAPI.execute(url);
     }
 }

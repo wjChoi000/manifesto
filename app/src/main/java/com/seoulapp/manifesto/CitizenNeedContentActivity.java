@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.Citizen;
 import com.seoulapp.manifesto.restful.RestAPI;
@@ -45,6 +46,7 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
     private LoginCheck loginCheck;
     private EditText editText;
     private int id;
+    private Citizen content;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,13 +99,14 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
         Intent intent = getIntent(); // 보내온 Intent를 얻는다
-        Citizen content = (Citizen) intent.getSerializableExtra("need");
+        content = (Citizen) intent.getSerializableExtra("need");
         id = content.getId();
+
         TextView tvTitle = (TextView)findViewById(R.id.need_title_context);
         TextView tvGu = (TextView)findViewById(R.id.gu);
         TextView tvU_id = (TextView)findViewById(R.id.need_context_u_id);
         TextView tvC_date = (TextView)findViewById(R.id.need_C_date);
-        TextView tvContext = (TextView)findViewById(R.id.need_context);
+        final TextView tvContext = (TextView)findViewById(R.id.need_context);
         TextView tvGoodNum = (TextView)findViewById(R.id.need_goodNum);
         TextView tvHitNum = (TextView)findViewById(R.id.need_hitNum);
         TextView tvComNum = (TextView)findViewById(R.id.need_comNum);
@@ -150,8 +153,10 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
                         restAPI.execute(url);
 
                         adapter.addFirstItem(loginCheck.getNickname()+"","","", "방금",comment);
-
+                        content.setCount(content.getCount()+1);
+                        ((TextView)findViewById(R.id.need_comNum)).setText(content.getCount()+"");
                         adapter.notifyDataSetChanged();
+                        Toast.makeText(CitizenNeedContentActivity.this,"댓글 작성 완료",Toast.LENGTH_SHORT).show();
                     }
                     InputMethodManager imm = (InputMethodManager) getSystemService(CitizenNeedContentActivity.this.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
@@ -249,7 +254,7 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
 
                 for(int i =0; i<len; i++){
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    adapter.addItem(jsonObject.getInt("u_id")+"","","", jsonObject.getString("create_date"),jsonObject.getString("comments"));
+                    adapter.addItem(jsonObject.getString("u_id"),"","", jsonObject.getString("create_date"),jsonObject.getString("comments"));
                 }
                 adapter.notifyDataSetChanged();
             }catch (Exception e){

@@ -77,6 +77,21 @@ public class TabCitizen extends Fragment {
                 onClickNeedAddlayout(view);
             }
         });
+
+        mIndicatorView = (IndicatorView) rootView.findViewById(R.id.indicator_view);
+        mViewPager = (ViewPager) rootView.findViewById(R.id.view_pager);
+
+        mAdapter = new RollingAdapter(rootView.getContext(), getData(), new RollingAdapter.OnAdapterItemClickListener() {
+            @Override
+            public void onItemClick(RollingModel object, int position) {
+
+            }
+        });
+        mViewPager.setAdapter(mAdapter);
+        mIndicatorView.setViewPager(mViewPager);
+        mAutoRollingManager = new AutoRollingManager(mViewPager, mAdapter, mIndicatorView);
+        mAutoRollingManager.setRollingTime(5500);
+
         return rootView;
     }
 
@@ -116,9 +131,11 @@ public class TabCitizen extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if(mAutoRollingManager !=null){
-            mAutoRollingManager.onRollingStart();
-        }
+        mAutoRollingManager.onRollingStart();
+
+        String url1 = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenMainGetListServlet";
+        CitizenRestAPI restAPI = new CitizenRestAPI();
+        restAPI.execute(url1);
     }
 
     @Override
@@ -183,30 +200,6 @@ public class TabCitizen extends Fragment {
                 }
                 CitizenRestAPIImage citizenRestAPIImage = new CitizenRestAPIImage();
                 citizenRestAPIImage.execute(urls);
-
-                mIndicatorView = (IndicatorView) rootView.findViewById(R.id.indicator_view);
-                mViewPager = (ViewPager) rootView.findViewById(R.id.view_pager);
-
-                mAdapter = new RollingAdapter(rootView.getContext(), getData(), new RollingAdapter.OnAdapterItemClickListener() {
-                    @Override
-                    public void onItemClick(RollingModel object, int position) {
-                        if(position <2){
-                            Intent intent = new Intent(getActivity(), CitizenListenContentActivity.class);
-                            intent.putExtra("say", list_say[position]);
-                            startActivity(intent);
-                        }else{
-                            Intent intent = new Intent(getActivity(), CitizenHelpContentActivity.class);
-                            intent.putExtra("help", list_help[position-2]);
-                            startActivity(intent);
-                        }
-                    }
-                });
-                mViewPager.setAdapter(mAdapter);
-                mIndicatorView.setViewPager(mViewPager);
-                mAutoRollingManager = new AutoRollingManager(mViewPager, mAdapter, mIndicatorView);
-                mAutoRollingManager.setRollingTime(5500);
-
-
             } catch (Exception e) {
                 Log.i("Help", "help error", e);
             }
@@ -420,4 +413,5 @@ public class TabCitizen extends Fragment {
             });
         }
     }
+
 }
