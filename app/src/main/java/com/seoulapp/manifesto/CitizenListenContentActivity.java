@@ -1,6 +1,7 @@
 package com.seoulapp.manifesto;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -27,6 +28,7 @@ import com.seoulapp.manifesto.model.Citizen;
 import com.seoulapp.manifesto.restful.RestAPI;
 import com.seoulapp.manifesto.util.LoginCheck;
 import com.seoulapp.manifesto.util.LoginCheckDialog;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -363,6 +365,12 @@ public class CitizenListenContentActivity extends AppCompatActivity {
 //                }
 //            },200);
         }
+    }
+
+    //fonts
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 }
 

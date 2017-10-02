@@ -1,5 +1,6 @@
 package com.seoulapp.manifesto;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
  */
 
 public class TabManifesto extends Fragment {
+
 
     static int i = 1;
     @Override
@@ -193,5 +195,7 @@ public class TabManifesto extends Fragment {
         intent.putExtra("id",i);
         startActivity(intent);
     }
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.seoulapp.manifesto;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.seoulapp.manifesto.util.LoginCheck;
 import com.seoulapp.manifesto.util.LoginCheckDialog;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.w3c.dom.Text;
 
@@ -75,6 +77,11 @@ public class Setting extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 
 }

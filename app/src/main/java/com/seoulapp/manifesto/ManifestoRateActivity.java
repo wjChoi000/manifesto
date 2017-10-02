@@ -1,5 +1,6 @@
 package com.seoulapp.manifesto;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -45,6 +46,7 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.MPPointF;
 import com.seoulapp.manifesto.restful.RestAPI;
 import com.seoulapp.manifesto.restful.RestAPIImage;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -980,5 +982,9 @@ public class ManifestoRateActivity extends AppCompatActivity {
             imageView.setImageBitmap(bitmap);
         }
     }
-
+    //fonts
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 }

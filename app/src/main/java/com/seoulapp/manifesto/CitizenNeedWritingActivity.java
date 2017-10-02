@@ -1,5 +1,6 @@
 package com.seoulapp.manifesto;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.seoulapp.manifesto.restful.RestAPI;
 import com.seoulapp.manifesto.util.LoginCheck;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 public class CitizenNeedWritingActivity extends AppCompatActivity {
     private String gu="";
@@ -141,6 +143,12 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
 
     public void onClick(View target){
         Toast.makeText(getApplicationContext(), "사진을 가져옵니다.", Toast.LENGTH_SHORT).show();
+    }
+
+    //fonts
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 
 }

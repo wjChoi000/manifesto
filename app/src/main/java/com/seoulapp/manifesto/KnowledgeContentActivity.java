@@ -1,5 +1,6 @@
 package com.seoulapp.manifesto;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.seoulapp.manifesto.model.KnowContent;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 public class KnowledgeContentActivity extends AppCompatActivity {
 
@@ -65,5 +67,11 @@ public class KnowledgeContentActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     };
+
+    //fonts
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
 }

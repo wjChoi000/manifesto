@@ -5,6 +5,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.kakao.auth.KakaoSDK;
+import com.tsengvn.typekit.Typekit;
 
 //import com.kakao.auth.KakaoSDK;
 /**
@@ -20,6 +21,10 @@ public class GlobalApplication extends Application {
         super.onCreate();
         obj = this;
         KakaoSDK.init(new KakaoSDKAdapter());
+
+        Typekit.getInstance()
+                .addNormal(Typekit.createFromAsset(this, "fonts/SeoulNamsanB.ttf"))
+                .addBold(Typekit.createFromAsset(this, "fonts/SeoulNamsanEB.ttf"));
     }
 
     public static GlobalApplication getGlobalApplicationContext() {
