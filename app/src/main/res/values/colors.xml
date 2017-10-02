@@ -9,6 +9,7 @@
     <!--#0039bc-->
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGray">#747474</color>
+    <color name="colorDefault">#808080</color>
 
     <color name="textGray">#d0d0d0</color>
     <color name="colorBackgroundGray">#e9e8e8</color>

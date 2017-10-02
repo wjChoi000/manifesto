@@ -141,14 +141,15 @@ public class LoginsActivity extends AppCompatActivity {
                 }catch (Exception e){}
                 loginCheck.login(id,kakaoNickname);
                 redirectMainActivity(); // 로그인 성공시 MainActivity로
+
             }
         });
     }
     private void redirectMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+//        Intent intent = new Intent(this, MainActivity.class);
 //        intent.putExtra("url", url);
 //        intent.putExtra("nickname", nickname);
-        startActivity(intent);
+//        startActivity(intent);
         finish();
     }
     protected void redirectLoginActivity() {

@@ -63,8 +63,10 @@ public class CitizenListenContentActivity extends AppCompatActivity {
     private EditText editText;
     private int id;
     private LoginCheck loginCheck;
-    private boolean opinion= true;
+    private int opinion =-1;
     private  Citizen content;
+    private TextView listen_fake;
+    private int exist =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,8 +122,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         optextview = (TextView)findViewById(R.id.op_count);
         opCheck = (CheckBox)findViewById(R.id.oppositionBtn);
 //
-//        findViewById(R.id.agreementBtn).setOnClickListener(clickListener);
-//        findViewById(R.id.oppositionBtn).setOnClickListener(clickListener);
+//
         //////////////////////////////////////////////////////////////////////////////
         Intent intent = getIntent();
         content = (Citizen) intent.getSerializableExtra("say");
@@ -152,35 +153,21 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         //edit text
         loginCheck = new LoginCheck(this);
         editText = (EditText) findViewById(R.id.listen_editText);
-        TextView listen_fake= (TextView) findViewById(R.id.listen_fake);
+        listen_fake= (TextView) findViewById(R.id.listen_fake);
 
+
+
+        String url="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetCommentListServlet?offset=0&category=say&id="+content.getId()+"&u_id="+loginCheck.getID();
+        CommentRestAPI commentRestAPI = new CommentRestAPI();
+        commentRestAPI.execute(url);
+
+
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
         if(loginCheck.isItLogin()){
-            editText.setVisibility(View.VISIBLE);
-            listen_fake.setVisibility(View.GONE);
-            FButton listen_transmit = (FButton) findViewById(R.id.listen_transmit);
-            listen_transmit.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public  void onClick(View v){
-                    String comment =editText.getText().toString();
-                    if ( comment.length() > 0 ) {
-                        RestAPI restAPI = new RestAPI();
-                        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenCommentInsertServlet?category=say&u_id="+loginCheck.getID()+"&h_id="+id+"&comment="+comment+"&opinion="+opinion;
-                        editText.setText("");
-                        restAPI.execute(url);
-                        if(opinion){
-                            adapter.addFirstItem(loginCheck.getNickname()+"","찬성","", "방금",comment);
-                        }else{
-                            adapter.addFirstItem(loginCheck.getNickname()+"","","반대", "방금",comment);
-                        }
-                        content.setCount(content.getCount()+1);
-                        ((TextView)findViewById(R.id.listen_comNum)).setText(content.getCount()+"");
-                        adapter.notifyDataSetChanged();
-                        Toast.makeText(CitizenListenContentActivity.this,"댓글 작성 완료",Toast.LENGTH_SHORT).show();
-                    }
-                    InputMethodManager imm = (InputMethodManager) getSystemService(CitizenListenContentActivity.this.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-                }
-            });
+            opinionFunc();
         }else{
             editText.setVisibility(View.GONE);
             listen_fake.setVisibility(View.VISIBLE);
@@ -193,67 +180,139 @@ public class CitizenListenContentActivity extends AppCompatActivity {
                     loginCheckDialog.show();
                 }
             });
+            findViewById(R.id.listen_opinion_btn).setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    LoginCheckDialog loginCheckDialog = new LoginCheckDialog(CitizenListenContentActivity.this,false);
+                    loginCheckDialog.show();
+                }
+            });
         }
-
-        String url="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetCommentListServlet?offset=0&category=say&id="+content.getId();
-        CommentRestAPI commentRestAPI = new CommentRestAPI();
-        commentRestAPI.execute(url);
-
-
     }
+    private void opinionFunc(){
+        if(opinion == -1) {
+            editText.setVisibility(View.GONE);
+            listen_fake.setVisibility(View.VISIBLE);
+            LinearLayout listen_comment = (LinearLayout) findViewById(R.id.listen_comment);
+            listen_comment.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(CitizenListenContentActivity.this, "찬/반을 먼저 선택해주세요.", Toast.LENGTH_SHORT).show();
+                }});
+        }else {
+            editText.setVisibility(View.VISIBLE);
+            listen_fake.setVisibility(View.GONE);
+            FButton listen_transmit = (FButton) findViewById(R.id.listen_transmit);
+            listen_transmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-//    private View.OnClickListener clickListener = new View.OnClickListener(){
-//        @Override
-//        public void onClick(View v){
-//
-//            switch (v.getId()){
-//                case R.id.agreementBtn:
-//                    if(opCheck.isChecked() ==true){
-//                        opcount--;
-//                        optextview.setText("반대 "+opcount);
-//                        optextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
-//                        opCheck.setChecked(false);
-//                        agcount++;
-//                        agtextview.setText("찬성 "+agcount);
-//                        agtextview.setTextColor(getResources().getColor(R.color.agreement));
-//                    }else {
-//                        if(agCheck.isChecked() ==true){
-//                            agcount++;
-//                            agtextview.setText("찬성 "+agcount);
-//                            agtextview.setTextColor(getResources().getColor(R.color.agreement));
-//                        }else{
-//                            agcount--;
-//                            agtextview.setText("찬성 "+agcount);
-//                            agtextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
-//                        }
-//                    }
-//                    break;
-//                case R.id.oppositionBtn:
-//                    if(agCheck.isChecked() ==true){
-//                        agcount--;
-//                        agtextview.setText("찬성 "+agcount);
-//                        agtextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
-//                        agCheck.setChecked(false);
-//                        opcount++;
-//                        optextview.setText("반대 "+opcount);
-//                        optextview.setTextColor(getResources().getColor(R.color.opposition));
-//                    }else{
-//                        if(opCheck.isChecked() ==true){
-//                            opcount++;
-//                            optextview.setText("반대 "+opcount);
-//                            optextview.setTextColor(getResources().getColor(R.color.opposition));
-//                        }else{
-//                            opcount--;
-//                            optextview.setText("반대 "+opcount);
-//                            optextview.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
-//                        }
-//                    }
-//                    break;
-//                default:
-//                    break;
-//            }
-//        }
-//    };
+                    String comment = editText.getText().toString();
+                    if (comment.length() > 0) {
+                        RestAPI restAPI = new RestAPI();
+                        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenCommentInsertServlet?category=say&u_id=" + loginCheck.getID() + "&h_id=" + id + "&comment=" + comment + "&opinion=" + opinion;
+                        editText.setText("");
+                        restAPI.execute(url);
+                        if (opinion == 1) {
+                            adapter.addFirstItem(loginCheck.getNickname() + "", "찬성", "", "방금", comment);
+                        } else if (opinion == 0) {
+                            adapter.addFirstItem(loginCheck.getNickname() + "", "", "반대", "방금", comment);
+                        }
+                        content.setCount(content.getCount() + 1);
+                        ((TextView) findViewById(R.id.listen_comNum)).setText(content.getCount() + "");
+                        adapter.notifyDataSetChanged();
+                        Toast.makeText(CitizenListenContentActivity.this, "댓글 작성 완료", Toast.LENGTH_SHORT).show();
+                    }
+                    InputMethodManager imm = (InputMethodManager) getSystemService(CitizenListenContentActivity.this.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+
+                }
+            });
+        }
+    }
+    private View.OnClickListener clickListener = new View.OnClickListener(){
+        @Override
+        public void onClick(View v){
+            String option= null;
+            int opinion2 = -1;
+            switch (v.getId()){
+                case R.id.agreementBtn:
+                    if(opCheck.isChecked() ==true){
+                        opcount--;
+                        optextview.setText("반대 "+opcount);
+                        optextview.setTextColor(getResources().getColor(R.color.colorDefault));
+                        opCheck.setChecked(false);
+                        agcount++;
+                        agtextview.setText("찬성 "+agcount);
+                        agtextview.setTextColor(getResources().getColor(R.color.agreement));
+                        opinion=1;
+                        opinion2=1;
+                        exist=1;
+                        option="update";
+                    }
+                    else {
+                        if(agCheck.isChecked() ==true){
+                            agcount++;
+                            agtextview.setText("찬성 "+agcount);
+                            agtextview.setTextColor(getResources().getColor(R.color.agreement));
+                            opinion =1;
+                            opinion2=1;
+                            exist=0;
+                            option="update";
+                        }else{
+                            agcount--;
+                            agtextview.setText("찬성 "+agcount);
+                            agtextview.setTextColor(getResources().getColor(R.color.colorDefault));
+                            opinion=-1;
+                            exist=1;
+                            option="delete";
+                            opinion2 =1;
+                        }
+                    }
+                    break;
+                case R.id.oppositionBtn:
+                    if(agCheck.isChecked() ==true){
+                        agcount--;
+                        agtextview.setText("찬성 "+agcount);
+                        agtextview.setTextColor(getResources().getColor(R.color.colorDefault));
+                        agCheck.setChecked(false);
+                        opcount++;
+                        optextview.setText("반대 "+opcount);
+                        optextview.setTextColor(getResources().getColor(R.color.opposition));
+                        opinion=0;
+                        exist=1;
+                        option="update";
+                        opinion2=0;
+                    }else{
+                        if(opCheck.isChecked() ==true){
+                            opcount++;
+                            optextview.setText("반대 "+opcount);
+                            optextview.setTextColor(getResources().getColor(R.color.opposition));
+                            opinion=0;
+                            exist=0;
+                            option="update";
+                            opinion2 =0;
+                        }else{
+                            opcount--;
+                            optextview.setText("반대 "+opcount);
+                            optextview.setTextColor(getResources().getColor(R.color.colorDefault));
+                            opinion=-1;
+                            exist=1;
+                            option="delete";
+                            opinion2=0;
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+            opinionFunc();
+            String url= "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/GoodOrBadUpdateServlet?category=say&c_id="+id+"&u_id="+loginCheck.getID()+"&option="+option+"&opinion="+opinion2+"&exist="+exist;
+            Toast.makeText(CitizenListenContentActivity.this,url,Toast.LENGTH_SHORT).show();
+            RestAPI restAPI = new RestAPI();
+            restAPI.execute(url);
+        }
+    };
 
     //back button
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
@@ -329,6 +388,25 @@ public class CitizenListenContentActivity extends AppCompatActivity {
 
         protected void onPostExecute(JSONObject result) {
             try {
+                JSONObject jres = result.getJSONObject("opinion");
+                String code = jres.getString("code");
+                if(code.compareToIgnoreCase("success")==0) {
+                    opinion = jres.getInt("opinion");
+                    opinionFunc();
+                    if(opinion ==1){
+                        agCheck.performClick();
+                        agtextview.setTextColor(getResources().getColor(R.color.agreement));
+                    }else{
+                        opCheck.performClick();
+                        optextview.setTextColor(getResources().getColor(R.color.opposition));
+                    }
+                    exist=1;
+                }
+                findViewById(R.id.agreementBtn).setOnClickListener(clickListener);
+                findViewById(R.id.oppositionBtn).setOnClickListener(clickListener);
+
+                Toast.makeText(CitizenListenContentActivity.this,opinion+"",Toast.LENGTH_SHORT).show();
+
                 JSONArray jsonArray = result.getJSONArray("list");
                 int len = jsonArray.length();
 
@@ -344,31 +422,6 @@ public class CitizenListenContentActivity extends AppCompatActivity {
             }catch (Exception e){
                 Log.i("result","fail rest",e);
             }
-        }
-    }
-
-    public static void scrollToView(View view,final ScrollView scrollView){
-        scrollToView(view,scrollView,0);
-    }
-    public static void scrollToView(View view, final ScrollView scrollView,int count){
-        if(view !=null && view != scrollView){
-            count += view.getTop();
-            scrollToView((View) view.getParent(),scrollView,count);
-        }
-        else if(scrollView!= null){
-            final int finalCount =count;
-            scrollView.post(new Runnable() {
-                @Override
-                public void run() {
-                    scrollView.smoothScrollTo(0,finalCount);
-                }
-            });
-//            new Handler().postDelayed(new Runnable(){
-//                @Override
-//                public void run(){
-//                    scrollView.smoothScrollTo(0,finalCount);
-//                }
-//            },200);
         }
     }
 

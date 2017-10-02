@@ -42,7 +42,7 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
     private int goodCount;
     private int checknum = 0;
     private ImageView imgGood;
-    private TextView tvGood, tvGoodCount;
+    private TextView tvGood,tvGoodCount;
     private ListViewAdapter_comment adapter;
     private ListView listview ;
     private ViewGroup header;
@@ -50,7 +50,13 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
 
     private LoginCheck loginCheck;
     private EditText editText;
+    private TextView listen_fake;
     private int id;
+    private int good =0;
+
+    //1 no_change , -1 change
+    private int checknum_flag =1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +85,6 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         listen.setVisibility(View.GONE);
         need.setVisibility(View.GONE);
         help.setBackgroundColor(getResources().getColor(R.color.colorWhite));
-
         listview.addHeaderView(header, null, false);
 
         //actionbar title
@@ -95,14 +100,10 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(view,params);
         getSupportActionBar().setDisplayShowCustomEnabled(true); //show custom title
         getSupportActionBar().setDisplayShowTitleEnabled(false); //hide the default title
-
         //back button
         ActionBar actionBar = getSupportActionBar();
-
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
-
-
 
         HelpRestAPIImage helpRestAPIImage = new HelpRestAPIImage();
         helpRestAPIImage.execute(content.getPriture());
@@ -122,24 +123,27 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
         tvCDate.setText(content.getCreate_date());
         tvComNum.setText(content.getCount()+"");
 
+        imgGood = (ImageView)findViewById(R.id.imgGood);
         tvGood = (TextView)findViewById(R.id.goodTvBtn);
         tvGoodCount = (TextView)findViewById(R.id.help_good);
-
         goodCount = content.getGood();
-        findViewById(R.id.goodTvBtn).setOnClickListener(clickListener);
-        imgGood = (ImageView)findViewById(R.id.imgGood);
-//
+        loginCheck = new LoginCheck(this);
+
+
         //add comment
         CommentRestAPI commentRestAPI = new CommentRestAPI();
-        String url="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetCommentListServlet?offset=0&category=help&id="+content.getId();
+        String url="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetCommentListServlet?offset=0&category=help&id="+content.getId()+"&u_id="+loginCheck.getID();
         commentRestAPI.execute(url);
 
         //comment
         //edit text
-        loginCheck = new LoginCheck(this);
-        editText = (EditText) findViewById(R.id.help_editText);
-        TextView listen_fake= (TextView) findViewById(R.id.help_fake);
 
+        editText = (EditText) findViewById(R.id.help_editText);
+        listen_fake= (TextView) findViewById(R.id.help_fake);
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
         if(loginCheck.isItLogin()){
             editText.setVisibility(View.VISIBLE);
             listen_fake.setVisibility(View.GONE);
@@ -166,6 +170,8 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
 
                 }
             });
+            findViewById(R.id.help_good_btn).setOnClickListener(clickListener);
+
         }
         else{
             editText.setVisibility(View.GONE);
@@ -175,6 +181,13 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
             listen_comment.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
+                    LoginCheckDialog loginCheckDialog = new LoginCheckDialog(CitizenHelpContentActivity.this,false);
+                    loginCheckDialog.show();
+                }
+            });
+            findViewById(R.id.help_good_btn).setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
                     LoginCheckDialog loginCheckDialog = new LoginCheckDialog(CitizenHelpContentActivity.this,false);
                     loginCheckDialog.show();
                 }
@@ -195,7 +208,8 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
     private View.OnClickListener clickListener = new View.OnClickListener(){
         @Override
         public void onClick(View v){
-
+            String url = null;
+            RestAPI restAPI = new RestAPI();
             switch (checknum){
                 case 0:
                     checknum++;
@@ -204,14 +218,20 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
                     tvGood.setTextColor(getResources().getColor(R.color.agreement));
                     tvGoodCount.setTextColor(getResources().getColor(R.color.agreement));
                     tvGoodCount.setText(""+goodCount);
+                    checknum_flag = -1;
+                    url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/GoodOrBadUpdateServlet?category=help&c_id="+id+"&u_id="+loginCheck.getID()+"&option=update";
+                    restAPI.execute(url);
                     break;
                 case 1:
                     checknum--;
                     goodCount--;
                     imgGood.setImageResource(R.drawable.agreement_normal);
                     tvGoodCount.setText(""+goodCount);
-                    tvGood.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
-                    tvGoodCount.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+                    tvGood.setTextColor(getResources().getColor(R.color.colorDefault));
+                    tvGoodCount.setTextColor(getResources().getColor(R.color.colorDefault));
+                    checknum_flag = -1;
+                    url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/GoodOrBadUpdateServlet?category=help&c_id="+id+"&u_id="+loginCheck.getID()+"&option=delete";
+                    restAPI.execute(url);
                 default:
                     break;
             }
@@ -282,6 +302,16 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
 
         protected void onPostExecute(JSONObject result) {
             try {
+                JSONObject jres = result.getJSONObject("opinion");
+                String code = jres.getString("code");
+                if(code.compareToIgnoreCase("success")==0){
+                    checknum=1;
+
+                    imgGood.setImageResource(R.drawable.ag_pressed);
+                    tvGood.setTextColor(getResources().getColor(R.color.agreement));
+                    tvGoodCount.setTextColor(getResources().getColor(R.color.agreement));
+                }
+
                 JSONArray jsonArray = result.getJSONArray("list");
                 int len = jsonArray.length();
 

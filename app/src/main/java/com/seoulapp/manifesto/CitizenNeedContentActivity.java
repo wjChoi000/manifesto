@@ -47,6 +47,10 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
     private EditText editText;
     private int id;
     private Citizen content;
+    private TextView listen_fake;
+
+    //1 no_change , -1 change
+    private int checknum_flag =1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,23 +127,28 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
 
         need_tvGood = (TextView)findViewById(R.id.need_goodTvBtn);
         need_tvGoodCount = (TextView)findViewById(R.id.need_goodNum);
-
         need_goodCount = content.getGood();
 
-        findViewById(R.id.need_goodTvBtn).setOnClickListener(need_clickListener);
+        loginCheck = new LoginCheck(this);
+
 
         need_imgGood = (ImageView)findViewById(R.id.need_imgGood);
 
-        String url="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetCommentListServlet?offset=0&category=post&id="+content.getId();
+
+        String url="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetCommentListServlet?offset=0&category=post&id="+content.getId()+"&u_id="+loginCheck.getID();
         CommentRestAPI commentRestAPI = new CommentRestAPI();
         commentRestAPI.execute(url);
 
         //comment
         //edit text
-        loginCheck = new LoginCheck(this);
         editText = (EditText) findViewById(R.id.need_editText);
-        TextView listen_fake= (TextView) findViewById(R.id.need_fake);
+        listen_fake= (TextView) findViewById(R.id.need_fake);
 
+
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
         if(loginCheck.isItLogin()){
             editText.setVisibility(View.VISIBLE);
             listen_fake.setVisibility(View.GONE);
@@ -162,10 +171,9 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
                     }
                     InputMethodManager imm = (InputMethodManager) getSystemService(CitizenNeedContentActivity.this.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-
-
                 }
             });
+            findViewById(R.id.need_good_btn).setOnClickListener(need_clickListener);
         }else{
             editText.setVisibility(View.GONE);
             listen_fake.setVisibility(View.VISIBLE);
@@ -174,6 +182,13 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
             listen_comment.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
+                    LoginCheckDialog loginCheckDialog = new LoginCheckDialog(CitizenNeedContentActivity.this,false);
+                    loginCheckDialog.show();
+                }
+            });
+            findViewById(R.id.need_good_btn).setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
                     LoginCheckDialog loginCheckDialog = new LoginCheckDialog(CitizenNeedContentActivity.this,false);
                     loginCheckDialog.show();
                 }
@@ -195,7 +210,8 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
     private View.OnClickListener need_clickListener = new View.OnClickListener(){
         @Override
         public void onClick(View v){
-
+            String url=null;
+            RestAPI restAPI = new RestAPI();
             switch (need_checknum){
                 case 0:
                     need_checknum++;
@@ -204,14 +220,21 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
                     need_tvGood.setTextColor(getResources().getColor(R.color.agreement));
                     need_tvGoodCount.setTextColor(getResources().getColor(R.color.agreement));
                     need_tvGoodCount.setText(""+need_goodCount);
+
+                    url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/GoodOrBadUpdateServlet?category=post&c_id="+id+"&u_id="+loginCheck.getID()+"&option=update";
+                    restAPI.execute(url);
+
                     break;
                 case 1:
                     need_checknum--;
                     need_goodCount--;
                     need_imgGood.setImageResource(R.drawable.agreement_normal);
                     need_tvGoodCount.setText(""+need_goodCount);
-                    need_tvGood.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
-                    need_tvGoodCount.setTextColor(getResources().getColor(R.color.colorBackgroundGray));
+                    need_tvGood.setTextColor(getResources().getColor(R.color.colorDefault));
+                    need_tvGoodCount.setTextColor(getResources().getColor(R.color.colorDefault));
+
+                    url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/GoodOrBadUpdateServlet?category=post&c_id="+id+"&u_id="+loginCheck.getID()+"&option=delete";
+                    restAPI.execute(url);
                 default:
                     break;
             }
@@ -251,6 +274,14 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
 
         protected void onPostExecute(JSONObject result) {
             try {
+                JSONObject jres = result.getJSONObject("opinion");
+                String code = jres.getString("code");
+                if(code.compareToIgnoreCase("success")==0){
+                    need_checknum=1;
+                    need_imgGood.setImageResource(R.drawable.ag_pressed);
+                    need_tvGood.setTextColor(getResources().getColor(R.color.agreement));
+                    need_tvGoodCount.setTextColor(getResources().getColor(R.color.agreement));
+                }
                 JSONArray jsonArray = result.getJSONArray("list");
                 int len = jsonArray.length();
 
