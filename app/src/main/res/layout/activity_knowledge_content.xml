@@ -1,181 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.seoulapp.manifesto.KnowledgeContentActivity"
-    android:background="@color/colorBackgroundGray"
-    >
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-        <!--Title-->
-        <TextView
-            android:id="@+id/k_content_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/gab"
-            android:background="@color/colorWhite"
-            style="@style/knowledgeTitle"/>
-
-        <!--content-->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/knowledge_manifesto"
-            android:background="@color/colorWhite"/>
-
-        <TextView
-            android:id="@+id/k_content_contents"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:layout_marginBottom="@dimen/gab"
-            android:background="@color/colorWhite"
-            style="@style/ContentContents"/>
-
-        <!--good and bad-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/margin_default"
-            android:layout_marginBottom="@dimen/gab"
-            android:background="@color/colorWhite">
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_default"
-                android:src="@drawable/agreement_black" />
-
-            <TextView
-                android:id="@+id/k_content_goodNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_default"
-                />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_default"
-                android:src="@drawable/comment_black" />
-
-            <TextView
-                android:id="@+id/k_content_commentNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_default"
-                />
-        </LinearLayout>
-
-        <!--comments-->
-        <LinearLayout
-            android:id="@+id/k_content_comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="@dimen/gab"
-            >
-            <TextView
+            <ListView
+                android:dividerHeight="0.5dp"
+                android:divider="@drawable/list_divider"
+                android:background="@color/bt_ag_op"
+                android:id="@+id/listview_know_content_comment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="댓글"
-                android:background="@color/colorWhite"/>
-        </LinearLayout>
-
-        <!--write comment-->
-        //댓글
-        <LinearLayout
-            android:background="#FFF"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/help_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:hint="의견을 남겨보세요."
-                    android:background="@null"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:maxLines="1"/>
-                <TextView
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:background="@color/colorMain"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_weight="5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <info.hoang8f.widget.FButton
-                    android:id="@+id/help_transmit"
-                    android:layout_width="50dp"
-                    android:layout_height="30dp"
-                    android:text="전송"
-                    android:textStyle="bold"
-                    fbutton:buttonColor="@color/colorMain"
-                    android:textColor="@color/colorWhite"
-                    android:layout_marginRight="10dp"
-
-                    fbutton:shadowEnabled="false"
-                    fbutton:cornerRadius="5dp"/>
-            </LinearLayout>
-
+                android:layout_height="match_parent"/>
 
 
         </LinearLayout>
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:background="#FFF"-->
-            <!--android:paddingBottom="10dp"-->
-            <!--android:paddingTop="10dp">-->
-            <!--<EditText-->
-                <!--android:id="@+id/k_editText"-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--android:padding="5dp"-->
-                <!--android:hint="@string/k_save"-->
-                <!--android:textColorHint="@color/colorGray"-->
-
-                <!--android:maxLines="1"-->
-
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:layout_marginRight="10dp" />-->
-            <!--<Button-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/k_save"-->
-
-                <!--android:background="@color/colorMain"-->
-                <!--android:textColor="#fff"-->
-                <!--android:layout_marginRight="10dp"/>-->
-        <!--</LinearLayout>-->
     </LinearLayout>
+    //의견올리기
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/gab"
+        android:background="@color/colorBackgroundGray"></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp"
+        android:paddingTop="6dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:textSize="14sp"
+                android:id="@+id/help_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:hint="의견을 남겨보세요."
+                android:background="@null"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
+            <TextView
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:background="@color/colorMain"
+                android:layout_width="match_parent"
+                android:layout_height="2dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <info.hoang8f.widget.FButton
+                android:id="@+id/help_transmit"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:text="전송"
+                android:textStyle="bold"
+                fbutton:buttonColor="@color/colorMain"
+                android:textColor="@color/colorWhite"
+                android:layout_marginRight="10dp"
 
-</ScrollView>
+                fbutton:shadowEnabled="false"
+                fbutton:cornerRadius="5dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -589,5 +589,152 @@
         </LinearLayout>
 
     </LinearLayout>
+    //지식
+    <LinearLayout
+        android:id="@+id/listheader_know_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <!--Title-->
+        <TextView
+            android:id="@+id/k_content_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/gab"
+            android:background="@color/colorWhite"
+            style="@style/knowledgeTitle"/>
+
+        <!--content-->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/knowledge_manifesto"
+            android:background="@color/colorWhite"/>
+
+        <TextView
+            android:id="@+id/k_content_contents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:layout_marginBottom="@dimen/gab"
+            android:background="@color/colorWhite"
+            style="@style/ContentContents"/>
+
+        <!--good and bad-->
+        //줄긋기
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@color/colorBackgroundGray"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab">
+        </LinearLayout>
+        //좋아요, 댓글, 조회수
+        <LinearLayout
+
+            android:layout_margin="13dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/k_imgGood"
+                    android:layout_gravity="center"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/agreement_normal"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp" />
+                //좋아요
+                <TextView
+                    android:id="@+id/k_goodTvBtn"
+                    android:onClick="onClick"
+                    android:gravity="center"
+                    android:layout_margin="3dp"
+                    android:text="좋아요"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                //좋아요 갯수
+                <TextView
+                    android:id="@+id/know_good"
+                    android:gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:text="100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="6dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                //조회수
+                <TextView
+                    android:layout_margin="3dp"
+                    android:text="조회수"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                //조회수 갯수
+                <TextView
+                    android:id="@+id/know_hit"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/numhighlight"
+                    android:text="200"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        //줄긋기
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab"
+            android:background="@color/colorBackgroundGray">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bt_ag_op"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="댓글"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/know_commentNum"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/colorBlack"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
 
 </LinearLayout>

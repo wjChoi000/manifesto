@@ -68,6 +68,8 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
         LinearLayout listen = (LinearLayout)header.findViewById(R.id.listheader_listen_content);
         LinearLayout help = (LinearLayout)header.findViewById(R.id.listheader_help_content);
         LinearLayout need = (LinearLayout)header.findViewById(R.id.listheader_need_content);
+        LinearLayout know = (LinearLayout)header.findViewById(R.id.listheader_know_content);
+        know.setVisibility(View.GONE);
         listen.setVisibility(View.GONE);
         help.setVisibility(View.GONE);
         need.setBackgroundColor(getResources().getColor(R.color.colorWhite));
