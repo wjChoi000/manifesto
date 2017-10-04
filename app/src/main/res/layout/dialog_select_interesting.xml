@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:gravity="center"
+    android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="관심지역을 선택해주세요."
+            android:background="@color/colorMain"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackgroundGray"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_margin="20dp"
+        >
+        <ImageView
+            android:layout_width="69dp"
+            android:layout_height="23dp"
+            android:src="@drawable/seoul_map_seoul"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/manifestoBtnDialog1"
+            android:layout_marginBottom="5dp"/>
+        <ImageView
+            android:layout_width="69dp"
+            android:layout_height="23dp"
+            android:src="@drawable/seoul_map_edu"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:id="@+id/manifestoBtnDialog27"/>
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="235dp"
+            android:layout_gravity="center">
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="235dp"
+                android:src="@drawable/seoul_map"
+                android:scaleType="centerCrop"
+                />
+            <TextView
+                android:layout_width="38dp"
+                android:layout_height="20dp"
+                android:id="@+id/manifestoBtnDialog18"
+                android:layout_marginLeft="157dp"
+                android:layout_marginTop="70dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="35dp"
+                android:id="@+id/manifestoBtnDialog11"
+                android:layout_marginLeft="183dp"
+                android:layout_marginTop="5dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="60dp"
+                android:id="@+id/manifestoBtnDialog10"
+                android:layout_marginLeft="205dp"
+                android:layout_marginTop="5dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="22dp"
+                android:layout_height="55dp"
+                android:id="@+id/manifestoBtnDialog4"
+                android:layout_marginLeft="160dp"
+                android:layout_marginTop="10dp"
+                style="@style/text_style" />
+            <TextView
+                android:layout_width="22dp"
+                android:layout_height="35dp"
+                android:id="@+id/manifestoBtnDialog26"
+                android:layout_marginLeft="215dp"
+                android:layout_marginTop="70dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:id="@+id/manifestoBtnDialog23"
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="40dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                android:id="@+id/manifestoBtnDialog24"
+                android:layout_marginLeft="137dp"
+                android:layout_marginTop="70dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="35dp"
+                android:layout_height="20dp"
+                android:id="@+id/manifestoBtnDialog12"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="90dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:id="@+id/manifestoBtnDialog7"
+                android:layout_marginLeft="213dp"
+                android:layout_marginTop="110dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/manifestoBtnDialog3"
+                android:layout_marginLeft="250dp"
+                android:layout_marginTop="110dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="37dp"
+                android:layout_height="23dp"
+                android:id="@+id/manifestoBtnDialog17"
+                android:layout_marginLeft="175dp"
+                android:layout_marginTop="120dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="33dp"
+                android:layout_height="20dp"
+                android:id="@+id/manifestoBtnDialog25"
+                android:layout_marginLeft="140dp"
+                android:layout_marginTop="113dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/manifestoBtnDialog15"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="85dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:id="@+id/manifestoBtnDialog14"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="100dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/manifestoBtnDialog5"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="80dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:id="@+id/manifestoBtnDialog20"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="130dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:id="@+id/manifestoBtnDialog8"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="160dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/manifestoBtnDialog21"
+                android:layout_marginLeft="85dp"
+                android:layout_marginTop="140dp"
+                style="@style/text_style" />
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:id="@+id/manifestoBtnDialog13"
+                android:layout_marginLeft="115dp"
+                android:layout_marginTop="160dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="52dp"
+                android:layout_height="25dp"
+                android:id="@+id/manifestoBtnDialog22"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="134dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/manifestoBtnDialog9"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="190dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="35dp"
+                android:id="@+id/manifestoBtnDialog6"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="192dp"
+                style="@style/text_style" />
+            <TextView
+                android:layout_width="38dp"
+                android:layout_height="60dp"
+                android:id="@+id/manifestoBtnDialog16"
+                android:layout_marginLeft="156dp"
+                android:layout_marginTop="170dp"
+                style="@style/text_style" />
+
+            <TextView
+                android:layout_width="42dp"
+                android:layout_height="30dp"
+                android:id="@+id/manifestoBtnDialog2"
+                android:layout_marginLeft="195dp"
+                android:layout_marginTop="170dp"
+                style="@style/text_style" />
+            <TextView
+                android:layout_width="42dp"
+                android:layout_height="40dp"
+                android:id="@+id/manifestoBtnDialog19"
+                android:layout_marginLeft="238dp"
+                android:layout_marginTop="155dp"
+                style="@style/text_style" />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="20dp">
+        <info.hoang8f.widget.FButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/manifestoBtnDialog_cencel"
+            android:text="취소"
+            android:textSize="20dp"
+
+
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingRight="30dp"
+            android:paddingLeft="30dp"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            fbutton:buttonColor="@color/colorMain2"
+            fbutton:shadowEnabled="false"
+            fbutton:cornerRadius="30dp"
+
+            />
+    </LinearLayout>
+
+</LinearLayout>

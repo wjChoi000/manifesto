@@ -45,12 +45,6 @@ public class TabCitizen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.tab_citizen, container, false);
 
-//        //rest api
-//        String url1 = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenMainGetListServlet";
-//        JSONObject jsonObject = null;
-//        CitizenRestAPI restAPI = new CitizenRestAPI();
-//        restAPI.execute(url1);
-
         //들려줘요 더보기 레이아웃
         ViewGroup ListenAddlayout = (ViewGroup) rootView.findViewById(R.id.layout_listenAdd);
         ListenAddlayout.setOnClickListener(new View.OnClickListener() {

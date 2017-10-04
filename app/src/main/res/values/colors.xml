@@ -5,6 +5,9 @@
     <color name="colorPrimaryDark">@android:color/black</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorMain">#0039bc</color>
+
+    <color name="colorMain2">#FFCC00</color>
+    <color name="colorMain3">#319acd</color>
     <!--#319acd-->
     <!--#0039bc-->
     <color name="colorWhite">#FFFFFF</color>

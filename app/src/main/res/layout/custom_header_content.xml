@@ -416,27 +416,19 @@
                 android:textColor="@color/colorBlack"
                 android:layout_marginTop="20dp"
                 android:textSize="25dp"
-                android:text="이런 복지가 필요합니다."
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
             <TextView
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             //구
-            <TextView
-                android:id="@+id/gu"
-                android:layout_gravity="center"
-                android:gravity="right"
-                android:layout_marginRight="3dp"
-                android:text="서초구"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
             //아이디
             <TextView
                 android:id="@+id/need_context_u_id"
@@ -447,14 +439,33 @@
                 android:text="Jeewoong Yang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginRight="3dp"
+                android:layout_gravity="center"
+                android:gravity="right"
+                android:text="|"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/gu"
+                android:layout_gravity="center"
+                android:gravity="right"
+                android:layout_marginRight="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginRight="3dp"
+                android:layout_gravity="center"
+                android:gravity="right"
+                android:text="|"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             //시간
             <TextView
-                android:text="2017.08.20"
                 android:id="@+id/need_C_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="10dp"/>
         </LinearLayout>
         //줄긋기
         <LinearLayout
@@ -597,32 +608,46 @@
         android:orientation="vertical"
         >
 
-        <!--Title-->
-        <TextView
-            android:id="@+id/k_content_title"
+        //해당 이미지
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="10dp">
+            <ImageView
+                android:scaleType="centerCrop"
+                android:id="@+id/k_content_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+        //제목
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/gab"
-            android:background="@color/colorWhite"
-            style="@style/knowledgeTitle"/>
+            android:padding="20dp">
+            <TextView
+                android:id="@+id/k_content_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/k_content_date"
+                android:layout_marginBottom="20dp"
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/k_content_contents"
+                android:lineSpacingExtra="13dip"
+                android:layout_width="match_parent"
+                android:textColor="@color/colorBlack"
+                android:layout_height="wrap_content" />
 
-        <!--content-->
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/knowledge_manifesto"
-            android:background="@color/colorWhite"/>
-
-        <TextView
-            android:id="@+id/k_content_contents"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:layout_marginBottom="@dimen/gab"
-            android:background="@color/colorWhite"
-            style="@style/ContentContents"/>
+        </LinearLayout>
 
         <!--good and bad-->
         //줄긋기
@@ -641,7 +666,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
-                android:layout_weight="1"
+                android:id="@+id/k_goobtn"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -727,11 +752,13 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="17sp" />
         </LinearLayout>
+        //줄긋기
 
-
-
-
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/gab"
+            android:background="@color/colorBackgroundGray">
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

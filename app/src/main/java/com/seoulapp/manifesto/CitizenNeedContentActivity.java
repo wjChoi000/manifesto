@@ -117,7 +117,7 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
         TextView tvHitNum = (TextView)findViewById(R.id.need_hitNum);
         TextView tvComNum = (TextView)findViewById(R.id.need_comNum);
         tvTitle.setText(content.getTitle());
-        tvU_id.setText(content.getU_id()+"");
+        tvU_id.setText(content.getUser_name());
         tvGu.setText(content.getGu());
         tvC_date.setText(content.getCreate_date());
         tvContext.setText(content.getComment());

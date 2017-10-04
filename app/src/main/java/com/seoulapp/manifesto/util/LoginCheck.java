@@ -37,4 +37,13 @@ public class LoginCheck {
         editor.clear();
         editor.commit();
     }
+
+    public int getInterestingArea(){
+        return pref.getInt("interestingGu",1);
+    }
+    public void setInterestingAres(int interestingAres){
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt("interestingGu", interestingAres);
+        editor.commit();
+    }
 }

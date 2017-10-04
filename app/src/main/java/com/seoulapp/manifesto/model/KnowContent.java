@@ -1,5 +1,9 @@
 package com.seoulapp.manifesto.model;
 
+import android.util.Log;
+
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 /**
@@ -7,19 +11,39 @@ import java.io.Serializable;
  */
 
 public class KnowContent implements Serializable{
-    String title;
-    String contents;
-    int goodSum;
-    int commentSum;
-    int hits;
+    private int id;
+    private String title;
+    private String contents;
+    private int goodSum;
+    private int commentSum;
+    private int hits;
+    private String create_date;
+    private String priture;
 
 
-    public KnowContent(String title, String contents, int goodSum,int commentSum){
+    public KnowContent(int id, String title, String contents, int goodSum, int commentSum, int hits, String create_date, String priture) {
+        this.id = id;
         this.title = title;
-        this.contents =contents;
+        this.contents = contents;
         this.goodSum = goodSum;
         this.commentSum = commentSum;
+        this.hits = hits;
+        this.create_date = create_date;
+        this.priture = priture;
     }
+
+    public static KnowContent convertJsonToKnowledge(JSONObject jsonObject){
+        try {
+            KnowContent say = new KnowContent(jsonObject.getInt("id"), jsonObject.getString("title"),
+                    jsonObject.getString("contents"), jsonObject.getInt("good"),jsonObject.getInt("comment_num"),
+                    jsonObject.getInt("hits"), jsonObject.getString("create_date"), jsonObject.getString("priture"));
+            return say;
+        }catch (Exception e){
+            Log.i("knowledge","knoweldge convert error",e);
+            return null;
+        }
+    };
+
 
     public String getTitle() {
         return title;
@@ -51,5 +75,37 @@ public class KnowContent implements Serializable{
 
     public void setCommentSum(int commentSum) {
         this.commentSum = commentSum;
+    }
+
+    public int getHits() {
+        return hits;
+    }
+
+    public void setHits(int hits) {
+        this.hits = hits;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCreate_date() {
+        return create_date;
+    }
+
+    public void setCreate_date(String create_date) {
+        this.create_date = create_date;
+    }
+
+    public String getPriture() {
+        return priture;
+    }
+
+    public void setPriture(String priture) {
+        this.priture = priture;
     }
 }

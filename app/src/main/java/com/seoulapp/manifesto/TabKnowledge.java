@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.KnowContent;
 
@@ -38,31 +39,26 @@ public class TabKnowledge extends Fragment {
     private Context context;
     private Intent intent;
     private int first;
-    private KnowContent content;
 
     private KnowledgeRestAPI restAPI;
 
     private int offset = 0;
     private int limit = 10;
     private LinearLayout L1 = null;
+    private KnowContent content;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.tab_knowledge, container, false);
         context = rootView.getContext();
         //click listener
-
         L1 = (LinearLayout) rootView.findViewById(R.id.k_main);
         first=0;
         offset = 0;
-        restAPI = new KnowledgeRestAPI();
-        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/KnowledgeServlet?offset="+offset+"&limit="+limit;
-        restAPI.execute(url);
-        offset += limit;
-
+//        offset += limit;
         return rootView;
     }
 
-    private void addNewLayout(LinearLayout parent,KnowContent t1){
+    private void addNewLayout(LinearLayout parent,final KnowContent t1){
         if(first != 0) {
             int fiveDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
             LinearLayout fiveGray = new LinearLayout(context);
@@ -141,17 +137,24 @@ public class TabKnowledge extends Fragment {
 
         row.addView(buttonLayout);
         intent = new Intent(getActivity(),KnowledgeContentActivity.class);
-        content = t1;
+
         row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent.putExtra("content", content);
+                intent.putExtra("content", t1);
                 startActivity(intent);
             }
         });
         parent.addView(row);
     }
-
+    @Override
+    public void onResume(){
+        super.onResume();
+        L1.removeAllViews();
+        restAPI = new KnowledgeRestAPI();
+        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/KnowledgeServlet?offset="+offset+"&limit="+limit;
+        restAPI.execute(url);
+    }
     class KnowledgeRestAPI extends AsyncTask<String, Void, JSONObject> {
         @Override
         protected void onPreExecute() {
@@ -189,7 +192,7 @@ public class TabKnowledge extends Fragment {
                 int len =  jsonArray.length();
                 for (int i = 0; i < len; i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    KnowContent t1 = new KnowContent(jsonObject.getString("title"), jsonObject.getString("contents"), jsonObject.getInt("good"),jsonObject.getInt("comment_num"));
+                    KnowContent t1 = KnowContent.convertJsonToKnowledge(jsonObject);
                     addNewLayout(L1,t1);
                 }
             }catch (Exception e){

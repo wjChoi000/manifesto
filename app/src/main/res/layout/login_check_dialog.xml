@@ -11,6 +11,24 @@
     android:layout_marginLeft="40dp"
     android:layout_marginRight="40dp"
     android:layout_gravity="center">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_check_titlee"
+        android:textColor="@color/colorMain"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:text="LOGIN"/>
+    <!--gab-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/gab"
+        android:textColor="@color/colorBackgroundGray"
+        />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +55,7 @@
             android:layout_marginRight="10dp"
             android:textColor="@color/colorWhite"
             android:textStyle="bold"
-            fbutton:buttonColor="@color/colorMain"
+            fbutton:buttonColor="@color/colorMain2"
             fbutton:shadowEnabled="false"
             fbutton:cornerRadius="30dp"
             />
@@ -54,9 +72,10 @@
             android:paddingBottom="5dp"
             android:textColor="@color/colorWhite"
             android:textStyle="bold"
-            fbutton:buttonColor="@color/colorMain"
+            fbutton:buttonColor="@color/colorMain2"
             fbutton:shadowEnabled="false"
             fbutton:cornerRadius="30dp"
+
             />
 
     </LinearLayout>

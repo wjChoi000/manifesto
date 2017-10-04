@@ -41,13 +41,14 @@
         android:paddingBottom="6dp"
         android:paddingTop="6dp">
         <LinearLayout
+            android:id="@+id/know_comment"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <EditText
                 android:textSize="14sp"
-                android:id="@+id/help_editText"
+                android:id="@+id/know_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -56,6 +57,19 @@
                 android:background="@null"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp" />
+            <TextView
+                android:textSize="14sp"
+                android:id="@+id/know_fake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:hint="의견을 남겨보세요."
+                android:background="@null"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:visibility="gone"/>
+
             <TextView
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
@@ -68,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <info.hoang8f.widget.FButton
-                android:id="@+id/help_transmit"
+                android:id="@+id/know_transmit"
                 android:layout_width="50dp"
                 android:layout_height="30dp"
                 android:text="전송"

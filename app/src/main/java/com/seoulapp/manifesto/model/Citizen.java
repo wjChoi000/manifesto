@@ -28,6 +28,7 @@ public class Citizen implements Serializable{
     private int count;
     private String gu;
     private String priture;
+    private String user_name;
 
     public Citizen(int id, int u_id, String title, String category, String comment, int good, int bad, int hit, String create_date, String agree, String opposite, int count, String priture) {
         this.id = id;
@@ -58,7 +59,7 @@ public class Citizen implements Serializable{
         this.priture =priture;
     }
 
-    public Citizen(int id, int u_id, String title, String category, String comment, int good, int hit, String create_date, int count, String gu,String priture) {
+    public Citizen(int id, int u_id, String title, String category, String comment, int good, int hit, String create_date, int count, String gu,String priture, String user_name) {
         this.id = id;
         this.u_id = u_id;
         this.title = title;
@@ -70,6 +71,7 @@ public class Citizen implements Serializable{
         this.count = count;
         this.gu = gu;
         this.priture =priture;
+        this.user_name = user_name;
     }
 
     public static Citizen convertJsonToListen(JSONObject jsonObject){
@@ -103,7 +105,7 @@ public class Citizen implements Serializable{
             Citizen say = new Citizen(jsonObject.getInt("id"), jsonObject.getInt("u_id"), jsonObject.getString("title"),
                     jsonObject.getString("category"), jsonObject.getString("comments"), jsonObject.getInt("good"),
                     jsonObject.getInt("hits"), jsonObject.getString("create_date"), jsonObject.getInt("count"),
-                    jsonObject.getString("gu"),jsonObject.getString("priture"));
+                    jsonObject.getString("gu"),jsonObject.getString("priture"),jsonObject.getString("user_name"));
             return say;
         }catch (Exception e){
             Log.i("Citizen","Need convert error",e);
@@ -221,5 +223,13 @@ public class Citizen implements Serializable{
 
     public void setPriture(String priture) {
         this.priture = priture;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 }

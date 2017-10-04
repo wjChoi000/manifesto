@@ -214,7 +214,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
     private String[] rateList2 = {"계속추진","일부추진","정상추진","사업완료","검토중"};
     private float[] rateRatio2 ={2,10,50,37,1};
     private PieChart mChart;
-    private String[] rateList = {"검토중","일부추진","정상추진","계속추진","사업완료"};
+    private String[] rateList = {"검토중","일부추진","계속추진","정상추진","사업완료"};
     private float[] rateRatio =null;
     protected HorizontalBarChart hChart;
 
@@ -226,7 +226,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
             int normal = person.getInt("normal");
             int continues = person.getInt("continues");
             // {"검토중","일부추진","정상추진","계속추진","사업완료"};
-            rateRatio = new float[]{(float)review,(float)part,(float)normal,(float)continues,(float)complete};
+            rateRatio = new float[]{(float)review,(float)part,(float)continues,(float)normal,(float)complete};
             int sum = review+part+complete+normal+continues;
             //{"일부추진","정상추진","계속추진","사업완료","검토중"};
             rateRatio2 = new float[]{(float)continues/sum,(float)part/sum,(float)normal/sum,(float)complete/sum,(float)review/sum};
