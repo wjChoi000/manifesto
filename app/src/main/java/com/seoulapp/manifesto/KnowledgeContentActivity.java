@@ -70,7 +70,7 @@ public class KnowledgeContentActivity extends AppCompatActivity {
 
         if(content.getPriture().length()>0){
             KnowRestAPIImage helpRestAPIImage = new KnowRestAPIImage();
-            helpRestAPIImage.execute(content.getPriture());
+            helpRestAPIImage.execute("http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/knowledge/"+content.getPriture());
         }
         //리스트뷰
         ListView listview ;

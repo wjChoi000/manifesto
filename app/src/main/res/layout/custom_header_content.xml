@@ -257,10 +257,10 @@
             android:layout_height="200dp"
             android:layout_marginBottom="10dp">
             <ImageView
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:id="@+id/help_content_num1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="200dp"
                />
         </LinearLayout>
         //제목
@@ -615,10 +615,10 @@
             android:layout_height="200dp"
             android:layout_marginBottom="10dp">
             <ImageView
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:id="@+id/k_content_image"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="200dp"
                 />
         </LinearLayout>
         //제목

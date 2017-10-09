@@ -3,6 +3,7 @@ package com.seoulapp.manifesto;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,11 +19,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.KnowContent;
+import com.seoulapp.manifesto.restful.RestAPIImage;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -79,11 +82,22 @@ public class TabKnowledge extends Fragment {
         titleTV.setLayoutParams(params);
         row.addView(titleTV);
 
+        String image_addr = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/knowledge/"+t1.getPriture();
+        RestAPIImage KnowRestAPIImage = new RestAPIImage();
+        Bitmap bitmap =null;
+        try{
+            bitmap =  (Bitmap) KnowRestAPIImage.execute(image_addr).get();
+        }catch (Exception e){
+
+        }
         ImageView img = new ImageView(context);
         img.setScaleType(ImageView.ScaleType.FIT_XY);
-        img.setLayoutParams(params);
+        int twohandDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,200, getResources().getDisplayMetrics());
+        LinearLayout.LayoutParams paramsImg = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                twohandDp,0.0F);
+        img.setLayoutParams(paramsImg);
         //수정
-        img.setImageResource(R.drawable.knowledge_manifesto);
+        img.setImageBitmap(bitmap);
         row.addView(img);
 
         TextView commentTV = new TextView(new ContextThemeWrapper(context,R.style.knowledgeContents));
@@ -198,6 +212,35 @@ public class TabKnowledge extends Fragment {
             }catch (Exception e){
                 Log.i("list","list json error",e);
             }
+        }
+    }
+
+
+    private class KnowRestAPIImage  extends AsyncTask<String, Void, Bitmap> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+        protected Bitmap doInBackground(String... urls) {
+            Bitmap bitmap = null;
+            try {
+                URL url = new URL(urls[0]);
+                HttpURLConnection connection =
+                        (HttpURLConnection) url.openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream is  = connection.getInputStream();
+                bitmap = BitmapFactory.decodeStream(is);
+
+            } catch (Exception e) {
+                Log.i("result", urls[0], e);
+            }
+            return bitmap;
+        }
+        @Override
+        protected void onPostExecute(Bitmap bitmap){
+
         }
     }
 }

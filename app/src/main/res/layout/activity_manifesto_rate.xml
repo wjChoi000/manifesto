@@ -70,82 +70,76 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingTop="20dp"
-                android:paddingBottom="15dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:layout_marginBottom="1dp"
-                android:background="#FFF"
-                android:gravity="center"
-                android:layout_alignParentTop="true"
-                android:id="@+id/manifestoParty">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <Button
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        style="@style/manifestoPartyImage"
-                        android:background="@color/rate_title_one"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/rateDescription"
-                        android:text="@string/rate_detail_table_title_one"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <Button
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        style="@style/manifestoPartyImage"
-                        android:background="@color/rate_title_two"/>
+                android:paddingBottom="10dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/rateDescription"
-                        android:text="@string/rate_detail_table_title_two"/>
-                </LinearLayout>
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <Button
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        style="@style/manifestoPartyImage"
-                        android:background="@color/rate_title_three"/>
-                    <TextView
+                    android:orientation="vertical">
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/rateDescription"
-                        android:text="@string/rate_detail_table_title_three"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <Button
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        style="@style/manifestoPartyImage"
-                        android:background="@color/rate_title_four"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/rateDescription"
-                        android:text="@string/rate_detail_table_title_four"/>
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp"
+                        >
+                        <Button
+                            android:layout_width="@dimen/rate_category"
+                            android:layout_height="@dimen/rate_category"
+                            style="@style/manifestoPartyImage"
+                            android:background="@color/rate_title_one"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/rateDescription"
+                            android:text="@string/rate_detail_table_title_one"/>
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
                         <Button
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="@dimen/rate_category"
+                            android:layout_height="@dimen/rate_category"
+                            style="@style/manifestoPartyImage"
+                            android:background="@color/rate_title_three"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/rateDescription"
+                            android:text="@string/rate_detail_table_title_three"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
+                        <Button
+                            android:layout_width="@dimen/rate_category"
+                            android:layout_height="@dimen/rate_category"
+                            style="@style/manifestoPartyImage"
+                            android:background="@color/rate_title_two"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/rateDescription"
+                            android:text="@string/rate_detail_table_title_two"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button
+                            android:layout_width="@dimen/rate_category"
+                            android:layout_height="@dimen/rate_category"
                             style="@style/manifestoPartyImage"
                             android:background="@color/rate_title_five"/>
                         <TextView
@@ -155,7 +149,29 @@
                             android:text="@string/rate_detail_table_title_five"/>
                     </LinearLayout>
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="right">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button
+                            android:layout_width="@dimen/rate_category"
+                            android:layout_height="@dimen/rate_category"
+                            style="@style/manifestoPartyImage"
+                            android:background="@color/rate_title_four"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/rateDescription"
+                            android:text="@string/rate_detail_table_title_four"/>
 
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <!--frame-->
@@ -193,14 +209,13 @@
                         <!--one-->
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/rate_category_parent"
                             android:orientation="horizontal"
-                            android:layout_marginBottom="10dp"
                             android:gravity="left"
                             >
                             <Button
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
+                                android:layout_width="@dimen/rate_category"
+                                android:layout_height="@dimen/rate_category"
                                 style="@style/manifestoPartyImage"
                                 android:background="@color/rate_title_one"/>
                             <TextView
@@ -209,23 +224,21 @@
                                 style="@style/manifestoPartyText"
                                 android:text="@string/rate_table_title_one"/>
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 style="@style/manifestoPartyText"
                                 android:text="@string/rate_table_title_one_des"/>
                         </LinearLayout>
                         <!--two-->
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/rate_category_parent"
                             android:orientation="horizontal"
-                            android:layout_marginBottom="10dp"
                             android:gravity="left"
                             >
                             <Button
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
+                                android:layout_width="@dimen/rate_category"
+                                android:layout_height="@dimen/rate_category"
                                 style="@style/manifestoPartyImage"
                                 android:background="@color/rate_title_two"/>
                             <TextView
@@ -234,23 +247,21 @@
                                 style="@style/manifestoPartyText"
                                 android:text="@string/rate_table_title_two"/>
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 style="@style/manifestoPartyText"
                                 android:text="@string/rate_table_title_two_des"/>
                         </LinearLayout>
                         <!--three-->
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/rate_category_parent"
                             android:orientation="horizontal"
-                            android:layout_marginBottom="10dp"
                             android:gravity="left"
                             >
                             <Button
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
+                                android:layout_width="@dimen/rate_category"
+                                android:layout_height="@dimen/rate_category"
                                 style="@style/manifestoPartyImage"
                                 android:background="@color/rate_title_three"/>
                             <TextView
@@ -259,23 +270,21 @@
                                 style="@style/manifestoPartyText"
                                 android:text="@string/rate_table_title_three"/>
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 style="@style/manifestoPartyText"
                                 android:text="@string/rate_table_title_three_des"/>
                         </LinearLayout>
                         <!--four-->
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/rate_category_parent"
                             android:orientation="horizontal"
-                            android:layout_marginBottom="10dp"
                             android:gravity="left"
                             >
                             <Button
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
+                                android:layout_width="@dimen/rate_category"
+                                android:layout_height="@dimen/rate_category"
                                 style="@style/manifestoPartyImage"
                                 android:background="@color/rate_title_four"/>
                             <TextView
@@ -284,23 +293,21 @@
                                 style="@style/manifestoPartyText"
                                 android:text="@string/rate_table_title_four"/>
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 style="@style/manifestoPartyText"
                                 android:text="@string/rate_table_title_four_des"/>
                         </LinearLayout>
                         <!--five-->
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/rate_category_parent"
                             android:orientation="horizontal"
-                            android:layout_marginBottom="10dp"
                             android:gravity="left"
                             >
                             <Button
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
+                                android:layout_width="@dimen/rate_category"
+                                android:layout_height="@dimen/rate_category"
                                 style="@style/manifestoPartyImage"
                                 android:background="@color/rate_title_five"/>
                             <TextView
@@ -309,9 +316,8 @@
                                 style="@style/manifestoPartyText"
                                 android:text="@string/rate_table_title_five"/>
                             <TextView
-                                android:layout_width="0dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
                                 style="@style/manifestoPartyText"
                                 android:text="@string/rate_table_title_five_des"/>
                         </LinearLayout>

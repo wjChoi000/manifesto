@@ -211,10 +211,11 @@ public class ManifestoRateActivity extends AppCompatActivity {
     /*
     make rate
      */
-    private String[] rateList2 = {"계속추진","일부추진","정상추진","사업완료","검토중"};
-    private float[] rateRatio2 ={2,10,50,37,1};
+
     private PieChart mChart;
     private String[] rateList = {"검토중","일부추진","계속추진","정상추진","사업완료"};
+    private String[] rateList2 = {"계속추진","일부추진","정상추진","사업완료","검토중"};
+    private float[] rateRatio2 ={2,10,50,37,1};
     private float[] rateRatio =null;
     protected HorizontalBarChart hChart;
 
@@ -225,11 +226,15 @@ public class ManifestoRateActivity extends AppCompatActivity {
             int complete = person.getInt("complete");
             int normal = person.getInt("normal");
             int continues = person.getInt("continues");
-            // {"검토중","일부추진","정상추진","계속추진","사업완료"};
-            rateRatio = new float[]{(float)review,(float)part,(float)continues,(float)normal,(float)complete};
+
+
             int sum = review+part+complete+normal+continues;
-            //{"일부추진","정상추진","계속추진","사업완료","검토중"};
+            //h chart{"검토중","일부추진","계속추진","정상추진","사업완료"};
+            rateRatio = new float[]{(float)review,(float)part,(float)continues,(float)normal,(float)complete};
+
+            // {"계속추진","일부추진","정상추진","사업완료","검토중"};
             rateRatio2 = new float[]{(float)continues/sum,(float)part/sum,(float)normal/sum,(float)complete/sum,(float)review/sum};
+
             persent = (float)((sum-review-part)*100)/sum;
             Log.i("rate", rateRatio[0]+" "+rateRatio[4]);
         }catch (Exception e){
@@ -310,8 +315,8 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
             ArrayList<Integer> colors = new ArrayList<Integer>();
             colors.add(getResources().getColor(R.color.rate_title_five));
-            colors.add(getResources().getColor(R.color.rate_title_four));
             colors.add(getResources().getColor(R.color.rate_title_three));
+            colors.add(getResources().getColor(R.color.rate_title_four));
             colors.add(getResources().getColor(R.color.rate_title_two));
             colors.add(getResources().getColor(R.color.rate_title_one));
             set1.setColors(colors);
