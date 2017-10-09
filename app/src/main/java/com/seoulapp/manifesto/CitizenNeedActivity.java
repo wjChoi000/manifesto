@@ -129,10 +129,10 @@ public class CitizenNeedActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
-            case R.id.action_writing:
-                Intent intent = new Intent(this,CitizenNeedWritingActivity.class);
-                startActivity(intent);
-                return true;
+//            case R.id.action_writing:
+//                Intent intent = new Intent(this,CitizenNeedWritingActivity.class);
+//                startActivity(intent);
+//                return true;
 //            case R.id.action_search:
         }
         return super.onOptionsItemSelected(item);

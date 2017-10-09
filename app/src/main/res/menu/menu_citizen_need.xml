@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.seoulapp.manifesto.CitizenListenActivity">
-    <item
-        android:id="@+id/action_writing"
-        android:icon="@drawable/writing_white"
-        gom:showAsAction="always"
-        android:title="writing" />
+    <!--<item-->
+        <!--android:id="@+id/action_writing"-->
+        <!--android:icon="@drawable/writing_white"-->
+        <!--gom:showAsAction="always"-->
+        <!--android:title="writing" />-->
     <!--<item-->
     <!--android:id="@+id/action_settings"-->
     <!--android:orderInCategory="100"-->
