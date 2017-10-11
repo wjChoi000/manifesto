@@ -18,7 +18,7 @@
     <dimen name="indicator_item_width">8dp</dimen>
     <dimen name="indicator_item_margin">9dp</dimen>
 
-    <dimen name="writing_text_size">20dp</dimen>
+    <dimen name="writing_text_size">16dp</dimen>
     <dimen name="rate_category">20dp</dimen>
     <dimen name="rate_category_parent">45dp</dimen>
 

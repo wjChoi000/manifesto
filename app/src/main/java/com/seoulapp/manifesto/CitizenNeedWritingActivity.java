@@ -46,6 +46,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class CitizenNeedWritingActivity extends AppCompatActivity {
     final int REQ_CODE_SELECT_IMAGE=100;
@@ -54,6 +56,7 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
 
     private String absolutePath =null;
     private String fileName="";
+    private int id= 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -165,7 +168,7 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
                 String comment= writing_comments.getText().toString();
 
                 String error=null;
-
+                boolean writeFlag = false;
                 if(title.length()==0 )
                     error ="제목을 입력해주세요.";
                 else if(gu.length() ==0)
@@ -177,35 +180,55 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
                 else {
                     category = "["+category+"]";
                     LoginCheck loginCheck = new LoginCheck(CitizenNeedWritingActivity.this);
+                    long now = System.currentTimeMillis();
+
+                    Date date = new Date(now);
+                    SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy-MM-dd");
+                    String strNow = sdfNow.format(date);
+
+
+                    SimpleDateFormat sdfNow2 = new SimpleDateFormat("yyyyMMddhhmmss");
+                    String strNow2 = sdfNow2.format(date);
+                    int index = fileName.indexOf(".");
+
+                    String fileName2 = strNow2+"_"+loginCheck.getID()+fileName.substring(index);
+
+                    String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenPosterInsertServlet?u_id=" + loginCheck.getID() + "&title=" + title + "&category=" + category + "&comments=" + comment + "&gu=" + gu+"&priture="+fileName2;
+                    RestAPI restAPI = new RestAPI();
+
+
+                    Citizen citizen =null;
+                    try {
+                        JSONObject jres = restAPI.execute(url).get();
+
+                        id = jres.getInt("id");
+                        citizen = new Citizen(id,loginCheck.getID(),title,category,comment,0,0,strNow,0,gu,fileName2,loginCheck.getNickname());
+
+                    }catch (Exception e){
+
+                    }
                     if(absolutePath != null) {
                         WritingRestAPI writingRestAPI = new WritingRestAPI();
                         try {
-                            JSONObject jres = (JSONObject) writingRestAPI.execute().get();
+                            JSONObject jres = (JSONObject) writingRestAPI.execute(fileName2).get();
                             Log.d("Test",jres.toString());
                         }catch (Exception e){
                             Log.d("Test","writing rest api error");
                         }
                         Log.i("writing","update img");
                     }
-                    String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenPosterInsertServlet?u_id=" + loginCheck.getID() + "&title=" + title + "&category=" + category + "&comments=" + comment + "&gu=" + gu+"&priture="+fileName;
-                    RestAPI restAPI = new RestAPI();
-                    Citizen citizen =null;
-                    try {
-                        JSONObject jres = restAPI.execute(url).get();
 
-                        citizen = new Citizen(jres.getInt("id"),loginCheck.getID(),title,category,comment,0,0,"방금",0,fileName);
-                    }catch (Exception e){
-
-                    }
-                    Intent intent = new Intent(this,CitizenNeedActivity.class);
+                    Intent intent = new Intent(this,CitizenNeedContentActivity.class);
+                    intent.putExtra("need",citizen);
                     //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     //intent.putExtra("post",citizen);
-                    startActivity(intent);
 
+                    startActivity(intent);
                     finish();
-                    error = "새 글 등록 완료";
+                    writeFlag = true;
                 }
-                Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+                if(!writeFlag)
+                    Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -280,7 +303,7 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
                 File file = new File(absolutePath);
                 mFileInputStream = new FileInputStream(file);
                 connectUrl = new URL("http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/NeedImageUploadServlet");
-                Log.d("Test", "mFileInputStream  is " + mFileInputStream);
+                Log.d("Test", "mFileInputStream  is " + urls[0]);
 
                 // open connection
                 HttpURLConnection conn = (HttpURLConnection) connectUrl.openConnection();
@@ -294,7 +317,7 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
                 // write data
                 DataOutputStream dos = new DataOutputStream(conn.getOutputStream());
                 dos.writeBytes(twoHyphens + boundary + lineEnd);
-                dos.writeBytes("Content-Disposition: form-data; name=\"uploadedfile\";filename=\"" + fileName + "\"" + lineEnd);
+                dos.writeBytes("Content-Disposition: form-data; name=\"uploadedfile\";filename=\"" + urls[0]+ "\"" + lineEnd);
                 dos.writeBytes(lineEnd);
 
                 int bytesAvailable = mFileInputStream.available();
@@ -303,8 +326,6 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
 
                 byte[] buffer = new byte[bufferSize];
                 int bytesRead = mFileInputStream.read(buffer, 0, bufferSize);
-
-                Log.d("Test", "image byte is " + bytesRead);
 
                 // read image
                 while (bytesRead > 0) {
@@ -321,17 +342,17 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
                 Log.e("Test", "File is written");
                 mFileInputStream.close();
                 dos.flush();
-                dos.close();
+
                 //////////
-                BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(conn.getInputStream()));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
                 StringBuffer json = new StringBuffer(1024);
                 String tmp = "";
                 while ((tmp = reader.readLine()) != null)
                     json.append(tmp).append("\n");
-                reader.close();
 
+                reader.close();
+                dos.close();
                 return new JSONObject(json.toString());
             } catch (Exception e) {
                 Log.d("Test", "exception " + e.getMessage(),e);

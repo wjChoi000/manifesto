@@ -38,11 +38,16 @@ public class CitizenNeedActivity extends AppCompatActivity {
     private int offset = 0;
     private int limit = 0;
     private ListView listview ;
+
+    private String category = "분류";
+    private String gu = "구선택";
+
+    private boolean flag1 = false;
+    private boolean flag2 = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_citizen_need);
-
 
         //spinner_category
         Spinner cateSpinner = (Spinner)findViewById(R.id.spinner_category);
@@ -53,9 +58,14 @@ public class CitizenNeedActivity extends AppCompatActivity {
         cateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-
+                category = parent.getItemAtPosition(pos).toString();
+                if (flag1 ) {
+                    NeedRestAPI helpRestAPI = new NeedRestAPI();
+                    String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset="+offset+"&category2="+category+"&gu="+gu;
+                    helpRestAPI.execute(url);
+                }
+                flag1 =true;
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
 
@@ -65,15 +75,23 @@ public class CitizenNeedActivity extends AppCompatActivity {
         //spinner_sort
         Spinner spinner_sort = (Spinner)findViewById(R.id.spinner_sort);
         ArrayAdapter<CharSequence> adapter_sort = ArrayAdapter.createFromResource(
-                this,R.array.sort_array, android.R.layout.simple_spinner_item);
+                this,R.array.writing_Gu_array, android.R.layout.simple_spinner_item);
         adapter_sort.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_sort.setAdapter(adapter_sort);
         spinner_sort.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
+                gu = parent.getItemAtPosition(pos).toString();
+                if(gu.compareTo("구 선택")==0)
+                    gu="구선택";
+                if (flag2) {
+                    NeedRestAPI helpRestAPI = new NeedRestAPI();
+                    String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset="+offset+"&category2="+category+"&gu="+gu;
+                    helpRestAPI.execute(url);
+                }
+                flag2 = true;
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
 
@@ -102,11 +120,6 @@ public class CitizenNeedActivity extends AppCompatActivity {
         //리스트
         listview = (ListView) findViewById(R.id.listview_need);
 
-        //rest
-//        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset="+offset;
-//        NeedRestAPI helpRestAPI = new NeedRestAPI();
-//        helpRestAPI.execute(url);
-
         FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.need_btnFAB);
         floatingActionButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -122,6 +135,7 @@ public class CitizenNeedActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
     //back button
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
@@ -129,11 +143,6 @@ public class CitizenNeedActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
-//            case R.id.action_writing:
-//                Intent intent = new Intent(this,CitizenNeedWritingActivity.class);
-//                startActivity(intent);
-//                return true;
-//            case R.id.action_search:
         }
         return super.onOptionsItemSelected(item);
     }
@@ -146,8 +155,6 @@ public class CitizenNeedActivity extends AppCompatActivity {
     static JSONObject jsonObject=null;
     private class NeedRestAPI extends AsyncTask<String, Void, JSONObject> {
 
-        final static String openJSONObjectURL = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/";
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -158,6 +165,7 @@ public class CitizenNeedActivity extends AppCompatActivity {
             JSONObject data = null;
             Bitmap bitmap = null;
             try {
+                Log.d("Need",urls[0]);
                 URL url = new URL(urls[0]);
                 HttpURLConnection connection =
                         (HttpURLConnection) url.openConnection();
@@ -220,9 +228,8 @@ public class CitizenNeedActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-
-        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset="+offset;
         NeedRestAPI helpRestAPI = new NeedRestAPI();
+        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset="+offset+"&category2="+category+"&gu="+gu;
         helpRestAPI.execute(url);
     }
 

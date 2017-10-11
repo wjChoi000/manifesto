@@ -25,8 +25,6 @@ public class GlobalApplication extends Application {
         Typekit.getInstance()
                 .addNormal(Typekit.createFromAsset(this, "fonts/NotoSans-Regular.ttf"))
                 .addBold(Typekit.createFromAsset(this, "fonts/NotoSans-Bold.ttf"));
-//                        .addNormal(Typekit.createFromAsset(this, "fonts/SeoulNamsanB.ttf"))
-//                        .addBold(Typekit.createFromAsset(this, "fonts/SeoulNamsanEB.ttf"));
     }
 
     public static GlobalApplication getGlobalApplicationContext() {

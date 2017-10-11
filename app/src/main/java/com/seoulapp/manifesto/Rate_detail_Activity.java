@@ -46,6 +46,7 @@ public class Rate_detail_Activity extends AppCompatActivity {
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
         String city = intent.getStringExtra("city");
+
         int id = intent.getIntExtra("ep_id",0);
         String category = intent.getStringExtra("category");
 
@@ -55,7 +56,7 @@ public class Rate_detail_Activity extends AppCompatActivity {
         restAPI.execute(url);
 
         TextView Title = (TextView) view.findViewById(R.id.actionbar_title);
-        Title.setText(city);
+        Title.setText(city+" "+name);
 
         getSupportActionBar().setCustomView(view,params);
         getSupportActionBar().setDisplayShowCustomEnabled(true); //show custom title
@@ -66,23 +67,23 @@ public class Rate_detail_Activity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
-        TextView guTxt = (TextView)findViewById(R.id.rate_detail_gu);
-        guTxt.setText(city);
-        TextView categoryTxt = (TextView) findViewById(R.id.detail_category);
-        categoryTxt.setText(name);
-        CardView categoryCard = (CardView) findViewById(R.id.detail_category_card);
-        if(name.compareTo("복지")==0)
-            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.welfare));
-        else if(name.compareTo("문화")==0)
-            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.culture));
-        else if(name.compareTo("경제")==0)
-            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.economy));
-        else if(name.compareTo("환경")==0)
-            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.environment));
-        else if(name.compareTo("행정")==0)
-            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.administation));
-        else if(name.compareTo("도시·안전")==0)
-            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.cityAndSafty));
+//        TextView guTxt = (TextView)findViewById(R.id.rate_detail_gu);
+//        guTxt.setText(city);
+//        TextView categoryTxt = (TextView) findViewById(R.id.detail_category);
+//        categoryTxt.setText(name);
+//        CardView categoryCard = (CardView) findViewById(R.id.detail_category_card);
+//        if(name.compareTo("복지")==0)
+//            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.welfare));
+//        else if(name.compareTo("문화")==0)
+//            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.culture));
+//        else if(name.compareTo("경제")==0)
+//            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.economy));
+//        else if(name.compareTo("환경")==0)
+//            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.environment));
+//        else if(name.compareTo("행정")==0)
+//            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.administation));
+//        else if(name.compareTo("도시·안전")==0)
+//            categoryCard.setCardBackgroundColor(getResources().getColor(R.color.cityAndSafty));
     }
 
     private void list() {

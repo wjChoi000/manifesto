@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.Citizen;
 import com.seoulapp.manifesto.restful.RestAPI;
+import com.seoulapp.manifesto.restful.RestAPIImage;
 import com.seoulapp.manifesto.util.LoginCheck;
 import com.seoulapp.manifesto.util.LoginCheckDialog;
 import com.tsengvn.typekit.TypekitContextWrapper;
@@ -58,11 +59,8 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
 
         //리스트뷰
         ListView listview ;
-
-
         // Adapter 생성
         adapter = new ListViewAdapter_comment() ;
-
         // 리스트뷰 참조 및 Adapter달기
         listview = (ListView) findViewById(R.id.listview_need_content_comment);
         listview.setAdapter(adapter);
@@ -107,6 +105,15 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
         Intent intent = getIntent(); // 보내온 Intent를 얻는다
         content = (Citizen) intent.getSerializableExtra("need");
         id = content.getId();
+        String picture = content.getPriture();
+        if(picture != null){
+            if(picture.length() >0){
+                Log.d("need","getImage : "+picture);
+                NeedImageRestAPI needImageRestAPI = new NeedImageRestAPI();
+                String url2 = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/need/"+picture;
+                needImageRestAPI.execute(url2);
+            }
+        }
 
         TextView tvTitle = (TextView)findViewById(R.id.need_title_context);
         TextView tvGu = (TextView)findViewById(R.id.gu);
@@ -296,6 +303,13 @@ public class CitizenNeedContentActivity extends AppCompatActivity {
         }
     }
 
+    private class NeedImageRestAPI extends RestAPIImage{
+        protected void onPostExecute(Bitmap result) {
+            ImageView imageView = (ImageView) findViewById(R.id.need_context_img);
+            imageView.setVisibility(View.VISIBLE);
+            imageView.setImageBitmap(result);
+        }
+    }
     //fonts
     @Override
     protected void attachBaseContext(Context newBase) {

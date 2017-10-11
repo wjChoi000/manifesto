@@ -415,11 +415,12 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/colorBlack"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:textSize="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        <!--writer inf-->
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -478,11 +479,20 @@
         //내용
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:scaleType="centerInside"
+                android:layout_marginTop="10dp"
+                android:id="@+id/need_context_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                />
             <TextView
                 android:id="@+id/need_context"
                 android:lineSpacingExtra="13dip"
-                android:minLines="13"
+                android:minLines="3"
                 android:padding="15dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorBlack"
