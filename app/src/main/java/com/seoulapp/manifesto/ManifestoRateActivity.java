@@ -794,6 +794,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         TextView textDay = (TextView) findViewById(R.id.rate_profile_day);
         TextView textBorn = (TextView) findViewById(R.id.rate_profile_born);
         TextView textAge = (TextView) findViewById(R.id.rate_profile_age);
+        TextView textParty = (TextView) findViewById(R.id.rate_profile_party);
 //        TextView textEdu = (TextView) findViewById(R.id.rate_profile_education);
         try{
             textName.setText(person.getString("person_name"));
@@ -802,7 +803,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
             int born = Integer.parseInt(tokens.nextToken("-"));
             textDay.setText(born_date);
             textBorn.setText(person.getString("born_region"));
-
+            textParty.setText(person.getString("party"));
             java.util.Calendar cal = java.util.Calendar.getInstance();
             String ntime = new String();
             textAge.setText((cal.get(Calendar.YEAR)-born)+"세");

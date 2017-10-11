@@ -308,7 +308,6 @@ public class CitizenListenContentActivity extends AppCompatActivity {
             }
             opinionFunc();
             String url= "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/GoodOrBadUpdateServlet?category=say&c_id="+id+"&u_id="+loginCheck.getID()+"&option="+option+"&opinion="+opinion2+"&exist="+exist;
-            Toast.makeText(CitizenListenContentActivity.this,url,Toast.LENGTH_SHORT).show();
             RestAPI restAPI = new RestAPI();
             restAPI.execute(url);
         }
@@ -405,7 +404,6 @@ public class CitizenListenContentActivity extends AppCompatActivity {
                 findViewById(R.id.agreementBtn).setOnClickListener(clickListener);
                 findViewById(R.id.oppositionBtn).setOnClickListener(clickListener);
 
-                Toast.makeText(CitizenListenContentActivity.this,opinion+"",Toast.LENGTH_SHORT).show();
 
                 JSONArray jsonArray = result.getJSONArray("list");
                 int len = jsonArray.length();

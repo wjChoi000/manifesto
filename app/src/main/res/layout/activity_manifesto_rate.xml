@@ -477,37 +477,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!--three-->
-        <!--<LinearLayout-->
-            <!--android:id="@+id/rate_frame_three"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:visibility="gone"-->
-            <!--android:orientation="vertical"-->
-            <!--&gt;-->
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="News"-->
-                <!--style="@style/rate_small_title"-->
-                <!--/>-->
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="@dimen/gab"-->
-                <!--android:background="@color/colorBackgroundGray"></LinearLayout>-->
-            <!--<LinearLayout-->
-                <!--android:id="@+id/rate_news"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical"-->
-                <!--android:layout_marginLeft="15dp"-->
-                <!--android:layout_marginRight="15dp"-->
-                <!--&gt;-->
-
-            <!--</LinearLayout>-->
-
-        <!--</LinearLayout>-->
-
         <!--tour-->
         <LinearLayout
             android:id="@+id/rate_frame_four"
@@ -526,6 +495,8 @@
                 android:layout_marginRight="10dp"
 
                 android:paddingBottom="10dp"/>
+
+            <!--basic profile-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -598,23 +569,21 @@
                             android:layout_height="wrap_content"
                             style="@style/m_profile_title"/>
                     </LinearLayout>
-
-                    <!--<LinearLayout-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:orientation="horizontal"-->
-                        <!--&gt;-->
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="@string/m_education"-->
-                            <!--style="@style/m_profile_title"/>-->
-                        <!--<TextView-->
-                            <!--android:id="@+id/rate_profile_education"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--style="@style/m_profile_title"/>-->
-                    <!--</LinearLayout>-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="정당"
+                            style="@style/m_profile_title"/>
+                        <TextView
+                            android:id="@+id/rate_profile_party"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/m_profile_title"/>
+                    </LinearLayout>
                 </LinearLayout>
                 <ImageView
                     android:layout_width="0dp"
@@ -623,8 +592,7 @@
                     android:scaleType="fitXY"
                     android:id="@+id/rate_profile_governor"/>
             </LinearLayout>
-
-
+            <!--btn-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -691,6 +659,7 @@
                 android:layout_marginBottom="10dp">
             </LinearLayout>
 
+            <!--contents-->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -719,13 +688,33 @@
                     android:visibility="gone">
                 </LinearLayout>
 
+                <!--timeLine-->
+                <LinearLayout
+                    android:id="@+id/m_profile_timeline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <com.github.vipulasri.timelineview.TimelineView
+                        android:id="@+id/time_marker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:markerSize="20dp"
+                        app:lineSize="2dp"
+                        app:line="@color/colorPrimary"
+                        app:linePadding="5dp"/>
+                </LinearLayout>
+                <!--nothing-->
                 <LinearLayout
                     android:id="@+id/m_profile_crime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone">
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="없음"/>
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
