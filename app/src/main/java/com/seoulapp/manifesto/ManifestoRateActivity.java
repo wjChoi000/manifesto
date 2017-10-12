@@ -264,7 +264,6 @@ public class ManifestoRateActivity extends AppCompatActivity {
     }
     //make barchrt : rate_Barchart
 
-
     private void makeHChart(){
         hChart.setDrawBarShadow(false);
         hChart.setDrawValueAboveBar(true);
@@ -333,7 +332,6 @@ public class ManifestoRateActivity extends AppCompatActivity {
     }
 
     //make chart
-
     private void makeChart(){
         mChart.setUsePercentValues(true);
         mChart.getDescription().setEnabled(false);
@@ -684,21 +682,6 @@ public class ManifestoRateActivity extends AppCompatActivity {
         parent.addView(linear);
     }
 
-    /*
-    Three
-     */
-//    private void news(){
-//        LinearLayout newsLayout = (LinearLayout) findViewById(R.id.rate_news);
-//
-//        String title="서울시 중국등 동북아 도시와 미세먼지 대응 나선다.";
-//
-//        newList = new ArrayList<>();
-//
-//        for(int i =0 ; i<10; i++){
-//            newList.add(new News("아시아 투데이",title,"2017-05-26"));
-//        }
-//        addNewsList(newsLayout,newList);
-//    }
     ArrayList<News> newList;
     class News{
         News(String cop, String title, String date){
@@ -751,22 +734,6 @@ public class ManifestoRateActivity extends AppCompatActivity {
         textLayout.addView(textView2);
         row.addView(textLayout);
 
-//        LinearLayout empty = new LinearLayout(this);
-//        empty.setOrientation(LinearLayout.HORIZONTAL);
-//        //empty.setBackgroundResource(R.color.fbutton_color_green_sea);
-//        empty.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, tenDp));
-//
-//        LinearLayout empty1 = new LinearLayout(this);
-//        empty1.setBackgroundResource(R.color.rate_new_1);
-//        empty1.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT,1.0f));
-//
-//        LinearLayout empty2 = new LinearLayout(this);
-//        empty2.setBackgroundResource(R.color.rate_new_2);
-//        empty2.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT,1.0f));
-//        empty.addView(empty1);
-//        empty.addView(empty2);
-//        row.addView(empty);
-
         TextView textViewTitle = new TextView(new ContextThemeWrapper(this,R.style.rate_news_title));
         textViewTitle.setText(title);
         textViewTitle.setLayoutParams(paramsT1);
@@ -795,7 +762,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
         TextView textBorn = (TextView) findViewById(R.id.rate_profile_born);
         TextView textAge = (TextView) findViewById(R.id.rate_profile_age);
         TextView textParty = (TextView) findViewById(R.id.rate_profile_party);
-//        TextView textEdu = (TextView) findViewById(R.id.rate_profile_education);
+
         try{
             textName.setText(person.getString("person_name"));
             String born_date = person.getString("born_day");
@@ -811,9 +778,10 @@ public class ManifestoRateActivity extends AppCompatActivity {
             Log.i("profile","profile json error",e);
         }
 
-        final LinearLayout aware = (LinearLayout) findViewById(R.id.m_profile_aware);
-        final LinearLayout career = (LinearLayout) findViewById(R.id.m_profile_career);
-        final LinearLayout edu = (LinearLayout) findViewById(R.id.m_profile_edu);
+        //final LinearLayout aware = (LinearLayout) findViewById(R.id.m_profile_aware);
+        final TableLayout aware = (TableLayout) findViewById(R.id.m_profile_aware_table);
+        final TableLayout career = (TableLayout) findViewById(R.id.m_profile_career_table);
+        final TableLayout edu = (TableLayout) findViewById(R.id.m_profile_edu_table);
 
         final LinearLayout segment1 = (LinearLayout) findViewById(R.id.rate_profile_header1);
         final LinearLayout segment2 = (LinearLayout) findViewById(R.id.rate_profile_header2);
@@ -827,7 +795,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 aware.setVisibility(View.VISIBLE);
                 career.setVisibility(View.GONE);
                 edu.setVisibility(View.GONE);
-                segment1.setBackgroundResource(R.color.rate_profile_head_dark_gray);
+                segment1.setBackgroundResource(R.color.colorMain);
                 segment2.setBackgroundResource(R.color.rate_profile_head_white_gray);
                 segment3.setBackgroundResource(R.color.rate_profile_head_white_gray);
                 segementt1.setTextColor(getResources().getColor(R.color.colorWhite));
@@ -843,7 +811,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 career.setVisibility(View.VISIBLE);
                 edu.setVisibility(View.GONE);
                 segment1.setBackgroundResource(R.color.rate_profile_head_white_gray);
-                segment2.setBackgroundResource(R.color.rate_profile_head_dark_gray);
+                segment2.setBackgroundResource(R.color.colorMain);
                 segment3.setBackgroundResource(R.color.rate_profile_head_white_gray);
                 segementt1.setTextColor(getResources().getColor(R.color.colorBlack));
                 segementt2.setTextColor(getResources().getColor(R.color.colorWhite));
@@ -859,7 +827,7 @@ public class ManifestoRateActivity extends AppCompatActivity {
                 edu.setVisibility(View.VISIBLE);
                 segment1.setBackgroundResource(R.color.rate_profile_head_white_gray);
                 segment2.setBackgroundResource(R.color.rate_profile_head_white_gray);
-                segment3.setBackgroundResource(R.color.rate_profile_head_dark_gray);
+                segment3.setBackgroundResource(R.color.colorMain);
                 segementt1.setTextColor(getResources().getColor(R.color.colorBlack));
                 segementt2.setTextColor(getResources().getColor(R.color.colorBlack));
                 segementt3.setTextColor(getResources().getColor(R.color.colorWhite));
@@ -869,30 +837,78 @@ public class ManifestoRateActivity extends AppCompatActivity {
 
         try{
             int len = profile.length();
+            boolean flag1 = false, flag2 = false, flag3 = false;
             for(int i =0; i<len; i++){
                 JSONObject jsonObject = profile.getJSONObject(i);
                 String category = jsonObject.getString("category");
                 if(category.compareTo("career") == 0){
-                    addText(career,jsonObject.getString("date")+" "+jsonObject.get("contents"));
+                    addTableRow(career,jsonObject.getString("date"),jsonObject.getString("contents"));
+                    flag1= true;
                 }else if(category.compareTo("prize") == 0){
-                    addText(aware,jsonObject.getString("date")+" "+jsonObject.get("contents"));
+                    addTableRow(aware, jsonObject.getString("date"),jsonObject.getString("contents"));
+                    flag2 = true;
                 }else if(category.compareTo("eduback") == 0){
-                    addText(edu,jsonObject.getString("date")+" "+jsonObject.get("contents"));
+                    addTableRow(edu,jsonObject.getString("date"),jsonObject.getString("contents"));
+                    flag3= true;
                 }
+            }
+            if (!flag1){
+                addNone(career);
+            }
+            if (!flag2){
+                addNone(aware);
+            }
+            if (!flag3){
+                addNone(edu);
             }
         }catch (Exception e){
 
         }
-//        addText(crime,"없음");
     }
 
-    private void addText(LinearLayout parent,String s){
-        TextView text = new TextView(this);
-        text.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        text.setText(s);
-        text.setTextColor(getResources().getColor(R.color.colorBlack));
-        text.setPadding(40,0,0,0);
-        parent.addView(text);
+    private void addTableRow(TableLayout parent, String year, String contents){
+        TableRow tableRow = new TableRow(this);
+        TableLayout.LayoutParams params = new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+        int oneDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics());
+        params.setMargins(0,0,0,oneDp);
+        tableRow.setLayoutParams(params);
+        tableRow.setBackgroundResource(R.color.colorWhite);
+        tableRow.setPadding(0,5*oneDp,0,5*oneDp);
+
+        TextView text1 = new TextView(this);
+        text1.setLayoutParams(new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
+        text1.setText(year);
+        text1.setTextColor(getResources().getColor(R.color.colorBlack));
+        text1.setPadding(10*oneDp,0,0,0);
+
+        TextView text2 = new TextView(this);
+        text2.setLayoutParams(new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
+        text2.setText(contents);
+        text2.setTextColor(getResources().getColor(R.color.colorBlack));
+        text2.setPadding(10*oneDp,0,10*oneDp,0);
+
+        tableRow.addView(text1);
+        tableRow.addView(text2);
+
+        parent.addView(tableRow);
+    }
+
+    private void addNone(LinearLayout parent){
+        TableRow tableRow = new TableRow(this);
+        TableLayout.LayoutParams params = new TableLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+        int oneDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics());
+        tableRow.setLayoutParams(params);
+        tableRow.setBackgroundResource(R.color.colorWhite);
+        tableRow.setPadding(0,5*oneDp,0,5*oneDp);
+
+        TextView text1 = new TextView(this);
+        text1.setLayoutParams(new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
+        text1.setText("검색 결과 없음");
+        text1.setTextColor(getResources().getColor(R.color.colorBlack));
+        text1.setPadding(10*oneDp,0,0,0);
+
+        tableRow.addView(text1);
+        parent.addView(tableRow);
     }
 
     //back button

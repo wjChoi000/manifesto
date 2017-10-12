@@ -603,13 +603,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/rate_profile_head_white_gray"
-                    android:paddingTop="@dimen/rate_profile_header_gap"
                     >
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/colorWhite"
-                        android:layout_marginLeft="@dimen/rate_profile_header_gap"
                         android:id="@+id/rate_profile_header1"
                         >
                         <TextView
@@ -623,7 +621,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/colorWhite"
-                        android:layout_marginLeft="@dimen/rate_profile_header_gap"
                         android:id="@+id/rate_profile_header2"
                         >
                         <TextView
@@ -637,8 +634,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/colorWhite"
-                        android:layout_marginLeft="@dimen/rate_profile_header_gap"
-                        android:layout_marginRight="@dimen/rate_profile_header_gap"
                         android:id="@+id/rate_profile_header3"
                         >
                         <TextView
@@ -663,59 +658,32 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 >
-                <LinearLayout
-                    android:id="@+id/m_profile_aware"
+                <TableLayout
+                    android:id="@+id/m_profile_aware_table"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:visibility="gone"
+                    android:background="@color/colorBackgroundGray">
+                </TableLayout>
+                <TableLayout
+                    android:id="@+id/m_profile_career_table"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:background="@color/colorBackgroundGray">
+                </TableLayout>
+                <TableLayout
+                    android:id="@+id/m_profile_edu_table"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:background="@color/colorBackgroundGray">
+                </TableLayout>
 
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/m_profile_career"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/m_profile_edu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-                </LinearLayout>
-
-                <!--timeLine-->
-                <LinearLayout
-                    android:id="@+id/m_profile_timeline"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-                    <com.github.vipulasri.timelineview.TimelineView
-                        android:id="@+id/time_marker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        app:markerSize="20dp"
-                        app:lineSize="2dp"
-                        app:line="@color/colorPrimary"
-                        app:linePadding="5dp"/>
-                </LinearLayout>
-                <!--nothing-->
-                <LinearLayout
-                    android:id="@+id/m_profile_crime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="없음"/>
-                </LinearLayout>
             </FrameLayout>
         </LinearLayout>
     </FrameLayout>

@@ -161,16 +161,7 @@ public class TabCitizen extends Fragment {
         mIndicatorView = (IndicatorView) rootView.findViewById(R.id.indicator_view);
         mViewPager = (ViewPager) rootView.findViewById(R.id.view_pager);
 
-        mAdapter = new RollingAdapter(rootView.getContext(), getData(), new RollingAdapter.OnAdapterItemClickListener() {
-            @Override
-            public void onItemClick(RollingModel object, int position) {
 
-            }
-        });
-        mViewPager.setAdapter(mAdapter);
-        mIndicatorView.setViewPager(mViewPager);
-        mAutoRollingManager = new AutoRollingManager(mViewPager, mAdapter, mIndicatorView);
-        mAutoRollingManager.setRollingTime(5500);
 
         return rootView;
     }
@@ -211,11 +202,36 @@ public class TabCitizen extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mAutoRollingManager.onRollingStart();
+
 
         String url1 = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenMainGetListServlet";
         CitizenRestAPI restAPI = new CitizenRestAPI();
         restAPI.execute(url1);
+
+        mAdapter = new RollingAdapter(rootView.getContext(), getData(), new RollingAdapter.OnAdapterItemClickListener() {
+            @Override
+            public void onItemClick(RollingModel object, int position) {
+                if(position ==0){
+                    L_listview1.performItemClick(L_listview1,0,0);
+                    Log.d("citizen","click1");
+                }else if(position ==1){
+                    L_listview2.performItemClick(L_listview2,0,0);
+                    Log.d("citizen","click2");
+                }else if(position ==2){
+                    H_listview1.performItemClick(H_listview1,0,0);;
+                    Log.d("citizen","click3");
+                }else if(position ==3){
+                    H_listview2.performItemClick(H_listview2,0,0);
+                    Log.d("citizen","click4");
+                }
+
+            }
+        });
+        mViewPager.setAdapter(mAdapter);
+        mIndicatorView.setViewPager(mViewPager);
+        mAutoRollingManager = new AutoRollingManager(mViewPager, mAdapter, mIndicatorView);
+        mAutoRollingManager.setRollingTime(5500);
+        mAutoRollingManager.onRollingStart();
     }
 
     @Override

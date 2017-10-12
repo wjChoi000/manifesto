@@ -125,6 +125,20 @@ public class CitizenListenContentActivity extends AppCompatActivity {
 //
         //////////////////////////////////////////////////////////////////////////////
         Intent intent = getIntent();
+
+//        if( (id=intent.getIntExtra("id",0)) !=0){
+//            try{
+//                RestAPI restAPI = new RestAPI();
+//                String urls="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=say&offset="+id;
+//                JSONObject jobj = restAPI.execute(urls).get();
+//                JSONArray jarr = jobj.getJSONArray("list");
+//                content = Citizen.convertJsonToListen(jarr.getJSONObject(0));
+//
+//            }catch (Exception e) {
+//                Log.d("listen","error",e);
+//            }
+//        }else {
+
         content = (Citizen) intent.getSerializableExtra("say");
         id = content.getId();
         ListenRestAPIImage listenRestAPIImage = new  ListenRestAPIImage();
