@@ -185,10 +185,10 @@ public class TabCitizen extends Fragment {
     private List<RollingModel> getData() {
         List<RollingModel> list = new ArrayList<>();
 
-        list.add(new RollingModel("1", R.drawable.listen_book_issue));
-        list.add(new RollingModel("2", R.drawable.listen_moon100_issue));
-        list.add(new RollingModel("3", R.drawable.listen_power_issue));
-        list.add(new RollingModel("4", R.drawable.listen_moon100_issue));
+        list.add(new RollingModel("1", R.drawable.listen_smoking_edit));
+        list.add(new RollingModel("2", R.drawable.listen_youth_edit));
+        list.add(new RollingModel("3", R.drawable.help_children_edit));
+        list.add(new RollingModel("4", R.drawable.help_development_edit));
 
         return list;
     }
