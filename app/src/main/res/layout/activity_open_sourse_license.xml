@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorWhite">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:breakStrategy="balanced"
+            android:padding="15dp"
+            android:text="This application use Open Source Software (OSS). You can find the source code of these open source projects, along with applicable license information, below. We are deeply grateful to these developers for their work and contributions."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        //줄긋기
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorBackgroundGray"/>
+        //1번
+        <LinearLayout
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="14dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="android-flat-button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:lineSpacingExtra="2dip"
+                android:layout_marginLeft="10dp"
+                android:textSize="10dp"
+                android:textColorLink="#001aff"
+                android:text="https://github.com/hoang8f/android-flat-button.git \nCopyright {2014} {Le Van Hoang}\nApache License 2.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:linksClickable="true"
+                android:autoLink="web" />
+
+        </LinearLayout>
+        //2번
+        <LinearLayout
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="14dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="MPAndroidChart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:lineSpacingExtra="2dip"
+                android:layout_marginLeft="10dp"
+                android:textSize="10dp"
+                android:textColorLink="#001aff"
+                android:text="https://github.com/PhilJay/MPAndroidChart.git\nCopyright {2016} {Philipp Jahoda}\nApache License 2.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:linksClickable="true"
+                android:autoLink="web" />
+
+        </LinearLayout>
+        //3번
+        <LinearLayout
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="14dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="android-segmented-control "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:lineSpacingExtra="2dip"
+                android:layout_marginLeft="10dp"
+                android:textSize="10dp"
+                android:textColorLink="#001aff"
+                android:text="https://github.com/Kaopiz/android-segmented-control\nCopyright (c) 2014 Le Van Hoang \nMIT License"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:linksClickable="true"
+                android:autoLink="web" />
+
+        </LinearLayout>
+        //4번
+        <LinearLayout
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="14dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="Typekit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:lineSpacingExtra="2dip"
+                android:layout_marginLeft="10dp"
+                android:textSize="10dp"
+                android:textColorLink="#001aff"
+                android:text="https://github.com/tsengvn/typekit\nCopyright (c) 2015 Hien Ngo\nApache License 2.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:linksClickable="true"
+                android:autoLink="web" />
+
+        </LinearLayout>
+        //5번
+        <LinearLayout
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="14dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="Kakao-usermgmt-api"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:lineSpacingExtra="2dip"
+                android:layout_marginLeft="10dp"
+                android:textSize="10dp"
+                android:textColorLink="#001aff"
+                android:text="Copyright 2014-2015 Kakao Corp.\nApache License 2.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:linksClickable="true"
+                android:autoLink="web" />
+
+        </LinearLayout>
+        //6번
+        <LinearLayout
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="14dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="Icons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:lineSpacingExtra="2dip"
+                android:layout_marginLeft="10dp"
+                android:textSize="10dp"
+                android:textColorLink="#001aff"
+                android:text="https://material.io/icons/\nCopyright Google Corp\nApache License 2.0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:linksClickable="true"
+                android:autoLink="web" />
+
+        </LinearLayout>
+        //7번
+        <LinearLayout
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="14dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="noto-fonts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:lineSpacingExtra="2dip"
+                android:layout_marginLeft="10dp"
+                android:textSize="10dp"
+                android:textColorLink="#001aff"
+                android:text="https://github.com/googlei18n/noto-fonts\nCopyright Google Corp\nSIL Open Font License 1.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:linksClickable="true"
+                android:autoLink="web" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

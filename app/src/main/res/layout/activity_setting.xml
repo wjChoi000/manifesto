@@ -72,6 +72,8 @@
         </LinearLayout>
         //오픈소스 라이선스
         <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/layout_OSL"
             android:gravity="center"
             android:layout_margin="10dp"
             android:orientation="horizontal"

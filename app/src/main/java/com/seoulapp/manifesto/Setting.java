@@ -90,8 +90,10 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -153,7 +155,24 @@ public class Setting extends AppCompatActivity {
             });
             ((LinearLayout) findViewById(R.id.setting_logout)).setVisibility(View.GONE);
         }
+
+        //들려줘요 더보기 레이아웃
+        LinearLayout OpensourceLayout = (LinearLayout) findViewById(R.id.layout_OSL);
+        OpensourceLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickOpensourceLayout(view);
+            }
+        });
+
+
     }
+
+    public void onClickOpensourceLayout(View view) {
+        Intent intent = new Intent(Setting.this, OpenSourseLicense.class);
+        startActivity(intent);
+    }
+
     //back button
     public boolean onOptionsItemSelected(android.view.MenuItem item) {
         switch (item.getItemId()) {

@@ -158,6 +158,8 @@ public class TabCitizen extends Fragment {
             }
         });
 
+
+
         mIndicatorView = (IndicatorView) rootView.findViewById(R.id.indicator_view);
         mViewPager = (ViewPager) rootView.findViewById(R.id.view_pager);
 

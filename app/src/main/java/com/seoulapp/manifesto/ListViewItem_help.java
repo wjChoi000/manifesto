@@ -65,4 +65,11 @@ public class ListViewItem_help {
     public void setC_date(String c_date) {
         this.c_date = c_date;
     }
+
+    /**
+     * Created by shain on 2017-10-12.
+     */
+
+    public static class Tutorial {
+    }
 }
