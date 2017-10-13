@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLEncoder;
 
 /**
  * Created by swelo on 2017-08-15.
@@ -32,6 +33,7 @@ public class RestAPI extends AsyncTask<String, Void, JSONObject>{
         JSONObject data = null;
         Bitmap bitmap = null;
         try {
+            Log.d("rest",urls[0]);
             URL url = new URL(urls[0]);
             HttpURLConnection connection =
                     (HttpURLConnection) url.openConnection();

@@ -122,6 +122,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import info.hoang8f.widget.FButton;
 
@@ -240,8 +241,14 @@ public class KnowledgeContentActivity extends AppCompatActivity {
                 public  void onClick(View v){
                     String comment =know_editText.getText().toString();
                     if ( comment.length() > 0 ) {
+                        String comment2= null;
+                        try {
+                            comment2 = URLEncoder.encode(comment, "UTF-8");
+                        }catch (Exception e){
+                            Log.d("test","comment",e);
+                        }
                         RestAPI restAPI = new RestAPI();
-                        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenCommentInsertServlet?category=know&u_id="+loginCheck.getID()+"&h_id="+id+"&comment="+comment;
+                        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenCommentInsertServlet?category=know&u_id="+loginCheck.getID()+"&h_id="+id+"&comment="+comment2;
                         know_editText.setText("");
                         restAPI.execute(url);
 

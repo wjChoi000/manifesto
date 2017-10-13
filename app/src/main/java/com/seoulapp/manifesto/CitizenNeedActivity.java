@@ -118,6 +118,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 public class CitizenNeedActivity extends AppCompatActivity {
     private int offset = 0;
@@ -312,10 +313,16 @@ public class CitizenNeedActivity extends AppCompatActivity {
     }
     @Override
     protected void onResume(){
+
         super.onResume();
         NeedRestAPI helpRestAPI = new NeedRestAPI();
-        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset="+offset+"&category2="+category+"&gu="+gu;
-        helpRestAPI.execute(url);
+        String url = null;
+        try {
+            url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset=" + offset + "&category2=" + URLEncoder.encode(category, "UTF-8") + "&gu=" + URLEncoder.encode(gu, "UTF-8");
+        }catch (Exception e){
+            Log.d("test","url",e);
+        }
+            helpRestAPI.execute(url);
     }
 
     //fonts

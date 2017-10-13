@@ -131,6 +131,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -263,55 +264,57 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
                 else if(comment.length() ==0)
                     error = "내용을 입력해주세요";
                 else {
-                    category = "["+category+"]";
-                    LoginCheck loginCheck = new LoginCheck(CitizenNeedWritingActivity.this);
-                    long now = System.currentTimeMillis();
 
-                    Date date = new Date(now);
-                    SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy-MM-dd");
-                    String strNow = sdfNow.format(date);
-
-
-                    SimpleDateFormat sdfNow2 = new SimpleDateFormat("yyyyMMddhhmmss");
-                    String strNow2 = sdfNow2.format(date);
-                    int index = fileName.indexOf(".");
-                    String fileName2 ="";
-                    if(fileName.length()>0) {
-                        fileName2 = strNow2 + "_" + loginCheck.getID() + fileName.substring(index);
-                    }
-                    String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenPosterInsertServlet?u_id=" + loginCheck.getID() + "&title=" + title + "&category=" + category + "&comments=" + comment + "&gu=" + gu + "&priture=" + fileName2;
-                    RestAPI restAPI = new RestAPI();
-
-
-                    Citizen citizen =null;
+                    String comment2= null;
                     try {
+
+                        category = URLEncoder.encode("["+category+"]", "UTF-8");
+                        LoginCheck loginCheck = new LoginCheck(CitizenNeedWritingActivity.this);
+                        long now = System.currentTimeMillis();
+
+                        Date date = new Date(now);
+                        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy-MM-dd");
+                        String strNow = sdfNow.format(date);
+
+
+                        SimpleDateFormat sdfNow2 = new SimpleDateFormat("yyyyMMddhhmmss");
+                        String strNow2 = sdfNow2.format(date);
+                        int index = fileName.indexOf(".");
+                        String fileName2 ="";
+                        if(fileName.length()>0) {
+                            fileName2 = strNow2 + "_" + loginCheck.getID() + fileName.substring(index);
+                        }
+                        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenPosterInsertServlet?u_id=" + loginCheck.getID() + "&title=" + URLEncoder.encode(title, "UTF-8") + "&category=" + category + "&comments=" + URLEncoder.encode(comment, "UTF-8") + "&gu=" +URLEncoder.encode(gu, "UTF-8") + "&priture=" + fileName2;
+                        RestAPI restAPI = new RestAPI();
+                        Citizen citizen =null;
                         JSONObject jres = restAPI.execute(url).get();
 
                         id = jres.getInt("id");
                         citizen = new Citizen(id,loginCheck.getID(),title,category,comment,0,0,strNow,0,gu,fileName2,loginCheck.getNickname());
 
-                    }catch (Exception e){
 
-                    }
-                    if(absolutePath != null) {
-                        WritingRestAPI writingRestAPI = new WritingRestAPI();
-                        try {
-                            JSONObject jres = (JSONObject) writingRestAPI.execute(fileName2).get();
-                            Log.d("Test",jres.toString());
-                        }catch (Exception e){
-                            Log.d("Test","writing rest api error");
+                        if(absolutePath != null) {
+                            WritingRestAPI writingRestAPI = new WritingRestAPI();
+                            try {
+                                JSONObject jres2 = (JSONObject) writingRestAPI.execute(fileName2).get();
+                                Log.d("Test",jres2.toString());
+                            }catch (Exception e){
+                                Log.d("Test","writing rest api error");
+                            }
+                            Log.i("writing","update img");
                         }
-                        Log.i("writing","update img");
+
+                        Intent intent = new Intent(this,CitizenNeedContentActivity.class);
+                        intent.putExtra("need",citizen);
+                        //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        //intent.putExtra("post",citizen);
+
+                        startActivity(intent);
+                        finish();
+                        writeFlag = true;
+                    }catch (Exception e){
+                        Log.d("test","comment",e);
                     }
-
-                    Intent intent = new Intent(this,CitizenNeedContentActivity.class);
-                    intent.putExtra("need",citizen);
-                    //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //intent.putExtra("post",citizen);
-
-                    startActivity(intent);
-                    finish();
-                    writeFlag = true;
                 }
                 if(!writeFlag)
                     Toast.makeText(this, error, Toast.LENGTH_SHORT).show();

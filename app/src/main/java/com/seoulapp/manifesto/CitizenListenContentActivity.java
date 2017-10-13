@@ -123,6 +123,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Handler;
@@ -297,7 +298,13 @@ public class CitizenListenContentActivity extends AppCompatActivity {
                     String comment = editText.getText().toString();
                     if (comment.length() > 0) {
                         RestAPI restAPI = new RestAPI();
-                        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenCommentInsertServlet?category=say&u_id=" + loginCheck.getID() + "&h_id=" + id + "&comment=" + comment + "&opinion=" + opinion;
+                        String comment2= null;
+                        try {
+                            comment2 = URLEncoder.encode(editText.getText().toString(), "UTF-8");
+                        }catch (Exception e){
+                            Log.d("test","comment",e);
+                        }
+                        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenCommentInsertServlet?category=say&u_id=" + loginCheck.getID() + "&h_id=" + id + "&comment=" + comment2 + "&opinion=" + opinion;
                         Log.d("Listen",url);
                         editText.setText("");
                         restAPI.execute(url);
