@@ -355,7 +355,7 @@
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
                         fbutton:buttonColor="@color/welfare"
-                        fbutton:shadowEnabled="true"
+                        fbutton:shadowEnabled="false"
                         fbutton:cornerRadius="3dp"
                         android:drawableTop="@drawable/welfare"
                         />
@@ -370,7 +370,7 @@
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
                         fbutton:buttonColor="@color/culture"
-                        fbutton:shadowEnabled="true"
+                        fbutton:shadowEnabled="false"
                         fbutton:cornerRadius="3dp"
                         android:drawableTop="@drawable/culture"
                         />
@@ -385,7 +385,7 @@
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
                         fbutton:buttonColor="@color/economy"
-                        fbutton:shadowEnabled="true"
+                        fbutton:shadowEnabled="false"
                         fbutton:cornerRadius="3dp"
                         android:drawableTop="@drawable/economy"
                         />
@@ -402,7 +402,7 @@
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
                         fbutton:buttonColor="@color/environment"
-                        fbutton:shadowEnabled="true"
+                        fbutton:shadowEnabled="false"
                         fbutton:cornerRadius="3dp"
                         android:drawableTop="@drawable/environment"
                         />
@@ -417,7 +417,7 @@
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
                         fbutton:buttonColor="@color/administation"
-                        fbutton:shadowEnabled="true"
+                        fbutton:shadowEnabled="false"
                         fbutton:cornerRadius="3dp"
                         android:drawableTop="@drawable/administation"
                         />
@@ -432,7 +432,7 @@
                         android:textColor="@color/colorWhite"
                         android:textStyle="bold"
                         fbutton:buttonColor="@color/cityAndSafty"
-                        fbutton:shadowEnabled="true"
+                        fbutton:shadowEnabled="false"
                         fbutton:cornerRadius="3dp"
                         android:drawableTop="@drawable/city"
                         />

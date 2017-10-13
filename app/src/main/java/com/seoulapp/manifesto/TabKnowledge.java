@@ -188,7 +188,7 @@ public class TabKnowledge extends Fragment {
         TextView commentTV = new TextView(new ContextThemeWrapper(context,R.style.knowledgeContents));
         commentTV.setText(t1.getContents());
         row.addView(commentTV);
-
+        //gab
         int oneDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics());
         LinearLayout emptyGray = new LinearLayout(context);
         emptyGray.setBackgroundResource(R.color.colorBackgroundGray);

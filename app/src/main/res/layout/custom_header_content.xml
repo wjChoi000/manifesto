@@ -691,7 +691,6 @@
                 //좋아요
                 <TextView
                     android:id="@+id/k_goodTvBtn"
-                    android:onClick="onClick"
                     android:gravity="center"
                     android:layout_margin="3dp"
                     android:text="좋아요"

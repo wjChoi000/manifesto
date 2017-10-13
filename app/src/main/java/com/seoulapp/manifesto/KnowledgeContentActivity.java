@@ -257,7 +257,7 @@ public class KnowledgeContentActivity extends AppCompatActivity {
 
                 }
             });
-            k_goobtn.setOnClickListener(clickListener);
+           k_goobtn.setOnClickListener(clickListener);
 
         }
         else{

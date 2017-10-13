@@ -10,7 +10,10 @@
          android:layout_height="wrap_content"
          android:background="@color/colorWhite"
          android:orientation="vertical"
-         android:padding="20dp">
+         android:paddingLeft="20dp"
+         android:paddingRight="20dp"
+         android:paddingBottom="20dp"
+         android:paddingTop="10dp">
          <!-- the number of people-->
          <LinearLayout
              android:layout_width="match_parent"
@@ -78,7 +81,7 @@
              android:background="@color/colorBackgroundGray"
              android:orientation="vertical"
              android:gravity="center_horizontal"
-             android:layout_marginBottom="20dp"
+             android:layout_marginBottom="10dp"
              android:paddingBottom="10dp"
              >
              <ImageView
@@ -311,7 +314,7 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:orientation="horizontal"
-             android:layout_marginBottom="3dp"
+             android:layout_marginBottom="5dp"
              android:gravity="center_vertical">
              <TextView
                  android:layout_width="wrap_content"
