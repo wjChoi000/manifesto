@@ -189,8 +189,8 @@ public class TabCitizen extends Fragment {
 
         list.add(new RollingModel("1", R.drawable.listen_smoking_edit));
         list.add(new RollingModel("2", R.drawable.listen_youth_edit));
-        list.add(new RollingModel("3", R.drawable.help_children_edit));
-        list.add(new RollingModel("4", R.drawable.help_development_edit));
+        list.add(new RollingModel("3", R.drawable.help_children));
+        list.add(new RollingModel("4", R.drawable.help_development));
 
         return list;
     }
