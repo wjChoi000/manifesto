@@ -147,16 +147,16 @@ public class TabKnowledge extends Fragment {
     }
 
     private void addNewLayout(LinearLayout parent,final KnowContent t1){
-        if(first != 0) {
-            int fiveDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
+//        if(first != 0) {
+            int fiveDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics());
             LinearLayout fiveGray = new LinearLayout(context);
             fiveGray.setBackgroundResource(R.color.colorBackgroundGray);
             fiveGray.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, fiveDp));
             parent.addView(fiveGray);
 
-        }else {
-            first = 1;
-        }
+//        }else {
+//            first = 1;
+//        }
         LinearLayout row = new LinearLayout(context);
         row.setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,

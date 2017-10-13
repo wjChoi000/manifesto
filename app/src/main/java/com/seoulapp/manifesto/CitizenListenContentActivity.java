@@ -211,19 +211,6 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         //////////////////////////////////////////////////////////////////////////////
         Intent intent = getIntent();
 
-//        if( (id=intent.getIntExtra("id",0)) !=0){
-//            try{
-//                RestAPI restAPI = new RestAPI();
-//                String urls="http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=say&offset="+id;
-//                JSONObject jobj = restAPI.execute(urls).get();
-//                JSONArray jarr = jobj.getJSONArray("list");
-//                content = Citizen.convertJsonToListen(jarr.getJSONObject(0));
-//
-//            }catch (Exception e) {
-//                Log.d("listen","error",e);
-//            }
-//        }else {
-
         content = (Citizen) intent.getSerializableExtra("say");
         id = content.getId();
         ListenRestAPIImage listenRestAPIImage = new  ListenRestAPIImage();
@@ -299,6 +286,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
                     Toast.makeText(CitizenListenContentActivity.this, "찬/반을 먼저 선택해주세요.", Toast.LENGTH_SHORT).show();
                 }});
         }else {
+            //comment update
             editText.setVisibility(View.VISIBLE);
             listen_fake.setVisibility(View.GONE);
             FButton listen_transmit = (FButton) findViewById(R.id.listen_transmit);
@@ -310,12 +298,15 @@ public class CitizenListenContentActivity extends AppCompatActivity {
                     if (comment.length() > 0) {
                         RestAPI restAPI = new RestAPI();
                         String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenCommentInsertServlet?category=say&u_id=" + loginCheck.getID() + "&h_id=" + id + "&comment=" + comment + "&opinion=" + opinion;
+                        Log.d("Listen",url);
                         editText.setText("");
                         restAPI.execute(url);
                         if (opinion == 1) {
-                            adapter.addFirstItem(loginCheck.getNickname() + "", "찬성", "", "방금", comment);
+                            adapter.addItem(loginCheck.getNickname() + "", "찬성", "", "방금", comment);
+//                            adapter.addFirstItem(loginCheck.getNickname() + "", "찬성", "", "방금", comment);
                         } else if (opinion == 0) {
-                            adapter.addFirstItem(loginCheck.getNickname() + "", "", "반대", "방금", comment);
+                            adapter.addItem(loginCheck.getNickname() + "", "", "반대", "방금", comment);
+//                            adapter.addFirstItem(loginCheck.getNickname() + "", "", "반대", "방금", comment);
                         }
                         content.setCount(content.getCount() + 1);
                         ((TextView) findViewById(R.id.listen_comNum)).setText(content.getCount() + "");

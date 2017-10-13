@@ -958,19 +958,20 @@ public class ManifestoRateActivity extends AppCompatActivity {
         params.setMargins(0,0,0,oneDp);
         tableRow.setLayoutParams(params);
         tableRow.setBackgroundResource(R.color.colorWhite);
-        tableRow.setPadding(0,5*oneDp,0,5*oneDp);
+        tableRow.setPadding(10*oneDp,5*oneDp,10*oneDp,5*oneDp);
 
         TextView text1 = new TextView(this);
-        text1.setLayoutParams(new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
+
+        text1.setLayoutParams( new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
         text1.setText(year);
         text1.setTextColor(getResources().getColor(R.color.colorBlack));
-        text1.setPadding(10*oneDp,0,0,0);
 
         TextView text2 = new TextView(this);
-        text2.setLayoutParams(new TableRow.LayoutParams(TableLayout.LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
+        text2.setLayoutParams( new TableRow.LayoutParams(0, TableLayout.LayoutParams.WRAP_CONTENT,1.0f));
         text2.setText(contents);
         text2.setTextColor(getResources().getColor(R.color.colorBlack));
-        text2.setPadding(10*oneDp,0,10*oneDp,0);
+        text2.setPadding(10*oneDp,0,0,0);
+
 
         tableRow.addView(text1);
         tableRow.addView(text2);

@@ -275,10 +275,11 @@ public class CitizenNeedWritingActivity extends AppCompatActivity {
                     SimpleDateFormat sdfNow2 = new SimpleDateFormat("yyyyMMddhhmmss");
                     String strNow2 = sdfNow2.format(date);
                     int index = fileName.indexOf(".");
-
-                    String fileName2 = strNow2+"_"+loginCheck.getID()+fileName.substring(index);
-
-                    String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenPosterInsertServlet?u_id=" + loginCheck.getID() + "&title=" + title + "&category=" + category + "&comments=" + comment + "&gu=" + gu+"&priture="+fileName2;
+                    String fileName2 ="";
+                    if(fileName.length()>0) {
+                        fileName2 = strNow2 + "_" + loginCheck.getID() + fileName.substring(index);
+                    }
+                    String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenPosterInsertServlet?u_id=" + loginCheck.getID() + "&title=" + title + "&category=" + category + "&comments=" + comment + "&gu=" + gu + "&priture=" + fileName2;
                     RestAPI restAPI = new RestAPI();
 
 
