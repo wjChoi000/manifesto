@@ -32,29 +32,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/gab"/>
 
-        <!--<LinearLayout-->
-            <!--android:orientation="horizontal"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
-            <!--<TextView-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--style="@style/CitizenNeedAcitivitySort"-->
-                <!--android:text="지역별검색"/>-->
-            <!--<TextView-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_weight="1"-->
-                <!--style="@style/CitizenNeedAcitivitySort"-->
-                <!--android:text="분류별 검색"/>-->
-        <!--</LinearLayout>-->
-        <!--//줄긋기-->
-        <!--<LinearLayout-->
-            <!--android:background="@color/colorBackgroundGray"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="@dimen/gab">-->
-        <!--</LinearLayout>-->
         <ListView
             android:id="@+id/listview_need"
             android:layout_width="match_parent"
@@ -70,11 +47,13 @@
         android:layout_alignParentRight="true"
         android:layout_margin="16dp"
         fabSize="normal"
-        android:elevation="16dp"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorMain"
+
         android:backgroundTint="@color/colorMain"
+        android:background="@color/colorMain"
+
         android:src="@drawable/writing_white" />
 </RelativeLayout>
 

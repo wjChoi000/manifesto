@@ -46,4 +46,14 @@ public class LoginCheck {
         editor.putInt("interestingGu", interestingAres);
         editor.commit();
     }
+
+    public int getFirstTime(){
+        return pref.getInt("FirstTime",0);
+    }
+    public void setFirstTime(){
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putInt("FirstTime", 1);
+        editor.commit();
+    }
+
 }

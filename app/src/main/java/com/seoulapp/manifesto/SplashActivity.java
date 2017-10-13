@@ -90,6 +90,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.seoulapp.manifesto.util.LoginCheck;
+
 public class SplashActivity extends AppCompatActivity {
     private Handler handler;
 
@@ -103,8 +105,15 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable(){
             @Override
             public void run(){
-                Intent intent = new Intent(SplashActivity.this, TutorialActivity.class);
-                //Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                LoginCheck loginCheck = new LoginCheck(SplashActivity.this);
+                int i =  loginCheck.getFirstTime();
+                Intent intent =null;
+                if(i ==0) {
+                    intent = new Intent(SplashActivity.this, TutorialActivity.class);
+                    loginCheck.setFirstTime();
+                }else{
+                    intent = new Intent(SplashActivity.this, MainActivity.class);
+                }
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
