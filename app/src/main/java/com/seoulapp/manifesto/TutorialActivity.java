@@ -47,6 +47,7 @@ public class TutorialActivity extends AppCompatActivity {
             public void onClick(View view){
                 Intent intent = new Intent(TutorialActivity.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

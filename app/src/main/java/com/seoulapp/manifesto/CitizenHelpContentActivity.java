@@ -244,7 +244,7 @@ public class CitizenHelpContentActivity extends AppCompatActivity {
                         editText.setText("");
                         restAPI.execute(url);
 
-                        adapter.addFirstItem(loginCheck.getNickname()+"","","", "방금",comment);
+                        adapter.addItem(loginCheck.getNickname()+"","","", "방금",comment);
                         content.setCount(content.getCount()+1);
                         ((TextView)findViewById(R.id.help_commentNum)).setText(content.getCount()+"");
                         adapter.notifyDataSetChanged();

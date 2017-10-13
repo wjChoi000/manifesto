@@ -245,7 +245,7 @@ public class KnowledgeContentActivity extends AppCompatActivity {
                         know_editText.setText("");
                         restAPI.execute(url);
 
-                        adapter.addFirstItem(loginCheck.getNickname()+"","","", "방금",comment);
+                        adapter.addItem(loginCheck.getNickname()+"","","", "방금",comment);
                         content.setCommentSum(content.getCommentSum()+1);
                         ((TextView)findViewById(R.id.help_commentNum)).setText(content.getCommentSum()+"");
                         adapter.notifyDataSetChanged();
