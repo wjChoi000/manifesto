@@ -56,9 +56,9 @@ public class TutorialActivity extends AppCompatActivity {
         List<RollingModel> list = new ArrayList<>();
 
         list.add(new RollingModel("1", R.drawable.listen_book));
-        list.add(new RollingModel("2", R.drawable.listen_moon100));
-        list.add(new RollingModel("3", R.drawable.listen_out));
-        list.add(new RollingModel("4", R.drawable.listen_power));       //포지션 3
+        list.add(new RollingModel("2", R.drawable.listen_book));
+        list.add(new RollingModel("3", R.drawable.listen_book));
+        list.add(new RollingModel("4", R.drawable.listen_book));       //포지션 3
 
         return list;
     }
