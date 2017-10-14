@@ -38,6 +38,10 @@ dependencies {
     compile 'com.android.support:support-v4:26.+'
     compile 'com.android.support:support-vector-drawable:26.+'
     compile 'com.tsengvn:typekit:1.0.1'
+
+    //new
+    compile "com.dev.sacot41:scviewpager:0.0.4"
+    //
     testCompile 'junit:junit:4.12'
 }
 

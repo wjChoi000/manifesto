@@ -173,9 +173,6 @@ public class LoginsActivity extends AppCompatActivity {
     }
 
     protected void redirectSignupActivity() {       //세션 연결 성공 시 SignupActivity로 넘김
-//        final Intent intent = new Intent(this, MainActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//        startActivity(intent);
         requestMe();
     }
 
@@ -231,10 +228,6 @@ public class LoginsActivity extends AppCompatActivity {
         });
     }
     private void redirectMainActivity() {
-//        Intent intent = new Intent(this, MainActivity.class);
-//        intent.putExtra("url", url);
-//        intent.putExtra("nickname", nickname);
-//        startActivity(intent);
         finish();
     }
     protected void redirectLoginActivity() {
@@ -243,7 +236,6 @@ public class LoginsActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 
     //back button
     public boolean onOptionsItemSelected(android.view.MenuItem item) {

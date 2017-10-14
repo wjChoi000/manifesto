@@ -143,6 +143,11 @@ public class TabKnowledge extends Fragment {
         first=0;
         offset = 0;
 //        offset += limit;
+
+        L1.removeAllViews();
+        restAPI = new KnowledgeRestAPI();
+        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/KnowledgeServlet?offset="+offset+"&limit="+limit;
+        restAPI.execute(url);
         return rootView;
     }
 
@@ -249,10 +254,7 @@ public class TabKnowledge extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
-        L1.removeAllViews();
-        restAPI = new KnowledgeRestAPI();
-        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/KnowledgeServlet?offset="+offset+"&limit="+limit;
-        restAPI.execute(url);
+
     }
     class KnowledgeRestAPI extends AsyncTask<String, Void, JSONObject> {
         @Override
