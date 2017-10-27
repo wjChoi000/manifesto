@@ -255,9 +255,13 @@ public class CitizenListenContentActivity extends AppCompatActivity {
         super.onResume();
         if(loginCheck.isItLogin()){
             opinionFunc();
+            findViewById(R.id.agreementBtn).setOnClickListener(clickListener);
+            findViewById(R.id.oppositionBtn).setOnClickListener(clickListener);
         }else{
             editText.setVisibility(View.GONE);
             listen_fake.setVisibility(View.VISIBLE);
+            findViewById(R.id.agreementBtn).setClickable(false);
+            findViewById(R.id.oppositionBtn).setClickable(false);
 
             LinearLayout listen_comment = (LinearLayout) findViewById(R.id.listen_comment);
             listen_comment.setOnClickListener(new View.OnClickListener(){
@@ -327,6 +331,7 @@ public class CitizenListenContentActivity extends AppCompatActivity {
             });
         }
     }
+
     private View.OnClickListener clickListener = new View.OnClickListener(){
         @Override
         public void onClick(View v){
@@ -487,19 +492,19 @@ public class CitizenListenContentActivity extends AppCompatActivity {
                 JSONObject jres = result.getJSONObject("opinion");
                 String code = jres.getString("code");
                 if(code.compareToIgnoreCase("success")==0) {
-                    opinion = jres.getInt("opinion");
-                    opinionFunc();
-                    if(opinion ==1){
-                        agCheck.performClick();
-                        agtextview.setTextColor(getResources().getColor(R.color.agreement));
-                    }else{
-                        opCheck.performClick();
-                        optextview.setTextColor(getResources().getColor(R.color.opposition));
+                    if(loginCheck.isItLogin()) {
+                        opinion = jres.getInt("opinion");
+                        opinionFunc();
+                        if (opinion == 1) {
+                            agCheck.performClick();
+                            agtextview.setTextColor(getResources().getColor(R.color.agreement));
+                        } else {
+                            opCheck.performClick();
+                            optextview.setTextColor(getResources().getColor(R.color.opposition));
+                        }
+                        exist = 1;
                     }
-                    exist=1;
                 }
-                findViewById(R.id.agreementBtn).setOnClickListener(clickListener);
-                findViewById(R.id.oppositionBtn).setOnClickListener(clickListener);
 
 
                 JSONArray jsonArray = result.getJSONArray("list");

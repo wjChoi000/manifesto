@@ -49,7 +49,8 @@
             android:layout_margin="10dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
             <TextView
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/colorBlack"
@@ -68,7 +69,8 @@
         <LinearLayout
             android:background="@color/colorBackgroundGray"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/gab">
+            android:layout_height="@dimen/gab"
+            android:visibility="gone">
         </LinearLayout>
         //오픈소스 라이선스
         <LinearLayout

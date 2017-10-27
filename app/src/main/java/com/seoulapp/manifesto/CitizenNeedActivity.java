@@ -147,8 +147,11 @@ public class CitizenNeedActivity extends AppCompatActivity {
                 category = parent.getItemAtPosition(pos).toString();
                 if (flag1 ) {
                     NeedRestAPI helpRestAPI = new NeedRestAPI();
-                    String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset="+offset+"&category2="+category+"&gu="+gu;
-                    helpRestAPI.execute(url);
+                    try {
+                        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset=" + offset + "&category2=" + URLEncoder.encode(category, "UTF-8") + "&gu=" + URLEncoder.encode(gu, "UTF-8");
+                        helpRestAPI.execute(url);
+                    }catch (Exception e){
+                    }
                 }
                 flag1 =true;
             }
@@ -172,9 +175,12 @@ public class CitizenNeedActivity extends AppCompatActivity {
                 if(gu.compareTo("구 선택")==0)
                     gu="구선택";
                 if (flag2) {
-                    NeedRestAPI helpRestAPI = new NeedRestAPI();
-                    String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset="+offset+"&category2="+category+"&gu="+gu;
-                    helpRestAPI.execute(url);
+                    try {
+                        NeedRestAPI helpRestAPI = new NeedRestAPI();
+                        String url = "http://manifesto2017-env.fxmd3pye65.ap-northeast-2.elasticbeanstalk.com/CitizenGetListServlet?category=post&offset=" + offset + "&category2=" + URLEncoder.encode(category, "UTF-8") + "&gu=" + URLEncoder.encode(gu, "UTF-8");
+                        helpRestAPI.execute(url);
+                    }catch (Exception e){
+                    }
                 }
                 flag2 = true;
             }
