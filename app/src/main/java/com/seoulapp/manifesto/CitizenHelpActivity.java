@@ -107,6 +107,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.seoulapp.manifesto.model.Citizen;
+import com.seoulapp.manifesto.util.ResizeBitmap;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
@@ -252,7 +253,7 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
         }
     }
 
-
+    private ResizeBitmap resizeBitmap = new ResizeBitmap();
     private class CitizenRestAPIImage  extends AsyncTask<JSONArray, Void, Bitmap[]> {
         JSONArray jsonArray;
         @Override
@@ -272,7 +273,7 @@ public class CitizenHelpActivity extends ActionBarActivity implements AbsListVie
                     connection.setDoInput(true);
                     connection.connect();
                     InputStream is = connection.getInputStream();
-                    bitmap[i] = BitmapFactory.decodeStream(is);
+                    bitmap[i] = resizeBitmap.resizeBitmapImage( BitmapFactory.decodeStream(is),100);
                 }
             } catch (Exception e) {
                 Log.i("result", "error", e);

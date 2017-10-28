@@ -105,6 +105,7 @@ import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.KnowContent;
 import com.seoulapp.manifesto.restful.RestAPIImage;
+import com.seoulapp.manifesto.util.ResizeBitmap;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -302,32 +303,6 @@ public class TabKnowledge extends Fragment {
         }
     }
 
+    private ResizeBitmap resizeBitmap = new ResizeBitmap();
 
-    private class KnowRestAPIImage  extends AsyncTask<String, Void, Bitmap> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-        @Override
-        protected Bitmap doInBackground(String... urls) {
-            Bitmap bitmap = null;
-            try {
-                URL url = new URL(urls[0]);
-                HttpURLConnection connection =
-                        (HttpURLConnection) url.openConnection();
-                connection.setDoInput(true);
-                connection.connect();
-                InputStream is  = connection.getInputStream();
-                bitmap = BitmapFactory.decodeStream(is);
-
-            } catch (Exception e) {
-                Log.i("result", urls[0], e);
-            }
-            return bitmap;
-        }
-        @Override
-        protected void onPostExecute(Bitmap bitmap){
-
-        }
-    }
 }

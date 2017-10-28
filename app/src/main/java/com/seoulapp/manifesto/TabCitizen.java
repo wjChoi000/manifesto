@@ -105,6 +105,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.seoulapp.manifesto.model.Citizen;
+import com.seoulapp.manifesto.util.ResizeBitmap;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -128,6 +129,7 @@ public class TabCitizen extends Fragment {
     private AutoRollingManager mAutoRollingManager = null;
     private ListView L_listview1, L_listview2, L_listview3, H_listview1, H_listview2, H_listview3, N_listview1, N_listview2, N_listview3;
     View rootView;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.tab_citizen, container, false);
 
@@ -374,6 +376,8 @@ public class TabCitizen extends Fragment {
         }
     }
 
+    private ResizeBitmap resizeBitmap = new ResizeBitmap();
+
     private class CitizenRestAPIImage  extends AsyncTask<String, Void, Bitmap[]> {
         @Override
         protected void onPreExecute() {
@@ -391,7 +395,7 @@ public class TabCitizen extends Fragment {
                     connection.setDoInput(true);
                     connection.connect();
                     InputStream is = connection.getInputStream();
-                    bitmap[i] = BitmapFactory.decodeStream(is);
+                    bitmap[i] = resizeBitmap.resizeBitmapImage( BitmapFactory.decodeStream(is),100);
                 }
             } catch (Exception e) {
                 Log.i("result", urls[0], e);

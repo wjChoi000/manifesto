@@ -111,6 +111,7 @@ import com.seoulapp.manifesto.model.KnowContent;
 import com.seoulapp.manifesto.restful.RestAPI;
 import com.seoulapp.manifesto.util.LoginCheck;
 import com.seoulapp.manifesto.util.LoginCheckDialog;
+import com.seoulapp.manifesto.util.ResizeBitmap;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
@@ -395,7 +396,7 @@ public class KnowledgeContentActivity extends AppCompatActivity {
         }
     }
 
-
+    private ResizeBitmap resizeBitmap = new ResizeBitmap();
     private class KnowRestAPIImage  extends AsyncTask<String, Void, Bitmap> {
         @Override
         protected void onPreExecute() {
@@ -411,8 +412,8 @@ public class KnowledgeContentActivity extends AppCompatActivity {
                 connection.setDoInput(true);
                 connection.connect();
                 InputStream is  = connection.getInputStream();
-                bitmap = BitmapFactory.decodeStream(is);
-
+                bitmap = resizeBitmap.resizeBitmapImage(BitmapFactory.decodeStream(is),300);
+//                bitmap =BitmapFactory.decodeStream(is);
             } catch (Exception e) {
                 Log.i("result", urls[0], e);
             }

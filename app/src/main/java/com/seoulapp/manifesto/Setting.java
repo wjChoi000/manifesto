@@ -132,32 +132,7 @@ public class Setting extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
-//        ((LinearLayout) findViewById(R.id.setting_logout)).setVisibility(View.GONE);
-//        ((LinearLayout) findViewById(R.id.setting_login)).setVisibility(View.GONE);
-        final LoginCheck loginCheck = new LoginCheck(this);
-        if(loginCheck.isItLogin()){
-            LinearLayout setting_logout = (LinearLayout) findViewById(R.id.setting_logout);
-            setting_logout.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View view) {
-                    LoginCheckDialog loginCheckDialog = new LoginCheckDialog(Setting.this,true);
-                    loginCheckDialog.show();
-                }
-            });
-            ((LinearLayout) findViewById(R.id.setting_login)).setVisibility(View.GONE);
-        }
-        else{
-            LinearLayout setting_login = (LinearLayout) findViewById(R.id.setting_login);
-            setting_login.setOnClickListener(new View.OnClickListener(){
 
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Setting.this, LoginsActivity.class);
-                    startActivity(intent);
-                }
-            });
-            ((LinearLayout) findViewById(R.id.setting_logout)).setVisibility(View.GONE);
-        }
 
         //들려줘요 더보기 레이아웃
         LinearLayout OpensourceLayout = (LinearLayout) findViewById(R.id.layout_OSL);
@@ -169,6 +144,35 @@ public class Setting extends AppCompatActivity {
         });
 
 
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        final LoginCheck loginCheck = new LoginCheck(this);
+        if(loginCheck.isItLogin()){
+            LinearLayout setting_logout = (LinearLayout) findViewById(R.id.setting_logout);
+            setting_logout.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    LoginCheckDialog loginCheckDialog = new LoginCheckDialog(Setting.this,true);
+                    loginCheckDialog.show();
+                }
+            });
+            ((LinearLayout) findViewById(R.id.setting_login)).setVisibility(View.GONE);
+            ((LinearLayout) findViewById(R.id.setting_logout)).setVisibility(View.VISIBLE);
+        }else{
+            LinearLayout setting_login = (LinearLayout) findViewById(R.id.setting_login);
+            setting_login.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Setting.this, LoginsActivity.class);
+                    startActivity(intent);
+                }
+            });
+            ((LinearLayout) findViewById(R.id.setting_logout)).setVisibility(View.GONE);
+            ((LinearLayout) findViewById(R.id.setting_login)).setVisibility(View.VISIBLE);
+        }
     }
 
     public void onClickOpensourceLayout(View view) {

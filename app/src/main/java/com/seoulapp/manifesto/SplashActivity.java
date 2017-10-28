@@ -106,12 +106,14 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run(){
                 LoginCheck loginCheck = new LoginCheck(SplashActivity.this);
+                int i =  loginCheck.getFirstTime();
                 Intent intent =null;
-                if(!loginCheck.isItLogin()) {
-                    intent = new Intent(SplashActivity.this, LoginsActivity.class);
-                }else{
+//                if(i ==0) {
+//                    intent = new Intent(SplashActivity.this, TutorialActivity.class);
+//                    loginCheck.setFirstTime();
+//                }else{
                     intent = new Intent(SplashActivity.this, MainActivity.class);
-                }
+//                }
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();

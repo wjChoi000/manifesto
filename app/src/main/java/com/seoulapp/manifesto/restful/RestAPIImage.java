@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.seoulapp.manifesto.util.ResizeBitmap;
+
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -18,6 +20,8 @@ import java.net.URL;
  */
 
 public class RestAPIImage  extends AsyncTask<String, Void, Bitmap> {
+    private ResizeBitmap resizeBitmap = new ResizeBitmap();
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -32,7 +36,7 @@ public class RestAPIImage  extends AsyncTask<String, Void, Bitmap> {
             connection.setDoInput(true);
             connection.connect();
             InputStream is  = connection.getInputStream();
-            bitmap = BitmapFactory.decodeStream(is);
+            bitmap = resizeBitmap.resizeBitmapImage(BitmapFactory.decodeStream(is),300);
 
         } catch (Exception e) {
             Log.i("result", urls[0], e);

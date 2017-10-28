@@ -114,6 +114,7 @@ import android.widget.TextView;
 
 
 import com.seoulapp.manifesto.model.Citizen;
+import com.seoulapp.manifesto.util.ResizeBitmap;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
@@ -221,7 +222,6 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
         @Override
         protected JSONObject doInBackground(String... urls) {
             JSONObject data = null;
-            Bitmap bitmap = null;
             try {
                 URL url = new URL(urls[0]);
                 HttpURLConnection connection =
@@ -258,7 +258,7 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
         }
     }
 
-
+    private ResizeBitmap resizeBitmap = new ResizeBitmap();
     private class CitizenRestAPIImage  extends AsyncTask<JSONArray, Void, Bitmap[]> {
         JSONArray jsonArray;
         @Override
@@ -278,7 +278,7 @@ public class CitizenListenActivity extends ActionBarActivity implements AbsListV
                     connection.setDoInput(true);
                     connection.connect();
                     InputStream is = connection.getInputStream();
-                    bitmap[i] = BitmapFactory.decodeStream(is);
+                    bitmap[i] = resizeBitmap.resizeBitmapImage( BitmapFactory.decodeStream(is),100);
                 }
             } catch (Exception e) {
                 Log.i("result", "error", e);
