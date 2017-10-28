@@ -132,6 +132,8 @@ public class Setting extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
+//        ((LinearLayout) findViewById(R.id.setting_logout)).setVisibility(View.GONE);
+//        ((LinearLayout) findViewById(R.id.setting_login)).setVisibility(View.GONE);
         final LoginCheck loginCheck = new LoginCheck(this);
         if(loginCheck.isItLogin()){
             LinearLayout setting_logout = (LinearLayout) findViewById(R.id.setting_logout);
@@ -143,7 +145,8 @@ public class Setting extends AppCompatActivity {
                 }
             });
             ((LinearLayout) findViewById(R.id.setting_login)).setVisibility(View.GONE);
-        }else{
+        }
+        else{
             LinearLayout setting_login = (LinearLayout) findViewById(R.id.setting_login);
             setting_login.setOnClickListener(new View.OnClickListener(){
 

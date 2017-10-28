@@ -228,6 +228,8 @@ public class LoginsActivity extends AppCompatActivity {
         });
     }
     private void redirectMainActivity() {
+        Intent intent = new Intent(LoginsActivity.this, MainActivity.class);
+        startActivity(intent);
         finish();
     }
     protected void redirectLoginActivity() {
